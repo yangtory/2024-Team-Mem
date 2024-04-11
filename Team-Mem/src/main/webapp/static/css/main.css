@@ -1,0 +1,42 @@
+@charset "UTF-8";
+div.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    text-align: left;
+    background-color: #f1c960;
+    color: #3c2406;
+}
+
+nav.nav {
+    margin-left: auto;
+    ul {
+        list-style: none;
+        display: flex;
+
+        li {
+            margin: 8px;
+            color: #3c2406;
+        }
+    }
+}
+
+div.main {
+    display: flex;
+    height: 100%;
+    background-color: #f4f5f5;
+    div.side {
+        padding: 5px;
+        width: 6rem;
+        border-right: 2px dashed #32a573;
+        ul {
+            list-style: none;
+            li {
+                margin: 12px 8px;
+                color: #3c2406;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

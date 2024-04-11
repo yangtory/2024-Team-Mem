@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+
+<div class="side">
+	<ul>
+		<li>회원권관리 
+		<li>회원등록 
+		<li>강사등록 
+		<li>수업등록 
+		<li>스케줄관리 
+		<li>공지사항 
+		<li>설정 
+	</ul>
+</div>
