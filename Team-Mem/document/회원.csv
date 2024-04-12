@@ -1,5 +1,12 @@
 u_id,u_password,u_name,u_tel,u_role
-user001,password1,사용자1,010-1234-5678,일반사용자
-user002,password2,사용자2,010-9876-5432,일반사용자
 admin001,adminpass1,관리자1,010-2468-1357,관리자
 admin002,adminpass2,관리자2,010-3698-1472,관리자
+admin003,adminpass3,관리자3,010-7777-8888,관리자
+user001,password1,사용자1,010-1234-5678,일반사용자
+user002,password2,사용자2,010-9876-5432,일반사용자
+user003,password3,사용자3,010-1111-2222,일반사용자
+user004,password4,사용자4,010-3333-4444,일반사용자
+user005,password5,사용자5,010-5555-6666,일반사용자
+user006,password6,사용자6,010-1122-3344,일반사용자
+user007,password7,사용자7,010-2233-4455,일반사용자
+user008,password8,사용자8,010-3344-5566,일반사용자

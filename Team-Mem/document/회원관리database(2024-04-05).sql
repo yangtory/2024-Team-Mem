@@ -136,3 +136,9 @@ LEFT JOIN tbl_minfo
 
 SELECT * FROM tbl_user
 WHERE u_role = "일반사용자";
+
+SELECT u.u_id, u.u_name, u.u_tel, u.u_role,
+       c.c_code, c.c_name, c.c_addr
+	FROM tbl_user u
+		LEFT JOIN tbl_company c
+			ON u.u_id = c.c_uid;
