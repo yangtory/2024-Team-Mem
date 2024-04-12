@@ -15,6 +15,7 @@
  			AND u_id LIKE CONCAT('%', #{uid}, '%')</if>
  			<if test="utel!= null and utel != '' ">
  			AND u_tel LIKE CONCAT('%', #{utel}, '%')</if>
+	 		AND u_role = "일반사용자"
  			
  		</where>
  	

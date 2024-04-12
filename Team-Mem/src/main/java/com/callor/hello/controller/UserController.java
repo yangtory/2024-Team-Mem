@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping(value="/user")
+@RequestMapping(value="/customer")
 public class UserController {
 
 	private final UserDao userDao;
@@ -32,8 +32,8 @@ public class UserController {
 		log.debug(userList.toString());
 		
 		model.addAttribute("BODY", "USER_LIST");
-		
-		return "user/list";
+		model.addAttribute("USER", userList);
+		return "layout";
 	}
 	
 }

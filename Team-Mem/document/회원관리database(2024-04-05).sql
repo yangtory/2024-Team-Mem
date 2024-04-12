@@ -8,6 +8,7 @@ SELECT * FROM tbl_class;
 SELECT * FROM tbl_minfo;
 SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
+SELECT * FROM tbl_user_minfo;
 
 
 CREATE TABLE tbl_user(
@@ -121,7 +122,8 @@ SELECT * FROM tbl_class
 LEFT JOIN tbl_teacher
 ON c_tcode = t_code
 LEFT JOIN tbl_company
-ON c_ccode = c_code; 
+ON c_ccode = c_code;
+
 
 
 SELECT * FROM tbl_user_minfo
@@ -129,3 +131,14 @@ LEFT JOIN tbl_user
 	ON r_uid = u_id
 LEFT JOIN tbl_minfo
 	ON r_iseq = i_seq;
+    
+    
+
+SELECT * FROM tbl_user
+WHERE u_role = "일반사용자";
+
+SELECT u.u_id, u.u_name, u.u_tel, u.u_role,
+       c.c_code, c.c_name, c.c_addr
+	FROM tbl_user u
+		LEFT JOIN tbl_company c
+			ON u.u_id = c.c_uid;
