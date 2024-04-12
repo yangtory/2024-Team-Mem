@@ -8,7 +8,11 @@
 	<%@ include file="/WEB-INF/views/include/header.jspf"%>
 	<div class="main">
 		<%@ include file="/WEB-INF/views/include/sidebar.jspf"%>
-		<section></section>
+		<section>
+		<c:if test="${BODY == 'TEACHER_HOME'}">
+			<%@ include file="/WEB-INF/views/teacher/home.jsp" %>
+		</c:if>
+		</section>
 	</div>
 </body>
 </html>

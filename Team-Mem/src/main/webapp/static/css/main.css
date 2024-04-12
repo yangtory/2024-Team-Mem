@@ -17,6 +17,7 @@ nav.nav {
 
         li {
             margin: 8px;
+            font-size: 0.9rem;
             color: #3c2406;
         }
     }
@@ -26,16 +27,26 @@ div.main {
     display: flex;
     height: 100%;
     background-color: #f4f5f5;
+    section {
+        width: 100%;
+        border: 1px solid blue;
+    }
     div.side {
         padding: 5px;
-        width: 6rem;
-        border-right: 2px dashed #32a573;
+        width: 5.5rem;
+        background-color: #3c24066d;
         ul {
             list-style: none;
             li {
-                margin: 12px 8px;
-                color: #3c2406;
+                padding: 5px;
+                margin: 12px 5px;
+                color: white;
                 font-size: 0.8rem;
+
+                &:hover {
+                    cursor: pointer;
+                    color: black;
+                }
             }
         }
     }
