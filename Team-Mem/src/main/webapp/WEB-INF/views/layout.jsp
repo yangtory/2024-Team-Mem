@@ -13,6 +13,9 @@
 			<%@ include file="/WEB-INF/views/teacher/home.jsp" %>
 		</c:if>
 		<!-- 승희 -->
+		<c:if test="${BODY == 'USER_LIST'}">
+			<%@ include file="/WEB-INF/views/user/list.jsp" %>
+		</c:if>
 		</section>
 	</div>
 </body>
