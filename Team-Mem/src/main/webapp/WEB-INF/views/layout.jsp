@@ -12,6 +12,7 @@
 		<c:if test="${BODY == 'TEACHER_HOME'}">
 			<%@ include file="/WEB-INF/views/teacher/home.jsp" %>
 		</c:if>
+		<!-- 승희 -->
 		</section>
 	</div>
 </body>
