@@ -4,7 +4,7 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
 <div class="header">
-	<h2>맴맴</h2>
+	<h3>맴맴</h3>
 <nav class="nav">
 	<ul>
 		<li>로그인
