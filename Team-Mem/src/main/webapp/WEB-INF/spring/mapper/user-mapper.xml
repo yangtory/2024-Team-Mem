@@ -3,8 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="com.callor.hello.dao">
+ <mapper namespace="com.callor.hello.dao.UserDao">
  
+ 
+ 	<select id="selectSearchAll">
+ 		SELECT * FROM tbl_user
+ 		<where>
+ 			<if test="uname != null and uname != '' ">
+ 			AND u_name LIKE CONCAT('%', #{uname}, '%')</if>
+ 			<if test="uid!= null and uid != '' ">
+ 			AND u_id LIKE CONCAT('%', #{uid}, '%')</if>
+ 			<if test="utel!= null and utel != '' ">
+ 			AND u_tel LIKE CONCAT('%', #{utel}, '%')</if>
+ 			
+ 		</where>
+ 	
+ 	</select>
  	
  	<select id="findById"></select>
  	<insert id="insert"></insert>
