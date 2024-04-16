@@ -36,4 +36,9 @@ public class UserController {
 		return "layout";
 	}
 	
+	@RequestMapping
+	public String insert() {
+		return null;
+	}
+	
 }

@@ -73,6 +73,17 @@ r_edate	VARCHAR(15)	NOT NULL,
 CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid)
 );
 
+-- user, comp 릴레이션 테이블
+CREATE TABLE tbl_user_comp(
+	us_uid	VARCHAR(20)	NOT NULL,
+	us_ccode	VARCHAR(10)	NOT NULL,
+	us_uname	VARCHAR(10)	,
+	us_utel	VARCHAR(15)	,
+	us_cname	VARCHAR(10)	,
+	CONSTRAINT uc_pk PRIMARY KEY(us_uid,us_ccode)	
+
+);
+
 
 -- 데이터 추가 후 실행하기
 
