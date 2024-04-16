@@ -16,8 +16,11 @@
 	</div>
 		
 		<a href="${rootPath }/insert">수강생 추가</a>
-			
-			
+		<div>
+		<c:forEach items="${COMP }" var="COMP" >
+			<td>${COMP.c_name}</td>
+		</c:forEach>
+			</div>
 		<table class="customer list">
 			<thead>
 				<tr>
@@ -35,7 +38,7 @@
 					<td>${USER.u_id }</td>
 					<td>${USER.u_name }</td>
 					<td>${USER.u_tel }</td>
-		
+					
 				
 				
 				</tr>
@@ -47,7 +50,7 @@
 		</table>
 			
 		
-		
+
 
 	
 		

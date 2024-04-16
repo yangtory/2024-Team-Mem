@@ -143,11 +143,30 @@ LEFT JOIN tbl_user
 LEFT JOIN tbl_minfo
 	ON r_iseq = i_seq;
     
+SELECT * FROM tbl_user
+	LEFT JOIN tbl_user_comp
+		ON u_id = us_uid
+	WHERE us_cname = 'admin001';
     
+    
+    SELECT u_id, u_name, u_tel, us_cname
+    FROM tbl_user 
+    LEFT JOIN tbl_user_comp  
+    ON u_id = us_uid 
+    WHERE us_cname = 'admin001';
 
+SELECT * FROM tbl_company;
+SELECT * FROM tbl_user;
 SELECT * FROM tbl_user_comp
 	LEFT JOIN tbl_company
 		ON us_ccode = c_code;
+
+SELECT * FROM tbl_company
+	LEFT JOIN tbl_user_comp
+		ON u_id = c_uid;
+
+        
+        
 SELECT * FROM tbl_user_comp;
 SELECT * FROM tbl_company;
 SELECT u.*, c.c_uid

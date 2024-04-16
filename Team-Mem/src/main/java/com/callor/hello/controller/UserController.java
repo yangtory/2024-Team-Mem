@@ -33,12 +33,17 @@ public class UserController {
 		
 		
 		List<UserVO> userList = userDao.selectSearchAll(userSearchDto);
-		List<UserVO> usList = userDao.selectUserWithCompany();
+		List<UserVO> company= userDao.selectCompany();
+		log.debug(company.toString());
 		log.debug(userList.toString());
-		log.debug(usList.toString());
 		
+		
+		
+				
 		model.addAttribute("BODY", "USER_LIST");
+
 		model.addAttribute("USER", userList);
+		model.addAttribute("COMP", company);
 		return "layout";
 	}
 	

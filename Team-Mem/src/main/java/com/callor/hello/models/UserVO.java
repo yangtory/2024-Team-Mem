@@ -21,5 +21,9 @@ public class UserVO {
 	private String u_tel;		// VARCHAR(15)	NOT NULL	,
 	private String u_role;		// VARCHAR(10)	NOT NULL	
 	
+	private UserCompVO userCompVO;
+	
+
+	
 
 }

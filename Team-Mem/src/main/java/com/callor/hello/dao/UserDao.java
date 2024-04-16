@@ -15,9 +15,11 @@ public interface UserDao {
 	@Select(" SELECT * FROM tbl_user ")
 	public List<UserVO> selectAll();
 	
+	public List<UserVO> selectCompany();
+	
 	public List<UserVO> selectSearchAll(UserSearchDto userSearchDto);
 
-	public List<UserVO> selectUserWithCompany();
+	
 	
 	
 }
