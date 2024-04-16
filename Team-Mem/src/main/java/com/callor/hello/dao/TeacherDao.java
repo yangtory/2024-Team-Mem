@@ -14,4 +14,6 @@ public interface TeacherDao {
 	public List<TeacherVO> selectAll();
 
 	public List<TeacherVO> selectSearchAll(TeacherSearchDto teacherSearchDto);
+
+	public int insert(TeacherVO teacherVO);
 }

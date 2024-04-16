@@ -30,5 +30,13 @@ public class TeacherController {
 		
 		return "layout";
 	}
+	
+	@RequestMapping(value={"/",""}, method=RequestMethod.POST)
+	public String insert(TeacherVO vo, Model model) {
+		int result = teacherDao.insert(vo);
+		return "layout";
+	}
+
+	
 
 }
