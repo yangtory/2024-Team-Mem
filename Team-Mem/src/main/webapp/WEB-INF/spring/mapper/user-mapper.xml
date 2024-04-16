@@ -21,6 +21,13 @@
  	
  	</select>
  	
+<select id="selectUserWithCompany" resultType="UserVO">
+SELECT u.*, c.c_uid
+FROM tbl_user u
+JOIN tbl_company c 
+ON u.u_id = c.c_uid
+</select>
+ 	
  	<select id="findById"></select>
  	<insert id="insert"></insert>
  	<update id="update"></update>

@@ -20,16 +20,22 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 
 	private final UserDao userDao;
+	
 	public UserController(UserDao userDao) {
 		this.userDao = userDao;
+	
 	}
 	
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model) {
 		
+		
+		
 		List<UserVO> userList = userDao.selectSearchAll(userSearchDto);
+		List<UserVO> usList = userDao.selectUserWithCompany();
 		log.debug(userList.toString());
+		log.debug(usList.toString());
 		
 		model.addAttribute("BODY", "USER_LIST");
 		model.addAttribute("USER", userList);
