@@ -25,6 +25,7 @@
  	
  	</select>
  	
+<<<<<<< HEAD
  	<select id="selectCompany" resultType = "CompanyVO">
  		SELECT * FROM tbl_company 
  		WHERE c_name = '회사1'
@@ -52,6 +53,16 @@ AND u.u_role = '일반사용자'
  	
  	<select id="findById"></select>
  	<insert id="insert"></insert>
+=======
+ 	<insert id="insert">
+ 		INSERT INTO tbl_user (
+			u_id, u_password, u_name, u_tel, u_comp 		
+ 				)
+ 		VALUES(#{u_id}, #{u_password},#{u_name},#{u_tel},#{u_comp})
+ 		
+ 	</insert>
+ 	
+>>>>>>> 512f4d427f1e8fac9fa2dc1223909528dbb48f51
  	<update id="update"></update>
  	<delete id="delete"></delete>
  

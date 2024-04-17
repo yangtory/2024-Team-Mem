@@ -4,11 +4,11 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
 <div class="header">
-	<h2>맴맴</h2>
+	<h3>맴맴</h3>
 <nav class="nav">
-	<ul>
-		<li>로그인
-		<li>회원가입
-	</ul>
+	
+		<a href="${rootPath }/main/login">로그인</a>
+		<a href="${rootPath}/main/join">회원가입</a>
+	
 </nav>
 </div>

@@ -19,8 +19,8 @@
 	
 	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds" />
-		<property name="typeAliasesPackage" value="com.callor.hello.models" ></property>
-		<property name="mapperLocations" value="/WEB-INF/spring/mapper/*-mapper.xml" ></property>
+		<property name="typeAliasesPackage" value="com.callor.hello.models" />
+		<property name="mapperLocations" value="/WEB-INF/spring/mapper/*-mapper.xml" />
 	</bean>	
 	
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
@@ -28,7 +28,11 @@
 	</bean>
 	
 	<mybatis-spring:scan base-package="com.callor.hello.dao"/>			
-
+	
+	<tx:annotation-driven/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"/>
+	</bean>
 
 
 

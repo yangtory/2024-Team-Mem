@@ -4,6 +4,7 @@ DROP DATABASE manageDB;
 
 SELECT * FROM tbl_company;
 SELECT * FROM tbl_user;
+SELECT * FROM tbl_role;
 SELECT * FROM tbl_class;
 SELECT * FROM tbl_minfo;
 SELECT * FROM tbl_notice;
@@ -19,7 +20,7 @@ u_tel	VARCHAR(15)	NOT NULL,
 u_comp VARCHAR(10)
 );
 ALTER TABLE tbl_user
-add COLUMN u_comp VARCHAR(10);
+MODIFY COLUMN u_password VARCHAR(125);
 
 -- 아직 추가안햇음
 CREATE TABLE tbl_user_comp(
@@ -163,33 +164,13 @@ LEFT JOIN tbl_user
 LEFT JOIN tbl_minfo
 	ON r_iseq = i_seq;
     
+    
+
 SELECT * FROM tbl_user
-	LEFT JOIN tbl_user_comp
-		ON u_id = us_uid
-	WHERE us_cname = 'admin001';
-    
-    
-    SELECT u_id, u_name, u_tel, us_cname
-    FROM tbl_user 
-    LEFT JOIN tbl_user_comp  
-    ON u_id = us_uid 
-    WHERE us_cname = 'admin001';
+WHERE u_role = "일반사용자";
 
-SELECT * FROM tbl_company;
-SELECT * FROM tbl_user;
-SELECT * FROM tbl_user_comp
-	LEFT JOIN tbl_company
-		ON us_ccode = c_code;
-
-SELECT * FROM tbl_company
-	LEFT JOIN tbl_user_comp
-		ON u_id = c_uid;
-
-        
-        
-SELECT * FROM tbl_user_comp;
-SELECT * FROM tbl_company;
-SELECT u.*, c.c_uid
-FROM tbl_user u
-JOIN tbl_company c 
-ON u.u_id = c.c_uid;
+SELECT u.u_id, u.u_name, u.u_tel, u.u_role,
+       c.c_code, c.c_name, c.c_addr
+	FROM tbl_user u
+		LEFT JOIN tbl_company c
+			ON u.u_id = c.c_uid;
