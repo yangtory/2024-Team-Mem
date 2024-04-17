@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "auth")
+@RequestMapping(value = "/auth")
 public class AuthController {
 
 	@RequestMapping(value = "/denied", method = RequestMethod.GET)
