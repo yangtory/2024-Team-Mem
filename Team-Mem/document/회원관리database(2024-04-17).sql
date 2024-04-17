@@ -4,6 +4,7 @@ DROP DATABASE manageDB;
 
 SELECT * FROM tbl_company;
 SELECT * FROM tbl_user;
+SELECT * FROM tbl_role;
 SELECT * FROM tbl_class;
 SELECT * FROM tbl_minfo;
 SELECT * FROM tbl_notice;
@@ -19,7 +20,7 @@ u_tel	VARCHAR(15)	NOT NULL,
 u_comp VARCHAR(10)
 );
 ALTER TABLE tbl_user
-add COLUMN u_comp VARCHAR(10);
+MODIFY COLUMN u_password VARCHAR(125);
 
 -- 아직 추가안햇음
 CREATE TABLE tbl_user_comp(

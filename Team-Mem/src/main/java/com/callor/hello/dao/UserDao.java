@@ -12,7 +12,13 @@ public interface UserDao {
 	@Select(" SELECT * FROM tbl_user ")
 	public List<UserVO> selectAll();
 	
+
 	public List<UserVO> selectSearchAll(UserSearchDto userSearchDto);
-	
+
+
+	public void insert(UserVO createUserVO);
+
+	@Select(" SELECT * FROM tbl_user WHERE u_id = #{username}")
+	public UserVO findById(String username);
 	
 }
