@@ -6,8 +6,11 @@
  <mapper namespace="com.callor.hello.dao.UserDao">
  
  
- 	<select id="selectSearchAll">
- 		SELECT * FROM tbl_user
+ 	<select id="selectSearchAll" resultType="UserVO">
+ 		SELECT u.*, uc.us_cname 
+		FROM tbl_user u
+		LEFT JOIN tbl_user_comp uc ON u.u_id = uc.us_uid
+	
  		<where>
  			<if test="uname != null and uname != '' ">
  			AND u_name LIKE CONCAT('%', #{uname}, '%')</if>
@@ -15,12 +18,37 @@
  			AND u_id LIKE CONCAT('%', #{uid}, '%')</if>
  			<if test="utel!= null and utel != '' ">
  			AND u_tel LIKE CONCAT('%', #{utel}, '%')</if>
-	 		AND u_role = "일반사용자"
+	 		
+	 		AND uc.us_cname = 'admin001'
  			
  		</where>
  	
  	</select>
  	
+
+ 	<select id="selectCompany" resultType = "CompanyVO">
+ 		SELECT * FROM tbl_company 
+ 		WHERE c_name = '회사1'
+ 	</select>
+<!-- <select id="selectUserWithCompany" resultType="UserVO">
+SELECT u.*, uc.us_cname as companyName
+FROM tbl_user u
+LEFT JOIN tbl_user_comp uc ON u.u_id = uc.us_uid
+WHERE uc.us_cname = 'admin001'
+<if test="uname != null and uname != '' ">
+    AND u.u_name LIKE CONCAT('%', #{uname}, '%')
+</if>
+<if test="uid!= null and uid != '' ">
+    AND u.u_id LIKE CONCAT('%', #{uid}, '%')
+</if>
+<if test="utel!= null and utel != '' ">
+    AND u.u_tel LIKE CONCAT('%', #{utel}, '%')
+</if>
+AND u.u_role = '일반사용자'
+</select> -->
+ 	
+ 	
+
  	<insert id="insert">
  		INSERT INTO tbl_user (
 			u_id, u_password, u_name, u_tel, u_comp 		
@@ -29,6 +57,7 @@
  		
  	</insert>
  	
+
  	<update id="update"></update>
  	<delete id="delete"></delete>
  
