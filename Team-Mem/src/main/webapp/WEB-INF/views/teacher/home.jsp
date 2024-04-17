@@ -22,7 +22,7 @@
 		<table class="teacher list">
 			<thead>
 				<tr>
-					<th>No.</th>
+					<th>No. </th>
 					<th>강사코드</th>
 					<th>강사이름</th>
 				</tr>
