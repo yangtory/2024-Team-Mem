@@ -18,22 +18,18 @@
  			AND u_id LIKE CONCAT('%', #{uid}, '%')</if>
  			<if test="utel!= null and utel != '' ">
  			AND u_tel LIKE CONCAT('%', #{utel}, '%')</if>
-	 		AND u_role = "일반사용자"
+	 		
 	 		AND uc.us_cname = 'admin001'
  			
  		</where>
  	
  	</select>
  	
-<<<<<<< HEAD
+
  	<select id="selectCompany" resultType = "CompanyVO">
  		SELECT * FROM tbl_company 
  		WHERE c_name = '회사1'
  	</select>
- 	
- 	
- 	
- 	
 <!-- <select id="selectUserWithCompany" resultType="UserVO">
 SELECT u.*, uc.us_cname as companyName
 FROM tbl_user u
@@ -51,9 +47,8 @@ WHERE uc.us_cname = 'admin001'
 AND u.u_role = '일반사용자'
 </select> -->
  	
- 	<select id="findById"></select>
- 	<insert id="insert"></insert>
-=======
+ 	
+
  	<insert id="insert">
  		INSERT INTO tbl_user (
 			u_id, u_password, u_name, u_tel, u_comp 		
@@ -62,7 +57,7 @@ AND u.u_role = '일반사용자'
  		
  	</insert>
  	
->>>>>>> 512f4d427f1e8fac9fa2dc1223909528dbb48f51
+
  	<update id="update"></update>
  	<delete id="delete"></delete>
  

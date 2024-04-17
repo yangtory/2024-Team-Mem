@@ -19,8 +19,18 @@ u_name	VARCHAR(10)	NOT NULL	,
 u_tel	VARCHAR(15)	NOT NULL,
 u_comp VARCHAR(10)
 );
+
+-- 테이블 변경
 ALTER TABLE tbl_user
 MODIFY COLUMN u_password VARCHAR(125);
+
+ALTER TABLE tbl_user
+DROP COLUMN u_role;
+
+ALTER TABLE tbl_user
+ADD COLUMN u_comp VARCHAR(10);
+
+
 
 -- 아직 추가안햇음
 CREATE TABLE tbl_user_comp(
