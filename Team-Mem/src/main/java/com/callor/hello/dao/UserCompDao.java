@@ -11,6 +11,16 @@ public interface UserCompDao {
 	
 	@Select(" SELECT * FROM tbl_user_comp ")
 	public List<UserCompVO> selectAll();
+
+	public int insert(UserCompVO userCompVO);
+	
+	public int createUser();
+
+	
+
+
+
+	
 	
 	
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.callor.hello.dao.UserCompDao">
+
+<insert id="insert">
+INSERT INTO tbl_user_comp(
+	us_uid, us_ccode
+) VALUES(
+	#{us_uid},#{us_ccode}
+)
+
+</insert>
+ 	<insert id="createUser">
+		INSERT INTO tbl_user_comp(us_uid,us_ccode, us_uname, us_utel, us_cname)
+		VALUES
+		<foreach collection="list" item="vo" separator=", ">
+			(#{vo.us_uid},#{vo.us_ccode},#{vo.us_uname},#{vo.us_utel},#{vo.us_cname} )
+		</foreach>
+	</insert>
+ 	
+ 
+ </mapper> 

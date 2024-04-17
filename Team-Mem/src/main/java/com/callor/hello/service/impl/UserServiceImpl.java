@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 
 import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.RoleDao;
+import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
 import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.RoleVO;
+import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.UserService;
 
@@ -23,15 +25,17 @@ public class UserServiceImpl implements UserService{
 	private final UserDao userDao;
 	private final RoleDao roleDao;
 	private final CompanyDao companyDao; 
+	private final UserCompDao userCompDao;
 
 	public UserServiceImpl(
 			@Qualifier("passEncorderV1") PasswordEncoder passEncoder, 
-			UserDao userDao, RoleDao roleDao, CompanyDao companyDao) {
+			UserDao userDao, RoleDao roleDao, CompanyDao companyDao, UserCompDao userCompDao) {
 		super();
 		this.passEncoder = passEncoder;
 		this.userDao = userDao;
 		this.roleDao = roleDao;
 		this.companyDao = companyDao;
+		this.userCompDao = userCompDao;
 	}
 
 	@Transactional
@@ -61,10 +65,10 @@ public class UserServiceImpl implements UserService{
 					.c_code("C0001")
 					.c_name(company)
 					.c_uid(username).build());
+			companyDao.createCompany(comp);
 		}
 		userDao.insert(createUserVO);
 		roleDao.insertAll(roles);
-		companyDao.createCompany(comp);
 		
 		return null;
 	}
@@ -73,5 +77,30 @@ public class UserServiceImpl implements UserService{
 	public UserVO findById(String username) {
 		return userDao.findById(username);
 	}
+
+	@Override
+	public UserCompVO userInput() {
+		
+		String userComp = userInput().getUs_ccode();
+		
+		List<UserCompVO> userComps = new ArrayList<>();
+		
+		if(userComp.equals("C001")) {
+			userComps.add(UserCompVO.builder()
+					.us_uname("승희")
+					.us_utel("010-1111-1111")
+					.us_cname("admin001").build());
+		}
+		
+		return null;
+	}
+
+
+
+
+	
+	
+
+	
 
 }

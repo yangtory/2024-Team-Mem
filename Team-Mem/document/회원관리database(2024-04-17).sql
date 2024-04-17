@@ -10,6 +10,7 @@ SELECT * FROM tbl_minfo;
 SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
 SELECT * FROM tbl_user_minfo;
+SELECT * FROM tbl_user_comp;
 
 
 CREATE TABLE tbl_user(

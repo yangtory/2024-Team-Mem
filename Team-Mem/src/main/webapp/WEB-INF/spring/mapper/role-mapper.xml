@@ -8,7 +8,7 @@
 	<insert id="insertAll">
 		INSERT INTO tbl_role(r_uid,r_role)
 		VALUES
-		<foreach collection="list" item="vo" separator=", ">
+		<foreach collection="list" item="vo" separator=",">
 			(#{vo.r_uid},#{vo.r_role})
 		</foreach>
 	</insert>

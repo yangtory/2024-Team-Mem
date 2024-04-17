@@ -16,6 +16,9 @@
 		<c:if test="${BODY == 'USER_LIST'}">
 			<%@ include file="/WEB-INF/views/user/list.jsp" %>
 		</c:if>
+		<c:if test="${BODY == 'USER_INSERT'}">
+			<%@ include file="/WEB-INF/views/user/input.jsp" %>
+		</c:if>
 		</section>
 	</div>
 </body>
