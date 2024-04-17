@@ -21,7 +21,10 @@
  	</select>
  	
  	<select id="findById"></select>
- 	<insert id="insert"></insert>
+ 	<insert id="insert">
+ 		INSERT INTO tbl_teacher(t_code, t_name, t_tel)
+ 		VALUES(#{t_code}, #{t_name}, #{t_tel})
+ 	</insert>
  	<update id="update"></update>
  	<delete id="delete"></delete>
  

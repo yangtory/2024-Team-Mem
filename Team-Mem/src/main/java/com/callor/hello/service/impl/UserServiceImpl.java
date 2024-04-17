@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.RoleDao;
 import com.callor.hello.dao.UserDao;
+import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.RoleVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.UserService;
@@ -19,13 +21,17 @@ import com.callor.hello.service.UserService;
 public class UserServiceImpl implements UserService{
 	private final PasswordEncoder passEncoder;
 	private final UserDao userDao;
-	private final RoleDao roleDao;	
+	private final RoleDao roleDao;
+	private final CompanyDao companyDao; 
 
-	public UserServiceImpl(@Qualifier("passEncorderV1") PasswordEncoder passEncoder, UserDao userDao, RoleDao roleDao) {
+	public UserServiceImpl(
+			@Qualifier("passEncorderV1") PasswordEncoder passEncoder, 
+			UserDao userDao, RoleDao roleDao, CompanyDao companyDao) {
 		super();
 		this.passEncoder = passEncoder;
 		this.userDao = userDao;
 		this.roleDao = roleDao;
+		this.companyDao = companyDao;
 	}
 
 	@Transactional
@@ -41,6 +47,7 @@ public class UserServiceImpl implements UserService{
 		createUserVO.setU_password(encPassword);
 		
 		List<RoleVO> roles = new ArrayList<>();
+		List<CompanyVO> comp = new ArrayList<>();
 		
 		if(company.isBlank()) {
 			roles.add(RoleVO.builder()
@@ -50,9 +57,14 @@ public class UserServiceImpl implements UserService{
 			roles.add(RoleVO.builder()
 					.r_uid(username)
 					.r_role("ROLE_ADMIN").build());
+			comp.add(CompanyVO.builder()
+					.c_code("C0001")
+					.c_name(company)
+					.c_uid(username).build());
 		}
 		userDao.insert(createUserVO);
 		roleDao.insertAll(roles);
+		companyDao.createCompany(comp);
 		
 		return null;
 	}

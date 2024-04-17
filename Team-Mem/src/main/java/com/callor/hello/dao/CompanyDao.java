@@ -10,5 +10,7 @@ public interface CompanyDao {
 	
 	@Select(" SELECT * FROM tbl_company ")
 	public List<CompanyVO> selectAll();
+	
+	public int createCompany(List<CompanyVO> comp);
 
 }

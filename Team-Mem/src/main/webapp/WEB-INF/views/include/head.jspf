@@ -16,6 +16,7 @@
 	}
 	html {
 	 	height:100vh;
+		color:#bec7d5;
 	}
 	body {
 		height:100%;
@@ -24,10 +25,9 @@
 	}
 	a {
 		text-decoration:none;
-		color:inherit;
 	}
 </style>
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-12-005">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-17-007">
 <link rel="stylesheet" href="${rootPath}/static/css/teacher.css?2024-04-16-001">
 <script>
  	const rootPath = "${rootPath}"
