@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,10 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
 		log.debug("로그인한 사용자 정보 {}, {}", username, password);
+		
+//		Authentication authentication2 = new UsernamePasswordAuthenticationToken(username, authentication.getCredentials());
+//		
+//		SecurityContextHolder.getContext().setAuthentication(authentication2);
 		
 		UserVO userVO = userDao.findById(username);
 		if(userVO == null) {
