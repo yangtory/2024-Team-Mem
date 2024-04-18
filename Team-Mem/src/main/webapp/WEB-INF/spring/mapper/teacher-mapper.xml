@@ -20,11 +20,15 @@
  	
  	</select>
  	
- 	<select id="findById"></select>
  	<insert id="insert">
- 		INSERT INTO tbl_teacher(t_code, t_name, t_tel)
- 		VALUES(#{t_code}, #{t_name}, #{t_tel})
+ 		INSERT INTO tbl_teacher(t_code, t_name, t_tel, t_ccode)
+ 		VALUES(#{t_code}, #{t_name}, #{t_tel}, #{t_ccode})
  	</insert>
+ 	
+ 	<select id="findByComp">
+ 		SELECT c_code FROM tbl_company
+ 		WHERE c_name = #{ucomp}
+ 	</select>
  	<update id="update"></update>
  	<delete id="delete"></delete>
  
