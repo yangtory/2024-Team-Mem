@@ -4,6 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<script src="${rootPath }/static/js/userList.js"></script>
+<script>
+const rootPath = "${rootPath}"
+</script>
 <!DOCTYPE html>
 <div class="customer btn_box">
 	<f:form method="GET" modelAttribute="SEARCH">
@@ -18,7 +22,7 @@
 <a href="${rootPath }/customer/insert">수강생 추가</a>
 <div>
 	<sec:authorize access="isAuthenticated()">
-		<sec:authentication property="principal.u_id"/>
+		<sec:authentication property="principal.u_comp"/>
 	</sec:authorize>
 </div>
 <table class="customer list">

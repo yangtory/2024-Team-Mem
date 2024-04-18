@@ -6,12 +6,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <div>
-	<f:form modelAttribute="ADD">
-		<f:input placeholder="아이디" path="us_uid" />
-		<f:input placeholder="회사코드" path="us_ccode" />
-		
-		<input type="submit" value="추가" />
-	</f:form>
+<f:form>
+<div><input placeholder="유저ID" name="us_uid"/></div>
+<div><input placeholder="이름" name="us_uname"/></div>
+
+<div><button>추가</button></div>
+
+</f:form>
 	
 	<table>
 	

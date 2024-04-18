@@ -9,7 +9,9 @@ public interface UserService {
 	
 	public UserVO findById(String username);
 	
-	public UserCompVO userInput();
+	
+
+	UserCompVO userInput(UserCompVO userCompVO);
 
 	
 }

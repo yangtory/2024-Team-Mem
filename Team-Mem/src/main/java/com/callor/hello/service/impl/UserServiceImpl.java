@@ -19,6 +19,8 @@ import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService{
 	private final PasswordEncoder passEncoder;
@@ -79,21 +81,30 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserCompVO userInput() {
-		
-		String userComp = userInput().getUs_ccode();
-		
-		List<UserCompVO> userComps = new ArrayList<>();
-		
-		if(userComp.equals("C001")) {
-			userComps.add(UserCompVO.builder()
-					.us_uname("승희")
-					.us_utel("010-1111-1111")
-					.us_cname("admin001").build());
-		}
-		
-		return null;
+	public UserCompVO userInput(UserCompVO userCompVO) {
+	    String user = userCompVO.getUs_uid();
+	    String username = userCompVO.getUs_uname();
+	    
+	    List<UserCompVO> userComp = new ArrayList<>(); 
+	    
+	    if (!user.isBlank()) {
+	    	userComp.add(userCompVO.builder()
+	    			.us_uid(user)
+	    			.us_uname(username)
+	    			.us_ccode("C001")
+	    			
+	    			.us_utel("010-000-0000").build()
+	    			);
+	    	
+	    	userCompDao.createUser(userComp);
+	    }
+	    
+	     
+	    
+	    
+	    return userCompVO;
 	}
+
 
 
 

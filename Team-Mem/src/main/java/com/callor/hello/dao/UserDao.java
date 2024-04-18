@@ -9,7 +9,7 @@ import com.callor.hello.models.UserVO;
 
 public interface UserDao {
 	
-	@Select(" SELECT * FROM tbl_user ")
+	@Select(" SELECT * FROM tbl_user WHERE u_comp = '' ")
 	public List<UserVO> selectAll();
 
 	public List<UserVO> selectCompany();
