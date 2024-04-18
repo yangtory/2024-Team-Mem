@@ -86,7 +86,8 @@ public class TeacherController {
 	@RequestMapping(value="/detail/{tcode}",method=RequestMethod.GET)
 	public String detail(@PathVariable("tcode") String tcode, Model model) {
 		TeacherVO vo = teacherDao.findById(tcode);
-		model.addAttribute("BODY", "TEACHER_INSERT");
+		model.addAttribute("LIST",vo);
+		model.addAttribute("BODY", "TEACHER_DETAIL");
 		return "layout";
 	}
 

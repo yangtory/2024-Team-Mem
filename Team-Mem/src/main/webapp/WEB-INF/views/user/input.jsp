@@ -31,7 +31,7 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${USER }" var="USER">
-				<tr data-id = "${USER.u_id }" }>
+				<tr data-id = "${USER.u_id }">
 					<td>${USER.u_id }</td>
 					<td>${USER.u_name }</td>
 					<td>${USER.u_tel}</td>

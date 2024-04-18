@@ -32,7 +32,14 @@
  		SELECT c_code FROM tbl_company
  		WHERE c_name = #{ucomp}
  	</select>
- 	<update id="update"></update>
+ 	
+ 	<select id="findById">
+ 		SELECT * FROM tbl_teacher
+ 		WHERE t_code = #{tcode}
+ 	</select>
+ 	
+ 	<update id="update">
+ 	</update>
  	<delete id="delete"></delete>
  
  </mapper> 

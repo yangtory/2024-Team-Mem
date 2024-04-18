@@ -9,7 +9,7 @@ import com.callor.hello.models.TeacherVO;
 
 public interface TeacherDao {
 	
-//	@Select("SELECT * FROM tbl_teacher ")
+	@Select("SELECT * FROM tbl_teacher ")
 	public List<TeacherVO> selectAll();
 
 	public List<TeacherVO> selectSearchAll(TeacherSearchDto teacherSearchDto);

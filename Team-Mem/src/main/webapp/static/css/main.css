@@ -6,7 +6,9 @@ div.header {
     padding: 8px;
     text-align: left;
     background-color: #313749;
-    color: #77808b;
+    a {
+        color: #77808b;
+    }
 }
 
 nav.nav {
@@ -42,6 +44,23 @@ div.main {
                     color: #87dbfc;
                 }
             }
+        }
+    }
+}
+
+form.join {
+    width: 40%;
+    margin: 0 auto;
+    div {
+        display: flex;
+        label {
+            flex: 1;
+        }
+        input {
+            flex: 3;
+        }
+        button {
+            margin-left: auto;
         }
     }
 }
