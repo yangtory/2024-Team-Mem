@@ -2,10 +2,7 @@ package com.callor.hello.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
@@ -28,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping(value="/customer")
 public class UserController {
-
+	
 	private final UserDao userDao;
 	private final UserCompDao userCompDao;
 	private final UserService userSerivce;
@@ -37,20 +33,31 @@ public class UserController {
 		this.userCompDao = userCompDao;
 		this.userSerivce = userService;
 	}
-	
-	
+
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
-	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model, UserVO vo ) { 
+	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model, UserVO vo, UserCompVO userCompVO ) { 
 				
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserVO) {
+			UserVO detail = (UserVO) authentication.getPrincipal();
+			
+			String cname = detail.getU_comp();
+			log.debug("사용자의 업체명 {}", cname);
+			String ccode = userCompDao.findByCcode(cname);
+			log.debug("사용자의 업체코드{}", ccode);
+			model.addAttribute("CCODE", ccode);
+			List<UserCompVO> company= userCompDao.selectAll(ccode);
+			model.addAttribute("COMP", company);
+		}
+		
+		
+
 		List<UserVO> userList = userDao.selectSearchAll(userSearchDto);
-		List<UserCompVO> company= userCompDao.selectAll();
-		log.debug(company.toString());
-		log.debug(userList.toString());
 				
 		model.addAttribute("BODY", "USER_LIST");
 
 		model.addAttribute("USER", userList);
-		model.addAttribute("COMP", company);
+		
 		return "layout";
 	}
 	
@@ -66,12 +73,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
-	public String insert(UserCompVO userCompVO) {
-		
-
-		userSerivce.userInput(userCompVO);
-		
-		
+	public String insert(UserCompVO userCompVO, UserVO userVO) {
+		userSerivce.codeInput(userVO, userCompVO);
 			
 		return "redirect:/customer/";
 	}
@@ -85,16 +88,60 @@ public class UserController {
 		
 		model.addAttribute("LIST", vo);
 		
-		log.debug(vo.toString());
+		
 		
 		return "layout";
 	}
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
 	public String update(@PathVariable("seq") String seq, UserCompVO vo, Model model) {
 		
+		UserCompVO list = userCompDao.findById(seq);
+		
+		
 		model.addAttribute("BODY", "USER_UPDATE");
+		model.addAttribute("COMP",list);
 		return "layout";
 	}
+	
+	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
+	public String update(@PathVariable("seq") String seq, UserCompVO vo) {
+		
+		log.debug("UPDATE {}", vo.toString());
+		int result = userCompDao.update(vo);
+		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());
+		
+		return retString;
+//		return "redirect:/customer/detail/" + vo.getUs_uid();
+	}
+	
+	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable("seq") String seq) {
+		
+		int result = 0;
+		
+		try {
+			result = userCompDao.delete(seq);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		if(result > 0) {
+			return "redirect:/customer";
+		}
+		
+		
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/insert/{seq}")
+	public String json(@PathVariable("seq") String seq) {
+		
+		UserVO userVO = userSerivce.findById(seq);
+		
+		return null;
+	}
+	
 	
 	
 	

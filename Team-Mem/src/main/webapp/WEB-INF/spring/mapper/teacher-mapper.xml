@@ -10,16 +10,16 @@
  		WHERE t_ccode = #{comp}
  	</select> -->
  
+ 			<!-- AND t_ccode = #{ tccode } -->
  	<select id="selectSearchAll">
  		SELECT * FROM tbl_teacher
  		<where>
- 			<if test="t_name != null and t_name != '' ">
- 			AND t_name LIKE CONCAT('%', #{t_name}, '%')</if>
- 			<if test="t_code!= null and t_code != '' ">
- 			AND t_code LIKE CONCAT('%', #{t_code}, '%')</if>
- 			<if test="t_tel!= null and t_tel != '' ">
- 			AND t_tel LIKE CONCAT('%', #{t_tel}, '%')</if>
- 			AND t_ccode = #{comp}
+ 			<if test="tname != null and tname != '' ">
+ 			AND t_name LIKE CONCAT('%', #{tname}, '%')</if>
+ 			<if test="tcode!= null and tcode != '' ">
+ 			AND t_code LIKE CONCAT('%', #{tcode}, '%')</if>
+ 			<if test="ttel!= null and ttel != '' ">
+ 			AND t_tel LIKE CONCAT('%', #{ttel}, '%')</if>
  		</where>
  	</select>
  	

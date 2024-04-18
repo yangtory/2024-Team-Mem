@@ -4,13 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+
+<script>const rootPath = "${rootPath}"</script>
+<script src="${rootPath }/static/js/userInput.js"></script>
 <!DOCTYPE html>
 <div>
-<f:form>
-<div><input placeholder="유저ID" name="us_uid"/></div>
-<div><input placeholder="이름" name="us_uname"/></div>
+<f:form class="formBox">
+<div><input class ="us_uid" placeholder="유저ID" name="us_uid" value="${COMP.us_uid }"/></div>
+<div><input class ="us_uname" placeholder="이름" name="us_uname" value="${COMP.us_uname }"/></div>
+<div><input class ="us_utel" placeholder="전화번호" name="us_utel" value="${COMP.us_utel }"/></div>
+<div><input class ="us_cname" placeholder="업체명" name="us_cname" value="${COMP.us_cname}"/></div>
+<div><input class ="us_ccode" placeholder="업체코드" name="us_ccode" value="${COMP.us_ccode}"/></div>
 
-<div><button>추가</button></div>
+<div><button>저장</button></div>
 
 </f:form>
 	
@@ -20,13 +26,15 @@
 		<tr>
 			<th>ID</th>
 			<th>이름</th>
+			<th>전화번호</th>
 		</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${USER }" var="USER">
-				<tr>
+				<tr data-id = "${USER.u_id }" }>
 					<td>${USER.u_id }</td>
 					<td>${USER.u_name }</td>
+					<td>${USER.u_tel}</td>
 				</tr>
 			
 			</c:forEach>

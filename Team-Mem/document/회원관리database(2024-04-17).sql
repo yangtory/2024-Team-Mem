@@ -1,7 +1,7 @@
 CREATE DATABASE manageDB;
 USE manageDB;
 DROP DATABASE manageDB;
-
+SELECT * FROM tbl_user WHERE u_comp = "";
 SELECT * FROM tbl_company;
 SELECT * FROM tbl_user;
 SELECT * FROM tbl_role;
@@ -11,6 +11,9 @@ SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
+
+
+
 
 
 CREATE TABLE tbl_user(
@@ -32,6 +35,23 @@ ALTER TABLE tbl_user
 ADD COLUMN u_comp VARCHAR(10);
 
 
+SELECT u.*, uc.us_cname , uc.us_ccode
+		FROM tbl_user u
+		LEFT JOIN tbl_user_comp uc ON u.u_id = uc.us_uid
+        WHERE uc.us_ccode = "C001";
+        
+
+
+-- 아직 추가안햇음
+CREATE TABLE tbl_user_comp(
+	uc_uid VARCHAR(20) NOT NULL,
+    uc_ccode VARCHAR(10) NOT NULL,
+    uc_uname VARCHAR(10),
+    uc_utel VARCHAR(15),
+    uc_cname VARCHAR(10),
+    CONSTRAINT uc_pk PRIMARY KEY(uc_uid,uc_ccode)
+
+);
 
 CREATE TABLE tbl_role(
 	r_uid VARCHAR(20) NOT NULL,

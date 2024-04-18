@@ -11,14 +11,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.callor.hello.dao.RoleDao;
+import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
 import com.callor.hello.models.RoleVO;
+import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,12 +31,14 @@ public class AuthProviderImpl implements AuthenticationProvider{
 	private final PasswordEncoder passwordEncoder;
 	private final UserDao userDao;
 	private final RoleDao roleDao;
+	
 
 	public AuthProviderImpl(@Qualifier("passEncorderV1") PasswordEncoder passwordEncoder, UserDao userDao, RoleDao roleDao) {
 		super();
 		this.passwordEncoder = passwordEncoder;
 		this.userDao = userDao;
 		this.roleDao = roleDao;
+		
 	}
 
 	@Override
@@ -61,9 +64,13 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		List<RoleVO> roles = roleDao.findByUserName(username);
 		List<GrantedAuthority>grantList = new ArrayList<GrantedAuthority>();
 		
+		
 		for(RoleVO r : roles) {
 			grantList.add(new SimpleGrantedAuthority(r.getR_role()));
 		}
+		
+
+		
 		
 		Authentication token = new UsernamePasswordAuthenticationToken(userVO, password,grantList);
 		

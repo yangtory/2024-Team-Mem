@@ -8,6 +8,7 @@
 
 <div><strong>아이디</strong><span>${LIST.us_uid}</span></div>
 <div><strong>전화번호</strong><span>${LIST.us_utel}</span></div>
+<div><strong>이름</strong><span>${LIST.us_uname}</span></div>
 <div><strong>업체코드</strong><span>${LIST.us_ccode}</span></div>
 <div><strong>업체명</strong><span>${LIST.us_cname}</span></div>
 <div><strong></strong><span>

@@ -21,5 +21,14 @@ INSERT INTO tbl_user_comp(
 		</foreach>
 	</insert>
  	
+ <update id="update">
+ 	UPDATE tbl_user_comp
+ 	SET us_uname = #{us_uname}, us_uid = #{us_uid}, us_utel = #{us_utel}, us_cname = #{us_cname}, us_ccode = #{us_ccode}
+ 	WHERE us_uid= #{us_uid}
+ 
+ </update>
+ 	
+ 
+ 	
  
  </mapper> 

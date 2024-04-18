@@ -36,6 +36,9 @@
 			<c:if test="${BODY == 'MAIN_JOIN'}">
 				<%@ include file="/WEB-INF/views/main/join.jsp"%>
 			</c:if>
+			<c:if test="${BODY == 'SCHEDULE_MAIN'}">
+				<%@ include file="/WEB-INF/views/schedule/main.jsp"%>
+			</c:if>
 		</section>
 	</div>
 </body>
