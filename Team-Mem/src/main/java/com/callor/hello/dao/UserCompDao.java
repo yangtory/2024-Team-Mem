@@ -17,5 +17,8 @@ public interface UserCompDao {
 	
 	public int createUser(List<UserCompVO> comp);
 
+	@Select(" SELECT * FROM tbl_user_comp WHERE us_uid = #{us_uid} ")
+	public UserCompVO findById(String us_uid);
+
 
 }
