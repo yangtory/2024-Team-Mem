@@ -19,7 +19,7 @@
  			<if test="utel!= null and utel != '' ">
  			AND u_tel LIKE CONCAT('%', #{utel}, '%')</if>
 	 		
-	 		AND uc.us_cname = 'admin001'
+	 		AND uc.us_ccode = 'C001'
  			
  		</where>
  	
