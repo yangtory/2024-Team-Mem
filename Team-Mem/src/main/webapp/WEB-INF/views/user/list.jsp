@@ -21,9 +21,8 @@ const rootPath = "${rootPath}"
 
 <a href="${rootPath }/customer/insert">수강생 추가</a>
 <div>
-	<sec:authorize access="isAuthenticated()">
-		<sec:authentication property="principal.u_comp"/>
-	</sec:authorize>
+	<c:if test="${not empty CCODE}">회사 코드 : <c:out value="${CCODE}"/>
+</c:if>
 </div>
 <table class="customer list">
 	<thead>
@@ -37,11 +36,11 @@ const rootPath = "${rootPath}"
 	</thead>
 
 	<tbody>
-		<c:forEach items="${USER }" var="USER">
-			<tr data-id="${USER.u_id }">
-				<td>${USER.u_id }</td>
-				<td>${USER.u_name }</td>
-				<td>${USER.u_tel }</td>
+		<c:forEach items="${COMP }" var="COMP">
+			<tr data-id="${COMP.us_uid }">
+				<td>${COMP.us_uid }</td>
+				<td>${COMP.us_uname }</td>
+				<td>${COMP.us_utel }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

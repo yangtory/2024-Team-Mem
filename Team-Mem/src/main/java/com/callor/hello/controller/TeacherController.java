@@ -37,16 +37,22 @@ public class TeacherController {
 	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication.getPrincipal() instanceof UserVO) {
+//		if (authentication.getPrincipal() instanceof UserVO) {
 			UserVO userDetails = (UserVO) authentication.getPrincipal();
 			String ucomp = userDetails.getU_comp();
+			log.debug(ucomp);
 			String comp = teacherDao.findByComp(ucomp);
-			List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch, comp);
-			model.addAttribute("LIST", teacherList);
-			model.addAttribute("SEARCH", teacherSearch);
-		}
+			log.debug(comp);
+//		}
 
+		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
+		
+		
+		model.addAttribute("LIST", teacherList);
+		
+		model.addAttribute("SEARCH", teacherSearch);
 		model.addAttribute("BODY", "TEACHER_HOME");
+		
 
 		return "layout";
 	}

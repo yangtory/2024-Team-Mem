@@ -6,6 +6,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -80,26 +82,7 @@ public class UserServiceImpl implements UserService{
 		return userDao.findById(username);
 	}
 
-	@Override
-	public UserCompVO userInput(UserCompVO userCompVO) {
-	    String user = userCompVO.getUs_uid();
-	    String username = userCompVO.getUs_uname();
-	    
-	    List<UserCompVO> userComp = new ArrayList<>(); 
-	    
-	    if (!user.isBlank()) {
-	    	userComp.add(userCompVO.builder()
-	    			.us_uid(user)
-	    			.us_uname(username)
-	    			.us_ccode("C001")
-	    			
-	    			.us_utel("010-000-0000").build()
-	    			);
-	    	
-	    	userCompDao.createUser(userComp);
-	    }
-	    return userCompVO;
-	}
+
 
 	// 업체코드 생성하기 
 	@Override
@@ -114,6 +97,42 @@ public class UserServiceImpl implements UserService{
 		}
 		return cCode;
 	}
+
+	@Override
+	public UserCompVO codeInput(UserVO userVO, UserCompVO userCompVO) {
+	    String user = userCompVO.getUs_uid();
+	    String username = userCompVO.getUs_uname();
+	    String cname = userCompVO.getUs_cname();
+	    String ustel = userCompVO.getUs_utel();
+	    
+		
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication.getPrincipal() instanceof UserVO) {
+			UserVO list = (UserVO)authentication.getPrincipal();
+			String ucomp = list.getU_comp();
+			 log.debug("사용자의 업체명 service {}",ucomp);
+			 String comp = userCompDao.findByCcode(ucomp);
+			 log.debug("사용자의 업체코드 service {}",comp);
+			 List<UserCompVO> ucList = new ArrayList<>();
+			 
+			    if (!user.isBlank()) {
+			    	ucList.add(userCompVO.builder()
+			    			.us_uid(user)
+			    			.us_uname(username)
+			    			.us_ccode(comp)
+			    			.us_cname(cname)
+			    			.us_utel(ustel).build()
+			    			);
+			    	userCompDao.createUser(ucList);
+			    }
+			 
+		}
+		
+		return null;
+	}
+
+
 
 
 
