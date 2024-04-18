@@ -22,9 +22,9 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
-	public String join() {
-	
-		return null;
+	public String join(Model model) {
+		model.addAttribute("BODY", "MAIN_JOIN");
+		return "layout";
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
@@ -35,8 +35,11 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login() {
-		return null;
+	public String login(Model model) {
+		
+		model.addAttribute("BODY", "MAIN_LOGIN");
+		
+		return "layout";
 	}
 
 
