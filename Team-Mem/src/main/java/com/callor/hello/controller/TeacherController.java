@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,48 +16,72 @@ import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.TeacherSearchDto;
 import com.callor.hello.models.TeacherVO;
 import com.callor.hello.models.UserVO;
+import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping(value="/teacher")
+@RequestMapping(value = "/teacher")
 public class TeacherController {
-	
+
 	private final TeacherDao teacherDao;
-	
-	public TeacherController(TeacherDao teacherDao) {
+	private final TeacherService teacherService;
+
+	public TeacherController(TeacherDao teacherDao, TeacherService teacherService) {
 		this.teacherDao = teacherDao;
+		this.teacherService = teacherService;
 	}
-	
-	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
+
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
-		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
-        
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.getPrincipal() instanceof UserVO) {
-            UserVO userDetails = (UserVO) authentication.getPrincipal();
-            // UserDetails를 통해 추가 정보에 접근할 수 있습니다.
-            String ucomp = userDetails.getU_comp();
-            log.debug("사용자의 업체명 {}",ucomp);
-            String comp = teacherDao.findByComp(ucomp);
-            log.debug("사용자의 업체코드{}",comp);
-            model.addAttribute("COMP",comp);
-        }
-        
-		model.addAttribute("BODY","TEACHER_HOME");
-		model.addAttribute("LIST", teacherList);
-		model.addAttribute("SEARCH",teacherSearch);
 		
-		return "layout";
-	}
-	
-	@RequestMapping(value={"/",""}, method=RequestMethod.POST)
-	public String insert(TeacherVO vo, Model model) {
-		int result = teacherDao.insert(vo);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserVO) {
+			UserVO userDetails = (UserVO) authentication.getPrincipal();
+			String ucomp = userDetails.getU_comp();
+			String comp = teacherDao.findByComp(ucomp);
+			List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch, comp);
+			model.addAttribute("LIST", teacherList);
+			model.addAttribute("SEARCH", teacherSearch);
+		}
+
+		model.addAttribute("BODY", "TEACHER_HOME");
+
 		return "layout";
 	}
 
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insert(Model model) {
+		String tCode = teacherService.createTCode();
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserVO) {
+			UserVO userDetails = (UserVO) authentication.getPrincipal();
+			// UserDetails를 통해 추가 정보에 접근할 수 있습니다.
+			String ucomp = userDetails.getU_comp();
+			log.debug("사용자의 업체명 {}", ucomp);
+			String comp = teacherDao.findByComp(ucomp);
+			log.debug("사용자의 업체코드{}", comp);
+			model.addAttribute("COMP", comp);
+		}
+		model.addAttribute("TCODE", tCode);
+
+		model.addAttribute("BODY", "TEACHER_INSERT");
+		return "layout";
+	}
+
+	@RequestMapping(value="/insert", method = RequestMethod.POST)
+	public String insert(@ModelAttribute("SEARCH") TeacherVO vo) {
+		teacherDao.insert(vo);
+		return "redirect:/teacher/";
+	}
 	
+	@RequestMapping(value="/detail/{tcode}",method=RequestMethod.GET)
+	public String detail(@PathVariable("tcode") String tcode, Model model) {
+		TeacherVO vo = teacherDao.findById(tcode);
+		model.addAttribute("BODY", "TEACHER_INSERT");
+		return "layout";
+	}
 
 }

@@ -21,10 +21,12 @@ public class TeacherServiceImpl implements TeacherService {
 		String tCode = "T0001";
 		List<TeacherVO>list = teacherDao.selectAll(); 
 		if(!list.isEmpty()) {
-			
-			
+			tCode = list.get(list.size()-1).getT_code();
+			String prefix = tCode.substring(0,1);
+			tCode = tCode.substring(1);
+			tCode = String.format("%s%04d", prefix, Integer.valueOf(tCode)+1);
 		}
-		return null;
+		return tCode;
 	}
 
 }

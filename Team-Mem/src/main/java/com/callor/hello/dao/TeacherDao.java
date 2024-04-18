@@ -11,12 +11,13 @@ import com.callor.hello.models.UserVO;
 
 public interface TeacherDao {
 	
-	@Select(" SELECT * FROM tbl_teacher ")
-	public List<TeacherVO> selectAll();
+//	public List<TeacherVO> selectAll(String comp);
 
-	public List<TeacherVO> selectSearchAll(TeacherSearchDto teacherSearchDto);
+	public List<TeacherVO> selectSearchAll(TeacherSearchDto teacherSearchDto, String comp);
 
 	public int insert(TeacherVO teacherVO);
 
 	public String findByComp(String uid);
+
+	public TeacherVO findById(String tcode);
 }
