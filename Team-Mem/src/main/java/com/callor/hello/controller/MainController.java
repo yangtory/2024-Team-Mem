@@ -30,7 +30,7 @@ public class MainController {
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(UserVO userVO) {
 		userService.createUser(userVO);
-		return null;
+		return "layout";
 	}
 	
 	

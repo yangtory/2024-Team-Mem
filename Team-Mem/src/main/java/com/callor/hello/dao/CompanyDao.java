@@ -13,4 +13,7 @@ public interface CompanyDao {
 	
 	public int createCompany(List<CompanyVO> comp);
 
+	@Select(" SELECT c_code FROM tbl_company")
+	public String findCode(List<CompanyVO>list);
+
 }

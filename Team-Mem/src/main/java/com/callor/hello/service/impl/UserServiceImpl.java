@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService{
 					.r_uid(username)
 					.r_role("ROLE_ADMIN").build());
 			comp.add(CompanyVO.builder()
-					.c_code("C0001")
+					.c_code(createCCode())
 					.c_name(company)
 					.c_uid(username).build());
 			companyDao.createCompany(comp);
@@ -98,11 +98,21 @@ public class UserServiceImpl implements UserService{
 	    	
 	    	userCompDao.createUser(userComp);
 	    }
-	    
-	     
-	    
-	    
 	    return userCompVO;
+	}
+
+	// 업체코드 생성하기 
+	@Override
+	public String createCCode() {
+		String cCode = "C0001";
+		List<CompanyVO> list = companyDao.selectAll();
+		if(!list.isEmpty()) {
+			cCode = list.get(list.size()-1).getC_code();
+			String prefix = cCode.substring(0,1);
+			cCode = cCode.substring(1);
+			cCode = String.format("%s%04d", prefix, Integer.valueOf(cCode)+1);
+		}
+		return cCode;
 	}
 
 

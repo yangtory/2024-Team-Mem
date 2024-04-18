@@ -33,16 +33,6 @@ ADD COLUMN u_comp VARCHAR(10);
 
 
 
--- 아직 추가안햇음
-CREATE TABLE tbl_user_comp(
-	uc_uid VARCHAR(20) NOT NULL,
-    uc_ccode VARCHAR(10) NOT NULL,
-    uc_uname VARCHAR(10),
-    uc_utel VARCHAR(15),
-    uc_cname VARCHAR(10),
-    CONSTRAINT uc_pk PRIMARY KEY(uc_uid,uc_ccode)
-);
-
 CREATE TABLE tbl_role(
 	r_uid VARCHAR(20) NOT NULL,
     r_role VARCHAR(20) NOT NULL,

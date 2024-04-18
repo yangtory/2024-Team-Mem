@@ -40,12 +40,8 @@ public class UserController {
 	
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
-	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model, HttpSession session, Authentication authentication, UserVO vo ) throws AuthenticationException {
-		log.debug(session.getAttribute(vo.getU_id())); 
-		
-		String username = authentication.getName();
-		log.debug("로그인된 사용자{}",username);
-		
+	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model, UserVO vo ) { 
+				
 		List<UserVO> userList = userDao.selectSearchAll(userSearchDto);
 		List<UserCompVO> company= userCompDao.selectAll();
 		log.debug(company.toString());
