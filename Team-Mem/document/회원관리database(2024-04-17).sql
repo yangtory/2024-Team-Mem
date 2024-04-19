@@ -1,7 +1,7 @@
 CREATE DATABASE manageDB;
 USE manageDB;
 DROP DATABASE manageDB;
-SELECT * FROM tbl_user WHERE u_comp = "";
+
 SELECT * FROM tbl_company;
 SELECT * FROM tbl_user;
 SELECT * FROM tbl_role;
@@ -11,14 +11,16 @@ SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
-
-
-
+SET FOREIGN_KEY_CHECKS = 1;
+TRUNCATE tbl_user;
+TRUNCATE tbl_company;
+TRUNCATE tbl_user_comp;
+TRUNCATE tbl_teacher;
 
 
 CREATE TABLE tbl_user(
 u_id	VARCHAR(20)		PRIMARY KEY,
-u_password	VARCHAR(20)	NOT NULL	,
+u_password	VARCHAR(125)	NOT NULL	,
 u_name	VARCHAR(10)	NOT NULL	,
 u_tel	VARCHAR(15)	NOT NULL,
 u_comp VARCHAR(10)
@@ -35,10 +37,7 @@ ALTER TABLE tbl_user
 ADD COLUMN u_comp VARCHAR(10);
 
 
-SELECT u.*, uc.us_cname , uc.us_ccode
-		FROM tbl_user u
-		LEFT JOIN tbl_user_comp uc ON u.u_id = uc.us_uid
-        WHERE uc.us_ccode = "C001";
+
         
 
 
@@ -195,3 +194,21 @@ SELECT u.u_id, u.u_name, u.u_tel, u.u_role,
 	FROM tbl_user u
 		LEFT JOIN tbl_company c
 			ON u.u_id = c.c_uid;
+            
+SELECT u.*, uc.us_cname , uc.us_ccode
+		FROM tbl_user u
+		LEFT JOIN tbl_user_comp uc ON u.u_id = uc.us_uid
+        WHERE uc.us_ccode = "C001";
+        
+        
+        
+CREATE TABLE tbl_schedule (
+	s_seq	INT		PRIMARY KEY AUTO_INCREMENT,
+	s_title	VARCHAR(50)	NOT NULL	,
+	s_content VARCHAR(125),
+	
+	s_sdate VARCHAR(15) 	,
+	s_edate VARCHAR(15)	
+
+);
+SELECT * FROM tbl_schedule;

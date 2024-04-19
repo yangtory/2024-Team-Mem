@@ -13,7 +13,11 @@ public interface TeacherDao {
 	@Select("SELECT * FROM tbl_teacher ")
 	public List<TeacherVO> selectAll();
 
-	public List<TeacherVO> selectSearchAll(TeacherSearchDto teacherSearchDto, String comp);
+	public List<TeacherVO> selectSearchAll(TeacherSearchDto teacherSearchDto);
+	public List<TeacherVO> selectcomp(String comp);
+	
+	
+
 
 	public int insert(TeacherVO teacherVO);
 
@@ -21,13 +25,14 @@ public interface TeacherDao {
 
 	public TeacherVO findById(String tcode);
 
-
-	public List<TeacherVO> select(String comp);
+	public List<TeacherVO> select(String tccode);
 
 	public void update(TeacherVO vo);
 
 	@Delete("DELETE FROM tbl_teacher WHERE t_code = #{tcode}")
 	public void delete(String tcode);
+
+	
 
 	
 }
