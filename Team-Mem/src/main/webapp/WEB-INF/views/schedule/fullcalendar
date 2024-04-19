@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link href='${rootPath }/static/fullcalendar/packages/core/main.css' rel='stylesheet' />
+<link href='${rootPath }/static/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+<script src='${rootPath }/static/fullcalendar/packages/core/main.js'></script>
+<script src='${rootPath }/static/fullcalendar/packages/daygrid/main.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+    
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'dayGrid' ]
+      });
+    
+      calendar.render();
+    });
+</script>
+<script>
+	const rootPath = "${rootPath}"
+</script>
+
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
+
+<body>
+ 
+<div id='calendar'></div>
+ 
+</body>

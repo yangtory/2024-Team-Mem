@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.calendar {
+  width: 600px;
+  margin: 50px;
+
+  height: 100%;
+}
+
+.calHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.year-month {
+  font-size: 35px;
+}
+.calNav {
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.nav-btn {
+  width: 28px;
+  height: 30px;
+  border: none;
+  font-size: 16px;
+  line-height: 34px;
+  background-color: white;
+  cursor: pointer;
+}
+.go-today {
+  width: 75px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
+.days {
+  display: flex;
+  margin: 25px 0 10px;
+}
+.day {
+  width: calc(100% / 7);
+  text-align: center;
+}
+.dates {
+  display: flex;
+  flex-flow: row wrap;
+  height: 600px;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+}
+
+.date {
+  width: calc(100% / 7);
+
+  padding: 15px;
+  text-align: right;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+  color: rgb(225, 107, 248);
+  font-weight: 900;
+  &:hover {
+    cursor: pointer;
+    background-color: #696969;
+  }
+}
+
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+  color: #d13e3e;
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+  color: #396ee2;
+}
+
+.other {
+  opacity: 0.5;
+}
+
+.today {
+  position: relative;
+
+  background-color: #ff0000;
+  color: #ffffff;
+}
+/* 왜 안먹히지 */
+/* .today::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-color: #ff0000;
+  border-radius: 50%;
+} */
