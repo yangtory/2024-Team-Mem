@@ -19,7 +19,6 @@ public class MinfoVO {
 	private String i_title;		// VARCHAR(50)	NOT NULL	,
 	private int i_price;		// INT	NOT NULL	,
 	private int i_count;		// INT	NOT NULL	,
-	private String i_sdate;		// VARCHAR(15) 	,
-	private String i_edate;		// VARCHAR(15)	
+	private String i_ccode;
 
 }

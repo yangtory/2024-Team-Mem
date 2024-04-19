@@ -36,22 +36,6 @@ DROP COLUMN u_role;
 ALTER TABLE tbl_user
 ADD COLUMN u_comp VARCHAR(10);
 
-
-
-        
-
-
--- 아직 추가안햇음
-CREATE TABLE tbl_user_comp(
-	uc_uid VARCHAR(20) NOT NULL,
-    uc_ccode VARCHAR(10) NOT NULL,
-    uc_uname VARCHAR(10),
-    uc_utel VARCHAR(15),
-    uc_cname VARCHAR(10),
-    CONSTRAINT uc_pk PRIMARY KEY(uc_uid,uc_ccode)
-
-);
-
 CREATE TABLE tbl_role(
 	r_uid VARCHAR(20) NOT NULL,
     r_role VARCHAR(20) NOT NULL,
@@ -65,15 +49,22 @@ c_code	VARCHAR(10)		PRIMARY KEY,
 c_name	VARCHAR(10)	NOT NULL	,
 c_addr	VARCHAR(10)		,
 c_tel	VARCHAR(15)		,
-c_uid VARCHAR(20)
+c_uid VARCHAR(20),
+    FOREIGN KEY (c_uid)
+    REFERENCES tbl_user(u_id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE tbl_teacher(
 t_code	VARCHAR(10)		PRIMARY KEY,
 t_name	VARCHAR(10)	NOT NULL	,
 t_tel	VARCHAR(15)	NOT NULL	,
-t_ccode VARCHAR(10) NOT NULL
+t_ccode VARCHAR(10) NOT NULL,
+    FOREIGN KEY (t_ccode)
+    REFERENCES tbl_company(c_code)
+    ON DELETE CASCADE
 );
+
 CREATE TABLE tbl_class(
 c_seq	INT		PRIMARY KEY AUTO_INCREMENT,
 c_name	VARCHAR(50)	NOT NULL	,
@@ -81,7 +72,13 @@ c_date	VARCHAR(15)	NOT NULL	,
 c_stime	VARCHAR(15)	NOT NULL,
 c_etime VARCHAR(15) NOT NULL,
 c_tcode VARCHAR(10) NOT NULL,
-c_ccode VARCHAR(10) NOT NULL
+c_ccode VARCHAR(10) NOT NULL,
+    FOREIGN KEY (c_tcode)
+    REFERENCES tbl_teacher(t_code)
+    ON DELETE CASCADE,
+	FOREIGN KEY (c_ccode)
+    REFERENCES tbl_company(c_code)
+    ON DELETE CASCADE
 );
 
 
@@ -91,7 +88,13 @@ n_seq	INT		AUTO_INCREMENT PRIMARY KEY,
 n_title	VARCHAR(125)	NOT NULL	,
 n_content	VARCHAR(255)	NOT NULL,
 n_ccode VARCHAR(10) NOT NULL,
-n_uid VARCHAR(20) NOT NULL
+n_uid VARCHAR(20) NOT NULL,
+    FOREIGN KEY (n_ccode)
+    REFERENCES tbl_company(c_code)
+    ON DELETE CASCADE,
+	FOREIGN KEY (n_uid)
+    REFERENCES tbl_user(u_id)
+    ON DELETE CASCADE
 );
 
 
@@ -100,8 +103,10 @@ i_seq	INT		PRIMARY KEY AUTO_INCREMENT,
 i_title	VARCHAR(50)	NOT NULL	,
 i_price	INT	NOT NULL	,
 i_count	INT	NOT NULL	,
-i_sdate VARCHAR(15) 	,
-i_edate VARCHAR(15)		
+i_ccode VARCHAR(10) NOT NULL,
+    FOREIGN KEY (i_ccode)
+    REFERENCES tbl_company(c_code)
+    ON DELETE CASCADE
 );
 
 
@@ -109,8 +114,6 @@ i_edate VARCHAR(15)
 CREATE TABLE tbl_user_minfo(
 r_iseq	INT	NOT NULL,
 r_uid	VARCHAR(20)	NOT NULL,
-r_sdate	VARCHAR(15)	NOT NULL,
-r_edate	VARCHAR(15)	NOT NULL,
 CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid)
 );
 

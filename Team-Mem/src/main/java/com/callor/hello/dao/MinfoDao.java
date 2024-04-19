@@ -8,6 +8,8 @@ import com.callor.hello.models.MinfoVO;
 
 public interface MinfoDao {
 
-	@Select(" SELECT * FROM tbl_minfo ")
-	public List<MinfoVO> selectAll();
+	@Select(" SELECT * FROM tbl_minfo WHERE i_ccode = #{cCdoe} ")
+	public List<MinfoVO> selectAll(String cCode);
+
+	public int insert(MinfoVO vo);
 }

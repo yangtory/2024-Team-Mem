@@ -9,8 +9,6 @@ public interface UserService {
 	
 	public UserVO findById(String username);
 	
-	
-
 	public String createCCode();
 
 	UserCompVO codeInput(UserVO userVO, UserCompVO userCompVO);

@@ -2,10 +2,13 @@ package com.callor.hello.service.impl;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.callor.hello.dao.TeacherDao;
 import com.callor.hello.models.TeacherVO;
+import com.callor.hello.models.UserVO;
 import com.callor.hello.service.TeacherService;
 
 @Service("teacherServiceImpl")
@@ -27,6 +30,15 @@ public class TeacherServiceImpl implements TeacherService {
 			tCode = String.format("%s%04d", prefix, Integer.valueOf(tCode)+1);
 		}
 		return tCode;
+	}
+
+	@Override
+	public String getLoginCCode() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserVO userDetails = (UserVO) authentication.getPrincipal();
+		String ucomp = userDetails.getU_comp();
+		String cCode = teacherDao.findByComp(ucomp);
+		return cCode;
 	}
 
 }
