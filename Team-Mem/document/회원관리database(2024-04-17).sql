@@ -1,7 +1,7 @@
 CREATE DATABASE manageDB;
 USE manageDB;
 DROP DATABASE manageDB;
-SELECT * FROM tbl_user WHERE u_comp = "";
+
 SELECT * FROM tbl_company;
 SELECT * FROM tbl_user;
 SELECT * FROM tbl_role;
@@ -11,9 +11,11 @@ SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
-
-
-
+SET FOREIGN_KEY_CHECKS = 1;
+TRUNCATE tbl_user;
+TRUNCATE tbl_company;
+TRUNCATE tbl_user_comp;
+TRUNCATE tbl_teacher;
 
 
 CREATE TABLE tbl_user(

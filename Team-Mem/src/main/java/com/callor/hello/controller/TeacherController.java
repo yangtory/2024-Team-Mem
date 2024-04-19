@@ -33,24 +33,27 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			UserVO userDetails = (UserVO) authentication.getPrincipal();
-			String ucomp = userDetails.getU_comp();
-			log.debug(ucomp);
-			String comp = teacherDao.findByComp(ucomp);
-			log.debug(comp);
+	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model, TeacherVO vo) {
 
-		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch,comp);
-		model.addAttribute("COMP",comp);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserVO userDetails = (UserVO) authentication.getPrincipal();
+		String ucomp = userDetails.getU_comp();
 		
+		log.debug(ucomp);
+		String comp = teacherDao.findByComp(ucomp);
 		
+		log.debug("t_ccode : {}", comp);
+		List<TeacherVO> list = teacherDao.selectcomp(comp);
+		
+		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
+
+		model.addAttribute("COMP", comp);
+
 		model.addAttribute("LIST", teacherList);
-		
+		log.debug("teacherList {} ", teacherList.toString());
+
 		model.addAttribute("SEARCH", teacherSearch);
 		model.addAttribute("BODY", "TEACHER_HOME");
-		
 
 		return "layout";
 	}
@@ -75,36 +78,36 @@ public class TeacherController {
 		return "layout";
 	}
 
-	@RequestMapping(value="/insert", method = RequestMethod.POST)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("SEARCH") TeacherVO vo) {
 		teacherDao.insert(vo);
 		return "redirect:/teacher/";
 	}
-	
-	@RequestMapping(value="/detail/{tcode}",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/detail/{tcode}", method = RequestMethod.GET)
 	public String detail(@PathVariable("tcode") String tcode, Model model) {
 		TeacherVO vo = teacherDao.findById(tcode);
-		model.addAttribute("LIST",vo);
+		model.addAttribute("LIST", vo);
 		model.addAttribute("BODY", "TEACHER_DETAIL");
 		return "layout";
 	}
-	
-	@RequestMapping(value="/update/{tcode}", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/update/{tcode}", method = RequestMethod.GET)
 	public String update(@PathVariable("tcode") String tcode, Model model) {
-	TeacherVO vo = teacherDao.findById(tcode);
-	model.addAttribute("VO", vo);
-	model.addAttribute("BODY","TEACHER_INSERT");
-	return "layout";
+		TeacherVO vo = teacherDao.findById(tcode);
+		model.addAttribute("VO", vo);
+		model.addAttribute("BODY", "TEACHER_INSERT");
+		return "layout";
 	}
-	
-	@RequestMapping(value="/update/{tcode}",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/update/{tcode}", method = RequestMethod.POST)
 	public String update(@PathVariable("tcode") String tcode, TeacherVO vo) {
 		teacherDao.update(vo);
 		String retString = String.format("redirect:/teacher/detail/{tcode}", vo.getT_code());
-	return retString;	
+		return retString;
 	}
-	
-	@RequestMapping(value="/delete/{tcode}", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/delete/{tcode}", method = RequestMethod.GET)
 	public String delete(@PathVariable("tcode") String tcode) {
 		teacherDao.delete(tcode);
 		return "redirect:/teacher/";

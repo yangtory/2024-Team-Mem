@@ -11,6 +11,10 @@
  	</select> -->
  
  			<!-- AND t_ccode = #{ tccode } -->
+ 	<select id="selectcomp">
+ 	SELECT * FROM tbl_teacher
+ 	WHERE t_ccode = #{comp}
+ 	</select>
  	<select id="selectSearchAll">
  		SELECT * FROM tbl_teacher
  		<where>
@@ -20,9 +24,11 @@
  			AND t_code LIKE CONCAT('%', #{tcode}, '%')</if>
  			<if test="ttel!= null and ttel != '' ">
  			AND t_tel LIKE CONCAT('%', #{ttel}, '%')</if>
+ 			AND t_ccode = 'C0001'
  		</where>
- 			WHERE t_ccode = #{comp}
+ 		
  	</select>
+ 	
  	
  	<insert id="insert">
  		INSERT INTO tbl_teacher(t_code, t_name, t_tel, t_ccode)
