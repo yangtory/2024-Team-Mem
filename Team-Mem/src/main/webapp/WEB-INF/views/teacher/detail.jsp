@@ -9,6 +9,6 @@
 <div><strong>이름</strong><span>${LIST.t_name}</span></div>
 <div><strong>전화번호</strong><span>${LIST.t_tel}</span></div>
 <div><strong></strong><span>
-	<a href="${rootPath }/customer/update/${LIST.t_code}">수정</a>
-	<a href="${rootPath }/customer/delete/${LIST.t_code}">삭제</a>
+	<a href="${rootPath }/teacher/update/${LIST.t_code}">수정</a>
+	<a href="${rootPath }/teacher/delete/${LIST.t_code}">삭제</a>
 </span></div>

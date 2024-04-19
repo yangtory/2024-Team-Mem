@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.hello.dao.TeacherDao;
-import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.TeacherSearchDto;
 import com.callor.hello.models.TeacherVO;
 import com.callor.hello.models.UserVO;
@@ -37,15 +36,14 @@ public class TeacherController {
 	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		if (authentication.getPrincipal() instanceof UserVO) {
 			UserVO userDetails = (UserVO) authentication.getPrincipal();
 			String ucomp = userDetails.getU_comp();
 			log.debug(ucomp);
 			String comp = teacherDao.findByComp(ucomp);
 			log.debug(comp);
-//		}
 
-		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
+		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch,comp);
+		model.addAttribute("COMP",comp);
 		
 		
 		model.addAttribute("LIST", teacherList);
@@ -89,6 +87,27 @@ public class TeacherController {
 		model.addAttribute("LIST",vo);
 		model.addAttribute("BODY", "TEACHER_DETAIL");
 		return "layout";
+	}
+	
+	@RequestMapping(value="/update/{tcode}", method=RequestMethod.GET)
+	public String update(@PathVariable("tcode") String tcode, Model model) {
+	TeacherVO vo = teacherDao.findById(tcode);
+	model.addAttribute("VO", vo);
+	model.addAttribute("BODY","TEACHER_INSERT");
+	return "layout";
+	}
+	
+	@RequestMapping(value="/update/{tcode}",method=RequestMethod.POST)
+	public String update(@PathVariable("tcode") String tcode, TeacherVO vo) {
+		teacherDao.update(vo);
+		String retString = String.format("redirect:/teacher/detail/{tcode}", vo.getT_code());
+	return retString;	
+	}
+	
+	@RequestMapping(value="/delete/{tcode}", method=RequestMethod.GET)
+	public String delete(@PathVariable("tcode") String tcode) {
+		teacherDao.delete(tcode);
+		return "redirect:/teacher/";
 	}
 
 }

@@ -11,6 +11,7 @@
 	</div>
 	<div class="teacher btn_box">
 		<f:form method="GET" modelAttribute="SEARCH" >
+			<%-- <f:input placeholder="업체코드" value="${COMP }" path="comp" /> --%>
 			<f:input placeholder="이름" path="tname" />
 			<f:input placeholder="강사코드" path="tcode" />
 			<f:input placeholder="전화번호" path="ttel" />

@@ -21,6 +21,7 @@
  			<if test="ttel!= null and ttel != '' ">
  			AND t_tel LIKE CONCAT('%', #{ttel}, '%')</if>
  		</where>
+ 			WHERE t_ccode = #{comp}
  	</select>
  	
  	<insert id="insert">
@@ -39,7 +40,10 @@
  	</select>
  	
  	<update id="update">
+ 		UPDATE tbl_teacher
+		SET t_name = #{t_name}, t_tel = #{t_tel}
+		WHERE t_code = #{t_code}
+ 		
  	</update>
- 	<delete id="delete"></delete>
  
  </mapper> 
