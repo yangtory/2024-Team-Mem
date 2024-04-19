@@ -32,6 +32,9 @@ public interface TeacherDao {
 	@Delete("DELETE FROM tbl_teacher WHERE t_code = #{tcode}")
 	public void delete(String tcode);
 
+	@Select("SELECT * FROM tbl_teacher WHERE t_ccode = #{comp}")
+	public List<TeacherVO> selectAllComp(String comp);
+
 	
 
 	

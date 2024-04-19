@@ -2,54 +2,49 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
- <mapper namespace="com.callor.hello.dao.TeacherDao">
- 
-<!--  	<select id="selectAll">
- 		SELECT * FROM tbl_teacher 
- 		WHERE t_ccode = #{comp}
- 	</select> -->
- 
- 			<!-- AND t_ccode = #{ tccode } -->
- 	<select id="selectcomp">
- 	SELECT * FROM tbl_teacher
- 	WHERE t_ccode = #{comp}
- 	</select>
- 	<select id="selectSearchAll">
- 		SELECT * FROM tbl_teacher
- 		<where>
- 			<if test="tname != null and tname != '' ">
- 			AND t_name LIKE CONCAT('%', #{tname}, '%')</if>
- 			<if test="tcode!= null and tcode != '' ">
- 			AND t_code LIKE CONCAT('%', #{tcode}, '%')</if>
- 			<if test="ttel!= null and ttel != '' ">
- 			AND t_tel LIKE CONCAT('%', #{ttel}, '%')</if>
- 			AND t_ccode = 'C0001'
- 		</where>
- 		
- 	</select>
- 	
- 	
- 	<insert id="insert">
- 		INSERT INTO tbl_teacher(t_code, t_name, t_tel, t_ccode)
- 		VALUES(#{t_code}, #{t_name}, #{t_tel}, #{t_ccode})
- 	</insert>
- 	
- 	<select id="findByComp">
- 		SELECT c_code FROM tbl_company
- 		WHERE c_name = #{ucomp}
- 	</select>
- 	
- 	<select id="findById">
- 		SELECT * FROM tbl_teacher
- 		WHERE t_code = #{tcode}
- 	</select>
- 	
- 	<update id="update">
- 		UPDATE tbl_teacher
+
+<mapper namespace="com.callor.hello.dao.TeacherDao">
+
+	<!-- <select id="selectAll"> SELECT * FROM tbl_teacher WHERE t_ccode = #{comp} 
+		</select> -->
+
+	<!-- AND t_ccode = #{ tccode } -->
+
+	<select id="selectSearchAll">
+		SELECT * FROM tbl_teacher
+		<where>
+			<if test="tname != null and tname != '' ">
+				AND t_name LIKE CONCAT('%', #{tname}, '%')</if>
+			<if test="tcode!= null and tcode != '' ">
+				AND t_code LIKE CONCAT('%', #{tcode}, '%')</if>
+			<if test="ttel!= null and ttel != '' ">
+				AND t_tel LIKE CONCAT('%', #{ttel}, '%')</if>
+				AND t_ccode = 'C0001'
+		</where>
+	</select>
+
+
+	<insert id="insert">
+		INSERT INTO tbl_teacher(t_code, t_name, t_tel, t_ccode)
+		VALUES(#{t_code}, #{t_name}, #{t_tel}, #{t_ccode})
+	</insert>
+
+	<select id="findByComp">
+		SELECT c_code FROM tbl_company
+		WHERE c_name = #{ucomp}
+	</select>
+
+	<select id="findById">
+		SELECT * FROM tbl_teacher
+		WHERE t_code = #{tcode}
+	</select>
+
+	<update id="update">
+		UPDATE tbl_teacher
 		SET t_name = #{t_name}, t_tel = #{t_tel}
-		WHERE t_code = #{t_code}
- 		
- 	</update>
- 
- </mapper> 
+		WHERE t_code =
+		#{t_code}
+
+	</update>
+
+</mapper> 

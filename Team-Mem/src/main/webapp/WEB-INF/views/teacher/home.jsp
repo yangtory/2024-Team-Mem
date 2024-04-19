@@ -10,8 +10,8 @@
 		<button class="teacher input" type="button">강사추가</button>
 	</div>
 	<div class="teacher btn_box">
-		<f:form method="GET" modelAttribute="SEARCH" >
-			<%-- <f:input placeholder="업체코드" value="${COMP }" path="comp" /> --%>
+		<f:form method="GET" modelAttribute="SEARCH">
+		<%-- 	<f:input placeholder="업체코드" value="${comp}" path="tccode" /> --%>
 			<f:input placeholder="이름" path="tname" />
 			<f:input placeholder="강사코드" path="tcode" />
 			<f:input placeholder="전화번호" path="ttel" />
@@ -29,24 +29,29 @@
 			</tr>
 		</thead>
 		<tbody>
- 		
-		<%-- 	<c:forEach items="${select}" var="item" varStatus="INDEX">
-				<tr>
-					<td>${INDEX.count }</td>
-					<td>${item.t_code }</td>
-					<td>${item.t_name }</td>
-					<td>${item.t_ccode }</td>
-				</tr>
-			</c:forEach> --%> 
-		
-			<c:forEach items="${LIST}" var="T" varStatus="INDEX">
-				<tr data-code="${T.t_code }">
-					<td>${INDEX.count }</td>
-					<td>${T.t_code }</td>
-					<td>${T.t_name }</td>
-					<td>${T.t_ccode }</td>
-				</tr>
-			</c:forEach> 
+<%-- 
+			<c:if test="${empty SEARCH_LIST}">
+				<c:forEach items="${ALL_LIST}" var="item" varStatus="INDEX">
+					<tr data-code="${item.t_code }">
+						<td>${INDEX.count }</td>
+						<td>${item.t_code }</td>
+						<td>${item.t_name }</td>
+						<td>${item.t_ccode }</td>
+					</tr>
+				</c:forEach>
+			</c:if> --%>
+
+		<%-- 	<c:if test="${not empty SEARCH_LIST}"> --%>
+				<c:forEach items="${SEARCH_LIST}" var="T" varStatus="INDEX">
+					<tr data-code="${T.t_code }">
+						<td>${INDEX.count }</td>
+						<td>${T.t_code }</td>
+						<td>${T.t_name }</td>
+						<td>${T.t_ccode }</td>
+					</tr>
+				</c:forEach>
+			<%-- </c:if> --%>
+
 		</tbody>
 	</table>
 </section>

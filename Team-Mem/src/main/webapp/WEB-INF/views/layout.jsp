@@ -1,29 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <!DOCTYPE html>
 <html>
-<%@ include file="/WEB-INF/views/include/head.jspf"%>
+<%-- <tiles:insertAttribute name="head" /> --%>
+<%@ include file="/WEB-INF/views/include/include-head.jsp" %>
 <body>
-	<%@ include file="/WEB-INF/views/include/header.jspf"%>
+	<%-- <tiles:insertAttribute name="header" /> --%>
+	<%@ include file="/WEB-INF/views/include/include-header.jsp" %>
 	<div class="main">
-		<%@ include file="/WEB-INF/views/include/sidebar.jspf"%>
+		<%-- <tiles:insertAttribute name="sidebar" /> --%>
+		<%@ include file="/WEB-INF/views/include/include-sidebar.jsp" %>
 		<section>
-			<c:if test="${BODY == 'TEACHER_HOME'}">
+		<%-- <tiles:insertAttribute name="content"/> --%>
+		 	<c:if test="${BODY == 'TEACHER_HOME'}">
 				<%@ include file="/WEB-INF/views/teacher/home.jsp"%>
 			</c:if>
 			<c:if test="${BODY == 'TEACHER_INSERT' }">
-				<%@ include file="/WEB-INF/views/teacher/input.jsp" %>
+				<%@ include file="/WEB-INF/views/teacher/input.jsp"%>
 			</c:if>
 			<c:if test="${BODY == 'TEACHER_DETAIL' }">
-				<%@ include file="/WEB-INF/views/teacher/detail.jsp" %>
+				<%@ include file="/WEB-INF/views/teacher/detail.jsp"%>
+			</c:if>
+			<c:if test="${BODY == 'TICKET_HOME' }">
+				<%@ include file="/WEB-INF/views/ticket/home.jsp"%>
 			</c:if>
 			<!-- 승희 -->
 			<c:if test="${BODY == 'USER_LIST'}">
 				<%@ include file="/WEB-INF/views/user/list.jsp"%>
 
-			</c:if> 
+			</c:if>
 			<c:if test="${BODY == 'USER_INSERT'}">
 				<%@ include file="/WEB-INF/views/user/input.jsp"%>
 			</c:if>

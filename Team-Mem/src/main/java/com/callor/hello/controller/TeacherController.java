@@ -33,23 +33,22 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model, TeacherVO vo) {
+	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserVO userDetails = (UserVO) authentication.getPrincipal();
 		String ucomp = userDetails.getU_comp();
-		
 		log.debug(ucomp);
-		String comp = teacherDao.findByComp(ucomp);
 		
-		log.debug("t_ccode : {}", comp);
-		List<TeacherVO> list = teacherDao.selectcomp(comp);
+		String t_ccode = teacherDao.findByComp(ucomp);
+		log.debug("t_ccode : {}", t_ccode);
 		
 		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
 
-		model.addAttribute("COMP", comp);
-
-		model.addAttribute("LIST", teacherList);
+//		List<TeacherVO> list = teacherDao.selectAllComp(t_ccode);
+//		model.addAttribute("ALL_LIST",list);
+		model.addAttribute("comp",t_ccode);
+		model.addAttribute("SEARCH_LIST", teacherList);
 		log.debug("teacherList {} ", teacherList.toString());
 
 		model.addAttribute("SEARCH", teacherSearch);
@@ -67,7 +66,6 @@ public class TeacherController {
 			UserVO userDetails = (UserVO) authentication.getPrincipal();
 			// UserDetails를 통해 추가 정보에 접근할 수 있습니다.
 			String ucomp = userDetails.getU_comp();
-			log.debug("사용자의 업체명 {}", ucomp);
 			String comp = teacherDao.findByComp(ucomp);
 			log.debug("사용자의 업체코드{}", comp);
 			model.addAttribute("COMP", comp);
@@ -81,6 +79,7 @@ public class TeacherController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("SEARCH") TeacherVO vo) {
 		teacherDao.insert(vo);
+		log.debug("insert {} ", vo);
 		return "redirect:/teacher/";
 	}
 

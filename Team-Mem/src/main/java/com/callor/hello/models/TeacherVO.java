@@ -20,5 +20,4 @@ public class TeacherVO {
 	private String t_tel;		// VARCHAR(15)	NOT NULL	,
 	private String t_ccode;		// VARCHAR(10) NOT NULL
 	private String comp;
-
 }
