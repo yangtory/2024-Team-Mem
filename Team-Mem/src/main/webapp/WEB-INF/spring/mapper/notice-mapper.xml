@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.hello.dao.NoticeDao">
+
+	<select id="selectSearchAll">
+		SELECT * FROM tbl_notice
+		<where>
+			<if test="title != null and title != '' ">
+				AND n_title LIKE CONCAT('%', #{title}, '%')</if>
+			<if test="date != null and date != '' ">
+				AND n_date LIKE CONCAT('%', #{date}, '%')</if>
+			<if test="num != null and num != '' ">
+				AND n_seq LIKE CONCAT('%', #{num}, '%')</if>
+				AND n_ccode = #{ccode}
+		</where>
+	</select>
+
+
+	<insert id="insert">
+	</insert>
+
+	<update id="update">
+	</update>
+
+</mapper> 

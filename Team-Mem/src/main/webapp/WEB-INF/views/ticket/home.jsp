@@ -18,7 +18,7 @@
 	<tbody>
 
 		<c:forEach items="${TICKET_LIST}" var="I" varStatus="INDEX">
-			<tr>
+			<tr data-seq="${I.i_seq}">
 				<td>${INDEX.count }</td>
 				<td>${I.i_title }</td>
 				<td>${I.i_price }</td>

@@ -12,5 +12,5 @@
 </div>
 	<div><label>강사이름</label><input placeholder="강사이름" name="t_name" value="${VO.t_name}"></div>
 	<div><label>전화번호</label><input placeholder="전화번호" name="t_tel" value="${VO.t_tel}"></div>
-	<div><button class="insert">추가</button></div>
+	<div><input type="submit" class="insert" value="${VO != null ? '수정' : '추가' }"></div>
 </f:form>

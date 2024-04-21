@@ -17,6 +17,9 @@ TRUNCATE tbl_company;
 TRUNCATE tbl_user_comp;
 TRUNCATE tbl_teacher;
 
+ALTER TABLE TBL_NOTICE
+ADD COLUMN n_date VARCHAR(10) NOT NULL,
+add COLUMN n_time  VARCHAR(10) not null;
 
 CREATE TABLE tbl_user(
 u_id	VARCHAR(20)		PRIMARY KEY,

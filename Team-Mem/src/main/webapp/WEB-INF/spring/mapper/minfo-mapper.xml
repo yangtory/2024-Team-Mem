@@ -8,7 +8,10 @@
 		INSERT INTO tbl_minfo(i_title, i_price, i_count, i_ccode)
 		VALUES(#{i_title}, #{i_price}, #{i_count}, #{i_ccode})
 	</insert>
-	<update id="update"></update>
-	<delete id="delete"></delete>
+	<update id="update">
+		UPDATE tbl_minfo 
+		SET i_title=#{i_title}, i_price=#{i_price}, i_count=#{i_count}
+		WHERE i_seq = #{i_seq}
+	</update>
 
 </mapper> 

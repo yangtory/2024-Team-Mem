@@ -30,6 +30,12 @@
 			<c:if test="${BODY == 'TICKET_INSERT' }">
 				<%@ include file="/WEB-INF/views/ticket/input.jsp"%>
 			</c:if>
+			<c:if test="${BODY == 'TICKET_DETAIL' }">
+				<%@ include file="/WEB-INF/views/ticket/detail.jsp"%>
+			</c:if>
+			<c:if test="${BODY == 'NOTICE_HOME' }">
+				<%@ include file="/WEB-INF/views/notice/home.jsp"%>
+			</c:if>
 			<!-- 승희 -->
 			<c:if test="${BODY == 'USER_LIST'}">
 				<%@ include file="/WEB-INF/views/user/list.jsp"%>

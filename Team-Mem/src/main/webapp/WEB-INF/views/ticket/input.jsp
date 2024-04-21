@@ -6,9 +6,9 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
 <f:form class="ticket input_box">
-	<div><label>업체코드</label><input value="${CCODE}" name="i_ccode" readonly></div>
-	<div><label>제목</label><input placeholder="제목" name="i_title" ></div>
-	<div><label>수강횟수</label><input placeholder="수강횟수" name="i_count" ></div>
-	<div><label>가격</label><input placeholder="가격" name="i_price" ></div>
-	<div><button class="insert">추가</button></div>
+	<div><label>업체코드</label><input value="${L != null ? L.i_ccode : CCODE}" name="i_ccode" readonly></div>
+	<div><label>제목</label><input placeholder="제목" name="i_title" value="${L.i_title }" ></div>
+	<div><label>수강횟수</label><input placeholder="수강횟수" name="i_count" value="${L.i_count }" ></div>
+	<div><label>가격</label><input placeholder="가격" name="i_price" value="${L.i_price }" ></div>
+	<div><input type="submit" class="insert" value="${L != null ? '수정' : '추가' }"></div>
 </f:form>

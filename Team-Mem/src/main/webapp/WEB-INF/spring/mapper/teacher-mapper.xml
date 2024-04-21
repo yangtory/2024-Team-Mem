@@ -19,7 +19,7 @@
 				AND t_code LIKE CONCAT('%', #{tcode}, '%')</if>
 			<if test="ttel!= null and ttel != '' ">
 				AND t_tel LIKE CONCAT('%', #{ttel}, '%')</if>
-				AND t_ccode = 'C0001'
+				AND t_ccode = #{t_ccode}
 		</where>
 	</select>
 

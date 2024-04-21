@@ -25,14 +25,16 @@
 	}
 	a {
 		text-decoration:none;
+		
 	}
 </style>
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-17-010">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-21-008">
 <link rel="stylesheet" href="${rootPath}/static/css/teacher.css?2024-04-16-001">
 <script>
  	const rootPath = "${rootPath}" 
 </script>
 <script src="${rootPath}/static/js/main.js?2024-04-12-002"></script>
 <script src="${rootPath}/static/js/teacher.js?2024-04-18-002"></script>
+<script src="${rootPath}/static/js/ticket.js?2024-04-21-003"></script>
 
 </head>

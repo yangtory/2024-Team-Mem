@@ -11,9 +11,9 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeacherSearchDto {
-	private String tname;		// VARCHAR(10)	NOT NULL	,
-	private String tcode;		// VARCHAR(10)		PRIMARY KEY,
-	private String ttel;		// VARCHAR(15)	NOT NULL	,
-	private String t_ccode;
+public class NoticeSearchDto {
+	private String title;
+	private String date;
+	private String num;
+	private String ccode;
 }

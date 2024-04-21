@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,6 +49,37 @@ public class TicketController {
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(MinfoVO vo) {
 		minfoDao.insert(vo);
+		return "redirect:/ticket/";
+	}
+	
+	@RequestMapping(value="/detail/{seq}",method=RequestMethod.GET)
+	public String detail(@PathVariable("seq") String seq, Model model) {
+		MinfoVO vo = minfoDao.findById(seq);
+		model.addAttribute("LIST", vo);
+		model.addAttribute("BODY", "TICKET_DETAIL");
+		return "layout";
+	}
+	
+	@RequestMapping(value="/update/{seq}",method=RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq, Model model) {
+		MinfoVO vo = minfoDao.findById(seq);
+		model.addAttribute("L", vo);
+		model.addAttribute("BODY", "TICKET_INSERT");
+		return "layout";
+	}
+	
+	@RequestMapping(value="/update/{seq}",method=RequestMethod.POST)
+	public String update(@PathVariable("seq") String seq,MinfoVO vo, Model model) {
+		int num = Integer.valueOf(seq); 
+		vo.setI_seq(num);
+		minfoDao.update(vo);
+		String retString = String.format("redirect:/ticket/detail/{seq}", vo.getI_seq());
+		return retString;
+	}
+	
+	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable("seq") String seq) {
+		minfoDao.delete(seq);
 		return "redirect:/ticket/";
 	}
 	

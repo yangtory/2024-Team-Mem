@@ -1,9 +1,6 @@
 package com.callor.hello.controller;
 
 import java.util.List;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.callor.hello.dao.TeacherDao;
 import com.callor.hello.models.TeacherSearchDto;
 import com.callor.hello.models.TeacherVO;
-import com.callor.hello.models.UserVO;
 import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,18 +31,10 @@ public class TeacherController {
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserVO userDetails = (UserVO) authentication.getPrincipal();
-		String ucomp = userDetails.getU_comp();
-		log.debug(ucomp);
-		
-		String t_ccode = teacherDao.findByComp(ucomp);
-		log.debug("t_ccode : {}", t_ccode);
-		
+		String t_ccode = teacherService.getLoginCCode();
+		teacherSearch.setT_ccode(t_ccode);
 		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
 
-//		List<TeacherVO> list = teacherDao.selectAllComp(t_ccode);
-//		model.addAttribute("ALL_LIST",list);
 		model.addAttribute("comp",t_ccode);
 		model.addAttribute("SEARCH_LIST", teacherList);
 		log.debug("teacherList {} ", teacherList.toString());
@@ -60,18 +48,11 @@ public class TeacherController {
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert(Model model) {
 		String tCode = teacherService.createTCode();
-
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication.getPrincipal() instanceof UserVO) {
-			UserVO userDetails = (UserVO) authentication.getPrincipal();
-			// UserDetails를 통해 추가 정보에 접근할 수 있습니다.
-			String ucomp = userDetails.getU_comp();
-			String comp = teacherDao.findByComp(ucomp);
-			log.debug("사용자의 업체코드{}", comp);
-			model.addAttribute("COMP", comp);
-		}
+		String comp = teacherService.getLoginCCode();
+		log.debug("사용자의 업체코드{}", comp);
+		
+		model.addAttribute("COMP", comp);
 		model.addAttribute("TCODE", tCode);
-
 		model.addAttribute("BODY", "TEACHER_INSERT");
 		return "layout";
 	}
