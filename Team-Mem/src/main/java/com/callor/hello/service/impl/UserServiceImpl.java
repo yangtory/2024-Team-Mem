@@ -71,8 +71,8 @@ public class UserServiceImpl implements UserService{
 					.c_uid(username).build());
 			userDao.insert(createUserVO);
 			companyDao.createCompany(comp);
+			roleDao.insertAll(roles);
 		}
-		roleDao.insertAll(roles);
 		
 		return null;
 	}
