@@ -61,6 +61,8 @@ public class UserServiceImpl implements UserService{
 			roles.add(RoleVO.builder()
 					.r_uid(username)
 					.r_role("ROLE_USER").build());
+			userDao.insert(createUserVO);
+			roleDao.insertAll(roles);
 		} else {
 			roles.add(RoleVO.builder()
 					.r_uid(username)
