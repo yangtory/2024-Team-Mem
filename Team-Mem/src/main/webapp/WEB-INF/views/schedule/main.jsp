@@ -32,7 +32,7 @@
           <div class="day">금</div>
           <div class="day">토</div>
         </div>
-        <div class="dates"></div>
+        <div class="dates" ></div>
       </div>
     </div>
     </section>

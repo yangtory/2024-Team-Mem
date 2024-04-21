@@ -17,8 +17,8 @@
 	<f:form>
 		<div><input placeholder="제목" name="s_title"/></div>
 		<div><input placeholder="내용" name="s_content"/></div>
-		<div><input placeholder="시작날" name="s_sdate"/></div>
-		<div><input placeholder="마무리날" name="s_edate"/></div>
+		<div><input placeholder="시작날" name="s_sdate" type="date"/></div>
+		<div><input placeholder="마무리날" name="s_edate" type="date"/></div>
 		<div><button type="submit">작성</button></div>
 	
 	</f:form>

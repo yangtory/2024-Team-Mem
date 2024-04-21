@@ -64,18 +64,18 @@
 
 		<!-- tiles -->
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
 			<version>${org.apache.tiles-version}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>${org.apache.tiles-version}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- AspectJ -->
 		<dependency>

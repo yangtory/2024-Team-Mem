@@ -53,7 +53,7 @@ section {
 .dates {
   display: flex;
   flex-flow: row wrap;
-  height: 600px;
+  height: 450px;
   border-top: 1px solid white;
   border-right: 1px solid white;
 }
@@ -107,3 +107,7 @@ section {
   background-color: #ff0000;
   border-radius: 50%;
 } */
+.scheduled {
+  background-color: #f0f0f0; /* 일정이 표시될 셀의 배경색 */
+  color: #333; /* 일정이 표시될 셀의 텍스트 색상 */
+}
