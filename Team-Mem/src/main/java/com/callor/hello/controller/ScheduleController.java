@@ -64,9 +64,10 @@ public class ScheduleController {
 		return "데이터없음";
 	}
 	@ResponseBody
-	@RequestMapping(value="/get", method=RequestMethod.GET)
+	@RequestMapping(value="/get", method=RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public String get() {
 	    List<ScheduleVO> vo = scheduleDao.selectAll();
+	    
 	    if(vo != null) {
 	        // ScheduleVO 객체를 JSON 문자열로 직렬화
 	        // JSON 형식: [{"s_seq":1, "s_title":"제목1", "s_content":"내용1", "s_sdate":"2024-04-21", "s_edate":"2024-04-23"}, {...}, ...]
