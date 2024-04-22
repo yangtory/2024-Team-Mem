@@ -135,32 +135,58 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 캘린더 렌더링 함수
   const renderCalendar = async () => {
     // 캘린더 렌더링 코드
+    const year_Text = String(viewYear);
+    let month_text = String(viewMonth);
 
     // 데이터 가져오기
-    const response = await fetch(`${rootPath}/schedule/get`);
-    const data = await response.json();
-    // 가져온 데이터를 캘린더에 표시
-    data.forEach((schedule) => {
-      const startDate = new Date(schedule.s_sdate); // 시작날짜
-      const endDate = new Date(schedule.s_edate); // 마무리날짜
-      console.log(startDate);
+    const res = await fetch(`${rootPath}/schedule/get`);
+    const json = await res.json();
+    console.log(json);
+    const ex = new Array();
 
-      // 시작날짜부터 마무리날짜까지의 범위에 해당하는 셀에 클래스 추가
-      for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-        const year = d.getFullYear();
-        const month = d.getMonth() + 1; // 월은 0부터 시작하므로 +1 해줌
-        const day = d.getDate();
-        console.log(year);
-        console.log(month);
-        console.log(day);
+    if (json.length !== 0) {
+      for (let i = 0; i < json.length; i++) {
+        ex.push(json[i].s_sdate);
+      }
+    }
+    console.log(ex);
+    const day_all = document.querySelectorAll("div.dates");
+    console.log(day_all.length);
+    for (let i = 0; i < ex.length; i++) {
+      if (month_text.length === 1) {
+        month_text = "0" + month_text;
+        console.log(month_text);
+      }
 
-        // 해당 날짜의 셀을 찾아 클래스 추가
-        const cell = document.querySelector(`.dates[data-year="${year}"][data-month="${month}"][data-day="${day}"]`);
-        if (cell) {
-          cell.classList.add("scheduled");
+      for (let j = 0; j < day_all.length; j++) {
+        if (day_all[j].length === 1) {
+          day_all[j] = "0" + day_all[j];
+        }
+        if (`${year_Text}-${month_text}-${day_all[j]}` === ex[i]) {
+          day_all[j].classList.add("product");
         }
       }
-    });
+    }
+
+    // 가져온 데이터를 캘린더에 표시
+    // data.forEach((schedule) => {
+    //     const startDate = new Date(schedule.s_sdate); // 시작날짜
+    //     const endDate = new Date(schedule.s_edate); // 마무리날짜
+    //     console.log(startDate);
+
+    //     // 시작날짜부터 마무리날짜까지의 범위에 해당하는 셀에 클래스 추가
+    //     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+    //       const year = d.getFullYear();
+    //       const month = d.getMonth() + 1; // 월은 0부터 시작하므로 +1 해줌
+    //       const day = d.getDate();
+
+    //       // 해당 날짜의 셀을 찾아 클래스 추가
+    //       const cell = document.querySelector(`.dates[data-year="${year}"][data-month="${month}"][data-day="${day}"]`);
+    //       if (cell) {
+    //         cell.classList.add("scheduled");
+    //       }
+    //     }
+    //   });
   };
 
   // // 캘린더 초기화
