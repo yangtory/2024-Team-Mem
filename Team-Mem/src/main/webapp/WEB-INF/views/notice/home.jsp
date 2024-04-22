@@ -6,9 +6,8 @@
 <a class="button-32" href="${rootPath }/notice/insert"> 글쓰기 </a>
 <div class="notice search">
 	<f:form method="GET" modelAttribute="SEARCH">
-		<f:input placeholder="제목" path="title" />
-		<f:input placeholder="등록일" path="date" />
-		<f:input placeholder="등록번호" path="num" />
+		<f:input placeholder="제목" path="n_title" />
+		<f:input placeholder="등록일" path="n_date" />
 		<input type="submit" value="검색" />
 	</f:form>
 </div>
@@ -20,15 +19,19 @@
 			<th>업체명</th>
 			<th>제목</th>
 			<th>작성자</th>
+			<th>작성날짜</th>
+			<th>작성시간</th>
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${SEARCH_LIST}" var="N" varStatus="INDEX">
-			<tr data-code="${N.n_seq}">
+			<tr>
 				<td>${INDEX.count }</td>
 				<td>${N.n_ccode }</td>
 				<td>${N.n_title }</td>
 				<td>${N.n_uid }</td>
+				<td>${N.n_date }</td>
+				<td>${N.n_time }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

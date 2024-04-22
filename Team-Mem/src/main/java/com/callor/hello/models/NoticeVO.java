@@ -16,6 +16,8 @@ import lombok.ToString;
 public class NoticeVO {
 	
 	private int n_seq;			// INT AUTO_INCREMENT PRIMARY KEY,
+	private String n_date;
+	private String n_time;
 	private String n_title;		// VARCHAR(125)	NOT NULL	,
 	private String 	n_content;		// VARCHAR(255)	NOT NULL,
 	private String n_ccode;		// VARCHAR(10) NOT NULL,

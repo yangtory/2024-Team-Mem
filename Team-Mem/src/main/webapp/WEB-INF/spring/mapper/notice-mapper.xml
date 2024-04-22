@@ -8,18 +8,19 @@
 	<select id="selectSearchAll">
 		SELECT * FROM tbl_notice
 		<where>
-			<if test="title != null and title != '' ">
-				AND n_title LIKE CONCAT('%', #{title}, '%')</if>
-			<if test="date != null and date != '' ">
-				AND n_date LIKE CONCAT('%', #{date}, '%')</if>
-			<if test="num != null and num != '' ">
-				AND n_seq LIKE CONCAT('%', #{num}, '%')</if>
-				AND n_ccode = #{ccode}
+			<if test="n_title != null and n_title != '' ">
+				AND n_title LIKE CONCAT('%', #{n_title}, '%')</if>
+			<if test="n_date != null and n_date != '' ">
+				AND n_date LIKE CONCAT('%', #{n_date}, '%')</if>
+				AND n_ccode = #{n_ccode}
 		</where>
 	</select>
 
 
 	<insert id="insert">
+		INSERT INTO tbl_notice(n_title, n_content, n_ccode, n_uid, n_date, n_time)
+		VALUES(#{n_title}, #{n_content}, #{n_ccode}, #{n_uid}, #{n_date}, #{n_time})
+	
 	</insert>
 
 	<update id="update">

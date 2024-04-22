@@ -40,5 +40,13 @@ public class TeacherServiceImpl implements TeacherService {
 		String cCode = teacherDao.findByComp(ucomp);
 		return cCode;
 	}
+	
+	@Override
+	public String getLoginUid() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserVO userDetails = (UserVO) authentication.getPrincipal();
+		String id = userDetails.getU_id();
+		return id;
+	}
 
 }

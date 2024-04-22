@@ -1,6 +1,5 @@
 package com.callor.hello.controller;
 
-import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,7 @@ public class HomeController {
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {	
+	public String home( Model model) {	
 		return "layout";
 	}
 	
