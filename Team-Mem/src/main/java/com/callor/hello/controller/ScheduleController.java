@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.hello.dao.ScheduleDao;
 import com.callor.hello.models.ScheduleVO;
+import com.callor.hello.service.ScheduleService;
+import com.callor.hello.service.impl.ScheduleServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,10 +22,16 @@ import lombok.extern.slf4j.Slf4j;
 public class ScheduleController {
 	
 	private final ScheduleDao scheduleDao;
-	public ScheduleController(ScheduleDao scheduleDao) {
-		this.scheduleDao = scheduleDao;
-	}
+	private final ScheduleService scheduleService;
 	
+	
+	public ScheduleController(ScheduleDao scheduleDao, ScheduleService scheduleService) {
+		super();
+		this.scheduleDao = scheduleDao;
+		this.scheduleService = scheduleService;
+	}
+
+
 	@RequestMapping(value= {"/",""}, method = RequestMethod.GET)
 	public String main(Model model) {
 		
@@ -37,8 +45,8 @@ public class ScheduleController {
 	}
 	
 	
-	@RequestMapping(value="/insert/{dates}", method=RequestMethod.GET)
-	public String insert(@PathVariable("dates") String dates, Model model,String title) {
+	@RequestMapping(value="/insert", method=RequestMethod.GET)
+	public String insert(Model model,String title) {
 		
 		
 		model.addAttribute("BODY","SCHEDULE_INSERT");
@@ -46,10 +54,10 @@ public class ScheduleController {
 		
 		return "layout";
 	}
-	@RequestMapping(value="/insert/{dates}", method=RequestMethod.POST)
-	public String insert(@PathVariable("dates") String dates, Model model, ScheduleVO vo) {
-		scheduleDao.insert(vo);
-
+	@RequestMapping(value="/insert", method=RequestMethod.POST)
+	public String insert(Model model, ScheduleVO vo) {
+		
+		scheduleService.insertDate(vo);
 		
 		return "redirect:/schedule";
 	}

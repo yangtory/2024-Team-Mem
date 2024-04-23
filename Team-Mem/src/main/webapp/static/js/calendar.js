@@ -146,14 +146,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   clickDates?.addEventListener("click", async (e) => {
     const date = e.target.innerText;
+    const title = e.target;
 
     const dates = `${viewYear}-${viewMonth + 1}-${date}`;
 
+    if (title.classList.contains("title")) {
+      document.location.href = `${rootPath}/schedule/detail/${seq}`;
+    }
     if (date) {
-      document.location.href = `${rootPath}/schedule/insert/${dates}`;
+      document.location.href = `${rootPath}/schedule/insert`;
     }
   });
 
   // // 캘린더 초기화
   renderCalendar();
+
+  const divTitle = document.querySelector("div.date");
+  divTitle.addEventListener("click", (e) => {
+    alert;
+  });
 });

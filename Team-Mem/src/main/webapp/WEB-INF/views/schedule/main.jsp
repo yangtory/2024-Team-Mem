@@ -16,6 +16,7 @@
     <div class="calendar">
       <div class="calHeader">
         <div class="year-month"></div>
+        
         <div class="calNav">
           <button class="nav-btn go-prev">&lt;</button>
           <button class="nav-btn go-today">Today</button>
@@ -32,7 +33,8 @@
           <div class="day">금</div>
           <div class="day">토</div>
         </div>
-        <div class="dates" ></div>
+        <div class="dates">
+        	<div class="date" data-seq = "${LIST}"></div>
       </div>
     </div>
     </section>
