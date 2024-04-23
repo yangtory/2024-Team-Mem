@@ -13,7 +13,7 @@
 	<logger name="org.mybatis" level="INFO" />
 
 	<!-- 적용하는 프로젝트의 Base Package를 설정 -->
-	<logger name="com.callor.hello" level="DEBUG" additivity="false">
+	<logger name="com.callor.hello" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 

@@ -15,7 +15,7 @@ import lombok.ToString;
 @Builder
 public class ScheduleVO {
 
-	private String s_seq; // INT PRIMARY KEY AUTO_INCREMENT,
+	private int s_seq; // INT PRIMARY KEY AUTO_INCREMENT,
 	private String 	s_title; // VARCHAR(50)	NOT NULL	,
 	private String s_content; // VARCHAR(125),
 	private String 	s_sdate; // VARCHAR(15) 	,
