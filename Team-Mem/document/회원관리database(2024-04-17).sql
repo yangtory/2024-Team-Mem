@@ -214,4 +214,6 @@ CREATE TABLE tbl_schedule (
 	s_edate VARCHAR(15)	
 
 );
-SELECT * FROM tbl_schedule;
+SELECT * FROM tbl_schedule
+ORDER BY s_sdate DESC, s_edate DESC;
+TRUNCATE tbl_schedule;
