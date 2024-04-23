@@ -33,13 +33,25 @@ public class ScheduleController {
 
 
 	@RequestMapping(value= {"/",""}, method = RequestMethod.GET)
-	public String main(Model model) {
+	public String main(Model model, ScheduleVO vo) {
 		
-		List<ScheduleVO> list = scheduleDao.selectAll();
+//		int result = (vo.getS_seq());
+//		
+//		String seq = String.valueOf(result);
+//		
+//		vo.setS_seq(result);
+
+		
+		
+		List<ScheduleVO>list = scheduleDao.selectAll();
+		
+		
+//		log.debug("{}", result);
+		
 		
 		model.addAttribute("BODY","SCHEDULE_MAIN");
 		model.addAttribute("LIST", list);
-		log.debug("LIST{}", list);
+		log.debug("LIST{}", list.toString());
 		
 		return "layout";
 	}

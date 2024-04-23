@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let date = new Date();
   let viewYear = date.getFullYear();
   let viewMonth = date.getMonth();
-  const clickDates = document.querySelector(".dates");
+  const clickDates = document.querySelector("section");
 
   const renderCalender = async () => {
     viewYear = date.getFullYear();
@@ -52,6 +52,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
   };
+  const schedules = async () => {
+    // 캘린더 렌더링 코드
+    const year_Text = String(viewYear);
+    let month_text = String(viewMonth + 1);
+
+    // 데이터 가져오기
+    const res = await fetch(`${rootPath}/schedule/get`);
+    const json = await res.json();
+
+    const day_all = document.querySelectorAll(".this");
+
+    for (let j = 0; j < day_all.length; j++) {
+      if (day_all[j].innerHTML.length === 1) {
+        day_all[j].innerHTML = "0" + day_all[j].innerHTML;
+      }
+      const currentDate = new Date(`${year_Text}-${month_text}-${day_all[j].innerHTML}`);
+      const formattedDate = formatDate(currentDate);
+      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
+      if (schedules.length > 0) {
+        // 이미 제목이 표시된 날짜인지 확인
+        const existingTitleContainer = day_all[j].nextElementSibling;
+        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
+          // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
+          const titleContainer = document.createElement("div");
+          titleContainer.classList.add("title-container");
+          day_all[j].insertAdjacentElement("afterend", titleContainer);
+
+          schedules.forEach((schedule) => {
+            const titleDiv = document.createElement("div");
+            titleDiv.textContent = schedule.s_title;
+            titleDiv.classList.add("title");
+            titleContainer.appendChild(titleDiv);
+          });
+        }
+      }
+    }
+  };
+
   const renderCalendar = async () => {
     // 캘린더 렌더링 코드
     const year_Text = String(viewYear);
@@ -72,6 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // 해당 날짜에 속하는 일정들을 가져옴
       const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
+      console.log(schedules.length);
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
@@ -145,24 +184,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderCalendar();
   });
   clickDates?.addEventListener("click", async (e) => {
+    const target = e.target;
+    if (target.tagName === "SPAN") {
+      const click = target.closest("DIV").innerHTML;
+      alert(click);
+    }
     const date = e.target.innerText;
     const title = e.target;
-
     const dates = `${viewYear}-${viewMonth + 1}-${date}`;
-
-    if (title.classList.contains("title")) {
-      document.location.href = `${rootPath}/schedule/detail/${seq}`;
+    // alert(dates);
+    if (date === dates) {
+      // alert(dates);
+    }
+    if (title.classList.contains("date")) {
+      alert(dates);
+      // const seq = title.closest("date").dataset.seq;
+      // document.location.href = `${rootPath}/schedule/detail/${seq}`;
     }
     if (date) {
-      document.location.href = `${rootPath}/schedule/insert`;
+      // alert(date);
+      // document.location.href = `${rootPath}/schedule/${dates}`;
+      // document.location.href = `${rootPath}/schedule/${dates}`;
+    }
+    if (e.target.className === "date") {
+      // const dataText = e.target.innerText;
+      // alert(dataText);
     }
   });
 
   // // 캘린더 초기화
   renderCalendar();
 
-  const divTitle = document.querySelector("div.date");
-  divTitle.addEventListener("click", (e) => {
-    alert;
+  const divDate = document.querySelector("div.date");
+  divDate.addEventListener("click", (e) => {
+    alert(divTitle);
   });
 });
