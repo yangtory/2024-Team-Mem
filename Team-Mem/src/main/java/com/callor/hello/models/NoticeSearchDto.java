@@ -14,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NoticeSearchDto {
-	private int n_seq;			// INT AUTO_INCREMENT PRIMARY KEY,
+	private String n_seq;			
 	private String n_date;
 	private String n_time;
 	private String n_title;		// VARCHAR(125)	NOT NULL	,

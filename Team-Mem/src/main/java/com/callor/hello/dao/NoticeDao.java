@@ -7,8 +7,12 @@ import com.callor.hello.models.NoticeVO;
 
 public interface NoticeDao {
 
-	List<NoticeSearchDto> selectSearchAll(NoticeSearchDto noticeSearchDto);
+	public List<NoticeSearchDto> selectSearchAll(NoticeSearchDto noticeSearchDto);
+	public NoticeVO findById(String seq);
 
-	int insert(NoticeVO vo);
+	public int insert(NoticeVO vo);
+	public int update(NoticeVO vo);
+	public int delete(String seq);
+
 
 }

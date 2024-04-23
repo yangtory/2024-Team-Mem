@@ -15,11 +15,14 @@
 				AND n_ccode = #{n_ccode}
 		</where>
 	</select>
-
+	<select id="findById">
+		SELECT * FROM tbl_notice
+		WHERE n_seq = #{seq}
+	</select>
 
 	<insert id="insert">
-		INSERT INTO tbl_notice(n_title, n_content, n_ccode, n_uid, n_date, n_time)
-		VALUES(#{n_title}, #{n_content}, #{n_ccode}, #{n_uid}, #{n_date}, #{n_time})
+		INSERT INTO tbl_notice(n_seq ,n_title, n_content, n_ccode, n_uid, n_date, n_time)
+		VALUES(#{n_seq}, #{n_title}, #{n_content}, #{n_ccode}, #{n_uid}, #{n_date}, #{n_time})
 	
 	</insert>
 

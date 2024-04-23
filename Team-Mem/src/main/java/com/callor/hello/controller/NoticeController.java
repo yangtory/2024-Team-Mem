@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,6 +16,9 @@ import com.callor.hello.models.NoticeSearchDto;
 import com.callor.hello.models.NoticeVO;
 import com.callor.hello.service.TeacherService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping(value = "/notice")
 public class NoticeController {
@@ -48,23 +52,35 @@ public class NoticeController {
 	public String insert(@ModelAttribute("NOTI") NoticeVO vo, Model model) {
 		String id = teacherService.getLoginUid();
 		String ccode = teacherService.getLoginCCode();
+		String nseq = teacherService.createNSeq();
+		log.debug("nSeq {}",nseq);
 		vo.setN_ccode(ccode);
 		vo.setN_uid(id);
+		vo.setN_seq(nseq);
 		noticeDao.insert(vo);
 		return "redirect:/notice/";
 	}
-
-	@ModelAttribute(name = "NOTI")
-	private NoticeVO noticeVO() {
-		LocalDateTime localDateTime = LocalDateTime.now();
-
-		DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-		NoticeVO vo = NoticeVO.builder().n_date(localDateTime.format(dayFormat))
-				.n_time(localDateTime.format(timeFormat)).build();
-
-		return vo;
+	
+	@RequestMapping(value="/detail/{seq}", method=RequestMethod.GET)
+	public String detail(@PathVariable("seq") String seq, Model model) {
+		 NoticeVO vo =noticeDao.findById(seq);
+		 model.addAttribute("VO", vo);
+		 model.addAttribute("BODY", "NOTICE_DETAIL");
+		return "layout";
+	}
+	
+	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq, Model model) {
+		NoticeVO vo =noticeDao.findById(seq);
+		model.addAttribute("VO", vo);
+		model.addAttribute("BODY", "NOTICE_UPDATE");
+		return "layout";
+	}
+	
+	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
+	public String update(NoticeVO vo, Model model) {
+		noticeDao.update(vo);
+		return "redirect:/notice/";
 	}
 
 }

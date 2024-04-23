@@ -1,6 +1,7 @@
 package com.callor.hello.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,8 +46,14 @@ public class TeacherServiceImpl implements TeacherService {
 	public String getLoginUid() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserVO userDetails = (UserVO) authentication.getPrincipal();
-		String id = userDetails.getU_id();
+		String id = userDetails.getU_id().toString();
 		return id;
+	}
+
+	@Override
+	public String createNSeq() {
+		String nSeq = UUID.randomUUID().toString();
+		return nSeq;
 	}
 
 }

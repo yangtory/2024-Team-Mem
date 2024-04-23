@@ -15,11 +15,16 @@ SET FOREIGN_KEY_CHECKS = 1;
 TRUNCATE tbl_user;
 TRUNCATE tbl_company;
 TRUNCATE tbl_user_comp;
-TRUNCATE tbl_teacher;
+TRUNCATE tbl_notice;
 
+-- 승희추가할거
 ALTER TABLE TBL_NOTICE
 ADD COLUMN n_date VARCHAR(10) NOT NULL,
 add COLUMN n_time  VARCHAR(10) not null;
+
+ALTER TABLE tbl_notice
+MODIFY COLUMN n_seq VARCHAR(255);
+-- 여기까지
 
 CREATE TABLE tbl_user(
 u_id	VARCHAR(20)		PRIMARY KEY,

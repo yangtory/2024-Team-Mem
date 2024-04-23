@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script src="${rootPath }/static/js/notice.js?04-23-002"></script>
+
 <a class="button-32" href="${rootPath }/notice/insert"> 글쓰기 </a>
 <div class="notice search">
 	<f:form method="GET" modelAttribute="SEARCH">
@@ -25,7 +27,7 @@
 	</thead>
 	<tbody>
 		<c:forEach items="${SEARCH_LIST}" var="N" varStatus="INDEX">
-			<tr>
+			<tr data-seq= "${N.n_seq }">
 				<td>${INDEX.count }</td>
 				<td>${N.n_ccode }</td>
 				<td>${N.n_title }</td>
