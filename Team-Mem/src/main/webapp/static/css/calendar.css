@@ -6,7 +6,9 @@ section {
   align-items: center;
   min-height: 80vh;
 }
-
+aside.left {
+  border: 1px solid red;
+}
 .calendar {
   width: 600px;
   margin: 50px;
@@ -122,4 +124,8 @@ span.title {
   border-radius: 2px;
   margin: 2px auto 0;
   font-size: 0.8rem;
+}
+.title-container {
+  display: flex;
+  flex-direction: column;
 }

@@ -113,4 +113,18 @@ public class ScheduleController {
 	}
 	
 	
+	@RequestMapping(value="/detail/{sdate}",method=RequestMethod.GET)
+	public String detail(@PathVariable("sdate") String sdate, Model model) {
+		
+		model.addAttribute("BODY", "SCHEDULE_DETAIL");
+		List<ScheduleVO> list = scheduleDao.findByDate(sdate);
+		
+		model.addAttribute("LIST", list);
+		log.debug("{}", list);
+		
+		return "layout";
+	}
+	
+	
+	
 }
