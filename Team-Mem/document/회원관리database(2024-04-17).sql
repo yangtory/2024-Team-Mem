@@ -212,6 +212,13 @@ CREATE TABLE tbl_schedule (
 	s_edate VARCHAR(15)	
 
 );
+
+INSERT INTO tbl_schedule(s_title,s_content,s_sdate, s_edate)
+values('ㅎㅇ', 'ㅎㅇ','2024-04-20','2024-04-25');
+INSERT INTO tbl_schedule(s_title,s_content,s_sdate, s_edate)
+values('ㄱㄱ', 'ㄱㄱ','2024-04-25','2024-04-30');
+
+
 SELECT * FROM tbl_schedule
 ORDER BY s_sdate DESC, s_edate DESC;
 TRUNCATE tbl_schedule;
