@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.callor.hello.models.ScheduleVO;
 
@@ -15,11 +16,16 @@ public interface ScheduleDao {
 	@Select(" SELECT * FROM tbl_schedule WHERE s_sdate = #{s_sdate} ")
 	public ScheduleVO findBydate(String sdate);
 	
+	@Select(" SELECT * FROM tbl_schedule WHERE s_seq = #{s_seq} ")
+	public ScheduleVO findByseq(String seq);
+	
 	@Select("SELECT * FROM tbl_schedule WHERE DATE(s_sdate) = #{sdate}")
 	public List<ScheduleVO> findByDate(String sdate);
 	
 	@Insert(" INSERT INTO tbl_schedule ( s_title, s_content, s_sdate, s_edate ) VALUES (#{s_title}, #{s_content}, #{s_sdate}, #{s_edate} )")
 	public int insert(ScheduleVO vo);
+	
+	
 	
 	
 }

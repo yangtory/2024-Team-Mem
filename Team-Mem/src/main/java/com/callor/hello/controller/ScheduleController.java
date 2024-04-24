@@ -125,6 +125,21 @@ public class ScheduleController {
 		return "layout";
 	}
 	
-	
+	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq, Model model) {
+		
+		model.addAttribute("BODY","SCHEDULE_UPDATE");
+		ScheduleVO list = scheduleDao.findByseq(seq);
+		model.addAttribute("LIST", list);
+		
+		return "layout";
+	}
+	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
+	public String update(@PathVariable("seq") String seq) {
+		
+
+		
+		return "layout";
+	}
 	
 }
