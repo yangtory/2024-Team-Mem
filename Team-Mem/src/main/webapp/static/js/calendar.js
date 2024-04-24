@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const renderCalender = async () => {
     viewYear = date.getFullYear();
     viewMonth = date.getMonth();
-    document.querySelector(".year-month").textContent = `${viewYear}년 ${viewMonth + 1}월`;
+    document.querySelector(
+      ".year-month"
+    ).textContent = `${viewYear}년 ${viewMonth + 1}월`;
     const prevLast = new Date(viewYear, viewMonth, 0);
     const thisLast = new Date(viewYear, viewMonth + 1, 0);
 
@@ -35,56 +37,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lastDateIndex = dates.lastIndexOf(TLDate);
 
     dates.forEach((date, i) => {
-      const condition = i >= firstDateIndex && i < lastDateIndex + 1 ? "this" : "other";
+      const condition =
+        i >= firstDateIndex && i < lastDateIndex + 1
+          ? "this"
+          : "other";
 
-      dates[i] = `<div class="date"><div class=${condition}>${date}</div></div>`;
+      dates[
+        i
+      ] = `<div class="date"><div class=${condition}>${date}</div></div>`;
     });
     document.querySelector(".dates").innerHTML = dates.join("");
 
     const today = new Date();
-    if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
+    if (
+      viewMonth === today.getMonth() &&
+      viewYear === today.getFullYear()
+    ) {
       for (let date of document.querySelectorAll(".this")) {
         if (+date.innerText === today.getDate()) {
           date.classList.add("today");
 
           break;
-        }
-      }
-    }
-  };
-  const schedules = async () => {
-    // 캘린더 렌더링 코드
-    const year_Text = String(viewYear);
-    let month_text = String(viewMonth + 1);
-
-    // 데이터 가져오기
-    const res = await fetch(`${rootPath}/schedule/get`);
-    const json = await res.json();
-
-    const day_all = document.querySelectorAll(".this");
-
-    for (let j = 0; j < day_all.length; j++) {
-      if (day_all[j].innerHTML.length === 1) {
-        day_all[j].innerHTML = "0" + day_all[j].innerHTML;
-      }
-      const currentDate = new Date(`${year_Text}-${month_text}-${day_all[j].innerHTML}`);
-      const formattedDate = formatDate(currentDate);
-      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
-      if (schedules.length > 0) {
-        // 이미 제목이 표시된 날짜인지 확인
-        const existingTitleContainer = day_all[j].nextElementSibling;
-        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
-          // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
-          const titleContainer = document.createElement("div");
-          titleContainer.classList.add("title-container");
-          day_all[j].insertAdjacentElement("afterend", titleContainer);
-
-          schedules.forEach((schedule) => {
-            const titleDiv = document.createElement("div");
-            titleDiv.textContent = schedule.s_title;
-            titleDiv.classList.add("title");
-            titleContainer.appendChild(titleDiv);
-          });
         }
       }
     }
@@ -105,23 +78,37 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (day_all[j].innerHTML.length === 1) {
         day_all[j].innerHTML = "0" + day_all[j].innerHTML;
       }
-      const currentDate = new Date(`${year_Text}-${month_text}-${day_all[j].innerHTML}`);
+      const currentDate = new Date(
+        `${year_Text}-${month_text}-${day_all[j].innerHTML}`
+      );
       const formattedDate = formatDate(currentDate);
 
       // 해당 날짜에 속하는 일정들을 가져옴
-      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
+      const schedules = json.filter(
+        (schedule) =>
+          schedule.s_sdate <= formattedDate &&
+          schedule.s_edate >= formattedDate
+      );
       console.log(schedules.length);
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
-        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
+        if (
+          !existingTitleContainer ||
+          !existingTitleContainer.classList.contains(
+            "title-container"
+          )
+        ) {
           // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
-          const titleContainer = document.createElement("div");
+          const titleContainer = document.createElement("span");
           titleContainer.classList.add("title-container");
-          day_all[j].insertAdjacentElement("afterend", titleContainer);
+          day_all[j].insertAdjacentElement(
+            "afterend",
+            titleContainer
+          );
 
           schedules.forEach((schedule) => {
-            const titleDiv = document.createElement("div");
+            const titleDiv = document.createElement("span");
             titleDiv.textContent = schedule.s_title;
             titleDiv.classList.add("title");
             titleContainer.appendChild(titleDiv);
@@ -185,30 +172,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   clickDates?.addEventListener("click", async (e) => {
     const target = e.target;
-    if (target.tagName === "SPAN") {
-      const click = target.closest("DIV").innerHTML;
-      alert(click);
-    }
-    const date = e.target.innerText;
-    const title = e.target;
-    const dates = `${viewYear}-${viewMonth + 1}-${date}`;
-    // alert(dates);
-    if (date === dates) {
-      // alert(dates);
-    }
-    if (title.classList.contains("date")) {
-      alert(dates);
-      // const seq = title.closest("date").dataset.seq;
-      // document.location.href = `${rootPath}/schedule/detail/${seq}`;
-    }
-    if (date) {
-      // alert(date);
-      // document.location.href = `${rootPath}/schedule/${dates}`;
-      // document.location.href = `${rootPath}/schedule/${dates}`;
-    }
-    if (e.target.className === "date") {
-      // const dataText = e.target.innerText;
-      // alert(dataText);
+    if (
+      target.tagName === "SPAN" ||
+      target.classList.contains("date")
+    ) {
+      const click = target.closest("DIV").innerText[0];
+      const click2 = target.closest("DIV").innerText[1];
+      const dates = `${viewYear}-${viewMonth + 1}-${click}${click2}`;
+      document.location.href = `${rootPath}/schedule/detail/${dates}`;
     }
   });
 

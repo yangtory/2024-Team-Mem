@@ -60,6 +60,7 @@ section {
 
 .date {
   width: calc(100% / 7);
+  height: calc(100% / 5);
 
   /* padding: 15px; */
 
@@ -110,11 +111,11 @@ section {
 } */
 
 div.date {
-  display: flex;
-  flex-direction: column;
-  /* width: 100%; */
+  &:nth-last-of-type(1) {
+    border-right: 0.5px solid white;
+  }
 }
-div.title {
+span.title {
   background-color: #654df1;
   color: white;
   width: 100%;
