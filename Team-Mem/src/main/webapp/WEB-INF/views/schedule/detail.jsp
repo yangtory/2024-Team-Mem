@@ -15,7 +15,7 @@
 </head>
 <body>
 <table class="customer list">
-	<a href="${rootPath }/detail/${LIST.s_sdate}">추가</a>
+	<a href="${rootPath }/detail/${LIST.s_sdate}">추가aaaaaa</a>
 	<thead>
 		<tr>
 			<th>SEQ</th>
