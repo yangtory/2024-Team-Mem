@@ -57,19 +57,18 @@ public class ScheduleController {
 	}
 	
 	
-	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public String insert(Model model,String title) {
-		
-		
+	@RequestMapping(value="/insert/{sdate}", method=RequestMethod.GET)
+	public String insert(@PathVariable("sdate") String sdate, Model model) {
 		model.addAttribute("BODY","SCHEDULE_INSERT");
-		
-		
+		model.addAttribute("SDATE", sdate);
 		return "layout";
 	}
-	@RequestMapping(value="/insert", method=RequestMethod.POST)
+	
+	@RequestMapping(value="/insert/{sdate}", method=RequestMethod.POST)
 	public String insert(Model model, ScheduleVO vo) {
 		
 		scheduleService.insertDate(vo);
+		log.debug("date {}", vo);
 		
 		return "redirect:/schedule";
 	}
@@ -119,6 +118,7 @@ public class ScheduleController {
 		model.addAttribute("BODY", "SCHEDULE_DETAIL");
 		List<ScheduleVO> list = scheduleDao.findByDate(sdate);
 		
+		model.addAttribute("SDATE", sdate);
 		model.addAttribute("LIST", list);
 		log.debug("{}", list);
 		

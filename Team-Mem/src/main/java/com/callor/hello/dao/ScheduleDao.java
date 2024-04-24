@@ -9,7 +9,7 @@ import com.callor.hello.models.ScheduleVO;
 
 public interface ScheduleDao {
 
-	@Select(" SELECT * FROM tbl_schedule ORDER BY  s_sdate DESC ")
+	@Select(" SELECT * FROM tbl_schedule ORDER BY  s_sdate ASC, s_edate DESC ")
 	public List<ScheduleVO> selectAll();
 	
 	@Select(" SELECT * FROM tbl_schedule WHERE s_sdate = #{s_sdate} ")
