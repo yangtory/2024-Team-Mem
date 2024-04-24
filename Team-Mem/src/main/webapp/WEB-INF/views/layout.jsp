@@ -71,6 +71,9 @@
 			<c:if test="${BODY == 'SCHEDULE_INSERT'}">
 				<%@ include file="/WEB-INF/views/schedule/input.jsp"%>
 			</c:if>
+			<c:if test="${BODY == 'SCHEDULE_DETAIL'}">
+				<%@ include file="/WEB-INF/views/schedule/detail.jsp"%>
+			</c:if>
 		</section>
 	</div>
 </body>

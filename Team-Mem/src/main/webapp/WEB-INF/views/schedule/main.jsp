@@ -13,6 +13,7 @@
 
 <body>
 	<section>
+	<aside class="left">
 		<div class="calendar">
 			<div class="calHeader">
 				<div class="year-month"></div>
@@ -35,5 +36,6 @@
 				<div class="dates"></div>
 			</div>
 		</div>
+		</aside>
 	</section>
 </body>

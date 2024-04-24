@@ -7,9 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const renderCalender = async () => {
     viewYear = date.getFullYear();
     viewMonth = date.getMonth();
-    document.querySelector(
-      ".year-month"
-    ).textContent = `${viewYear}년 ${viewMonth + 1}월`;
+    document.querySelector(".year-month").textContent = `${viewYear}년 ${viewMonth + 1}월`;
     const prevLast = new Date(viewYear, viewMonth, 0);
     const thisLast = new Date(viewYear, viewMonth + 1, 0);
 
@@ -37,22 +35,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lastDateIndex = dates.lastIndexOf(TLDate);
 
     dates.forEach((date, i) => {
-      const condition =
-        i >= firstDateIndex && i < lastDateIndex + 1
-          ? "this"
-          : "other";
+      const condition = i >= firstDateIndex && i < lastDateIndex + 1 ? "this" : "other";
 
-      dates[
-        i
-      ] = `<div class="date"><div class=${condition}>${date}</div></div>`;
+      dates[i] = `<div class="date"><div class=${condition}>${date}</div></div>`;
     });
     document.querySelector(".dates").innerHTML = dates.join("");
 
     const today = new Date();
-    if (
-      viewMonth === today.getMonth() &&
-      viewYear === today.getFullYear()
-    ) {
+    if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
       for (let date of document.querySelectorAll(".this")) {
         if (+date.innerText === today.getDate()) {
           date.classList.add("today");
@@ -78,34 +68,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (day_all[j].innerHTML.length === 1) {
         day_all[j].innerHTML = "0" + day_all[j].innerHTML;
       }
-      const currentDate = new Date(
-        `${year_Text}-${month_text}-${day_all[j].innerHTML}`
-      );
+      const currentDate = new Date(`${year_Text}-${month_text}-${day_all[j].innerHTML}`);
       const formattedDate = formatDate(currentDate);
 
       // 해당 날짜에 속하는 일정들을 가져옴
-      const schedules = json.filter(
-        (schedule) =>
-          schedule.s_sdate <= formattedDate &&
-          schedule.s_edate >= formattedDate
-      );
-      console.log(schedules.length);
+      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
+
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
-        if (
-          !existingTitleContainer ||
-          !existingTitleContainer.classList.contains(
-            "title-container"
-          )
-        ) {
+        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
           // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
           const titleContainer = document.createElement("span");
           titleContainer.classList.add("title-container");
-          day_all[j].insertAdjacentElement(
-            "afterend",
-            titleContainer
-          );
+          day_all[j].insertAdjacentElement("afterend", titleContainer);
 
           schedules.forEach((schedule) => {
             const titleDiv = document.createElement("span");
@@ -170,24 +146,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     nextMonth();
     renderCalendar();
   });
+
+  for (let j = 0; j < viewMonth.length; j++) {
+    if (viewMonth[j].length === 1) {
+      viewMonth[j].innerHTML = "0" + viewMonth.innerHTML;
+    }
+  }
+
   clickDates?.addEventListener("click", async (e) => {
     const target = e.target;
-    if (
-      target.tagName === "SPAN" ||
-      target.classList.contains("date")
-    ) {
+
+    let viewMonthStr = String(viewMonth + 1);
+    if (viewMonthStr.length === 1) {
+      viewMonthStr = "0" + viewMonthStr;
+    }
+
+    if (target.tagName === "SPAN" || target.classList.contains("date")) {
       const click = target.closest("DIV").innerText[0];
       const click2 = target.closest("DIV").innerText[1];
-      const dates = `${viewYear}-${viewMonth + 1}-${click}${click2}`;
+      const dates = `${viewYear}-${viewMonthStr}-${click}${click2}`;
       document.location.href = `${rootPath}/schedule/detail/${dates}`;
     }
   });
 
   // // 캘린더 초기화
   renderCalendar();
-
-  const divDate = document.querySelector("div.date");
-  divDate.addEventListener("click", (e) => {
-    alert(divTitle);
-  });
 });
