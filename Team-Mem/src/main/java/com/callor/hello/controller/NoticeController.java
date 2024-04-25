@@ -72,15 +72,22 @@ public class NoticeController {
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
 	public String update(@PathVariable("seq") String seq, Model model) {
 		NoticeVO vo =noticeDao.findById(seq);
+		log.debug("VO :{}",vo);
 		model.addAttribute("VO", vo);
 		model.addAttribute("BODY", "NOTICE_UPDATE");
 		return "layout";
 	}
 	
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
-	public String update(NoticeVO vo, Model model) {
+	public String update(@PathVariable("seq") String seq ,NoticeVO vo, Model model) {
+		vo.setN_seq(seq);
 		noticeDao.update(vo);
 		return "redirect:/notice/";
+	}
+	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable("seq") String seq ) {
+		noticeDao.delete(seq);
+	return "redirect:/notice/";	
 	}
 
 }

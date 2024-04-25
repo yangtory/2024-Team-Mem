@@ -33,11 +33,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
-
 		</dependencies>
-
-
 	</dependencyManagement>
 
 	<dependencies>
@@ -62,21 +58,18 @@
 
 		</dependency>
 
-		<!-- tiles -->
-		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
 <!-- 		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>${org.apache.tiles-version}</version>
-		</dependency> -->
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring5</artifactId>
+			<version>3.1.2.RELEASE</version>
+		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
-<!-- 		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-extras</artifactId>
-			<version>${org.apache.tiles-version}</version>
-		</dependency> -->
-
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+ -->
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

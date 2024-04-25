@@ -27,6 +27,8 @@
 	</insert>
 
 	<update id="update">
+		UPDATE tbl_notice SET n_title = #{n_title}, n_content= #{n_content}
+		WHERE n_seq = #{n_seq}
 	</update>
 
 </mapper> 

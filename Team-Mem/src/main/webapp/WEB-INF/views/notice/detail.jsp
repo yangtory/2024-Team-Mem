@@ -7,6 +7,6 @@
 <div><strong>제목</strong><span>${VO.n_title}</span></div>
 <div><strong>내용</strong><span>${VO.n_content}</span></div>
 <div><strong></strong><span>
-	<a href="${rootPath }/teacher/update/${VO.n_seq}">수정</a>
-	<a href="${rootPath }/teacher/delete/${VO.n_seq}">삭제</a>
+	<a href="${rootPath }/notice/update/${VO.n_seq}">수정</a>
+	<a href="${rootPath }/notice/delete/${VO.n_seq}">삭제</a>
 </span></div>
