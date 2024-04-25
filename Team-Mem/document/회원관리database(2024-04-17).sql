@@ -127,8 +127,9 @@ CREATE TABLE tbl_schedule (
 
 -- user, minfo 릴레이션 테이블
 CREATE TABLE tbl_user_minfo(
-r_iseq	INT	NOT NULL,
 r_uid	VARCHAR(20)	NOT NULL,
+r_iseq	INT	NOT NULL,
+
 CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid)
 );
 
@@ -141,13 +142,6 @@ CREATE TABLE tbl_user_comp(
 	us_cname	VARCHAR(10)	,
 	CONSTRAINT uc_pk PRIMARY KEY(us_uid,us_ccode)	
 
-);
-
--- company, schedule 릴레이션 테이블 
-CREATE TABLE tbl_comp_sche(
-cs_code	VARCHAR(10)		,
-cs_seq	INT	,
-CONSTRAINT cs_pk PRIMARY KEY(cs_code, cs_seq)
 );
 
 SELECT u.u_id, u.u_name, u.u_tel, u.u_role,
@@ -165,6 +159,5 @@ INSERT INTO tbl_schedule(s_title,s_content,s_sdate, s_edate)
 values('ㅎㅇ', 'ㅎㅇ','2024-04-20','2024-04-25');
 INSERT INTO tbl_schedule(s_title,s_content,s_sdate, s_edate)
 values('ㄱㄱ', 'ㄱㄱ','2024-04-25','2024-04-30');
-
 
 

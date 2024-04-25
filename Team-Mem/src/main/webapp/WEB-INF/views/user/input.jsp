@@ -15,6 +15,13 @@
 		<div><input class ="us_utel" type="hidden" placeholder="전화번호" name="us_utel" value="${COMP.us_utel }"/></div>
 		<div><input class ="us_cname" placeholder="업체명" name="us_cname" value="${CNAME}" readonly/></div>
 		<div><input class ="us_ccode" placeholder="업체코드" name="us_ccode" value="${CCODE}" readonly/></div>
+		<div>
+			<select name="r_iseq">
+				<c:forEach items="${MINFO }" var="M">
+					<option value="${M.i_seq }">${M.i_title }</option>
+				</c:forEach> 
+			</select>
+		</div>
 		<div><input type= "submit" value="${COMP != null ? '수정' : '저장' }"></div>
 	</f:form>
 

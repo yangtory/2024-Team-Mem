@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.hello.dao.UserMinfoDao">
+
+	<select id="selectAll" >
+		SELECT * FROM tbl_minfo 
+		WHERE i_ccode = #{ccode}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO tbl_user_minfo(r_iseq,r_uid)
+		VALUES(#{r_iseq}, #{us_uid})
+	</insert>
+
+	<update id="update"></update>
+	<delete id="delete"></delete>
+
+</mapper> 

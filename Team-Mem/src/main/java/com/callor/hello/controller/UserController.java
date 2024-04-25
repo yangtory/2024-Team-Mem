@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
+import com.callor.hello.dao.UserMinfoDao;
+import com.callor.hello.models.MinfoVO;
 import com.callor.hello.models.UserCompSearchDto;
 import com.callor.hello.models.UserCompVO;
+import com.callor.hello.models.UserMinfoVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.TeacherService;
 import com.callor.hello.service.UserService;
@@ -31,16 +34,18 @@ public class UserController {
 	private final UserService userSerivce;
 	private final TeacherService teacherService;
 	private final CompanyDao companyDao;
+	private final UserMinfoDao userMinfoDao;
 
 
 	public UserController(UserDao userDao, UserCompDao userCompDao, UserService userSerivce,
-			TeacherService teacherService, CompanyDao companyDao) {
+			TeacherService teacherService, CompanyDao companyDao, UserMinfoDao userMinfoDao) {
 		super();
 		this.userDao = userDao;
 		this.userCompDao = userCompDao;
 		this.userSerivce = userSerivce;
 		this.teacherService = teacherService;
 		this.companyDao = companyDao;
+		this.userMinfoDao = userMinfoDao;
 	}
 
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
@@ -66,6 +71,11 @@ public class UserController {
 		String ccode = teacherService.getLoginCCode();
 		String cname = companyDao.findCname(ccode);
 		
+		// 회원권리스트
+		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
+		log.debug("list {} ", mInfoList);
+		model.addAttribute("MINFO", mInfoList);
+		
 		model.addAttribute("CCODE", ccode);
 		model.addAttribute("CNAME", cname);
 		model.addAttribute("BODY", "USER_INSERT");
@@ -73,9 +83,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
-	public String insert(UserCompVO userCompVO, UserVO userVO) {
+	public String insert(UserCompVO userCompVO, UserVO userVO, UserMinfoVO userMinfoVO) {
 		userSerivce.codeInput(userVO, userCompVO);
-			
+		userMinfoVO.setR_uid(userVO.getU_id());
+		int result = userMinfoDao.insert(userMinfoVO);
+			log.debug("insert {}", result);
 		return "redirect:/customer/";
 	}
 	
