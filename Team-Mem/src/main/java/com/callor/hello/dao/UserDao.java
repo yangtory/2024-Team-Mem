@@ -12,10 +12,6 @@ public interface UserDao {
 	@Select(" SELECT * FROM tbl_user WHERE u_comp = '' ")
 	public List<UserVO> selectAll();
 
-	public List<UserVO> selectCompany();
-
-	public List<UserVO> selectSearchAll(UserSearchDto userSearchDto);
-
 	public int insert(UserVO createUserVO);
 
 	@Select(" SELECT * FROM tbl_user WHERE u_id = #{username}")

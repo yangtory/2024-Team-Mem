@@ -34,20 +34,7 @@ public class ScheduleController {
 
 	@RequestMapping(value= {"/",""}, method = RequestMethod.GET)
 	public String main(Model model, ScheduleVO vo) {
-		
-//		int result = (vo.getS_seq());
-//		
-//		String seq = String.valueOf(result);
-//		
-//		vo.setS_seq(result);
-
-		
-		
 		List<ScheduleVO>list = scheduleDao.selectAll();
-		
-		
-//		log.debug("{}", result);
-		
 		
 		model.addAttribute("BODY","SCHEDULE_MAIN");
 		model.addAttribute("LIST", list);
@@ -138,13 +125,8 @@ public class ScheduleController {
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
 	public String update(@PathVariable("seq") int seq, ScheduleVO vo) {
 		vo.setS_seq(seq);
-		
 		scheduleDao.update(vo);
-		
-		
-		String redString = String.format("redirect:/schedule", vo.getS_seq());
-
-		
+		String redString = String.format("redirect:/schedule", vo.getS_seq());		
 		return redString;
 	}
 	

@@ -16,7 +16,6 @@ const rootPath = "${rootPath}"
 		<f:input placeholder="전화번호" path="utel" />
 		<input type="submit" value="검색" />
 	</f:form>
-
 </div>
 
 <a href="${rootPath }/customer/insert">수강생 추가</a>
@@ -30,17 +29,15 @@ const rootPath = "${rootPath}"
 			<th>ID</th>
 			<th>이름</th>
 			<th>전화번호</th>
-
 		</tr>
-
 	</thead>
 
 	<tbody>
-		<c:forEach items="${COMP }" var="COMP">
-			<tr data-id="${COMP.us_uid }">
-				<td>${COMP.us_uid }</td>
-				<td>${COMP.us_uname }</td>
-				<td>${COMP.us_utel }</td>
+		<c:forEach items="${USER }" var="USER">
+			<tr data-id="${USER.us_uid }">
+				<td>${USER.us_uid }</td>
+				<td>${USER.us_uname }</td>
+				<td>${USER.us_utel }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

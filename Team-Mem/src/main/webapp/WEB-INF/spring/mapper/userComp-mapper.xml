@@ -2,33 +2,57 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
- <mapper namespace="com.callor.hello.dao.UserCompDao">
 
-<insert id="insert">
-INSERT INTO tbl_user_comp(
-	us_uid, us_ccode
-) VALUES(
-	#{us_uid},#{us_ccode}
-)
+<mapper namespace="com.callor.hello.dao.UserCompDao">
 
-</insert>
- 	<insert id="createUser">
-		INSERT INTO tbl_user_comp(us_uid,us_ccode, us_uname, us_utel, us_cname)
+
+	<select id="selectSearchAll">
+		SELECT *
+		FROM tbl_user_comp
+		LEFT JOIN tbl_user ON u_id = us_uid
+
+		<where>
+			<if test="uname != null and uname != '' ">
+				AND us_uname LIKE CONCAT('%', #{uname}, '%')</if>
+			<if test="uid!= null and uid != '' ">
+				AND us_uid LIKE CONCAT('%', #{uid}, '%')</if>
+			<if test="utel!= null and utel != '' ">
+				AND us_utel LIKE CONCAT('%', #{utel}, '%')</if>
+
+			AND us_ccode = #{ccode}
+
+		</where>
+	</select>
+
+	<insert id="insert">
+		INSERT INTO tbl_user_comp(
+		us_uid, us_ccode
+		) VALUES(
+		#{us_uid},#{us_ccode}
+		)
+
+	</insert>
+	<insert id="createUser">
+		INSERT INTO tbl_user_comp(us_uid,us_ccode, us_uname, us_utel,
+		us_cname)
 		VALUES
 		<foreach collection="list" item="vo" separator=", ">
-			(#{vo.us_uid},#{vo.us_ccode},#{vo.us_uname},#{vo.us_utel},#{vo.us_cname} )
+			(#{vo.us_uid},#{vo.us_ccode},#{vo.us_uname},#{vo.us_utel},#{vo.us_cname}
+			)
 		</foreach>
 	</insert>
- 	
- <update id="update">
- 	UPDATE tbl_user_comp
- 	SET us_uname = #{us_uname}, us_uid = #{us_uid}, us_utel = #{us_utel}, us_cname = #{us_cname}, us_ccode = #{us_ccode}
- 	WHERE us_uid= #{us_uid}
- 
- </update>
- 	
- 
- 	
- 
- </mapper> 
+
+	<update id="update">
+		UPDATE tbl_user_comp
+		SET us_uname = #{us_uname},
+		us_uid = #{us_uid}, us_utel = #{us_utel},
+		us_cname = #{us_cname},
+		us_ccode = #{us_ccode}
+		WHERE us_uid= #{us_uid}
+
+	</update>
+
+
+
+
+</mapper> 

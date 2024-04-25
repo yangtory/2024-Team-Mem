@@ -2,19 +2,19 @@ package com.callor.hello.controller;
 
 import java.util.List;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
+import com.callor.hello.models.UserCompSearchDto;
 import com.callor.hello.models.UserCompVO;
-import com.callor.hello.models.UserSearchDto;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.TeacherService;
 import com.callor.hello.service.UserService;
@@ -30,40 +30,28 @@ public class UserController {
 	private final UserCompDao userCompDao;
 	private final UserService userSerivce;
 	private final TeacherService teacherService;
+	private final CompanyDao companyDao;
 
 
 	public UserController(UserDao userDao, UserCompDao userCompDao, UserService userSerivce,
-			TeacherService teacherService) {
+			TeacherService teacherService, CompanyDao companyDao) {
 		super();
 		this.userDao = userDao;
 		this.userCompDao = userCompDao;
 		this.userSerivce = userSerivce;
 		this.teacherService = teacherService;
+		this.companyDao = companyDao;
 	}
 
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
-	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model, UserVO vo, UserCompVO userCompVO ) { 
-				
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		if (authentication.getPrincipal() instanceof UserVO) {
-//			UserVO detail = (UserVO) authentication.getPrincipal();
-//			
-//			String cname = detail.getU_comp();
-//			log.debug("사용자의 업체명 {}", cname);
-//			String ccode = userCompDao.findByCcode(cname);
-//			log.debug("사용자의 업체코드{}", ccode);
-//			model.addAttribute("CCODE", ccode);
-//		}
+	public String List(@ModelAttribute("SEARCH") UserCompSearchDto userCompSearchDto, Model model, UserVO vo, UserCompVO userCompVO ) { 
 		
 		String c_code = teacherService.getLoginCCode();
 
-//		List<UserCompVO> company= userCompDao.selectAll(c_code);
-//		model.addAttribute("COMP", company);
-		userSearchDto.setCcode(c_code);
-		List<UserVO> userList = userDao.selectSearchAll(userSearchDto);
-				
+		userCompSearchDto.setCcode(c_code);
+		List<UserCompVO> userList = userCompDao.selectSearchAll(userCompSearchDto);
+		model.addAttribute("CCODE", c_code);
 		model.addAttribute("BODY", "USER_LIST");
-
 		model.addAttribute("USER", userList);
 		
 		return "layout";
@@ -71,12 +59,16 @@ public class UserController {
 	
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
 	public String insert(UserCompVO userCompVO, UserVO userVO, Model model) {
+		// 유저 리스트 
 		List<UserVO> list = userDao.selectAll();
 		model.addAttribute("USER", list);
 		
+		String ccode = teacherService.getLoginCCode();
+		String cname = companyDao.findCname(ccode);
 		
+		model.addAttribute("CCODE", ccode);
+		model.addAttribute("CNAME", cname);
 		model.addAttribute("BODY", "USER_INSERT");
-		
 		return "layout";
 	}
 	
@@ -124,7 +116,6 @@ public class UserController {
 	
 	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
 	public String delete(@PathVariable("seq") String seq) {
-		
 		int result = 0;
 		
 		try {
@@ -132,24 +123,23 @@ public class UserController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 		if(result > 0) {
 			return "redirect:/customer";
 		}
-		
-		
-		
 		return null;
 	}
 	
 	@RequestMapping(value="/insert/{seq}")
 	public String json(@PathVariable("seq") String seq) {
-		
-		UserVO userVO = userSerivce.findById(seq);
-		
+		userSerivce.findById(seq);
 		return null;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)
+	public UserVO get(@PathVariable("id") String id,Model model) {
+		return userDao.findById(id);
+	}
 	
 	
 	

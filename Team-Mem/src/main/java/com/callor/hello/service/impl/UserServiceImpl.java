@@ -19,6 +19,7 @@ import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.RoleVO;
 import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserVO;
+import com.callor.hello.service.TeacherService;
 import com.callor.hello.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,16 +31,19 @@ public class UserServiceImpl implements UserService{
 	private final RoleDao roleDao;
 	private final CompanyDao companyDao; 
 	private final UserCompDao userCompDao;
+	private final TeacherService teacherService;
 
 	public UserServiceImpl(
 			@Qualifier("passEncorderV1") PasswordEncoder passEncoder, 
-			UserDao userDao, RoleDao roleDao, CompanyDao companyDao, UserCompDao userCompDao) {
+			UserDao userDao, RoleDao roleDao, CompanyDao companyDao,
+			UserCompDao userCompDao,TeacherService teacherService) {
 		super();
 		this.passEncoder = passEncoder;
 		this.userDao = userDao;
 		this.roleDao = roleDao;
 		this.companyDao = companyDao;
 		this.userCompDao = userCompDao;
+		this.teacherService = teacherService;
 	}
 
 	@Transactional
@@ -114,7 +118,7 @@ public class UserServiceImpl implements UserService{
 			UserVO list = (UserVO)authentication.getPrincipal();
 			String ucomp = list.getU_comp();
 			 log.debug("사용자의 업체명 service {}",ucomp);
-			 String comp = userCompDao.findByCcode(ucomp);
+			 String comp = teacherService.getLoginCCode();
 			 log.debug("사용자의 업체코드 service {}",comp);
 			 List<UserCompVO> ucList = new ArrayList<>();
 			 

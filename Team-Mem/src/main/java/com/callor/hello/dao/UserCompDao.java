@@ -6,7 +6,10 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
 import com.callor.hello.models.CompanyVO;
+import com.callor.hello.models.UserCompSearchDto;
 import com.callor.hello.models.UserCompVO;
+import com.callor.hello.models.UserSearchDto;
+import com.callor.hello.models.UserVO;
 
 public interface UserCompDao {
 
@@ -20,15 +23,15 @@ public interface UserCompDao {
 
 	@Select(" SELECT * FROM tbl_user_comp WHERE us_uid = #{username} ")
 	public UserCompVO findById(String us_uid);
-	
-	@Select(" SELECT c_code FROM tbl_company WHERE c_name = #{cname} ")
-	public String findByCcode(String u_comp);
 
 	public int update(UserCompVO VO);
-
 	
 	@Delete(" DELETE FROM tbl_user_comp WHERE us_uid = #{us_uid} ")
 	public int delete(String seq);
+
+	public List<UserCompVO> selectSearchAll(UserCompSearchDto userCompSearchDto);
+
+
 	
 
 }

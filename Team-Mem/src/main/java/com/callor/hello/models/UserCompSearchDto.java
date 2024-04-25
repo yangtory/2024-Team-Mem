@@ -14,8 +14,8 @@ import lombok.ToString;
 public class UserCompSearchDto {
 
 	private String uid;
-	
 	private String uname;
 	private String utel;
+	private String ccode;
 	
 }

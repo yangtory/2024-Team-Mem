@@ -16,4 +16,7 @@ public interface CompanyDao {
 	@Select(" SELECT c_code FROM tbl_company")
 	public String findCode(List<CompanyVO>list);
 
+	@Select(" SELECT c_name FROM tbl_company WHERE c_code = #{ccode} ")
+	public String findCname(String ccode);
+
 }
