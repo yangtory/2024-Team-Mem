@@ -2,6 +2,8 @@ package com.callor.hello.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.UserCompDao;
@@ -135,9 +138,11 @@ public class UserController {
 		return null;
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)
-	public UserVO get(@PathVariable("id") String id,Model model) {
+	public UserVO get(@PathVariable("id") String id,Model model,  HttpServletResponse response) {
+		UserVO vo = userDao.findById(id);
 		return userDao.findById(id);
 	}
 	
