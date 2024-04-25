@@ -77,6 +77,12 @@
 			<c:if test="${BODY == 'SCHEDULE_UPDATE'}">
 				<%@ include file="/WEB-INF/views/schedule/update.jsp"%>
 			</c:if>
+			<c:if test="${BODY == 'CLASS_MAIN'}">
+				<%@ include file="/WEB-INF/views/class/main.jsp"%>
+			</c:if>
+			<c:if test="${BODY == 'CLASS_DETAIL'}">
+				<%@ include file="/WEB-INF/views/class/detail.jsp"%>
+			</c:if>
 		</section>
 	</div>
 </body>

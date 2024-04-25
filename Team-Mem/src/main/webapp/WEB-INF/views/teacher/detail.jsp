@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
-<div><strong>¾÷Ã¼ÄÚµå</strong><span>${LIST.t_ccode}</span></div>
-<div><strong>°­»çÄÚµå</strong><span>${LIST.t_code}</span></div>
-<div><strong>ÀÌ¸§</strong><span>${LIST.t_name}</span></div>
-<div><strong>ÀüÈ­¹øÈ£</strong><span>${LIST.t_tel}</span></div>
+<div><strong>ì—…ì²´ì½”ë“œ</strong><span>${LIST.t_ccode}</span></div>
+<div><strong>ê°•ì‚¬ì½”ë“œ</strong><span>${LIST.t_code}</span></div>
+<div><strong>ì´ë¦„</strong><span>${LIST.t_name}</span></div>
+<div><strong>ì „í™”ë²ˆí˜¸</strong><span>${LIST.t_tel}</span></div>
 <div><strong></strong><span>
-	<a href="${rootPath }/teacher/update/${LIST.t_code}">¼öÁ¤</a>
-	<a href="${rootPath }/teacher/delete/${LIST.t_code}">»èÁ¦</a>
+	<a href="${rootPath }/teacher/update/${LIST.t_code}">ìˆ˜ì •</a>
+	<a href="${rootPath }/teacher/delete/${LIST.t_code}">ì‚­ì œ</a>
 </span></div>

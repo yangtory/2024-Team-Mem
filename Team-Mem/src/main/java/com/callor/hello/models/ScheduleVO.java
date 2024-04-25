@@ -20,5 +20,5 @@ public class ScheduleVO {
 	private String s_content; // VARCHAR(125),
 	private String 	s_sdate; // VARCHAR(15) 	,
 	private String s_edate; // VARCHAR(15)	
-	
+	private String s_ccode; // VARCHAR(10)
 }
