@@ -18,6 +18,6 @@ public class UserSearchDto {
 	
 	private String uname;		// VARCHAR(10)	NOT NULL	,
 	private String utel;		// VARCHAR(15)	NOT NULL	,
-	
+	private String ccode;
 	
 }

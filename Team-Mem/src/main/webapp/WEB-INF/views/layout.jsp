@@ -6,16 +6,16 @@
 <!DOCTYPE html>
 <html>
 <%-- <tiles:insertAttribute name="head" /> --%>
-<%@ include file="/WEB-INF/views/include/include-head.jsp" %>
+<%@ include file="/WEB-INF/views/include/include-head.jsp"%>
 <body>
 	<%-- <tiles:insertAttribute name="header" /> --%>
-	<%@ include file="/WEB-INF/views/include/include-header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 	<div class="main">
 		<%-- <tiles:insertAttribute name="sidebar" /> --%>
-		<%@ include file="/WEB-INF/views/include/include-sidebar.jsp" %>
+		<%@ include file="/WEB-INF/views/include/include-sidebar.jsp"%>
 		<section>
-		<%-- <tiles:insertAttribute name="content"/> --%>
-		 	<c:if test="${BODY == 'TEACHER_HOME'}">
+			<%-- <tiles:insertAttribute name="content"/> --%>
+			<c:if test="${BODY == 'TEACHER_HOME'}">
 				<%@ include file="/WEB-INF/views/teacher/home.jsp"%>
 			</c:if>
 			<c:if test="${BODY == 'TEACHER_INSERT' }">
@@ -73,6 +73,9 @@
 			</c:if>
 			<c:if test="${BODY == 'SCHEDULE_DETAIL'}">
 				<%@ include file="/WEB-INF/views/schedule/detail.jsp"%>
+			</c:if>
+			<c:if test="${BODY == 'SCHEDULE_UPDATE'}">
+				<%@ include file="/WEB-INF/views/schedule/update.jsp"%>
 			</c:if>
 		</section>
 	</div>

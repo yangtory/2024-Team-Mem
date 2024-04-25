@@ -3,10 +3,14 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script src="${rootPath }/static/js/calendar/detail.js"></script>
+<script>
+	const rootPath = "${rootPath}"
+</script>
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
 <a href="${rootPath }/schedule/insert/${SDATE }">추가</a>
-<table class="customer list">
+<table class="schedule list">
 	<thead>
 		<tr>
 			<th>SEQ</th>
@@ -19,7 +23,7 @@
 
 	</thead>
 
-	<tbody>
+	<tbody class="body">
 		<c:forEach items="${LIST}" var="LIST" varStatus="INDEX">
 			<tr data-id="${LIST.s_seq }">
 				<td>${INDEX.count}</td>

@@ -17,6 +17,12 @@ TRUNCATE tbl_company;
 TRUNCATE tbl_user_comp;
 TRUNCATE tbl_notice;
 
+SELECT * 
+		FROM tbl_user_comp uc
+		LEFT JOIN tbl_user u ON u.u_id = uc.us_uid
+		where uc.us_ccode = 'C0001';
+	
+
 -- 승희추가할거
 ALTER TABLE TBL_NOTICE
 ADD COLUMN n_date VARCHAR(10) NOT NULL,
