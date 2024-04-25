@@ -12,29 +12,29 @@
 	<f:form class="formBox">
 		<div><input class ="us_uid" placeholder="유저ID" name="us_uid" value="${COMP.us_uid }"/></div>
 		<div><input class ="us_uname" placeholder="이름" name="us_uname" value="${COMP.us_uname }"/></div>
-		<div><input class ="us_utel" placeholder="전화번호" name="us_utel" value="${COMP.us_utel }"/></div>
+		<div><input class ="us_utel" type="hidden" placeholder="전화번호" name="us_utel" value="${COMP.us_utel }"/></div>
 		<div><input class ="us_cname" placeholder="업체명" name="us_cname" value="${CNAME}" readonly/></div>
 		<div><input class ="us_ccode" placeholder="업체코드" name="us_ccode" value="${CCODE}" readonly/></div>
-		<div><button>저장</button></div>
+		<div><input type= "submit" value="${COMP != null ? '수정' : '저장' }"></div>
 	</f:form>
 
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>이름</th>
-				<th>전화번호</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${USER }" var="USER">
-				<tr data-id = "${USER.u_id }">
-					<td>${USER.u_id }</td>
-					<td>${USER.u_name }</td>
-					<td>${USER.u_tel}</td>
+	<c:if test="${COMP == null}">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>이름</th>
 				</tr>
-			</c:forEach>
-		</tbody>		
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${USER }" var="USER">
+					<tr data-id = "${USER.u_id }">
+						<td>${USER.u_id }</td>
+						<td>${USER.u_name }</td>
+					</tr>
+				</c:forEach>
+			</tbody>		
+		</table>
+	</c:if>
 </div>
 

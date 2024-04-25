@@ -83,7 +83,6 @@ public class UserController {
 	public String detail(@PathVariable("seq") String seq, Model model, UserCompVO userCompVO) {
 		
 		model.addAttribute("BODY", "USER_DETAIL");
-		log.debug(seq);
 		UserCompVO vo = userCompDao.findById(seq);
 		
 		model.addAttribute("LIST", vo);
@@ -94,9 +93,12 @@ public class UserController {
 	}
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
 	public String update(@PathVariable("seq") String seq, UserCompVO vo, Model model) {
-		
 		UserCompVO list = userCompDao.findById(seq);
+		String ccode = teacherService.getLoginCCode();
+		String cname = companyDao.findCname(ccode);
 		
+		model.addAttribute("CCODE", ccode);
+		model.addAttribute("CNAME", cname);
 		
 		model.addAttribute("BODY", "USER_UPDATE");
 		model.addAttribute("COMP",list);

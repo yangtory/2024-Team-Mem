@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const us_id = inputBox.querySelector('input.us_uid');
     const us_uname = inputBox.querySelector('input.us_uname');
     const us_utel = inputBox.querySelector('input.us_utel');
-    const us_cname = inputBox.querySelector('input.us_cname');
-    const us_ccode = inputBox.querySelector('input.us_ccode');
 
     body.addEventListener('click', async (e) => {
         const target = e.target;
@@ -15,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const res = await fetch(`${rootPath}/customer/get/${id}`);
             const json = await res.json();
-            console.log(json);
+
+            us_id.value = json.u_id;
+            us_uname.value = json.u_name;
+            us_utel.value = json.u_tel;
         }
     });
 });

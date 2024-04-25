@@ -11,7 +11,11 @@ SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
-SET FOREIGN_KEY_CHECKS = 1;
+
+SELECT * FROM tbl_schedule
+ORDER BY s_sdate DESC, s_edate DESC;
+TRUNCATE tbl_schedule;
+
 TRUNCATE tbl_user;
 TRUNCATE tbl_company;
 TRUNCATE tbl_user_comp;
@@ -85,8 +89,6 @@ c_ccode VARCHAR(10) NOT NULL,
     ON DELETE CASCADE
 );
 
-
-
 CREATE TABLE tbl_notice(
 n_seq	INT		AUTO_INCREMENT PRIMARY KEY,
 n_title	VARCHAR(125)	NOT NULL	,
@@ -113,6 +115,15 @@ i_ccode VARCHAR(10) NOT NULL,
     ON DELETE CASCADE
 );
 
+CREATE TABLE tbl_schedule (
+	s_seq	INT		PRIMARY KEY AUTO_INCREMENT,
+	s_title	VARCHAR(50)	NOT NULL	,
+	s_content VARCHAR(125),
+	
+	s_sdate VARCHAR(15) 	,
+	s_edate VARCHAR(15)	
+
+);
 
 -- user, minfo 릴레이션 테이블
 CREATE TABLE tbl_user_minfo(
@@ -132,69 +143,12 @@ CREATE TABLE tbl_user_comp(
 
 );
 
-
--- 데이터 추가 후 실행하기
-
-ALTER TABLE tbl_teacher
-ADD CONSTRAINT FK_CCODE
-FOREIGN KEY (t_ccode)
-REFERENCES tbl_company(c_code);
-
-
-ALTER TABLE tbl_company
-ADD CONSTRAINT FK_UID
-FOREIGN KEY (c_uid)
-REFERENCES tbl_user(u_id);
-
-ALTER TABLE tbl_class
-ADD CONSTRAINT FK_TCODE
-FOREIGN KEY (c_tcode)
-REFERENCES tbl_teacher(t_code);
-
-ALTER TABLE tbl_class
-ADD CONSTRAINT FK_CCCODE
-FOREIGN KEY (c_ccode)
-REFERENCES tbl_company(c_code);
-
-ALTER TABLE tbl_notice
-ADD CONSTRAINT FK_NCCODE
-FOREIGN KEY (n_ccode)
-REFERENCES tbl_company(c_code);
-
-ALTER TABLE tbl_notice
-ADD CONSTRAINT FK_NUID
-FOREIGN KEY (n_uid)
-REFERENCES tbl_user(u_id);
-
-
-ALTER TABLE tbl_user_minfo
-ADD CONSTRAINT FK_MINFO 
-FOREIGN KEY(r_iseq)
-REFERENCES tbl_minfo(i_seq);
-
-ALTER TABLE tbl_user_minfo
-ADD CONSTRAINT FK_USER
-FOREIGN KEY(r_uid)
-REFERENCES tbl_user(u_id);
-
-SELECT * FROM tbl_class
-LEFT JOIN tbl_teacher
-ON c_tcode = t_code
-LEFT JOIN tbl_company
-ON c_ccode = c_code;
-
-
-
-SELECT * FROM tbl_user_minfo
-LEFT JOIN tbl_user
-	ON r_uid = u_id
-LEFT JOIN tbl_minfo
-	ON r_iseq = i_seq;
-    
-    
-
-SELECT * FROM tbl_user
-WHERE u_role = "일반사용자";
+-- company, schedule 릴레이션 테이블 
+CREATE TABLE tbl_comp_sche(
+cs_code	VARCHAR(10)		,
+cs_seq	INT	,
+CONSTRAINT cs_pk PRIMARY KEY(cs_code, cs_seq)
+);
 
 SELECT u.u_id, u.u_name, u.u_tel, u.u_role,
        c.c_code, c.c_name, c.c_addr
@@ -206,18 +160,6 @@ SELECT u.*, uc.us_cname , uc.us_ccode
 		FROM tbl_user u
 		LEFT JOIN tbl_user_comp uc ON u.u_id = uc.us_uid
         WHERE uc.us_ccode = "C001";
-        
-        
-        
-CREATE TABLE tbl_schedule (
-	s_seq	INT		PRIMARY KEY AUTO_INCREMENT,
-	s_title	VARCHAR(50)	NOT NULL	,
-	s_content VARCHAR(125),
-	
-	s_sdate VARCHAR(15) 	,
-	s_edate VARCHAR(15)	
-
-);
 
 INSERT INTO tbl_schedule(s_title,s_content,s_sdate, s_edate)
 values('ㅎㅇ', 'ㅎㅇ','2024-04-20','2024-04-25');
@@ -225,6 +167,4 @@ INSERT INTO tbl_schedule(s_title,s_content,s_sdate, s_edate)
 values('ㄱㄱ', 'ㄱㄱ','2024-04-25','2024-04-30');
 
 
-SELECT * FROM tbl_schedule
-ORDER BY s_sdate DESC, s_edate DESC;
-TRUNCATE tbl_schedule;
+
