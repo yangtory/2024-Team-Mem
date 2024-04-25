@@ -16,6 +16,7 @@ import com.callor.hello.dao.UserDao;
 import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserSearchDto;
 import com.callor.hello.models.UserVO;
+import com.callor.hello.service.TeacherService;
 import com.callor.hello.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,30 +29,37 @@ public class UserController {
 	private final UserDao userDao;
 	private final UserCompDao userCompDao;
 	private final UserService userSerivce;
-	public UserController(UserDao userDao, UserCompDao userCompDao, UserService userService) {
+	private final TeacherService teacherService;
+
+
+	public UserController(UserDao userDao, UserCompDao userCompDao, UserService userSerivce,
+			TeacherService teacherService) {
+		super();
 		this.userDao = userDao;
 		this.userCompDao = userCompDao;
-		this.userSerivce = userService;
+		this.userSerivce = userSerivce;
+		this.teacherService = teacherService;
 	}
 
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String List(@ModelAttribute("SEARCH") UserSearchDto userSearchDto, Model model, UserVO vo, UserCompVO userCompVO ) { 
 				
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication.getPrincipal() instanceof UserVO) {
-			UserVO detail = (UserVO) authentication.getPrincipal();
-			
-			String cname = detail.getU_comp();
-			log.debug("사용자의 업체명 {}", cname);
-			String ccode = userCompDao.findByCcode(cname);
-			log.debug("사용자의 업체코드{}", ccode);
-			model.addAttribute("CCODE", ccode);
-			List<UserCompVO> company= userCompDao.selectAll(ccode);
-			model.addAttribute("COMP", company);
-		}
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		if (authentication.getPrincipal() instanceof UserVO) {
+//			UserVO detail = (UserVO) authentication.getPrincipal();
+//			
+//			String cname = detail.getU_comp();
+//			log.debug("사용자의 업체명 {}", cname);
+//			String ccode = userCompDao.findByCcode(cname);
+//			log.debug("사용자의 업체코드{}", ccode);
+//			model.addAttribute("CCODE", ccode);
+//		}
 		
-		
+		String c_code = teacherService.getLoginCCode();
 
+//		List<UserCompVO> company= userCompDao.selectAll(c_code);
+//		model.addAttribute("COMP", company);
+		userSearchDto.setCcode(c_code);
 		List<UserVO> userList = userDao.selectSearchAll(userSearchDto);
 				
 		model.addAttribute("BODY", "USER_LIST");

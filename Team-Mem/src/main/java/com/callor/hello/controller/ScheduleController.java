@@ -131,15 +131,31 @@ public class ScheduleController {
 		model.addAttribute("BODY","SCHEDULE_UPDATE");
 		ScheduleVO list = scheduleDao.findByseq(seq);
 		model.addAttribute("LIST", list);
+		model.addAttribute("SEQ", seq);
 		
 		return "layout";
 	}
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
-	public String update(@PathVariable("seq") String seq) {
+	public String update(@PathVariable("seq") int seq, ScheduleVO vo) {
+		vo.setS_seq(seq);
 		
+		scheduleDao.update(vo);
+		
+		
+		String redString = String.format("redirect:/schedule", vo.getS_seq());
 
 		
-		return "layout";
+		return redString;
 	}
+	
+	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable("seq") int seq, ScheduleVO vo) {
+		vo.setS_seq(seq);
+		
+		scheduleDao.delete(vo);
+		String redString = String.format("redirect:/schedule", vo.getS_seq());
+		return redString;
+	}
+	
 	
 }
