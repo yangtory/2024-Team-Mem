@@ -138,7 +138,8 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)
 	public UserVO get(@PathVariable("id") String id,Model model) {
-		return userDao.findById(id);
+		UserVO vo =userDao.findById(id);
+		return vo;
 	}
 	
 	
