@@ -10,6 +10,7 @@ import com.callor.hello.dao.ScheduleDao;
 import com.callor.hello.models.ClassVO;
 import com.callor.hello.models.ScheduleVO;
 import com.callor.hello.service.ScheduleService;
+import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,11 +20,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 	private final ScheduleDao scheduleDao;
 	private final ClassDao classDao;
+	private final TeacherService teacherService;
 
-	public ScheduleServiceImpl(ScheduleDao scheduleDao, ClassDao classDao) {
+	public ScheduleServiceImpl(ScheduleDao scheduleDao, ClassDao classDao, TeacherService teacherService) {
 		super();
 		this.scheduleDao = scheduleDao;
 		this.classDao = classDao;
+		this.teacherService = teacherService;
 	}
 
 
@@ -64,22 +67,22 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public int insertDate(ClassVO vo) {
 		String c_sdate = vo.getC_sdate();
 		String c_edate = vo.getC_edate();
-		String c_tcode = "T0001";
+		String t_code = teacherService.createTCode();
 		List<ClassVO> list = new ArrayList<>();
 		if(c_edate.isEmpty()) {
 			list.add(vo.builder()
 
 					.build());
 			vo.setC_edate(c_sdate);
-			vo.setC_tcode(c_tcode);
+			vo.setC_tcode(t_code);
 			classDao.insert(vo);
 		
 		} else {
 			list.add(vo.builder()
-					.c_tcode(c_tcode)
+					.c_tcode(t_code)
 					.c_sdate(c_sdate)
 					.c_edate(c_edate).build());
-			vo.setC_tcode(c_tcode);
+			vo.setC_tcode(t_code);
 			classDao.insert(vo);
 			
 		}

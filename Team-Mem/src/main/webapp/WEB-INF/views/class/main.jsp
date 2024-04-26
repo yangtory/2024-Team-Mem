@@ -6,7 +6,7 @@
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath }/static/js/class.js"></script>
+<script src="${rootPath }/static/js/class/class.js"></script>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 

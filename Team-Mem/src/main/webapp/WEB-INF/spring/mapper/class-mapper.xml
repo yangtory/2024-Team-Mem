@@ -4,18 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.callor.hello.dao.ClassDao">
+
+
+
+    <select id="selectAll">
+        SELECT * FROM tbl_class
+        WHERE c_ccode = #{code} 
+        ORDER BY c_sdate ASC, c_edate DESC 
+    </select>
+    <select id="findById"></select>
+    <insert id="insert">
+        INSERT INTO tbl_class(
+        c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode) 
+        VALUES(
+        #{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, "T0001", #{c_ccode})
+    </insert>
+
+        
+    <update id="update"></update>
+    <delete id="delete"></delete>
+
+</mapper>
  
- 	
- 	<select id="findById"></select>
- 	<insert id="insert">
- 		INSERT INTO tbl_class(
- 		c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode) 
-		VALUES(
-		#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode})
-		
- 	
- 	</insert>
- 	<update id="update"></update>
- 	<delete id="delete"></delete>
- 
- </mapper> 

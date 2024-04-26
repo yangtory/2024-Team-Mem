@@ -165,11 +165,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (viewMonthStr.length === 1) {
       viewMonthStr = "0" + viewMonthStr;
     }
-
     if (target.tagName === "SPAN" || target.classList.contains("date")) {
-      const click = target.closest("DIV").innerText[0];
-      const click2 = target.closest("DIV").innerText[1];
-      const dates = `${viewYear}-${viewMonthStr}-${click}${click2}`;
+      // trim 공백제거 , slice 날짜의 일자를 추출
+      const click = target.closest("DIV").innerText.trim().slice(0, 2);
+      let viewDateStr = String(click);
+
+      if (viewDateStr.length === 1) {
+        viewDateStr = "0" + viewDateStr;
+      }
+      const dates = `${viewYear}-${viewMonthStr}-${viewDateStr}`;
+      console.log(dates);
+      console.log(viewDateStr);
       document.location.href = `${rootPath}/class/detail/${dates}`;
     }
   });

@@ -9,7 +9,13 @@
 
 <f:form>
 	<div><input placeholder="수업명" name="c_name"/></div>
-	<div><input placeholder="강사명" /></div>
+	<div>
+		<select name="c_tcode">
+			<c:forEach items="${TLIST }" var="TEACHER">
+				<option value="${TEACHER.t_name }"${TEACHER.t_name == } ></option>
+			</c:forEach>
+		</select>	
+	</div>
 	<div><input placeholder="개강일자" type="date" value="${SDATE }" name="c_sdate"/></div>
 	<div><input placeholder="종강일자" type="date" name="c_edate" /></div>
 	<div><input placeholder="시작시간" name="c_stime" /></div>

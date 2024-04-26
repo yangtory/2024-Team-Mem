@@ -35,6 +35,9 @@ public interface TeacherDao {
 	@Select("SELECT * FROM tbl_teacher WHERE t_ccode = #{comp}")
 	public List<TeacherVO> selectAllComp(String comp);
 
+	@Select("SELECT t_name FROM tbl_teacher WHERE t_ccode = #{code}")
+	public List<TeacherVO> findByName(String code);
+
 	
 
 	
