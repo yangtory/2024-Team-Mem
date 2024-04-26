@@ -82,11 +82,12 @@ t_ccode VARCHAR(10) NOT NULL,
     REFERENCES tbl_company(c_code)
     ON DELETE CASCADE
 );
-
+DROP TABLE tbl_class;
 CREATE TABLE tbl_class(
 c_seq	INT		PRIMARY KEY AUTO_INCREMENT,
 c_name	VARCHAR(50)	NOT NULL	,
-c_date	VARCHAR(15)	NOT NULL	,
+c_sdate	VARCHAR(15)	NOT NULL	,
+c_edate	VARCHAR(15)	NOT NULL	,
 c_stime	VARCHAR(15)	NOT NULL,
 c_etime VARCHAR(15) NOT NULL,
 c_tcode VARCHAR(10) NOT NULL,

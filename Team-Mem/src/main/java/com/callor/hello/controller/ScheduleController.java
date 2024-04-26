@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.hello.dao.CompScheDao;
 import com.callor.hello.dao.ScheduleDao;
+import com.callor.hello.models.CompScheVO;
 import com.callor.hello.models.ScheduleVO;
 import com.callor.hello.service.ScheduleService;
-import com.callor.hello.service.impl.ScheduleServiceImpl;
+import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,22 +25,28 @@ public class ScheduleController {
 	
 	private final ScheduleDao scheduleDao;
 	private final ScheduleService scheduleService;
-	
-	
-	public ScheduleController(ScheduleDao scheduleDao, ScheduleService scheduleService) {
+	private final TeacherService teacherSerive;
+
+	public ScheduleController(ScheduleDao scheduleDao, ScheduleService scheduleService, TeacherService teacherSerive) {
 		super();
 		this.scheduleDao = scheduleDao;
 		this.scheduleService = scheduleService;
+		this.teacherSerive = teacherSerive;
 	}
 
 
 	@RequestMapping(value= {"/",""}, method = RequestMethod.GET)
 	public String main(Model model, ScheduleVO vo) {
-		List<ScheduleVO>list = scheduleDao.selectAll();
+		
+		String code = teacherSerive.getLoginCCode();
+		vo.setS_ccode(code);
+		
+		List<ScheduleVO>list = scheduleDao.selectAll(code);
+		log.debug("LIST", list);
 		
 		model.addAttribute("BODY","SCHEDULE_MAIN");
 		model.addAttribute("LIST", list);
-		log.debug("LIST{}", list.toString());
+		
 		
 		return "layout";
 	}
@@ -48,12 +56,14 @@ public class ScheduleController {
 	public String insert(@PathVariable("sdate") String sdate, Model model) {
 		model.addAttribute("BODY","SCHEDULE_INSERT");
 		model.addAttribute("SDATE", sdate);
+
 		return "layout";
 	}
 	
 	@RequestMapping(value="/insert/{sdate}", method=RequestMethod.POST)
 	public String insert(Model model, ScheduleVO vo) {
-		
+		String code = teacherSerive.getLoginCCode();
+		vo.setS_ccode(code);
 		scheduleService.insertDate(vo);
 		log.debug("date {}", vo);
 		
@@ -71,8 +81,10 @@ public class ScheduleController {
 	}
 	@ResponseBody
 	@RequestMapping(value="/get", method=RequestMethod.GET, produces = "application/json; charset=utf-8")
-	public String get() {
-	    List<ScheduleVO> vo = scheduleDao.selectAll();
+	public String get(ScheduleVO scheduleVO) {
+		String code = teacherSerive.getLoginCCode();
+		scheduleVO.setS_ccode(code);
+	    List<ScheduleVO> vo = scheduleDao.selectAll(code);
 	    
 	    if(vo != null) {
 	        // ScheduleVO 객체를 JSON 문자열로 직렬화
@@ -100,10 +112,11 @@ public class ScheduleController {
 	
 	
 	@RequestMapping(value="/detail/{sdate}",method=RequestMethod.GET)
-	public String detail(@PathVariable("sdate") String sdate, Model model) {
-		
+	public String detail(@PathVariable("sdate") String sdate, Model model, ScheduleVO vo) {
+		String code = teacherSerive.getLoginCCode();
+		vo.setS_ccode(code);
 		model.addAttribute("BODY", "SCHEDULE_DETAIL");
-		List<ScheduleVO> list = scheduleDao.findByDate(sdate);
+		List<ScheduleVO> list = scheduleDao.findByDate(sdate, code);
 		
 		model.addAttribute("SDATE", sdate);
 		model.addAttribute("LIST", list);
@@ -133,7 +146,6 @@ public class ScheduleController {
 	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
 	public String delete(@PathVariable("seq") int seq, ScheduleVO vo) {
 		vo.setS_seq(seq);
-		
 		scheduleDao.delete(vo);
 		String redString = String.format("redirect:/schedule", vo.getS_seq());
 		return redString;

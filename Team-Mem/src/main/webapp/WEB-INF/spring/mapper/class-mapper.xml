@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.callor.hello.dao.ClassDao">
+ 
+ 	
+ 	<select id="findById"></select>
+ 	<insert id="insert">
+ 		INSERT INTO tbl_class(
+ 		c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode) 
+		VALUES(
+		#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode})
+		
+ 	
+ 	</insert>
+ 	<update id="update"></update>
+ 	<delete id="delete"></delete>
+ 
+ </mapper> 
