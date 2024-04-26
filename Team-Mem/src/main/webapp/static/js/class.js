@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let month_text = String(viewMonth + 1);
 
     // 데이터 가져오기
-    const res = await fetch(`${rootPath}/schedule/get`);
+    const res = await fetch(`${rootPath}/class/get`);
     const json = await res.json();
 
     const day_all = document.querySelectorAll(".this");
@@ -72,12 +72,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       const formattedDate = formatDate(currentDate);
 
       // 해당 날짜에 속하는 일정들을 가져옴
-      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
+      const schedules = json.filter(
+        (schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate
+      );
 
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
-        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
+        if (
+          !existingTitleContainer ||
+          !existingTitleContainer.classList.contains("title-container")
+        ) {
           // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
           const titleContainer = document.createElement("span");
           titleContainer.classList.add("title-container");

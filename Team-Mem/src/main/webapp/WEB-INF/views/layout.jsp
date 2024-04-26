@@ -83,6 +83,9 @@
 			<c:if test="${BODY == 'CLASS_DETAIL'}">
 				<%@ include file="/WEB-INF/views/class/detail.jsp"%>
 			</c:if>
+			<c:if test="${BODY == 'CLASS_INSERT'}">
+				<%@ include file="/WEB-INF/views/class/insert.jsp"%>
+			</c:if>
 		</section>
 	</div>
 </body>
