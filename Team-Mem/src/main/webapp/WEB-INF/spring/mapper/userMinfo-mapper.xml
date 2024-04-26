@@ -14,8 +14,16 @@
 		INSERT INTO tbl_user_minfo(r_iseq,r_uid)
 		VALUES(#{r_iseq}, #{us_uid})
 	</insert>
+	
+	<select id="findById">
+		SELECT * FROM tbl_user_minfo
+		JOIN tbl_minfo ON r_iseq = i_seq
+		WHERE r_uid = #{seq}
+	</select>
 
 	<update id="update"></update>
-	<delete id="delete"></delete>
+	<delete id="delete">
+		DELETE FROM tbl_user_minfo WHERE r_uid = #{seq}
+	</delete>
 
 </mapper> 

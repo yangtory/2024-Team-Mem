@@ -9,4 +9,8 @@ public interface UserMinfoDao {
 
 	public int insert(UserMinfoVO userMinfoVO);
 
+	public int delete(String seq);
+
+	public UserMinfoVO findById(String seq);
+
 }

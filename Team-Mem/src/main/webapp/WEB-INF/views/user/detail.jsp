@@ -11,6 +11,8 @@
 <div><strong>이름</strong><span>${LIST.us_uname}</span></div>
 <div><strong>업체코드</strong><span>${LIST.us_ccode}</span></div>
 <div><strong>업체명</strong><span>${LIST.us_cname}</span></div>
+<div><strong>수강권</strong><span>${MINFO.i_title}</span></div>
+<div><strong>잔여횟수</strong><span>${MINFO.i_count}</span></div>
 <div><strong></strong><span>
 	<a href="${rootPath }/customer/update/${LIST.us_uid}">수정</a>
 	<a href="${rootPath }/customer/delete/${LIST.us_uid}">삭제</a>

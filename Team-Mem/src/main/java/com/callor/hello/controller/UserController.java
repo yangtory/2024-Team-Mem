@@ -73,7 +73,6 @@ public class UserController {
 		
 		// 회원권리스트
 		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
-		log.debug("list {} ", mInfoList);
 		model.addAttribute("MINFO", mInfoList);
 		
 		model.addAttribute("CCODE", ccode);
@@ -85,6 +84,7 @@ public class UserController {
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(UserCompVO userCompVO, UserVO userVO, UserMinfoVO userMinfoVO) {
 		userSerivce.codeInput(userVO, userCompVO);
+		
 		userMinfoVO.setR_uid(userVO.getU_id());
 		int result = userMinfoDao.insert(userMinfoVO);
 			log.debug("insert {}", result);
@@ -96,10 +96,11 @@ public class UserController {
 		
 		model.addAttribute("BODY", "USER_DETAIL");
 		UserCompVO vo = userCompDao.findById(seq);
+		UserMinfoVO mInfoVO = userMinfoDao.findById(seq);
+		log.debug("회원 수강권 정보{} ", mInfoVO);
 		
+		model.addAttribute("MINFO", mInfoVO);
 		model.addAttribute("LIST", vo);
-		
-		
 		
 		return "layout";
 	}
@@ -134,6 +135,7 @@ public class UserController {
 		
 		try {
 			result = userCompDao.delete(seq);
+			userMinfoDao.delete(seq);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

@@ -130,7 +130,10 @@ CREATE TABLE tbl_user_minfo(
 r_uid	VARCHAR(20)	NOT NULL,
 r_iseq	INT	NOT NULL,
 
-CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid)
+CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid),
+    FOREIGN KEY (r_iseq)
+    REFERENCES tbl_minfo(i_seq)
+    ON DELETE CASCADE
 );
 
 -- user, comp 릴레이션 테이블
