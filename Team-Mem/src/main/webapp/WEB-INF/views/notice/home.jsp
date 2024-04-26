@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<script src="${rootPath }/static/js/notice.js?04-23-002"></script>
+<script src="${rootPath }/static/js/notice.js?"></script>
 
 <a class="button-32" href="${rootPath }/notice/insert"> 글쓰기 </a>
 <div class="notice search">

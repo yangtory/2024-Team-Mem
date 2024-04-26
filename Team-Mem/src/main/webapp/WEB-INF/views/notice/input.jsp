@@ -9,5 +9,5 @@
 	<div><label>제목</label><input name="n_title" value="${VO.n_title }"></div>
 	<div><label>내용</label><textarea name="n_content" rows="20" >${VO.n_content }</textarea>
 </div>
-	<div><input type="submit" class="insert" value="${VO != null ? '수정' : '저장' }"></div>
+	<div><input type="button" class="insert" value="${VO != null ? '수정' : '저장' }"></div>
 </f:form>

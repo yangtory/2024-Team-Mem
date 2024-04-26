@@ -15,19 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const input_form = document.querySelector("form.teacher.input_box");
-  const tcode = input_form.querySelector("input[name='t_code']");
-  const tname = input_form.querySelector("input[name='t_name']");
-  const ttel = input_form.querySelector("input[name='t_tel']");
-  const input_form_btn = document.querySelector("input.insert");
+  const tname = input_form?.querySelector("input[name='t_name']");
+  const ttel = input_form?.querySelector("input[name='t_tel']");
+  const input_form_btn = input_form?.querySelector("input.insert");
   const teacher_error = document.querySelector("div.teacher.error");
 
   input_form_btn?.addEventListener("click", () => {
     teacher_error.innerHTML = "";
-    if (!tcode.value) {
-      teacher_error.innerHTML = "강사 코드는 반드시 입력해주세요";
-      tcode.select();
-      return false;
-    }
     if (!tname.value) {
       teacher_error.innerHTML = "강사 이름는 반드시 입력해주세요";
       tname.select();

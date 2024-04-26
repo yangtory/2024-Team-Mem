@@ -35,6 +35,6 @@
 </script>
 <script src="${rootPath}/static/js/main.js?2024-04-26-001"></script>
 <script src="${rootPath}/static/js/teacher.js?2024-04-18-002"></script>
-<script src="${rootPath}/static/js/ticket.js?2024-04-21-003"></script>
+<script src="${rootPath}/static/js/ticket.js"></script>
 
 </head>
