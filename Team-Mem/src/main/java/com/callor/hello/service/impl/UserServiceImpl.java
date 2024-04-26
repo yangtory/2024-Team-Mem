@@ -132,21 +132,14 @@ public class UserServiceImpl implements UserService{
 			    			);
 			    	userCompDao.createUser(ucList);
 			    }
-			 
 		}
-		
 		return null;
 	}
 
-
-
-
-
-
-
-	
-	
-
-	
+	@Override
+	public CompanyVO cNameCheck(String cname) {
+		CompanyVO result = companyDao.checkCname(cname);
+		return result;
+	}
 
 }

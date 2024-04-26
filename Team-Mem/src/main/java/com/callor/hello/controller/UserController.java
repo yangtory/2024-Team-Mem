@@ -87,7 +87,7 @@ public class UserController {
 		
 		userMinfoVO.setR_uid(userVO.getU_id());
 		int result = userMinfoDao.insert(userMinfoVO);
-			log.debug("insert {}", result);
+		log.debug("insert {}", result);
 		return "redirect:/customer/";
 	}
 	

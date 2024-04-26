@@ -19,4 +19,7 @@ public interface CompanyDao {
 	@Select(" SELECT c_name FROM tbl_company WHERE c_code = #{ccode} ")
 	public String findCname(String ccode);
 
+	@Select(" SELECT * FROM tbl_company WHERE c_name = #{cname}")
+	public CompanyVO checkCname(String cname);
+
 }

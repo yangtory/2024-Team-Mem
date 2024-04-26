@@ -2,10 +2,14 @@ package com.callor.hello.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.hello.dao.UserDao;
+import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.UserService;
 
@@ -36,10 +40,20 @@ public class MainController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(Model model) {
-		
 		model.addAttribute("BODY", "MAIN_LOGIN");
-		
 		return "layout";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cnamecheck/{cname}", method=RequestMethod.GET)
+	public CompanyVO cname_check(@PathVariable("cname") String cname) {
+		return userService.cNameCheck(cname);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/idcheck/{id}",method=RequestMethod.GET)
+	public UserVO id_check(@PathVariable("id") String id) {
+	return userService.findById(id);
 	}
 
 

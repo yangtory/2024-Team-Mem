@@ -13,24 +13,32 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
 
-		SELECT * FROM tbl_user_minfo
-		JOIN tbl_minfo ON r_iseq = i_seq
-		WHERE r_uid = 'aa';
+-- truncate
+SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 1;
+TRUNCATE tbl_user;
+TRUNCATE tbl_company;
+TRUNCATE tbl_notice;
+TRUNCATE tbl_role;
+TRUNCATE tbl_class;
+TRUNCATE tbl_minfo;
+TRUNCATE tbl_notice;
+TRUNCATE tbl_teacher;
+TRUNCATE tbl_schedule;
+TRUNCATE tbl_user_minfo;
+TRUNCATE tbl_user_comp;
+
 
 alter table tbl_user_minfo
 add column r_icount int not null,
 add column r_sdate varchar(10) not null,
 add column r_edate varchar(10) not null;
 
-
 SELECT * FROM tbl_schedule
 ORDER BY s_sdate DESC, s_edate DESC;
 TRUNCATE tbl_schedule;
 
-TRUNCATE tbl_user;
-TRUNCATE tbl_company;
-TRUNCATE tbl_user_comp;
-TRUNCATE tbl_notice;
+
 
 SELECT * 
 		FROM tbl_user_comp uc

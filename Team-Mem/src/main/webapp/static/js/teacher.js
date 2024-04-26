@@ -18,22 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const tcode = input_form.querySelector("input[name='t_code']");
   const tname = input_form.querySelector("input[name='t_name']");
   const ttel = input_form.querySelector("input[name='t_tel']");
-
-  const input_form_btn = document.querySelector("button.insert");
+  const input_form_btn = document.querySelector("input.insert");
+  const teacher_error = document.querySelector("div.teacher.error");
 
   input_form_btn?.addEventListener("click", () => {
+    teacher_error.innerHTML = "";
     if (!tcode.value) {
-      alert("강사 코드는 반드시 입력해주세요");
+      teacher_error.innerHTML = "강사 코드는 반드시 입력해주세요";
       tcode.select();
       return false;
     }
     if (!tname.value) {
-      alert("강사 이름는 반드시 입력해주세요");
+      teacher_error.innerHTML = "강사 이름는 반드시 입력해주세요";
       tname.select();
       return false;
     }
     if (!ttel.value) {
-      alert("전화번호는 반드시 입력해주세요");
+      teacher_error.innerHTML = "전화번호는 반드시 입력해주세요";
       ttel.select();
       return false;
     }

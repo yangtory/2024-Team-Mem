@@ -49,10 +49,6 @@
 		us_cname = #{us_cname},
 		us_ccode = #{us_ccode}
 		WHERE us_uid= #{us_uid}
-
 	</update>
-
-
-
 
 </mapper> 

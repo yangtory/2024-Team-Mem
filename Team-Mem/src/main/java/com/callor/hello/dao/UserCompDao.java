@@ -32,6 +32,7 @@ public interface UserCompDao {
 	public List<UserCompVO> selectSearchAll(UserCompSearchDto userCompSearchDto);
 
 
+
 	
 
 }

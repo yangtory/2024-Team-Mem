@@ -32,7 +32,6 @@ public class TeacherController {
 	public String home(@ModelAttribute("SEARCH") TeacherSearchDto teacherSearch, Model model) {
 
 		String t_ccode = teacherService.getLoginCCode();
-		log.debug("??{}", t_ccode);
 		teacherSearch.setT_ccode(t_ccode);
 		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
 
@@ -50,7 +49,7 @@ public class TeacherController {
 	public String insert(Model model) {
 		String tCode = teacherService.createTCode();
 		String comp = teacherService.getLoginCCode();
-		log.debug("사용자의 업체코드{}", comp);
+		log.debug("teacher : 사용자의 업체코드{}", comp);
 
 		model.addAttribute("COMP", comp);
 		model.addAttribute("TCODE", tCode);
