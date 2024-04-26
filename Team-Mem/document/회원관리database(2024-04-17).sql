@@ -12,6 +12,16 @@ SELECT * FROM tbl_teacher;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
 
+		SELECT * FROM tbl_user_minfo
+		JOIN tbl_minfo ON r_iseq = i_seq
+		WHERE r_uid = 'aa';
+
+alter table tbl_user_minfo
+add column r_icount int not null,
+add column r_sdate varchar(10) not null,
+add column r_edate varchar(10) not null;
+
+
 SELECT * FROM tbl_schedule
 ORDER BY s_sdate DESC, s_edate DESC;
 TRUNCATE tbl_schedule;
