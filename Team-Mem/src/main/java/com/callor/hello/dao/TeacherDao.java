@@ -21,7 +21,7 @@ public interface TeacherDao {
 
 	public int insert(TeacherVO teacherVO);
 
-	public String findByComp(String uid);
+	public List<String> findByComp(String uid);
 
 	public TeacherVO findById(String tcode);
 

@@ -9,6 +9,7 @@ SELECT * FROM tbl_class;
 SELECT * FROM tbl_minfo;
 SELECT * FROM tbl_notice;
 SELECT * FROM tbl_teacher;
+SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo;
 SELECT * FROM tbl_user_comp;
 
@@ -37,14 +38,7 @@ SELECT *
 		where uc.us_ccode = 'C0001';
 	
 
--- 승희추가할거
-ALTER TABLE TBL_NOTICE
-ADD COLUMN n_date VARCHAR(10) NOT NULL,
-add COLUMN n_time  VARCHAR(10) not null;
 
-ALTER TABLE tbl_notice
-MODIFY COLUMN n_seq VARCHAR(255);
--- 여기까지
 
 CREATE TABLE tbl_user(
 u_id	VARCHAR(20)		PRIMARY KEY,
@@ -82,7 +76,7 @@ t_ccode VARCHAR(10) NOT NULL,
     REFERENCES tbl_company(c_code)
     ON DELETE CASCADE
 );
-DROP TABLE tbl_class;
+
 CREATE TABLE tbl_class(
 c_seq	INT		PRIMARY KEY AUTO_INCREMENT,
 c_name	VARCHAR(50)	NOT NULL	,
@@ -101,11 +95,13 @@ c_ccode VARCHAR(10) NOT NULL,
 );
 
 CREATE TABLE tbl_notice(
-n_seq	INT		AUTO_INCREMENT PRIMARY KEY,
+n_seq	VARCHAR(255),
 n_title	VARCHAR(125)	NOT NULL	,
 n_content	VARCHAR(255)	NOT NULL,
 n_ccode VARCHAR(10) NOT NULL,
 n_uid VARCHAR(20) NOT NULL,
+n_date VARCHAR(10) NOT NULL,
+n_time  VARCHAR(10) not null,
     FOREIGN KEY (n_ccode)
     REFERENCES tbl_company(c_code)
     ON DELETE CASCADE,
@@ -126,13 +122,14 @@ i_ccode VARCHAR(10) NOT NULL,
     ON DELETE CASCADE
 );
 
+
 CREATE TABLE tbl_schedule (
 	s_seq	INT		PRIMARY KEY AUTO_INCREMENT,
 	s_title	VARCHAR(50)	NOT NULL	,
 	s_content VARCHAR(125),
-	
 	s_sdate VARCHAR(15) 	,
-	s_edate VARCHAR(15)	
+	s_edate VARCHAR(15)	,
+    s_ccode VARCHAR(15)	
 
 );
 

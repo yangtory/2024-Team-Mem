@@ -109,7 +109,10 @@ public class UserController {
 		UserCompVO list = userCompDao.findById(seq);
 		String ccode = teacherService.getLoginCCode();
 		String cname = companyDao.findCname(ccode);
-		
+		UserMinfoVO mInfoVO = userMinfoDao.findById(seq);
+		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
+		model.addAttribute("MINFO", mInfoList);
+		model.addAttribute("UMINFO", mInfoVO);
 		model.addAttribute("CCODE", ccode);
 		model.addAttribute("CNAME", cname);
 		
@@ -119,10 +122,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
-	public String update(@PathVariable("seq") String seq, UserCompVO vo) {
+	public String update(@PathVariable("seq") String seq, UserCompVO vo, UserMinfoVO userMinfoVO) {
 		
 		log.debug("UPDATE {}", vo.toString());
-		int result = userCompDao.update(vo);
+		userCompDao.update(vo);
+		userMinfoDao.update(userMinfoVO);
+		
 		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());
 		
 		return retString;
@@ -161,7 +166,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="/getminfo/{seq}", method=RequestMethod.GET)
 	public UserMinfoVO getminfo(@PathVariable("seq") String seq) {
-		UserMinfoVO vo = userMinfoDao.findById(seq);
+		UserMinfoVO vo = userMinfoDao.findBySeq(seq);
 		return vo;
 	}
 	

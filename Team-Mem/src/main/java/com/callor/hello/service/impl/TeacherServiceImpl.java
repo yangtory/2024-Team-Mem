@@ -12,6 +12,9 @@ import com.callor.hello.models.TeacherVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.TeacherService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service("teacherServiceImpl")
 public class TeacherServiceImpl implements TeacherService {
 	
@@ -38,8 +41,8 @@ public class TeacherServiceImpl implements TeacherService {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserVO userDetails = (UserVO) authentication.getPrincipal();
 		String ucomp = userDetails.getU_comp();
-		String cCode = teacherDao.findByComp(ucomp);
-		return cCode;
+		List<String> cCode = teacherDao.findByComp(ucomp);
+		return cCode.get(0);
 	}
 	
 	@Override

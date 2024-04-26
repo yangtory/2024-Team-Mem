@@ -28,5 +28,9 @@ public class UserMinfoVO {
 	private String i_ccode;
 	
 	private String us_uid;
+	
+	private String r_icount;
+	private String r_sdate;
+	private String r_edate;
 
 }

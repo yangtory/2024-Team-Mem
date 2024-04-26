@@ -11,8 +11,8 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO tbl_user_minfo(r_iseq,r_uid)
-		VALUES(#{r_iseq}, #{us_uid})
+		INSERT INTO tbl_user_minfo(r_iseq,r_uid, r_icount, r_sdate, r_edate)
+		VALUES(#{r_iseq}, #{us_uid}, #{r_icount}, #{r_sdate}, #{r_edate} )
 	</insert>
 	
 	<select id="findById">
@@ -20,8 +20,16 @@
 		JOIN tbl_minfo ON r_iseq = i_seq
 		WHERE r_uid = #{seq}
 	</select>
+	
+	<select id="findBySeq">
+		SELECT * FROM tbl_minfo
+		WHERE i_seq = #{seq}
+	</select>
 
-	<update id="update"></update>
+	<update id="update">
+		UPDATE tbl_user_minfo
+		SET r_iseq = #{r_iseq}, r_icount = #{r_icount}, r_sdate=#{r_sdate}, r_edate=#{r_edate}
+	</update>
 	<delete id="delete">
 		DELETE FROM tbl_user_minfo WHERE r_uid = #{seq}
 	</delete>
