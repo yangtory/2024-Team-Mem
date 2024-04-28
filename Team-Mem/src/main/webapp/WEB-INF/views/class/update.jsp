@@ -5,7 +5,16 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
-
+<style>
+	.btnBox {
+	display : flex;
+	gap: 5px;
+	}
+</style>
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath }/static/js/class/update.js"></script>
 
 <f:form>
 	<div><label>수업명</label><input placeholder="수업명" name="c_name" value="${LIST.c_name }"/></div>
@@ -17,5 +26,8 @@
 	<div><input type="hidden" name="c_tcode" value="${LIST.c_tcode }"/></div>
 	<div><input type="hidden" name="c_ccode" value="${LIST.c_ccode }"/></div>
 	<div><input type="hidden" name="c_seq" value="${LIST.c_seq}"/></div>
-	<div><button type="submit">수정</button></div>
+	<div class="btnBox">
+		<div><button type="submit">수정</button></div>
+		<div><button type="button" data-seq = "${SEQ }">삭제</button></div>
+	</div>
 </f:form>

@@ -32,7 +32,7 @@ public interface ScheduleDao {
 	@Update(" UPDATE tbl_schedule SET s_title = #{s_title}, s_content = #{s_content}, s_sdate = #{s_sdate}, s_edate = #{s_edate} WHERE s_seq = #{s_seq} ")
 	public void update(ScheduleVO vo);
 	
-	@Delete(" DELETE FROM tbl_schedule WHERE s_seq = ${s_seq}")
+	@Delete(" DELETE FROM tbl_schedule WHERE s_seq = #{s_seq}")
 	public int delete(ScheduleVO vo);
 	
 }
