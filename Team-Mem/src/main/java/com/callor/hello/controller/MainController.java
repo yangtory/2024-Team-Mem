@@ -28,20 +28,20 @@ public class MainController {
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join(Model model) {
 		model.addAttribute("BODY", "MAIN_JOIN");
-		return "main/join";
+		return "layout";
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(UserVO userVO) {
 		userService.createUser(userVO);
-		return "home";
+		return "layout";
 	}
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(Model model) {
 		model.addAttribute("BODY", "MAIN_LOGIN");
-		return "main/login";
+		return "layout";
 	}
 	
 	@ResponseBody

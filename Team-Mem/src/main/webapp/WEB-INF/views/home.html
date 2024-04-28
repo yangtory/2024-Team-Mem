@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html
-    lang="ko"
-    xmlns:th="http://wwww.thymeleaf.org"
-    xmlns:layout="http://ultrag.net.nz/thymeleaf/layout"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+<html lang="ko" xmlns:th="http://wwww.thymeleaf.org" xmlns:layout="http://ultrag.net.nz/thymeleaf/layout">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,19 +32,15 @@
     </head>
     <body>
         <div class="header">
-            <h3><a th:href="@{/}">맴맴</a></h3>
+            <h3><a href="${rootPath }">맴맴</a></h3>
             <nav class="nav">
-                <div sec:authorize="permitAll()">
-                    <a th:href="@{/main/login}">로그인</a>
-                    <a th:href="@{/main/join}">회원가입</a>
-                </div>
-                <div sec:authorize="isAuthenticated()">
-                    <span sec:authentication="principal.username"></span> 님
-                    <a th:href="@{/main/logout}">로그아웃</a>
-                </div>
+                    <a href="${rootPath }/main/login">로그인</a>
+                    <a href="${rootPath}/main/join">회원가입</a>
+                    <a href="${rootPath }/main/mypage">
+                    </a>
             </nav>
         </div>
-        <div class="main">
+        <div>
             <div class="side">
                 <ul>
                     <li>회원권</li>
@@ -60,7 +51,7 @@
                     <li>공지사항</li>
                 </ul>
             </div>
-            <section class="main" layout:fragment="content"></section>
         </div>
+        <section class="main" layout:fragment="content"></section>
     </body>
 </html>
