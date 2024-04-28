@@ -22,8 +22,11 @@ public interface TeacherDao {
 	public int insert(TeacherVO teacherVO);
 
 	public List<String> findByComp(String uid);
-
+	
+	
 	public TeacherVO findById(String tcode);
+	
+	
 
 	public List<TeacherVO> select(String tccode);
 
@@ -32,8 +35,12 @@ public interface TeacherDao {
 	@Delete("DELETE FROM tbl_teacher WHERE t_code = #{tcode}")
 	public void delete(String tcode);
 
-	@Select("SELECT * FROM tbl_teacher WHERE t_ccode = #{comp}")
+	
 	public List<TeacherVO> selectAllComp(String comp);
+
+	
+	
+
 
 	
 

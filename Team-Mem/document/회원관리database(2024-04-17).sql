@@ -1,7 +1,6 @@
 CREATE DATABASE manageDB;
 USE manageDB;
 DROP DATABASE manageDB;
-
 SELECT * FROM tbl_company;
 SELECT * FROM tbl_user;
 SELECT * FROM tbl_role;
@@ -29,7 +28,7 @@ TRUNCATE tbl_user_minfo;
 TRUNCATE tbl_user_comp;
 
 
-alter table tbl_user_minfo
+alter table tbl_userminfo
 add column r_icount int not null,
 add column r_sdate varchar(10) not null,
 add column r_edate varchar(10) not null;

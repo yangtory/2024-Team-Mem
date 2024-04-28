@@ -8,11 +8,26 @@
 
 
 <f:form>
-	<div><input placeholder="수업명" name="c_name"/></div>
-	<div><input placeholder="강사명" /></div>
-	<div><input placeholder="개강일자" type="date" value="${SDATE }" name="c_sdate"/></div>
-	<div><input placeholder="종강일자" type="date" name="c_edate" /></div>
-	<div><input placeholder="시작시간" name="c_stime" /></div>
-	<div><input placeholder="종료시간" name="c_etime" /></div>
-	<div><button type="submit">작성</button></div>
+	<fieldset>
+	<legend>수업 정보</legend>
+		<div><label>수업명</label><input placeholder="수업명" name="c_name"/></div>
+		<div>
+			<select name="c_tcode">
+			<option value="">--강사선택--</option>
+			<c:forEach items="${TLIST }" var="TEACHER">
+				<option value="${TEACHER.t_code }"${TEACHER.t_code == c_tcode ? 'selected' : ''} >${TEACHER.t_name}</option>
+			</c:forEach>
+			</select>	
+		</div>
+		
+		
+		<div><label>개강일자</label><input placeholder="개강일자" type="date" value="${SDATE }" name="c_sdate"/></div>
+		<div><label>종강일자</label><input placeholder="종강일자" type="date" name="c_edate" /></div>
+		<div><label>시작시간</label><input placeholder="시작시간" name="c_stime" /></div>
+		<div><label>종료시간</label><input placeholder="종료시간" name="c_etime" /></div>
+		
+	</fieldset>
+
+	<div><label></label><button type="submit">작성</button></div>
+	
 </f:form>

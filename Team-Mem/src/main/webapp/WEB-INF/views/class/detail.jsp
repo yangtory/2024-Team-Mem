@@ -7,6 +7,7 @@
 <script>
 	const rootPath = "${rootPath}"
 </script>
+<script src="${rootPath }/static/js/class/detail.js"></script>
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
 <a href="${rootPath }/class/insert/${SDATE }">추가</a>
@@ -14,25 +15,30 @@
 	<thead>
 		<tr>
 			<th>SEQ</th>
-			<th>제목</th>
-			<th>내용</th>
-			<th>시작일자</th>
-			<th>종료일자</th>
+			<th>수업명</th>
+			<th>강사명</th>
+			<th>개강일자</th>
+			<th>종강일자</th>
+			<th>시작시간</th>
+			<th>종료시간</th>
 
 		</tr>
 
 	</thead>
 
 	<tbody class="body">
-		
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+		<c:forEach items="${LIST}" var="LIST" varStatus="INDEX">
+			<tr data-seq = "${LIST.c_seq }" >
+				<td>${INDEX.count}</td>
+				<td>${LIST.c_name }</td>
+				<td>${LIST.t_name }</td>
+				
+				<td>${LIST.c_sdate }</td>
+				<td>${LIST.c_edate }</td>
+				<td>${LIST.c_stime}</td>
+				<td>${LIST.c_etime}</td>
 			</tr>
-	
+	</c:forEach>
 	
 	</tbody>
 

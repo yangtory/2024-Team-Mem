@@ -4,18 +4,35 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.callor.hello.dao.ClassDao">
+    
+    <select id="findBySeq">
+    	SELECT * FROM tbl_class
+    		LEFT JOIN tbl_teacher
+    		ON c_tcode = t_code 
+    	 WHERE c_seq = #{seq}
+    </select>
+    
+    <insert id="insert">
+        INSERT INTO tbl_class(c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode) 
+        VALUES(#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode})
+    </insert>
+
+        
+    <update id="update">
+UPDATE tbl_class AS c
+LEFT JOIN tbl_teacher AS t ON c.c_tcode = t.t_code
+SET c.c_name = #{c_name}, c_sdate = #{c_sdate}, c_edate = #{c_edate}, 
+    c_stime = #{c_stime}, c_etime = #{c_etime}, c_tcode = #{c_tcode}, 
+    c_ccode = #{c_ccode}, t_name = t.t_name
+WHERE c.c_seq = #{c_seq}
+    </update>
+    <delete id="delete"></delete>
+
+	<select id="findByClass">
+		SELECT c.*, t.t_name 
+		FROM tbl_class c 
+		LEFT JOIN tbl_teacher t ON c.c_tcode = t.t_code 
+		WHERE (c.c_sdate) = #{sdate} AND c.c_ccode = #{code}
+	</select>
+</mapper>
  
- 	
- 	<select id="findById"></select>
- 	<insert id="insert">
- 		INSERT INTO tbl_class(
- 		c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode) 
-		VALUES(
-		#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode})
-		
- 	
- 	</insert>
- 	<update id="update"></update>
- 	<delete id="delete"></delete>
- 
- </mapper> 
