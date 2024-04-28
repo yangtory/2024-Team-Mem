@@ -129,7 +129,6 @@ i_ccode VARCHAR(10) NOT NULL,
     ON DELETE CASCADE
 );
 
-
 CREATE TABLE tbl_schedule (
 	s_seq	INT		PRIMARY KEY AUTO_INCREMENT,
 	s_title	VARCHAR(50)	NOT NULL	,
