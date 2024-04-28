@@ -52,7 +52,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
   };
-
+  // 날짜를 YYYY-MM-DD 형식의 문자열로 변환하는 함수
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
   const renderCalendar = async () => {
     // 캘린더 렌더링 코드
     const year_Text = String(viewYear);
@@ -61,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 데이터 가져오기
     const res = await fetch(`${rootPath}/class/get`);
     const json = await res.json();
-
+    console.log(json);
     const day_all = document.querySelectorAll(".this");
 
     for (let j = 0; j < day_all.length; j++) {
@@ -72,17 +78,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       const formattedDate = formatDate(currentDate);
 
       // 해당 날짜에 속하는 일정들을 가져옴
-      const schedules = json.filter(
-        (schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate
-      );
+      const schedules = json.filter((schedule) => schedule.c_sdate <= formattedDate && schedule.c_edate >= formattedDate);
 
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
-        if (
-          !existingTitleContainer ||
-          !existingTitleContainer.classList.contains("title-container")
-        ) {
+        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
           // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
           const titleContainer = document.createElement("span");
           titleContainer.classList.add("title-container");
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           schedules.forEach((schedule) => {
             const titleSpan = document.createElement("span");
-            titleSpan.textContent = schedule.s_title;
+            titleSpan.textContent = schedule.c_name;
             titleSpan.classList.add("title");
             titleContainer.appendChild(titleSpan);
           });
@@ -99,13 +100,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  // 날짜를 YYYY-MM-DD 형식의 문자열로 변환하는 함수
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
   const prevMonth = () => {
     date.setMonth(date.getMonth() - 1);
     viewYear = date.getFullYear(); // 변경된 viewYear 값 저장

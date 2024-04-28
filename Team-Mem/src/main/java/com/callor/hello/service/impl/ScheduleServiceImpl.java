@@ -67,26 +67,24 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public int insertDate(ClassVO vo) {
 		String c_sdate = vo.getC_sdate();
 		String c_edate = vo.getC_edate();
-		String t_code = teacherService.createTCode();
+
 		List<ClassVO> list = new ArrayList<>();
 		if(c_edate.isEmpty()) {
-			list.add(vo.builder()
-
-					.build());
+			
 			vo.setC_edate(c_sdate);
-			vo.setC_tcode(t_code);
-			classDao.insert(vo);
+
+			
 		
 		} else {
 			list.add(vo.builder()
-					.c_tcode(t_code)
+
 					.c_sdate(c_sdate)
 					.c_edate(c_edate).build());
-			vo.setC_tcode(t_code);
-			classDao.insert(vo);
+			
 			
 		}
-		
+		classDao.insert(vo);
+		list = new ArrayList<>();
 		
 		
 		return 0;

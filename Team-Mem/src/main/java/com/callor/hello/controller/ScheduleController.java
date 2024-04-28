@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.callor.hello.dao.CompScheDao;
 import com.callor.hello.dao.ScheduleDao;
-import com.callor.hello.models.CompScheVO;
 import com.callor.hello.models.ScheduleVO;
 import com.callor.hello.service.ScheduleService;
 import com.callor.hello.service.TeacherService;
@@ -85,7 +83,7 @@ public class ScheduleController {
 		String code = teacherSerive.getLoginCCode();
 		scheduleVO.setS_ccode(code);
 	    List<ScheduleVO> vo = scheduleDao.selectAll(code);
-	    
+	    log.debug("{}",vo);
 	    if(vo != null) {
 	        // ScheduleVO 객체를 JSON 문자열로 직렬화
 	        // JSON 형식: [{"s_seq":1, "s_title":"제목1", "s_content":"내용1", "s_sdate":"2024-04-21", "s_edate":"2024-04-23"}, {...}, ...]

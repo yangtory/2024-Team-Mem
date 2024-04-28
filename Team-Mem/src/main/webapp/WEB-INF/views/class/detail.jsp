@@ -31,7 +31,8 @@
 			<tr data-seq = "${LIST.c_seq }" >
 				<td>${INDEX.count}</td>
 				<td>${LIST.c_name }</td>
-				<td>${TEACHER[INDEX.index].t_name}</td>
+				<td>${LIST.t_name }</td>
+				
 				<td>${LIST.c_sdate }</td>
 				<td>${LIST.c_edate }</td>
 				<td>${LIST.c_stime}</td>

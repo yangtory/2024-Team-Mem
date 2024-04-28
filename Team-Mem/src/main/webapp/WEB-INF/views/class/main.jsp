@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="${rootPath }/static/css/calendar.css" rel="stylesheet">
+<link href="${rootPath }/static/css/class.css" rel="stylesheet">
 <script>
 	const rootPath = "${rootPath}"
 </script>
