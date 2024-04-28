@@ -16,10 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.callor.hello.dao.RoleDao;
-import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
 import com.callor.hello.models.RoleVO;
-import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -68,9 +66,6 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		for(RoleVO r : roles) {
 			grantList.add(new SimpleGrantedAuthority(r.getR_role()));
 		}
-		
-
-		
 		
 		Authentication token = new UsernamePasswordAuthenticationToken(userVO, password,grantList);
 		

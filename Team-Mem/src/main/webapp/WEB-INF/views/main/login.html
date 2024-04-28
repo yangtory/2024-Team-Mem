@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html
+    lang="ko"
+    xmlns:th="http://wwww.thymeleaf.org"
+    xmlns:layout="http://ultrag.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    layout:decorate="~{/home}"
+>
+    <section layout:fragment="content">
+        <section>
+            <form class="login" method="post">
+                <div class="login error"></div>
+                <div><label>USERNAME</label><input name="u_id" /></div>
+                <div><label>PASSWORD</label><input name="u_password" /></div>
+                <div><button type="button" class="login_btn">로그인</button></div>
+            </form>
+        </section>
+    </section>
+</html>
