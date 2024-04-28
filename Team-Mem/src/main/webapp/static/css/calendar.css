@@ -95,20 +95,6 @@ section {
 
   margin: 0 auto;
 }
-/* 왜 안먹히지 */
-/* .today::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  width: 30px;
-  height: 30px;
-  display: block;
-  background-color: #ff0000;
-  border-radius: 50%;
-} */
 
 div.date {
   &:nth-last-of-type(1) {

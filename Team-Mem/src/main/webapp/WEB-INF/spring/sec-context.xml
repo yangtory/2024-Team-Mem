@@ -12,7 +12,7 @@
 		<sec:intercept-url pattern="/ticket" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/customer" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/teacher" access="isAuthenticated()"/>
-		<sec:intercept-url pattern="/lesson" access="isAuthenticated()"/>
+		<sec:intercept-url pattern="/class" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/schedule" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/notice" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/class" access="isAuthenticated()"/>

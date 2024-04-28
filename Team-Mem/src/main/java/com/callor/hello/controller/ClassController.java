@@ -28,18 +28,14 @@ public class ClassController {
 	private final TeacherService teacherService;
 	private final ScheduleService scheduleService;
 	private final TeacherDao teacherDao;
-	private final ScheduleDao scheduleDao;
-	
-
 
 	public ClassController(ClassDao classDao, TeacherService teacherService, ScheduleService scheduleService,
-			TeacherDao teacherDao, ScheduleDao scheduleDao) {
+			TeacherDao teacherDao) {
 		super();
 		this.classDao = classDao;
 		this.teacherService = teacherService;
 		this.scheduleService = scheduleService;
 		this.teacherDao = teacherDao;
-		this.scheduleDao = scheduleDao;
 	}
 
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
@@ -132,7 +128,7 @@ public class ClassController {
 		
 		model.addAttribute("LIST", vo);
 		
-		log.debug("UPDATE{}",vo);
+		model.addAttribute("SEQ",seq);
 		model.addAttribute("BODY", "CLASS_UPDATE");
 		return "layout";
 		
@@ -145,10 +141,18 @@ public class ClassController {
 		vo.setT_name(tname);
 		classDao.update(vo);
 		
-		
-		
 		return "redirect:/class";
 	}
+	
+	@RequestMapping(value="delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable("seq") int seq, ClassVO vo) {
+		vo.setC_seq(seq);
+		classDao.delete(vo);
+		
+		String redString = String.format("redirect:/class", vo.getC_seq());
+		return redString;
+	}
+	
 	
 	
 }
