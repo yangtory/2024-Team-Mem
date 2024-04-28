@@ -91,9 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
         if (!cname.value) {
-            error_box_join.innerHTML = '업체명을 입력하세요';
-            cname.select();
-            return false;
+            if (confirm('업체명을 비워두면 일반회원으로 가입됩니다. 그대로 진행할까요?')) {
+                join_form.submit();
+            } else {
+                error_box_join.innerHTML = '업체명을 입력하세요';
+                cname.select();
+                return false;
+            }
         } else {
             try {
                 const res = await fetch(`${rootPath}/main/cnamecheck/${cname.value}`);
