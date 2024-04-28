@@ -49,9 +49,7 @@
 	
 	<select id="selectAllComp">
 		SELECT * FROM tbl_teacher
-LEFT JOIN tbl_class
-ON t_ccode = #{code}
-
+		WHERE t_ccode = #{code}
 	</select>
 
 </mapper> 

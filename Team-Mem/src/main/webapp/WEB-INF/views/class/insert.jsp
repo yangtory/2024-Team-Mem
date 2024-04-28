@@ -23,8 +23,8 @@
 		
 		<div><label>개강일자</label><input placeholder="개강일자" type="date" value="${SDATE }" name="c_sdate"/></div>
 		<div><label>종강일자</label><input placeholder="종강일자" type="date" name="c_edate" /></div>
-		<div><label>시작시간</label><input placeholder="시작시간" name="c_stime" /></div>
-		<div><label>종료시간</label><input placeholder="종료시간" name="c_etime" /></div>
+		<div><label>시작시간</label><input placeholder="시작시간" type="time" name="c_stime" /></div>
+		<div><label>종료시간</label><input placeholder="종료시간" type="time" name="c_etime" /></div>
 		
 	</fieldset>
 
