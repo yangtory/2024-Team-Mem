@@ -18,7 +18,7 @@ public class AuthController {
 	public String denied(Model model, HttpServletRequest req, Authentication auth) {
 		AccessDeniedException exp = 
 				(AccessDeniedException) req.getAttribute(WebAttributes.ACCESS_DENIED_403);
-		
+		 
 		model.addAttribute("AUTH", auth);
 		model.addAttribute("MESSAGE", exp);
 		return null;
