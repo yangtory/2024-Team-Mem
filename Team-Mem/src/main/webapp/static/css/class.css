@@ -3,21 +3,23 @@
 section {
   display: flex;
   justify-content: center;
-  align-items: center;
+
   min-height: 80vh;
 }
 
 .calendar {
   width: 600px;
-  margin: 50px;
 
-  height: 100%;
+  margin: 40px;
+  height: 76%;
+  /* border: 1px solid red; */
 }
 
 .calHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 900;
 }
 .year-month {
   font-size: 35px;
@@ -60,8 +62,8 @@ section {
 
 .date {
   width: calc(100% / 7);
-  height: calc(100% / 5);
-
+  /* height: calc(100% / 5); */
+  height: 25%;
   /* padding: 15px; */
 
   text-align: center;
@@ -95,24 +97,12 @@ section {
 
   margin: 0 auto;
 }
-/* 왜 안먹히지 */
-/* .today::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  width: 30px;
-  height: 30px;
-  display: block;
-  background-color: #ff0000;
-  border-radius: 50%;
-} */
 
 div.date {
+  border-right: 0.5px solid white;
+
   &:nth-last-of-type(1) {
-    border-right: 0.5px solid white;
+    /* border-right: 0.5px solid white; */
   }
 }
 span.title {

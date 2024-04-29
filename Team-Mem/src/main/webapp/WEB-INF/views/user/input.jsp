@@ -8,8 +8,13 @@
 <script>const rootPath = "${rootPath}"</script>
 <script src="${rootPath }/static/js/userInput.js"></script>
 <script src="${rootPath }/static/js/minfoInput.js"></script>
+<link href="${rootPath }/static/css/addUser.css" rel="stylesheet" >
 
-<div>
+
+
+<div class="userBox">
+<div class="left">
+<h1 class="list_title">회원등록</h1>
 	<f:form class="formBox">
 		<fieldset>
 		<legend>회원 정보</legend>
@@ -21,7 +26,7 @@
 		</fieldset>
 		<fieldset class="form minfo">
 			<legend>수강권 정보</legend>
-			<div>
+			<div><label></label>
 				<select name="r_iseq">
 					<option>--수강권선택--</option>
 					<c:forEach items="${MINFO }" var="M">
@@ -33,11 +38,13 @@
 			<div><label>시작일</label><input class ="r_sdate" type="date" name ="r_sdate" value="${UMINFO.r_sdate }" ></div>
 			<div><label>종료일</label><input class ="r_edate" type="date" name ="r_edate" value="${UMINFO.r_edate }" ></div>
 		</fieldset>
-		<div><input type= "submit" value="${COMP != null ? '수정' : '저장' }"></div>
+		<div class="button"><input type= "submit" value="${COMP != null ? '수정' : '저장' }"></div>
 	</f:form>
-
+	</div>
 	<c:if test="${COMP == null}">
-		<table>
+		
+		<div class="right"><h1 class="list_title">회원리스트</h1>
+		<table class="list">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -53,6 +60,7 @@
 				</c:forEach>
 			</tbody>		
 		</table>
+		</div>
 	</c:if>
-</div>
+	</div>
 
