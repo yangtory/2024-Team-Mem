@@ -12,7 +12,7 @@ public interface UserMinfoDao {
 	public int delete(String seq);
 
 	public UserMinfoVO findById(String seq);
-
+	
 	public UserMinfoVO findBySeq(String seq);
 
 	public int update(UserMinfoVO userMinfoVO);

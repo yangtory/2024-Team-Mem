@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('업체명 사용 가능');
             }
         }
+        alert('회원가입이 완료되었습니다.');
         join_form.submit();
     });
 });
