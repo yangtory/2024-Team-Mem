@@ -4,13 +4,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath }/static/js/class/insert.js"></script>
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
 
-<f:form>
+<f:form class="input form">
+<div class="class error"></div>
 	<fieldset>
 	<legend>수업 정보</legend>
-		<div><label>수업명</label><input placeholder="수업명" name="c_name"/></div>
+		<div><label>수업명</label><input  placeholder="수업명" name="c_name"/></div>
 		<div>
 			<select name="c_tcode">
 			<option value="">--강사선택--</option>
@@ -28,6 +33,6 @@
 		
 	</fieldset>
 
-	<div><label></label><button type="submit">작성</button></div>
+	<div><label></label><button type="button">작성</button></div>
 	
 </f:form>
