@@ -39,6 +39,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     href="${rootPath}/static/css/teacher.css?2024-04-16-001"
   />
   <link rel="stylesheet" href="${rootPath}/static/css/table.css" />
+  <link rel="stylesheet" href="${rootPath}/static/css/search.css" />
   <script>
     const rootPath = "${rootPath}";
   </script>

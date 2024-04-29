@@ -15,9 +15,12 @@ div.header {
 nav.nav {
   margin-left: auto;
   a {
+    padding-bottom: 3px;
     margin: 8px;
     font-size: 0.9rem;
+    font-weight: 500;
     color: #bec7d5;
+    border-bottom: 1px solid transparent;
   }
 }
 
@@ -101,6 +104,21 @@ form.join {
       border: none;
       border-radius: 10px;
     }
+  }
+}
+
+div.authenticated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  form.logout,
+  a {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid yellow;
   }
 }
 
