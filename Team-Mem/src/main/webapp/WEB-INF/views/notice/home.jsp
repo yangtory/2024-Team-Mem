@@ -14,9 +14,17 @@ uri="http://www.springframework.org/tags/form" prefix="f"%>
   </div>
   <div class="notice search">
     <f:form method="GET" modelAttribute="SEARCH">
-      <f:input placeholder="제목" path="n_title" />
-      <f:input placeholder="등록일" path="n_date" />
-      <input type="submit" value="검색" />
+      <f:input
+        class="search_input"
+        placeholder="제목"
+        path="n_title"
+      />
+      <f:input
+        class="search_input"
+        placeholder="등록일"
+        path="n_date"
+      />
+      <input class="button-32" type="submit" value="검색" />
     </f:form>
   </div>
 
