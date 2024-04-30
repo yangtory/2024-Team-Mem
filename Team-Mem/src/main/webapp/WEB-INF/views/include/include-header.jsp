@@ -13,14 +13,17 @@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
       <a href="${rootPath}/main/join">회원가입</a>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-      <a href="${rootPath }/main/mypage">
-        <sec:authentication property="principal.u_name" /> 님
-      </a>
-      <f:form
-        action="${rootPath }/main/logout"
-        onclick="this.submit()"
-        >로그아웃</f:form
-      >
+      <div class="authenticated">
+        <a href="${rootPath }/main/mypage">
+          <sec:authentication property="principal.u_name" /> 님
+        </a>
+        <f:form
+          class="logout"
+          action="${rootPath }/main/logout"
+          onclick="this.submit()"
+          >로그아웃</f:form
+        >
+      </div>
     </sec:authorize>
   </nav>
 </div>

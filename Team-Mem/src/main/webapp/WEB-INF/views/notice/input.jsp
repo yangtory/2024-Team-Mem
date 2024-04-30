@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script src="${rootPath }/static/js/notice.js"></script>
 
 <f:form class="notice input_box">
 	<div><label>제목</label><input name="n_title" value="${VO.n_title }"></div>

@@ -1,0 +1,31 @@
+div.search {
+    margin-bottom: 10px;
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    input.search_input {
+        width: 70px;
+        height: 25px;
+        padding: 3px 10px;
+        margin-right: 5px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        text-align: center;
+        transition: 0.3s ease;
+        &:focus {
+            border: 1px solid #d082c5;
+            width: 100px;
+        }
+    }
+    input.button-32 {
+        width: 50px;
+        height: 25px;
+        padding: 3px;
+        font-weight: 500;
+        border-radius: 10px;
+    }
+}

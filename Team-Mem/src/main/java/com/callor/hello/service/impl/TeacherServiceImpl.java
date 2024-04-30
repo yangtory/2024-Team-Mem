@@ -23,6 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
 		this.teacherDao = teacherDao;
 	}
 
+	// tcode 생성 
 	@Override
 	public String createTCode() {
 		String tCode = "T0001";
@@ -36,6 +37,7 @@ public class TeacherServiceImpl implements TeacherService {
 		return tCode;
 	}
 
+	// 로그인된 업체코드 가져오기 
 	@Override
 	public String getLoginCCode() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -45,6 +47,7 @@ public class TeacherServiceImpl implements TeacherService {
 		return cCode.get(0);
 	}
 	
+	// 로그인된 유저 아이디 가져오기 
 	@Override
 	public String getLoginUid() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -52,7 +55,8 @@ public class TeacherServiceImpl implements TeacherService {
 		String id = userDetails.getU_id().toString();
 		return id;
 	}
-
+	
+	// 공지사항의 seq uuid 로 만들기 
 	@Override
 	public String createNSeq() {
 		String nSeq = UUID.randomUUID().toString();
