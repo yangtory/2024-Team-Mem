@@ -84,6 +84,23 @@
   margin-bottom: 10px;
 }
 
+select {
+  width: 90%;
+  padding: 0.3rem;
+  text-align: center;
+  font-family: inherit;
+  border-radius: 0px;
+  border: none;
+  outline: none;
+  background-color: #012b39;
+  border-bottom: 1px solid #eee;
+  color: white;
+  margin-bottom: 15px;
+  &:focus {
+    border-bottom: 1px solid #eee;
+  }
+}
+
 textarea {
   width: 90%;
   border: none;
