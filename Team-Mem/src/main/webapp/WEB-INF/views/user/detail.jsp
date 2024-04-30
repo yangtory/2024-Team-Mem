@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!-- rootPath ¶ó´Â º¯¼ö¸¦ ¼±¾ğÇØ¼­ valueÀÇ °ªÀ» ´ã°Ú´Ù -->
 <!DOCTYPE html>
 
-<div><strong>¾ÆÀÌµğ</strong><span>${LIST.us_uid}</span></div>
-<div><strong>ÀüÈ­¹øÈ£</strong><span>${LIST.us_utel}</span></div>
-<div><strong>ÀÌ¸§</strong><span>${LIST.us_uname}</span></div>
-<div><strong>¾÷Ã¼ÄÚµå</strong><span>${LIST.us_ccode}</span></div>
-<div><strong>¾÷Ã¼¸í</strong><span>${LIST.us_cname}</span></div>
-<div><strong>¼ö°­±Ç</strong><span>${MINFO.i_title}</span></div>
-<div><strong>ÀÜ¿©È½¼ö</strong><span>${MINFO.r_icount}</span></div>
-<div><strong>½ÃÀÛÀÏ</strong><span>${MINFO.r_sdate}</span></div>
-<div><strong>Á¾·áÀÏ</strong><span>${MINFO.r_edate}</span></div>
-<div><strong></strong><span>
-	<a href="${rootPath }/customer/update/${LIST.us_uid}">¼öÁ¤</a>
-	<a href="${rootPath }/customer/delete/${LIST.us_uid}">»èÁ¦</a>
-</span></div>
+<div><strong>ID</strong><span>${LIST.us_uid}</span></div>
+<div><strong>ì „í™”ë²ˆí˜¸</strong><span>${LIST.us_utel}</span></div>
+<div><strong>ì—…ì²´ì½”ë“œ</strong><span>${LIST.us_ccode}</span></div>
+<div><strong>ì—…ì²´ëª…</strong><span>${LIST.us_cname}</span></div>
+<div><strong>ì´ë¦„</strong><span>${LIST.us_uname}</span></div>
+<div><strong>ìˆ˜ê°•ê¶Œ</strong><span>${MINFO.i_title}</span></div>
+<div><strong>ì”ì—¬íšŸìˆ˜</strong><span>${MINFO.r_icount}</span></div>
+<div><strong>ì‹œì‘ì¼</strong><span>${MINFO.r_sdate}</span></div>
+<div><strong>ì¢…ë£Œì¼</strong><span>${MINFO.r_edate}</span></div>
+<div>
+  <strong></strong
+  ><span>
+    <a href="${rootPath }/customer/update/${LIST.us_uid}">ìˆ˜ì •</a>
+    <a href="${rootPath }/customer/delete/${LIST.us_uid}">ì‚­ì œ</a>
+  </span>
+</div>

@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
-<div><strong>¼ö°­±Ç </strong><span>${LIST.i_title}</span></div>
-<div><strong>°¡°Ý</strong><span>${LIST.i_price}</span></div>
-<div><strong>¼ö°­È½¼ö</strong><span>${LIST.i_count}</span></div>
-<div><strong></strong><span>
-	<a href="${rootPath }/ticket/update/${LIST.i_seq}">¼öÁ¤</a>
-	<a href="${rootPath }/ticket/delete/${LIST.i_seq}">»èÁ¦</a>
-</span></div>
+<h1 class="list_title">${LIST.i_title} ì •ë³´</h1>
+<div><strong>ìˆ˜ê°•ê¶Œ </strong><span>${LIST.i_title}</span></div>
+<div><strong>ê°€ê²©</strong><span>${LIST.i_price}</span></div>
+<div><strong>ìˆ˜ê°•íšŸìˆ˜</strong><span>${LIST.i_count}</span></div>
+<div>
+  <strong></strong
+  ><span>
+    <a href="${rootPath }/ticket/update/${LIST.i_seq}">ìˆ˜ì •</a>
+    <a href="${rootPath }/ticket/delete/${LIST.i_seq}">ì‚­ì œ</a>
+  </span>
+</div>
