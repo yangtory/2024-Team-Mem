@@ -27,8 +27,15 @@ TRUNCATE tbl_schedule;
 TRUNCATE tbl_user_minfo;
 TRUNCATE tbl_user_comp;
 
+-- 정연이 추가해야할것들
+ALTER TABLE tbl_schedule 
+ADD COLUMN s_color VARCHAR(20);
 
-alter table tbl_userminfo
+ALTER TABLE tbl_class
+ADD COLUMN c_color VARCHAR(20);
+-- 여기까지
+
+alter table tbl_user_minfo
 add column r_icount int not null,
 add column r_sdate varchar(10) not null,
 add column r_edate varchar(10) not null;
@@ -93,6 +100,7 @@ c_stime	VARCHAR(15)	NOT NULL,
 c_etime VARCHAR(15) NOT NULL,
 c_tcode VARCHAR(10) NOT NULL,
 c_ccode VARCHAR(10) NOT NULL,
+c_color VARCHAR(20),
     FOREIGN KEY (c_tcode)
     REFERENCES tbl_teacher(t_code)
     ON DELETE CASCADE,
@@ -135,7 +143,8 @@ CREATE TABLE tbl_schedule (
 	s_content VARCHAR(125),
 	s_sdate VARCHAR(15) 	,
 	s_edate VARCHAR(15)	,
-    s_ccode VARCHAR(15)	
+    s_ccode VARCHAR(15)	,
+    s_color VARCHAR(20)
 
 );
 

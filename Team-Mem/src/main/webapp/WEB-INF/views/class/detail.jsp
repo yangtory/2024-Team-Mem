@@ -8,6 +8,7 @@
 	const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath }/static/js/class/detail.js"></script>
+
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
 <a href="${rootPath }/class/insert/${SDATE }">추가</a>

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+form.update {
+  background-color: #15172b;
+  display: flex;
+  width: 60%;
+  margin-top: 20px;
+  margin: 40px auto;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset {
+  padding: 30px;
+}
+legend {
+  text-align: center;
+}
+
+form div {
+  display: flex;
+  padding: 10px;
+  label {
+    font-weight: 900;
+    flex: 1;
+    margin-top: 10px;
+  }
+  input {
+    padding: 10px;
+    flex: 1;
+    width: 100%;
+  }
+}
+div.btnBox {
+  justify-content: end;
+  button {
+    padding: 10px;
+  }
+}
+
+div.inputbox {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}

@@ -14,7 +14,7 @@
 <div class="input_div">
 <f:form class="input_box">
 <div class="class error"></div>
-		<label>수업명</label><input  placeholder="수업명" name="c_name"/>
+		<label>수업명</label><input placeholder="수업명" name="c_name"/>
 			<label>강사</label>
 			<select name="c_tcode">
 			<option value="">강사선택</option>
@@ -27,7 +27,7 @@
 		<label>종료일자</label><input placeholder="종료일자" type="date" name="c_edate" />
 		<label>시작시간</label><input placeholder="시작시간" type="time" name="c_stime" />
 		<label>종료시간</label><input placeholder="종료시간" type="time" name="c_etime" />
-		
+		<div><input type="color" id="colorPicker" value="#ffffff" name="c_color"></div>
 
 	<label></label><button type="button" class="button-32 insert">작성</button>
 	

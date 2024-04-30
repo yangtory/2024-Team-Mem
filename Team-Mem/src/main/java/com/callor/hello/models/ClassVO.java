@@ -24,5 +24,6 @@ public class ClassVO {
 	private String c_tcode;		// VARCHAR(10) NOT NULL,
 	private String c_ccode;		// VARCHAR(10) NOT NULL
 	private String t_name;
+	private String c_color;
 
 }
