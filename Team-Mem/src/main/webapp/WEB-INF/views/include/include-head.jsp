@@ -30,16 +30,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
       text-decoration: none;
     }
   </style>
-  <link
-    rel="stylesheet"
-    href="${rootPath}/static/css/main.css"
-  />
-  <link
-    rel="stylesheet"
-    href="${rootPath}/static/css/teacher.css"
-  />
+  <link rel="stylesheet" href="${rootPath}/static/css/main.css" />
   <link rel="stylesheet" href="${rootPath}/static/css/table.css" />
   <link rel="stylesheet" href="${rootPath}/static/css/search.css" />
+  <link rel="stylesheet" href="${rootPath}/static/css/input.css" />
   <script>
     const rootPath = "${rootPath}";
   </script>
