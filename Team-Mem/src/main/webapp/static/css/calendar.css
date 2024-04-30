@@ -106,7 +106,7 @@ div.date {
   }
 }
 span.title {
-  background-color: #654df1;
+  /* background-color: #654df1; */
   color: white;
   width: 100%;
   border-radius: 2px;

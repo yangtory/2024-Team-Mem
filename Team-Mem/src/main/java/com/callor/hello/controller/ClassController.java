@@ -80,6 +80,7 @@ public class ClassController {
 	            jsonBuilder.append("\"c_seq\":").append(classVO.getC_seq()).append(",");
 	            jsonBuilder.append("\"c_name\":\"").append(classVO.getC_name()).append("\",");
 	            jsonBuilder.append("\"c_sdate\":\"").append(classVO.getC_sdate()).append("\",");
+	            jsonBuilder.append("\"c_color\":\"").append(classVO.getC_color()).append("\",");
 	            jsonBuilder.append("\"c_edate\":\"").append(classVO.getC_edate()).append("\"");
 	            jsonBuilder.append("},");
 	        }

@@ -94,7 +94,8 @@ public class ScheduleController {
 	            jsonBuilder.append("\"s_title\":\"").append(schedule.getS_title()).append("\",");
 	            jsonBuilder.append("\"s_content\":\"").append(schedule.getS_content()).append("\",");
 	            jsonBuilder.append("\"s_sdate\":\"").append(schedule.getS_sdate()).append("\",");
-	            jsonBuilder.append("\"s_edate\":\"").append(schedule.getS_edate()).append("\"");
+	            jsonBuilder.append("\"s_edate\":\"").append(schedule.getS_edate()).append("\",");
+	            jsonBuilder.append("\"s_color\":\"").append(schedule.getS_color()).append("\"");
 	            jsonBuilder.append("},");
 	        }
 	        // 마지막 쉼표 제거
@@ -148,6 +149,9 @@ public class ScheduleController {
 		String redString = String.format("redirect:/schedule", vo.getS_seq());
 		return redString;
 	}
+	
+	
+	
 	
 	
 }

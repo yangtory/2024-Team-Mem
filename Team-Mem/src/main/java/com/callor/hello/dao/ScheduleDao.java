@@ -21,18 +21,20 @@ public interface ScheduleDao {
 	@Select(" SELECT * FROM tbl_schedule WHERE s_seq = #{s_seq} ")
 	public ScheduleVO findByseq(String seq);
 	
-	// @param 을 사용하면 세션에 담긴 code를 가져올수있음
+	// 매개변수가 많을때 @Param을 사용해줘야함
 	@Select("SELECT * FROM tbl_schedule WHERE DATE(s_sdate) = #{sdate} AND s_ccode = #{code}")
 	public List<ScheduleVO> findByDate(@Param("sdate") String sdate, @Param("code") String code);
 
 	
-	@Insert(" INSERT INTO tbl_schedule ( s_title, s_content, s_sdate, s_edate, s_ccode ) VALUES (#{s_title}, #{s_content}, #{s_sdate}, #{s_edate}, #{s_ccode} )")
+	@Insert(" INSERT INTO tbl_schedule ( s_title, s_content, s_sdate, s_edate, s_ccode, s_color ) VALUES (#{s_title}, #{s_content}, #{s_sdate}, #{s_edate}, #{s_ccode}, #{s_color} )")
 	public int insert(ScheduleVO vo);
 	
-	@Update(" UPDATE tbl_schedule SET s_title = #{s_title}, s_content = #{s_content}, s_sdate = #{s_sdate}, s_edate = #{s_edate} WHERE s_seq = #{s_seq} ")
+	@Update(" UPDATE tbl_schedule SET s_title = #{s_title}, s_content = #{s_content}, s_sdate = #{s_sdate}, s_edate = #{s_edate}, s_color = #{s_color} WHERE s_seq = #{s_seq} ")
 	public void update(ScheduleVO vo);
 	
 	@Delete(" DELETE FROM tbl_schedule WHERE s_seq = #{s_seq}")
 	public int delete(ScheduleVO vo);
+	
+	
 	
 }
