@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
-<div><strong>Á¦¸ñ</strong><span>${VO.n_title}</span></div>
-<div><strong>³»¿ë</strong><span>${VO.n_content}</span></div>
-<div><strong></strong><span>
-	<a href="${rootPath }/notice/update/${VO.n_seq}">¼öÁ¤</a>
-	<a href="${rootPath }/notice/delete/${VO.n_seq}">»èÁ¦</a>
-</span></div>
+<div><strong>ì œëª©</strong><span>${VO.n_title}</span></div>
+<div><strong>ë‚´ìš©</strong><span>${VO.n_content}</span></div>
+<div>
+  <strong></strong
+  ><span>
+    <a href="${rootPath }/notice/update/${VO.n_seq}">ìˆ˜ì •</a>
+    <a href="${rootPath }/notice/delete/${VO.n_seq}">ì‚­ì œ</a>
+  </span>
+</div>

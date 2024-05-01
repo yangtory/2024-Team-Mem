@@ -2,6 +2,7 @@ package com.callor.hello.controller;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +15,6 @@ import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserDao;
 import com.callor.hello.dao.UserMinfoDao;
-import com.callor.hello.models.MinfoVO;
 import com.callor.hello.models.UserCompSearchDto;
 import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserMinfoVO;
@@ -83,11 +83,16 @@ public class UserController {
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(UserCompVO userCompVO, UserVO userVO, UserMinfoVO userMinfoVO) {
-		userSerivce.codeInput(userVO, userCompVO);
+		if(userMinfoVO.getR_iseq() == 0) {
+			userSerivce.codeInput(userVO, userCompVO);			
+		}
+		if(userMinfoVO.getR_iseq() > 0) {
+			userSerivce.codeInput(userVO, userCompVO);
+			userMinfoVO.setR_uid(userVO.getU_id());
+			int result = userMinfoDao.insert(userMinfoVO);
+			log.debug("insert {}", result);		
+		}
 		
-		userMinfoVO.setR_uid(userVO.getU_id());
-		int result = userMinfoDao.insert(userMinfoVO);
-		log.debug("insert {}", result);
 		return "redirect:/customer/";
 	}
 	
@@ -126,12 +131,12 @@ public class UserController {
 		
 		log.debug("UPDATE {}", vo.toString());
 		userCompDao.update(vo);
-		userMinfoDao.update(userMinfoVO);
-		
-		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());
-		
+			userMinfoDao.update(userMinfoVO);			
+			userMinfoVO.setR_uid(seq);
+			userMinfoDao.insert(userMinfoVO);			
+
+		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());		
 		return retString;
-//		return "redirect:/customer/detail/" + vo.getUs_uid();
 	}
 	
 	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)

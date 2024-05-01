@@ -30,16 +30,15 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
       text-decoration: none;
     }
   </style>
-  <link
-    rel="stylesheet"
-    href="${rootPath}/static/css/main.css?2024-04-21-008"
-  />
-  <link
-    rel="stylesheet"
-    href="${rootPath}/static/css/teacher.css?2024-04-16-001"
-  />
+  <link rel="stylesheet" href="${rootPath}/static/css/main.css" />
   <link rel="stylesheet" href="${rootPath}/static/css/table.css" />
   <link rel="stylesheet" href="${rootPath}/static/css/search.css" />
+  <link rel="stylesheet" href="${rootPath}/static/css/input.css" />
+  <link
+    rel="stylesheet"
+    href="https://www.w3schools.com/w3css/4/w3.css"
+  />
+
   <script>
     const rootPath = "${rootPath}";
   </script>

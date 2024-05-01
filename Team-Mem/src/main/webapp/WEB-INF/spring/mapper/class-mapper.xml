@@ -13,8 +13,8 @@
     </select>
     
     <insert id="insert">
-        INSERT INTO tbl_class(c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode) 
-        VALUES(#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode})
+        INSERT INTO tbl_class(c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode, c_color) 
+        VALUES(#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode}, #{c_color})
     </insert>
 
         

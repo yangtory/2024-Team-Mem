@@ -20,6 +20,7 @@
 		<div><label>내용</label><input placeholder="내용" name="s_content" value="${LIST.s_content }"/></div>
 		<div><label>시작일자</label><input placeholder="시작일자" name="s_sdate" value="${LIST.s_sdate }" type="date" /></div>
 		<div><label>종료일자</label><input placeholder="종료일자" name="s_edate" type="date" value="${LIST.s_edate }"/></div>
+		<div><label>색상</label><input type="color" id="colorPicker" name="s_color" value="${LIST.s_color }"></div>
 		<div class="btnBox">
 			<div><button type="submit">수정</button></div>
 			<div><button type="button" class="delete" data-seq="${SEQ}">삭제</button></div>

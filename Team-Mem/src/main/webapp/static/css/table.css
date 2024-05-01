@@ -16,8 +16,9 @@ div.list_home {
     a.insert,
     button.insert {
       width: 20%;
-      font-weight: 800;
+      font-weight: 600;
       margin: 1rem;
+      border-radius: 5px;
     }
   }
 }
@@ -49,5 +50,6 @@ table.list {
   }
   tbody tr:hover {
     background: #014055;
+    cursor: pointer;
   }
 }

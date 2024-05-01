@@ -49,7 +49,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
-	public String insert(@ModelAttribute("NOTI") NoticeVO vo, Model model) {
+	public String insert( NoticeVO vo, Model model) {
 		String id = teacherService.getLoginUid();
 		String ccode = teacherService.getLoginCCode();
 		String nseq = teacherService.createNSeq();
@@ -57,6 +57,7 @@ public class NoticeController {
 		vo.setN_ccode(ccode);
 		vo.setN_uid(id);
 		vo.setN_seq(nseq);
+		getDateTime(vo);
 		noticeDao.insert(vo);
 		return "redirect:/notice/";
 	}
@@ -88,6 +89,16 @@ public class NoticeController {
 	public String delete(@PathVariable("seq") String seq ) {
 		noticeDao.delete(seq);
 	return "redirect:/notice/";	
+	}
+	
+	private void getDateTime(NoticeVO vo) {
+		LocalDateTime lt = LocalDateTime.now();
+		DateTimeFormatter date = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+		DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
+		
+		vo.setN_date(lt.format(date));
+		vo.setN_time(lt.format(time));
+		
 	}
 
 }
