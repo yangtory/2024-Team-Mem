@@ -23,7 +23,7 @@
 		LEFT JOIN tbl_teacher AS t ON c.c_tcode = t.t_code
 		SET c.c_name = #{c_name}, c_sdate = #{c_sdate}, c_edate = #{c_edate}, 
     	c_stime = #{c_stime}, c_etime = #{c_etime}, c_tcode = #{c_tcode}, 
-    	c_ccode = #{c_ccode}, t_name = t.t_name
+    	c_ccode = #{c_ccode}, t_name = t.t_name, c_color = #{c_color}
 		WHERE c.c_seq = #{c_seq}
     </update>
 

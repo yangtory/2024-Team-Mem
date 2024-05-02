@@ -99,6 +99,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             titleSpan.textContent = schedule.c_name;
             titleSpan.classList.add("title");
             titleSpan.style.backgroundColor = schedule.c_color;
+            if (schedule.c_color === "#ffffff") {
+              titleSpan.style.color = "black";
+            }
             titleContainer.appendChild(titleSpan);
           });
         }

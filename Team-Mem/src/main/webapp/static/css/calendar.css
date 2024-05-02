@@ -3,16 +3,25 @@
 section {
   display: flex;
   justify-content: center;
-
+  flex-direction: column;
+  overflow: hidden;
   min-height: 80vh;
 }
-
-.calendar {
-  width: 600px;
-
-  margin: 40px;
-  height: 76%;
+aside.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* border: 1px solid red; */
+  position: relative;
+  top: -13.5%;
+}
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 76%;
+  justify-content: center;
+  margin: 40px;
 }
 
 .calHeader {
