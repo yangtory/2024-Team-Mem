@@ -4,7 +4,7 @@ uri="http://www.springframework.org/security/tags" prefix="sec" %> <%@
 taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<script src="${rootPath }/static/js/userList.js"></script>
+<script src="${rootPath }/static/js/userTicket.js"></script>
 <script>
   const rootPath = "${rootPath}";
 </script>
@@ -21,15 +21,19 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         <th>잔여횟수</th>
         <th>시작일</th>
         <th>종료일</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <c:forEach items="${MINFO }" var="M">
-        <tr data-id="${M.r_iseq }">
+        <tr data-id="${M.r_uid }">
           <td>${M.i_title }</td>
           <td>${M.r_icount }</td>
           <td>${M.r_sdate }</td>
           <td>${M.r_edate }</td>
+      	<c:forEach items="${DDAY }" varStatus="I" begin="0">
+          <td>${DDAY[I.count-1]}</td>
+      	</c:forEach>
         </tr>
       </c:forEach>
     </tbody>

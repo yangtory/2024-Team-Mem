@@ -1,17 +1,13 @@
 package com.callor.hello.controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -174,11 +170,26 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/tickinfo/{id}", method=RequestMethod.GET)
-	public String tickinsert(@PathVariable("id") String id,Model model) {
+	public String tickList(@PathVariable("id") String id,Model model) {
 		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		List<String> dDayList = new ArrayList<>();
+
+		for (UserMinfoVO vo : mInfoVO) {
+		    String dDay = getdDay(vo.getR_edate()); // 디데이 계산
+		    dDayList.add(dDay); // 디데이 리스트에 추가
+		}
+
+		model.addAttribute("DDAY",dDayList);
 		model.addAttribute("MINFO",mInfoVO);
 		model.addAttribute("BODY", "USER_TICK_INFO");
 		return "layout"; 
+	}
+	
+	@RequestMapping(value="/tickdetail/{id}",method=RequestMethod.GET)
+	public String tickDetail(Model model) {
+		
+		model.addAttribute("BODY", "USER_TICK_DETAIL");
+		return "layout";
 	}
 	
 	
@@ -202,4 +213,11 @@ public class UserController {
 		return vo;
 	}
 	
+	private String getdDay(String edate) {
+		LocalDate currentDate = LocalDate.now();		
+	    LocalDate endDate = LocalDate.parse(edate); //edate 날짜 변환 
+		long dDay = (int) (currentDate.toEpochDay() - endDate.toEpochDay());
+		
+		return Long.toString(dDay);	
+	}
 }

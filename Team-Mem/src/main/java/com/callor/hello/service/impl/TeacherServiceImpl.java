@@ -14,7 +14,6 @@ import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service("teacherServiceImpl")
 public class TeacherServiceImpl implements TeacherService {
 	

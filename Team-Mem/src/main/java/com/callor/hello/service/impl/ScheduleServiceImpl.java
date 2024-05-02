@@ -14,19 +14,16 @@ import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
 
 	private final ScheduleDao scheduleDao;
 	private final ClassDao classDao;
-	private final TeacherService teacherService;
 
-	public ScheduleServiceImpl(ScheduleDao scheduleDao, ClassDao classDao, TeacherService teacherService) {
+	public ScheduleServiceImpl(ScheduleDao scheduleDao, ClassDao classDao) {
 		super();
 		this.scheduleDao = scheduleDao;
 		this.classDao = classDao;
-		this.teacherService = teacherService;
 	}
 
 
