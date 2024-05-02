@@ -1,5 +1,8 @@
 package com.callor.hello.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -36,14 +39,33 @@ public class ScheduleController {
 	@RequestMapping(value= {"/",""}, method = RequestMethod.GET)
 	public String main(Model model, ScheduleVO vo) {
 		
+		LocalDate currendDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
+		String currentMonth = currendDate.format(formatter);
+		
 		String code = teacherSerive.getLoginCCode();
 		vo.setS_ccode(code);
+		List<ScheduleVO> list = scheduleDao.selectByMonth(currentMonth, code); 
 		
-		List<ScheduleVO>list = scheduleDao.selectAll(code);
-		log.debug("LIST", list);
+//		List<ScheduleVO>list = scheduleDao.selectAll(code);
+		List<ScheduleVO> MonthList = new ArrayList<ScheduleVO>();
+		for(ScheduleVO item : list) {
+			LocalDate sDate = LocalDate.parse(item.getS_sdate());
+			String sDateMonth = sDate.format(formatter);
+			if(currentMonth.equals(sDateMonth)) {
+				 // 현재 월과 s_sdate의 월이 같은 경우에만 리스트에 추가합니다.
+				MonthList.add(item);
+				model.addAttribute("LIST", MonthList);
+				log.debug("LIST{}", MonthList);
+                
+			}else {
+                // 현재 월과 s_sdate의 월이 다른 경우는 리스트에서 제외합니다.
+                
+            }
+		}
+		
 		
 		model.addAttribute("BODY","SCHEDULE_MAIN");
-		model.addAttribute("LIST", list);
 		
 		
 		return "layout";
@@ -80,6 +102,8 @@ public class ScheduleController {
 	@ResponseBody
 	@RequestMapping(value="/get", method=RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public String get(ScheduleVO scheduleVO) {
+		
+		
 		String code = teacherSerive.getLoginCCode();
 		scheduleVO.setS_ccode(code);
 	    List<ScheduleVO> vo = scheduleDao.selectAll(code);

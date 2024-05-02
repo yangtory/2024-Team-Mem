@@ -34,6 +34,9 @@ public interface ScheduleDao {
 	
 	@Delete(" DELETE FROM tbl_schedule WHERE s_seq = #{s_seq}")
 	public int delete(ScheduleVO vo);
+
+	@Select ("SELECT * FROM tbl_schedule WHERE s_ccode = #{code} AND SUBSTRING(s_sdate, 1,7) = #{currentMonth} ")
+	public List<ScheduleVO> selectByMonth(@Param("currentMonth") String currentMonth, @Param("code") String code);
 	
 	
 	
