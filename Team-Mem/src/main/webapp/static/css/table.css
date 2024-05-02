@@ -53,3 +53,10 @@ table.list {
     cursor: pointer;
   }
 }
+#colorPicker {
+  height: 50px;
+}
+.active {
+  background-color: #555;
+  border-bottom: 2px solid green;
+}

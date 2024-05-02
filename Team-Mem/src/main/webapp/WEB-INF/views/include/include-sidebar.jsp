@@ -5,11 +5,11 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="side">
   <ul>
-    <li>회원권</li>
-    <li>회원관리</li>
-    <li>강사관리</li>
-    <li>수업관리</li>
-    <li>일정관리</li>
-    <li>공지사항</li>
+    <li class="ticket">회원권</li>
+    <li class="customer">회원관리</li>
+    <li class="teacher">강사관리</li>
+    <li class="class">수업관리</li>
+    <li class="schedule">일정관리</li>
+    <li class="notice">공지사항</li>
   </ul>
 </div>
