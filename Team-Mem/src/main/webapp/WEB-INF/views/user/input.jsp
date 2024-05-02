@@ -21,6 +21,8 @@
 		</fieldset>
 		<fieldset class="form minfo">
 			<legend>수강권 정보</legend>
+			
+	<c:forEach  items="${UMINFO }" var="UMINFO">
 			<div>
 				<select name="r_iseq">
 					<option value="0">--수강권선택--</option>
@@ -32,6 +34,7 @@
 			<div><label>수강권횟수</label><input class ="r_icount" placeholder="수강권횟수" name ="r_icount" value="${UMINFO.r_icount }" readonly ></div>
 			<div><label>시작일</label><input class ="r_sdate" type="date" name ="r_sdate" value="${UMINFO.r_sdate }" ></div>
 			<div><label>종료일</label><input class ="r_edate" type="date" name ="r_edate" value="${UMINFO.r_edate }" ></div>
+	</c:forEach>
 		</fieldset>
 		<div><input type= "submit" value="${COMP != null ? '수정' : '저장' }"></div>
 	</f:form>
