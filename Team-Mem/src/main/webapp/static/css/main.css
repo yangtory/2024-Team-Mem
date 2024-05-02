@@ -89,6 +89,7 @@ form.login {
         background-color: #30373f;
         margin: 5px auto;
         width: 80%;
+        text-align: center;
         color: white;
     }
     &:nth-of-type(1) {

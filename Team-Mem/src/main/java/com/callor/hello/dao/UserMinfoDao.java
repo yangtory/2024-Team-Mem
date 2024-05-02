@@ -18,6 +18,6 @@ public interface UserMinfoDao {
 	
 	public UserMinfoVO findBySeq(String seq);
 
-	public int update(@Param("vo") UserMinfoVO[] userMinfoArray, @Param("seq") int seq);
+	public int update(UserMinfoVO updateVO);
 
 }

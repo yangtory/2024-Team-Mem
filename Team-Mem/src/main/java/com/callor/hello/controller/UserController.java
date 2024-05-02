@@ -1,8 +1,11 @@
 package com.callor.hello.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -139,33 +142,16 @@ public class UserController {
 		return "layout";
 	}
 	
+	
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
-	public String update(@PathVariable("seq") String seq, UserCompVO userCompVO,  UserMinfoVO[] userMinfoVO) {
-
+	public String update(@PathVariable("seq") String seq, UserCompVO userCompVO,
+			 UserMinfoVO userMinfoVO) {
 	    userCompDao.update(userCompVO);
-	    log.debug("USER UPDATE {}", userCompVO.toString());
-
-	    try {
-	        for (UserMinfoVO vo : userMinfoVO) {
-	            vo.setR_uid(seq);
-	            userMinfoDao.insert(vo);
-	            log.debug("MINFO INSERT {}", vo.toString());
-	        }
-	    } catch (Exception e) {
-	        List<UserMinfoVO> userMinfoList = new ArrayList<>();
-	        for (UserMinfoVO vo : userMinfoVO) {
-	            userMinfoList.add(
-	                UserMinfoVO.builder()
-	                    .r_iseq(vo.getR_iseq())
-	                    .r_uid(vo.getR_uid())
-	                    .r_icount(vo.getR_icount())
-	                    .r_sdate(vo.getR_sdate())
-	                    .r_edate(vo.getR_edate()).build());
-	            UserMinfoVO[] userMinfoArray = userMinfoList.toArray(new UserMinfoVO[userMinfoList.size()]);
-	            log.debug("제발 UPDATE {}", userMinfoArray.toString());
-	            userMinfoDao.update(userMinfoArray, vo.getR_iseq());
-	        }
-	    }
+	    log.debug("USER UPDATE {}", userCompVO.toString());	    
+	    
+	    userMinfoVO.setR_uid(seq);
+	    userMinfoDao.update(userMinfoVO);
+        log.debug("MINFO INSERT {}", userMinfoVO);
 
 	    String retString = String.format("redirect:/customer/detail/{seq}", userCompVO.getUs_uid());        
 	    return retString;
@@ -187,11 +173,20 @@ public class UserController {
 		return null;
 	}
 	
-	@RequestMapping(value="/insert/{seq}")
-	public String json(@PathVariable("seq") String seq) {
-		userSerivce.findById(seq);
-		return null;
+	@RequestMapping(value="/tickinfo/{id}", method=RequestMethod.GET)
+	public String tickinsert(@PathVariable("id") String id,Model model) {
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		model.addAttribute("MINFO",mInfoVO);
+		model.addAttribute("BODY", "USER_TICK_INFO");
+		return "layout"; 
 	}
+	
+	
+//	@RequestMapping(value="/insert/{seq}")
+//	public String json(@PathVariable("seq") String seq) {
+//		userSerivce.findById(seq);
+//		return null;
+//	}
 	
 	@ResponseBody
 	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)
@@ -206,7 +201,5 @@ public class UserController {
 		UserMinfoVO vo = userMinfoDao.findBySeq(seq);
 		return vo;
 	}
-	
-	
 	
 }
