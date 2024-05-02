@@ -26,7 +26,7 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     </thead>
     <tbody>
       <c:forEach items="${MINFO }" var="M">
-        <tr data-id="${M.r_uid }">
+        <tr data-id="${M.r_uid }" data-seq="${M.r_iseq }">
           <td>${M.i_title }</td>
           <td>${M.r_icount }</td>
           <td>${M.r_sdate }</td>

@@ -185,9 +185,15 @@ public class UserController {
 		return "layout"; 
 	}
 	
-	@RequestMapping(value="/tickdetail/{id}",method=RequestMethod.GET)
-	public String tickDetail(Model model) {
-		
+	@RequestMapping(value="/tickdetail/{id}/{seq}",method=RequestMethod.GET)
+	public String tickDetail(@PathVariable("id") String id,
+			@PathVariable("seq") String seq,Model model) {
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		for(UserMinfoVO vo : mInfoVO) {
+			if(vo.getI_seq() == Integer.valueOf(seq)) {
+				model.addAttribute("MINFO", vo);
+			}
+		}
 		model.addAttribute("BODY", "USER_TICK_DETAIL");
 		return "layout";
 	}

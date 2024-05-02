@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = e.target;
         if (target.tagName === 'TD') {
             const id = target.closest('TR').dataset.id;
+            const seq = target.closest('TR').dataset.seq;
             //   alert(seq);
-            document.location.href = `${rootPath}/customer/tickdetail/${id}`;
+            document.location.href = `${rootPath}/customer/tickdetail/${id}/${seq}`;
         }
     });
 });

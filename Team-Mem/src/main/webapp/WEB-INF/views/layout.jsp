@@ -48,6 +48,9 @@
 			<c:if test="${BODY == 'USER_TICK_INFO' }">
 				<%@ include file="/WEB-INF/views/user/ticket_list.jsp"%>
 			</c:if>
+			<c:if test="${BODY == 'USER_TICK_DETAIL' }">
+				<%@ include file="/WEB-INF/views/user/ticket_detail.jsp"%>
+			</c:if>
 			<!-- 승희 -->
 			<c:if test="${BODY == 'USER_LIST'}">
 				<%@ include file="/WEB-INF/views/user/list.jsp"%>
