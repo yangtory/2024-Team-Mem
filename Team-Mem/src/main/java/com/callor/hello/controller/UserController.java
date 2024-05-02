@@ -169,6 +169,8 @@ public class UserController {
 		return null;
 	}
 	
+	// insert 만들 자리 
+	
 	@RequestMapping(value="/tickinfo/{id}", method=RequestMethod.GET)
 	public String tickList(@PathVariable("id") String id,Model model) {
 		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
@@ -191,6 +193,8 @@ public class UserController {
 		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
 		for(UserMinfoVO vo : mInfoVO) {
 			if(vo.getI_seq() == Integer.valueOf(seq)) {
+				String dDay = getdDay(vo.getR_edate());
+				model.addAttribute("DDAY", dDay);
 				model.addAttribute("MINFO", vo);
 			}
 		}
@@ -198,6 +202,36 @@ public class UserController {
 		return "layout";
 	}
 	
+	@RequestMapping(value="/tickupdate/{id}/{seq}",method=RequestMethod.GET)
+	public String tickupdate(@PathVariable("id") String id,
+			@PathVariable("seq") String seq, Model model) {
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		for(UserMinfoVO vo : mInfoVO) {
+			if(vo.getI_seq() == Integer.valueOf(seq)) {
+				model.addAttribute("MINFO", vo);
+			}
+		}
+		model.addAttribute("BODY", "USER_TICK_UPDATE");
+		return "layout";
+	}
+	
+	@RequestMapping(value="/tickupdate/{id}/{seq}",method=RequestMethod.POST)
+	public String tickupdate(@PathVariable("id") String id,
+			@PathVariable("seq") String seq, UserMinfoVO userMinfoVO, Model model) {
+		userMinfoVO.setR_uid(id);
+		userMinfoVO.setR_iseq(Integer.valueOf(seq));
+		userMinfoDao.update(userMinfoVO);
+		
+	    String retString = String.format("redirect:/customer/tickdetail/{id}/{seq}",
+	    		userMinfoVO.getR_uid(),userMinfoVO.getR_iseq());        
+	    return retString;
+	}
+	
+	@RequestMapping(value="/tickdelete/{id}/{seq}", method=RequestMethod.GET)
+	public String tickdelete(@PathVariable("id") String id,	@PathVariable("seq") String seq) {
+		userMinfoDao.tickdelete(id,seq);
+		return "redirect:/customer/";
+	}
 	
 //	@RequestMapping(value="/insert/{seq}")
 //	public String json(@PathVariable("seq") String seq) {

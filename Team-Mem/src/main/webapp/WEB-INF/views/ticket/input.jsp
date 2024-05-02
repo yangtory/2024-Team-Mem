@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+ <script src="${rootPath}/static/js/ticket.js"></script>
 <h1 class="list_title">회원권 등록</h1>
 <div class="input_div">
 <f:form class="ticket input_box">
