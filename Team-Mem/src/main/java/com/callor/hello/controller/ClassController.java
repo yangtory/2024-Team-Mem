@@ -56,7 +56,7 @@ public class ClassController {
 		String code = teacherService.getLoginCCode();
 		vo.setC_ccode(code);
 		List<ClassVO> list = classDao.findByClass(sdate, code);
-
+		
 		model.addAttribute("LIST", list);
 		model.addAttribute("BODY", "CLASS_DETAIL");
 		model.addAttribute("SDATE",sdate);
