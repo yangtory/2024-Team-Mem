@@ -10,7 +10,7 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
-
+<h1 class="list_title">수업관리</h1>
 <body>
 	<section>
 	<aside class="left">

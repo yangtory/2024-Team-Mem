@@ -14,17 +14,18 @@
 </script>
 <script src="${rootPath }/static/js/calendar/detail.js"></script>
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
-
-	<f:form>
-		<div><label>제목</label><input placeholder="제목" name="s_title" value="${LIST.s_title }"/></div>
-		<div><label>내용</label><input placeholder="내용" name="s_content" value="${LIST.s_content }"/></div>
-		<div><label>시작일자</label><input placeholder="시작일자" name="s_sdate" value="${LIST.s_sdate }" type="date" /></div>
-		<div><label>종료일자</label><input placeholder="종료일자" name="s_edate" type="date" value="${LIST.s_edate }"/></div>
-		<div><label>색상</label><input type="color" id="colorPicker" name="s_color" value="${LIST.s_color }"></div>
+	<h1 class="list_title">일정 수정</h1>
+	<div class="input_div">
+	<f:form class="input_box">
+		<label>제목</label><input placeholder="제목" name="s_title" value="${LIST.s_title }"/>
+		<label>내용</label><input placeholder="내용" name="s_content" value="${LIST.s_content }"/>
+		<label>시작일자</label><input placeholder="시작일자" name="s_sdate" value="${LIST.s_sdate }" type="date" />
+		<label>종료일자</label><input placeholder="종료일자" name="s_edate" type="date" value="${LIST.s_edate }"/>
+		<label>색상</label><input type="color" id="colorPicker" name="s_color" value="${LIST.s_color }">
 		<div class="btnBox">
 			<div><button type="submit">수정</button></div>
 			<div><button type="button" class="delete" data-seq="${SEQ}">삭제</button></div>
 		</div>
 	</f:form>
-	
+</div>
 	

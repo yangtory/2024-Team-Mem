@@ -1,21 +1,4 @@
 @charset "UTF-8";
-form.update {
-  background-color: #15172b;
-  display: flex;
-  width: 60%;
-  margin-top: 20px;
-  margin: 40px auto;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-fieldset {
-  padding: 30px;
-}
-legend {
-  text-align: center;
-}
 
 form div {
   display: flex;
