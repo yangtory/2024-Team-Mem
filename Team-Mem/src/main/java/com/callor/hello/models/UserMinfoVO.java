@@ -14,12 +14,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class UserMinfoVO {
-
 	
-	private int r_iseq;			// INT NOT NULL,
-	private String r_uid;		// VARCHAR(20)	NOT NULL,
-//	CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid)
-	
+	private int r_iseq;	
+	private String r_uid;
+	private String r_icount;
+	private String r_sdate;
+	private String r_edate; 
 	
 	private int i_seq;			// INT PRIMARY KEY AUTO_INCREMENT,
 	private String i_title;		// VARCHAR(50)	NOT NULL	,
@@ -29,8 +29,4 @@ public class UserMinfoVO {
 	
 	private String us_uid;
 	
-	private String r_icount;
-	private String r_sdate;
-	private String r_edate;
-
 }

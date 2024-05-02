@@ -1,5 +1,6 @@
 package com.callor.hello.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -70,10 +72,14 @@ public class UserController {
 		
 		String ccode = teacherService.getLoginCCode();
 		String cname = companyDao.findCname(ccode);
-		
+		String id = teacherService.getLoginUid();
 		// 회원권리스트
 		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
 		model.addAttribute("MINFO", mInfoList);
+		
+		
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		model.addAttribute("UMINFO", mInfoVO);
 		
 		model.addAttribute("CCODE", ccode);
 		model.addAttribute("CNAME", cname);
@@ -87,26 +93,28 @@ public class UserController {
 			userSerivce.codeInput(userVO, userCompVO);			
 		}
 		if(userMinfoVO.getR_iseq() > 0) {
-			userSerivce.codeInput(userVO, userCompVO);
 			userMinfoVO.setR_uid(userVO.getU_id());
 			int result = userMinfoDao.insert(userMinfoVO);
 			log.debug("insert {}", result);		
 		}
+		try {
+			userSerivce.codeInput(userVO, userCompVO);
+		} catch (Exception e) {}
 		
 		return "redirect:/customer/";
 	}
 	
 	@RequestMapping(value="/detail/{seq}", method=RequestMethod.GET)
-	public String detail(@PathVariable("seq") String seq, Model model, UserCompVO userCompVO) {
-		
-		model.addAttribute("BODY", "USER_DETAIL");
+	public String detail(@PathVariable("seq") String seq, Model model) {
+		// USER 정보 
 		UserCompVO vo = userCompDao.findById(seq);
-		UserMinfoVO mInfoVO = userMinfoDao.findById(seq);
-		log.debug("회원 수강권 정보{} ", mInfoVO);
+		// 한 USER 의 수강권 리스트
+		List<UserMinfoVO> list = userMinfoDao.findById(seq);
+		log.debug("회원 수강권 정보{} ", list);
 		
-		model.addAttribute("MINFO", mInfoVO);
+		model.addAttribute("MINFO", list);
 		model.addAttribute("LIST", vo);
-		
+		model.addAttribute("BODY", "USER_DETAIL");		
 		return "layout";
 	}
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
@@ -114,8 +122,13 @@ public class UserController {
 		UserCompVO list = userCompDao.findById(seq);
 		String ccode = teacherService.getLoginCCode();
 		String cname = companyDao.findCname(ccode);
-		UserMinfoVO mInfoVO = userMinfoDao.findById(seq);
+		
+		// 한 user 의 수강권 리스트
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(seq);
+		log.debug("확인{}", mInfoVO);
+		// 해당 업체의 수강권 리스트
 		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
+		
 		model.addAttribute("MINFO", mInfoList);
 		model.addAttribute("UMINFO", mInfoVO);
 		model.addAttribute("CCODE", ccode);
@@ -127,18 +140,37 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
-	public String update(@PathVariable("seq") String seq, UserCompVO vo, UserMinfoVO userMinfoVO) {
-		
-		log.debug("UPDATE {}", vo.toString());
-		userCompDao.update(vo);
-			userMinfoDao.update(userMinfoVO);			
-			userMinfoVO.setR_uid(seq);
-			userMinfoDao.insert(userMinfoVO);			
+	public String update(@PathVariable("seq") String seq, UserCompVO userCompVO,  UserMinfoVO[] userMinfoVO) {
 
-		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());		
-		return retString;
+	    userCompDao.update(userCompVO);
+	    log.debug("USER UPDATE {}", userCompVO.toString());
+
+	    try {
+	        for (UserMinfoVO vo : userMinfoVO) {
+	            vo.setR_uid(seq);
+	            userMinfoDao.insert(vo);
+	            log.debug("MINFO INSERT {}", vo.toString());
+	        }
+	    } catch (Exception e) {
+	        List<UserMinfoVO> userMinfoList = new ArrayList<>();
+	        for (UserMinfoVO vo : userMinfoVO) {
+	            userMinfoList.add(
+	                UserMinfoVO.builder()
+	                    .r_iseq(vo.getR_iseq())
+	                    .r_uid(vo.getR_uid())
+	                    .r_icount(vo.getR_icount())
+	                    .r_sdate(vo.getR_sdate())
+	                    .r_edate(vo.getR_edate()).build());
+	            UserMinfoVO[] userMinfoArray = userMinfoList.toArray(new UserMinfoVO[userMinfoList.size()]);
+	            log.debug("제발 UPDATE {}", userMinfoArray.toString());
+	            userMinfoDao.update(userMinfoArray, vo.getR_iseq());
+	        }
+	    }
+
+	    String retString = String.format("redirect:/customer/detail/{seq}", userCompVO.getUs_uid());        
+	    return retString;
 	}
-	
+
 	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
 	public String delete(@PathVariable("seq") String seq) {
 		int result = 0;
