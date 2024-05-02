@@ -5,7 +5,6 @@
 
 <mapper namespace="com.callor.hello.dao.UserCompDao">
 
-
 	<select id="selectSearchAll">
 		SELECT *
 		FROM tbl_user_comp

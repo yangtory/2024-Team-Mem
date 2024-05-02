@@ -26,10 +26,17 @@
 		WHERE i_seq = #{seq}
 	</select>
 
-	<update id="update">
-		UPDATE tbl_user_minfo
-		SET r_iseq = #{r_iseq}, r_icount = #{r_icount}, r_sdate=#{r_sdate}, r_edate=#{r_edate}
+	<update id="update" >
+    	<foreach collection="vo" item="vo" separator=",">
+        	(UPDATE tbl_user_minfo
+        	SET
+        	r_icount = #{vo.r_icount},
+        	r_sdate = #{vo.r_sdate},
+        	r_edate = #{vo.r_edate}
+        	WHERE r_iseq = #{vo.r_iseq})
+    	</foreach>
 	</update>
+
 	<delete id="delete">
 		DELETE FROM tbl_user_minfo WHERE r_uid = #{seq}
 	</delete>

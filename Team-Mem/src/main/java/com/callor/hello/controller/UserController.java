@@ -97,16 +97,16 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/detail/{seq}", method=RequestMethod.GET)
-	public String detail(@PathVariable("seq") String seq, Model model, UserCompVO userCompVO) {
-		
-		model.addAttribute("BODY", "USER_DETAIL");
+	public String detail(@PathVariable("seq") String seq, Model model) {
+		// USER 정보 
 		UserCompVO vo = userCompDao.findById(seq);
-		UserMinfoVO mInfoVO = userMinfoDao.findById(seq);
-		log.debug("회원 수강권 정보{} ", mInfoVO);
+		// 한 USER 의 수강권 리스트
+		List<UserMinfoVO> list = userMinfoDao.findById(seq);
+		log.debug("회원 수강권 정보{} ", list);
 		
-		model.addAttribute("MINFO", mInfoVO);
+		model.addAttribute("MINFO", list);
 		model.addAttribute("LIST", vo);
-		
+		model.addAttribute("BODY", "USER_DETAIL");		
 		return "layout";
 	}
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.GET)
@@ -114,8 +114,12 @@ public class UserController {
 		UserCompVO list = userCompDao.findById(seq);
 		String ccode = teacherService.getLoginCCode();
 		String cname = companyDao.findCname(ccode);
-		UserMinfoVO mInfoVO = userMinfoDao.findById(seq);
+		
+		// 한 user 의 수강권 리스트
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(seq);
+		// 해당 업체의 수강권을 이용중인 user 리스트
 		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
+		
 		model.addAttribute("MINFO", mInfoList);
 		model.addAttribute("UMINFO", mInfoVO);
 		model.addAttribute("CCODE", ccode);
@@ -128,13 +132,19 @@ public class UserController {
 	
 	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
 	public String update(@PathVariable("seq") String seq, UserCompVO vo, UserMinfoVO userMinfoVO) {
-		
-		log.debug("UPDATE {}", vo.toString());
 		userCompDao.update(vo);
-			userMinfoDao.update(userMinfoVO);			
-			userMinfoVO.setR_uid(seq);
-			userMinfoDao.insert(userMinfoVO);			
+		log.debug("USER UPDATE {}", vo.toString());
 
+		try {
+			userMinfoVO.setR_uid(seq);
+			userMinfoDao.insert(userMinfoVO);
+			log.debug("MINFO INSERT {}", userMinfoVO.toString());
+			
+		} catch (Exception e) {
+			userMinfoDao.update(List<userMinfoVO> userMinfoVO);
+			log.debug("MINFO UPDATE {}", userMinfoVO.toString());
+		}
+		
 		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());		
 		return retString;
 	}

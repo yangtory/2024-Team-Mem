@@ -1,6 +1,9 @@
 package com.callor.hello.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.callor.hello.models.UserMinfoVO;
 
 public interface UserMinfoDao {
@@ -11,10 +14,10 @@ public interface UserMinfoDao {
 
 	public int delete(String seq);
 
-	public UserMinfoVO findById(String seq);
+	public List<UserMinfoVO> findById(String seq);
 	
 	public UserMinfoVO findBySeq(String seq);
 
-	public int update(UserMinfoVO userMinfoVO);
+	public int update(@Param("vo") List<UserMinfoVO> vo, @Param("seq") String i_seq);
 
 }

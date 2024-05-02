@@ -9,10 +9,13 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div><strong>업체코드</strong><span>${LIST.us_ccode}</span></div>
 <div><strong>업체명</strong><span>${LIST.us_cname}</span></div>
 <div><strong>이름</strong><span>${LIST.us_uname}</span></div>
-<div><strong>수강권</strong><span>${MINFO.i_title}</span></div>
-<div><strong>잔여횟수</strong><span>${MINFO.r_icount}</span></div>
-<div><strong>시작일</strong><span>${MINFO.r_sdate}</span></div>
-<div><strong>종료일</strong><span>${MINFO.r_edate}</span></div>
+
+<c:forEach items="${MINFO }" var="MINFO">
+	<div><strong>수강권</strong><span>${MINFO.i_title}</span></div>
+	<div><strong>잔여횟수</strong><span>${MINFO.r_icount}</span></div>
+	<div><strong>시작일</strong><span>${MINFO.r_sdate}</span></div>
+	<div><strong>종료일</strong><span>${MINFO.r_edate}</span></div>
+</c:forEach>
 <div>
   <strong></strong
   ><span>
