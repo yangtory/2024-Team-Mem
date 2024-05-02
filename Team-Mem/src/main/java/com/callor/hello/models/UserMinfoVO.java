@@ -14,7 +14,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class UserMinfoVO {
-
 	
 	private int r_iseq;	
 	private String r_uid;
@@ -30,6 +29,4 @@ public class UserMinfoVO {
 	
 	private String us_uid;
 	
-
-
 }

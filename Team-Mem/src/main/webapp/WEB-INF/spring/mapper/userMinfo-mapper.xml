@@ -27,13 +27,13 @@
 	</select>
 
 	<update id="update" >
-    	<foreach collection="vo" item="vo" separator=",">
-        	(UPDATE tbl_user_minfo
+    	<foreach collection="vo" item="vo" separator=";">
+        	UPDATE tbl_user_minfo
         	SET
         	r_icount = #{vo.r_icount},
         	r_sdate = #{vo.r_sdate},
         	r_edate = #{vo.r_edate}
-        	WHERE r_iseq = #{vo.r_iseq})
+        	WHERE r_iseq = #{vo.r_iseq}
     	</foreach>
 	</update>
 
