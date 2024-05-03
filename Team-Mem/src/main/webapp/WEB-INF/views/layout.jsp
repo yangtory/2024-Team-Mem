@@ -15,6 +15,10 @@
 		<%@ include file="/WEB-INF/views/include/include-sidebar.jsp"%>
 		<section>
 			<%-- <tiles:insertAttribute name="content"/> --%>
+			
+			<c:if test="${BODY == 'HOME'}">
+				<%@ include file="/WEB-INF/views/main/dash.jsp"%>
+			</c:if>
 			<c:if test="${BODY == 'TEACHER_HOME'}">
 				<%@ include file="/WEB-INF/views/teacher/home.jsp"%>
 			</c:if>

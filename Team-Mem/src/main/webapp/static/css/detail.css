@@ -22,7 +22,7 @@ div.card {
   flex-direction: column;
 }
 div.container {
-  padding: 0.01em 16px;
+  padding: 1rem 16px 0.5rem 16px;
 }
 
 div.info {
@@ -40,8 +40,38 @@ div.info {
   }
 }
 
+div.info.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #3d4340;
+  padding: 8px;
+  strong {
+    flex: 1;
+    text-align: center;
+  }
+  p {
+    flex: 1;
+    text-align: center;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #313749;
+  }
+  a {
+    flex: 1;
+  }
+}
+a.message_btn {
+  width: 20%;
+  border-radius: 0;
+  background-color: #313749;
+  color: #bec7d5;
+  font-weight: 200;
+  margin: 0;
+}
+
 div.detail.btn_box {
-  margin: 10px 10px 10px auto;
+  margin: 5px 10px 20px auto;
   a {
     width: 30%;
     margin: 5px auto;

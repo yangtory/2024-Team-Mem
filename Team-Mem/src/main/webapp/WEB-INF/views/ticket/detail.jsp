@@ -2,7 +2,6 @@
 pageEncoding="UTF-8"%> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="${rootPath}/static/css/detail.css" />
 <h1 class="list_title">수강권 정보</h1>
 <div class="detail_box">
   <div class="card">
