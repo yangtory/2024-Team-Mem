@@ -14,13 +14,16 @@ div.section_box {
 aside.left {
   display: flex;
   flex-direction: row;
+  flex: 1;
+  height: 95%;
 }
 aside.right {
+  overflow: auto;
   display: flex;
   height: 89%;
   flex-direction: column;
-  align-items: stretch;
-  flex: 2;
+  /* align-items: stretch; */
+  flex: 1;
   /* justify-content: center; */
   margin-top: 6.5rem;
   background-color: #012b39;
@@ -34,10 +37,16 @@ aside.right {
     border-radius: 10px;
     font-weight: 600;
     /* overflow: scroll; */
-    div.content {
+    &:hover {
+      cursor: pointer;
+    }
+    article.content {
       padding: 8px 0;
     }
   }
+}
+aside.right::-webkit-scrollbar {
+  display: none;
 }
 .calendar {
   display: flex;

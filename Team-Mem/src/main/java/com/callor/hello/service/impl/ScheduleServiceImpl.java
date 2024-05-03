@@ -49,12 +49,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 					.s_content(s_content)
 					.s_sdate(s_sdate)
 					.s_edate(s_edate).build());
-		
 			scheduleDao.insert(vo);
-			
 		}
-		
-		
 		
 		return 0;
 	}
@@ -69,21 +65,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 		if(c_edate.isEmpty()) {
 			
 			vo.setC_edate(c_sdate);
-
-			
-		
 		} else {
 			list.add(vo.builder()
-
 					.c_sdate(c_sdate)
 					.c_edate(c_edate).build());
-			
-			
 		}
 		classDao.insert(vo);
 		list = new ArrayList<>();
-		
-		
 		return 0;
 		
 	}

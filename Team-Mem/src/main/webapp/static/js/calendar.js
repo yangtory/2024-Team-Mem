@@ -73,48 +73,54 @@ document.addEventListener("DOMContentLoaded", async () => {
       const formattedDate = formatDate(currentDate);
 
       // 해당 날짜에 속하는 일정들을 가져옴
-      const schedules = json.filter(
-        (schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate
-      );
+      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
 
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
-        if (
-          !existingTitleContainer ||
-          !existingTitleContainer.classList.contains("title-container")
-        ) {
+        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
           // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
           const titleContainer = document.createElement("span");
           titleContainer.classList.add("title-container");
           day_all[j].insertAdjacentElement("afterend", titleContainer);
 
+          // 배열 초기화
+          const existingSchedules = [];
+
           schedules.forEach((schedule) => {
-            const titleSpan = document.createElement("span");
-            const rightSpan = document.createElement("div");
-            const rightSpanTitle = document.createElement("div");
-            titleSpan.textContent = schedule.s_title;
-            const scheduleText = `${schedule.s_sdate + " ~ " + schedule.s_edate}`;
-            const scheduleContent = `${schedule.s_title}`;
+            // 중복된 s_sdate와 s_title이 있는지 확인
+            const isDuplicate = existingSchedules.some(
+              (existingSchedule) => existingSchedule.s_sdate === schedule.s_sdate && existingSchedule.s_title === schedule.s_title
+            );
 
-            titleSpan.classList.add("title");
+            if (!isDuplicate) {
+              // 중복된 경우 배열에 추가
+              existingSchedules.push(schedule);
 
-            titleSpan.style.backgroundColor = schedule.s_color;
-            if (schedule.s_color === "#ffffff") {
-              titleSpan.style.color = "black";
-            }
-            if (!right.innerHTML.includes(scheduleText)) {
+              // 해당 일정 추가
+              const titleSpan = document.createElement("span");
+              const rightSpan = document.createElement("div");
+              const rightSpanTitle = document.createElement("article");
+              titleSpan.textContent = schedule.s_title;
+              const scheduleText = `${schedule.s_sdate + " ~ " + schedule.s_edate}`;
+              const scheduleContent = `${schedule.s_title}`;
+              titleSpan.classList.add("title");
+              titleSpan.style.backgroundColor = schedule.s_color;
+              if (schedule.s_color === "#ffffff") {
+                titleSpan.style.color = "black";
+              }
+
               rightSpan.textContent = scheduleText;
               rightSpanTitle.textContent = scheduleContent;
-
               rightSpan.classList.add("title");
               rightSpanTitle.classList.add("content");
 
               right.appendChild(rightSpan);
-
               rightSpan.appendChild(rightSpanTitle);
+
+              titleContainer.appendChild(titleSpan);
+              rightSpan.setAttribute("data-sdate", schedule.s_sdate);
             }
-            titleContainer.appendChild(titleSpan);
           });
         }
       }
@@ -193,6 +199,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       const click2 = target.closest("DIV").innerText[1];
       const dates = `${viewYear}-${viewMonthStr}-${click}${click2}`;
       document.location.href = `${rootPath}/schedule/detail/${dates}`;
+    }
+  });
+  const right_box = document.querySelector("aside.right");
+  right_box.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.classList.contains("content") || target.tagName === "DIV") {
+      const sdate = target.closest("div").dataset.sdate;
+      document.location.href = `${rootPath}/class/detail/${sdate}`;
     }
   });
 

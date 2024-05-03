@@ -26,7 +26,7 @@
 		</div>
 		<label>시작일자</label><input placeholder="시작일자" type="date" value="${SDATE }" name="c_sdate"/>
 		<label>종료일자</label><input placeholder="종료일자" type="date" name="c_edate" />
-		<label>시작시간</label><input placeholder="시작시간" type="time" name="c_stime" />
+		<label>시작시간</label><input placeholder="시작시간" type="time" min = "00:00" max="24:00" name="c_stime" />
 		<label>종료시간</label><input placeholder="종료시간" type="time" name="c_etime" />
 		<label>색상</label><input type="color" id="colorPicker" value="#ffffff" name="c_color">
 
