@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const navs = Object.keys(NAV);
   navs.forEach((key) => {
-    console.log(key);
     if (pathArr.join(" ").includes(key)) {
       document.querySelector(`div.side ul li.${key}`)?.classList.add("active");
     }

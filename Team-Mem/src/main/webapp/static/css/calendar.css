@@ -1,19 +1,41 @@
 @charset "UTF-8";
 
 section {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-height: 80vh;
   height: 50%;
 }
+div.section_box {
+  display: flex;
+
+  /* border: 1px solid red; */
+}
+
 aside.left {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* border: 1px solid red; */
-  position: relative;
-  top: -4.5%;
+  flex-direction: row;
+}
+aside.right {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  /* justify-content: center; */
+  margin-top: 6.5rem;
+  background-color: #012b39;
+  border-radius: 10px;
+  margin-right: 2rem;
+  div.title {
+    /* border: 1px solid black; */
+    margin: 12px 8px 0 8px;
+    padding: 8px;
+    background-color: #014055;
+    border-radius: 10px;
+    font-weight: 600;
+    overflow: scroll;
+    div.content {
+      padding: 8px 0;
+    }
+  }
 }
 .calendar {
   display: flex;

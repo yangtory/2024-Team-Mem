@@ -63,7 +63,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const json = await res.json();
     console.log(json);
     const day_all = document.querySelectorAll(".this");
-
+    const right = document.querySelector(".right");
+    right.innerHTML = "";
     for (let j = 0; j < day_all.length; j++) {
       if (day_all[j].innerHTML.length === 1) {
         day_all[j].innerHTML = "0" + day_all[j].innerHTML;
@@ -90,11 +91,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           schedules.forEach((schedule) => {
             const titleSpan = document.createElement("span");
+            const rightSpan = document.createElement("div");
+            const rightSpanTitle = document.createElement("div");
             titleSpan.textContent = schedule.s_title;
+            const scheduleText = `${schedule.s_sdate + " ~ " + schedule.s_edate}`;
+            const scheduleContent = `${schedule.s_title}`;
+
             titleSpan.classList.add("title");
+
             titleSpan.style.backgroundColor = schedule.s_color;
             if (schedule.s_color === "#ffffff") {
               titleSpan.style.color = "black";
+            }
+            if (!right.innerHTML.includes(scheduleText)) {
+              rightSpan.textContent = scheduleText;
+              rightSpanTitle.textContent = scheduleContent;
+
+              rightSpan.classList.add("title");
+              rightSpanTitle.classList.add("content");
+
+              right.appendChild(rightSpan);
+
+              rightSpan.appendChild(rightSpanTitle);
             }
             titleContainer.appendChild(titleSpan);
           });
