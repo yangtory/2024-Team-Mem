@@ -11,6 +11,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h1 class="list_title">일정 관리</h1>
 <body>
   <section>
+  	<div class="section_box">
     <aside class="left">
       <div class="calendar">
         <div class="calHeader">
@@ -35,13 +36,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         </div>
       </div>
     </aside>
-    <aside class="right">
-    	<c:forEach items="${LIST}" var="L">
-    		
-    		<div>${L.s_title}</div>
-    		<div>${L.s_content}</div>
-    		
-    	</c:forEach>
-    </aside>
+<aside class="right">
+  
+  
+</aside>
+	</div>
   </section>
 </body>
