@@ -1,62 +1,62 @@
 h1.list_title {
-  width: 30%;
-  text-align: center;
-  padding: 1rem;
-  background-color: #3d4340;
-  font-weight: 600;
-  font-size: 1.2rem;
+    width: 30%;
+    text-align: center;
+    padding: 1rem;
+    background-color: #3d4340;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 div.list_home {
-  width: 80%;
-  margin: 0.8rem auto;
+    width: 80%;
+    margin: 0.8rem auto;
 
-  div.insert_btn_box {
-    display: flex;
-    justify-content: right;
-    a.insert,
-    button.insert {
-      width: 20%;
-      font-weight: 600;
-      margin: 1rem;
-      border-radius: 5px;
+    div.insert_btn_box {
+        display: flex;
+        justify-content: right;
+        a.insert,
+        button.insert {
+            width: 20%;
+            font-weight: 600;
+            margin: 1rem;
+            border-radius: 5px;
+        }
     }
-  }
 }
 table.list {
-  width: 100%;
-  background: #012b39;
-  border-radius: 0.25em;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-  th {
-    border-bottom: 1px solid #364043;
-    color: #8dcdad;
-    font-size: 0.85em;
-    font-weight: 600;
-    padding: 0.5em 1em;
-    text-align: center;
-  }
-  td {
-    color: #fff;
-    text-align: center;
-    font-weight: 400;
-    padding: 0.65em 1em;
-  }
-  .disabled td {
-    color: #4f5f64;
-  }
-  tbody tr {
-    transition: background 0.25s ease;
-  }
-  tbody tr:hover {
-    background: #014055;
-    cursor: pointer;
-  }
+    width: 100%;
+    background: #012b39;
+    border-radius: 0.25em;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    th {
+        border-bottom: 1px solid #364043;
+        color: #8dcdad;
+        font-size: 0.85em;
+        font-weight: 600;
+        padding: 0.5em 1em;
+        text-align: center;
+    }
+    td {
+        color: #fff;
+        text-align: center;
+        font-weight: 400;
+        padding: 0.65em 1em;
+    }
+    .disabled td {
+        color: #4f5f64;
+    }
+    tbody tr {
+        transition: background 0.25s ease;
+    }
+    tbody tr:hover {
+        background: #014055;
+        cursor: pointer;
+    }
 }
 #colorPicker {
-  height: 50px;
+    height: 50px;
 }
 .active {
-  background-color: #555;
-  border-bottom: 2px solid green;
+    background-color: #555;
+    border-bottom: 2px solid #014055;
 }

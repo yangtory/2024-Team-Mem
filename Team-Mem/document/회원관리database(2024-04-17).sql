@@ -35,24 +35,14 @@ ALTER TABLE tbl_class
 ADD COLUMN c_color VARCHAR(20);
 -- 여기까지
 
-alter table tbl_user_minfo
-add column r_icount int not null,
-add column r_sdate varchar(10) not null,
-add column r_edate varchar(10) not null;
-
 SELECT * FROM tbl_schedule
 ORDER BY s_sdate DESC, s_edate DESC;
 TRUNCATE tbl_schedule;
-
-
 
 SELECT * 
 		FROM tbl_user_comp uc
 		LEFT JOIN tbl_user u ON u.u_id = uc.us_uid
 		where uc.us_ccode = 'C0001';
-	
-
-
 
 CREATE TABLE tbl_user(
 u_id	VARCHAR(20)		PRIMARY KEY,
@@ -152,12 +142,17 @@ CREATE TABLE tbl_schedule (
 CREATE TABLE tbl_user_minfo(
 r_uid	VARCHAR(20)	NOT NULL,
 r_iseq	INT	NOT NULL,
+r_icount int not null,
+r_sdate varchar(10) not null,
+r_edate varchar(10) not null,
 
-CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid),
+CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid,r_sdate),
     FOREIGN KEY (r_iseq)
     REFERENCES tbl_minfo(i_seq)
     ON DELETE CASCADE
 );
+
+drop TABLE tbl_user_minfo;
 
 -- user, comp 릴레이션 테이블
 CREATE TABLE tbl_user_comp(

@@ -14,6 +14,7 @@
 				AND n_date LIKE CONCAT('%', #{n_date}, '%')</if>
 				AND n_ccode = #{n_ccode}
 		</where>
+		ORDER BY n_date DESC, n_time DESC
 	</select>
 	<select id="findById">
 		SELECT * FROM tbl_notice

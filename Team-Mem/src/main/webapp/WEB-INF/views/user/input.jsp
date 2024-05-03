@@ -8,7 +8,10 @@
 <script>const rootPath = "${rootPath}"</script>
 <script src="${rootPath }/static/js/userInput.js"></script>
 <script src="${rootPath }/static/js/minfoInput.js"></script>
+<link rel="stylesheet" href="${rootPath}/static/css/userInput.css">
 
+<h1 class="list_title">회원 등록</h1>
+<div class="wrap">
 <div class="input_div">
 <f:form class="formBox input_box">
         <h3>회원 정보</h3>
@@ -32,28 +35,30 @@
                 <label>수강권횟수</label><input class="r_icount" placeholder="수강권횟수" name="r_icount" value="${U.r_icount }" readonly >
                 <label>시작일</label><input class="r_sdate" type="date" name="r_sdate" value="${U.r_sdate }" >
                 <label>종료일</label><input class="r_edate" type="date" name="r_edate" value="${U.r_edate }" >
-    
+    <div>${ERROR }</div>
     <input type="submit" value="${COMP != null ? '수정' : '저장' }"class="insert" >
 </f:form>
 
-
-	<c:if test="${COMP == null}">
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>이름</th>
+</div>
+<div class="member_list">
+	<h3>USER 리스트</h3>
+<c:if test="${COMP == null}">
+	<table class="list">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>이름</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${USER }" var="USER">
+				<tr data-id = "${USER.u_id }">
+					<td>${USER.u_id }</td>
+					<td>${USER.u_name }</td>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${USER }" var="USER">
-					<tr data-id = "${USER.u_id }">
-						<td>${USER.u_id }</td>
-						<td>${USER.u_name }</td>
-					</tr>
-				</c:forEach>
-			</tbody>		
-		</table>
-	</c:if>
-
+			</c:forEach>
+		</tbody>		
+	</table>
+</c:if>
+</div>
 </div>

@@ -87,14 +87,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
-	public String insert(UserCompVO userCompVO, UserVO userVO, UserMinfoVO userMinfoVO) {
+	public String insert(UserCompVO userCompVO, UserVO userVO,
+			UserMinfoVO userMinfoVO, Model model) {
 		if(userMinfoVO.getR_iseq() == 0) {
 			userSerivce.codeInput(userVO, userCompVO);			
 		}
 		if(userMinfoVO.getR_iseq() > 0) {
-			userMinfoVO.setR_uid(userVO.getU_id());
-			int result = userMinfoDao.insert(userMinfoVO);
-			log.debug("insert {}", result);		
+				userMinfoVO.setR_uid(userVO.getU_id());
+				int result = userMinfoDao.insert(userMinfoVO);
+				log.debug("insert {}", result);						
 		}
 		try {
 			userSerivce.codeInput(userVO, userCompVO);
