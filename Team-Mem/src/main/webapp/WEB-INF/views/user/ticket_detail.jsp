@@ -8,7 +8,15 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <div class="card">
     <h3>${MINFO.i_title}</h3>
     <div class="container">
-      <p>현재 D${DDAY } 남았습니다</p>
+    	
+      	<c:choose>
+	      	<c:when test="${DDAY < 0}">
+	    	  <p>현재 D${DDAY } 남았습니다</p>
+	    	</c:when>
+	    	<c:otherwise>
+		    	<p>기간이 만료되었습니다</p>
+	    	</c:otherwise>
+    	</c:choose>
       <hr />
       <div class="info">
         <div>
@@ -20,6 +28,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           <p>${MINFO.r_icount} 회</p>
         </div>
         <div>
+        
           <strong>기간</strong>
           <p>${MINFO.r_sdate} ~ ${MINFO.r_edate }</p>
         </div>

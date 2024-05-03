@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.hello.dao.MinfoDao;
+import com.callor.hello.dao.UserMinfoDao;
 import com.callor.hello.models.MinfoVO;
+import com.callor.hello.models.UserMinfoVO;
 import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,12 +22,16 @@ import lombok.extern.slf4j.Slf4j;
 public class TicketController {
 	
 	private final MinfoDao minfoDao;
+	private final UserMinfoDao userMinfoDao; 
 	private final TeacherService teacherService;
-	public TicketController(MinfoDao minfoDao, TeacherService teacherService) {
+	
+	public TicketController(MinfoDao minfoDao, UserMinfoDao userMinfoDao, TeacherService teacherService) {
+		super();
 		this.minfoDao = minfoDao;
+		this.userMinfoDao = userMinfoDao;
 		this.teacherService = teacherService;
 	}
-	
+
 	@RequestMapping(value={"/", ""}, method=RequestMethod.GET)
 	public String home(Model model) {
 		String cCode =teacherService.getLoginCCode();
@@ -55,6 +61,11 @@ public class TicketController {
 	@RequestMapping(value="/detail/{seq}",method=RequestMethod.GET)
 	public String detail(@PathVariable("seq") String seq, Model model) {
 		MinfoVO vo = minfoDao.findById(seq);
+		
+		// 이용중 유저
+		String ccode = teacherService.getLoginCCode();
+		int result = userMinfoDao.countUser(ccode, seq);
+		model.addAttribute("COUNT",result);
 		model.addAttribute("LIST", vo);
 		model.addAttribute("BODY", "TICKET_DETAIL");
 		return "layout";

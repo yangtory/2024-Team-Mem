@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <div class="card">
     <h3>${LIST.i_title}</h3>
     <div class="container">
-      <p>현재 2명 이용중입니다</p>
+      <p>현재 ${COUNT }명 이용중입니다</p>
       <hr />
       <div class="info">
         <div>

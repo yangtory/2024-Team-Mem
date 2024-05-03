@@ -29,7 +29,7 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   </div>
   <div>
     <c:if test="${not empty CCODE}"
-      >회사 코드 : <c:out value="${CCODE}" />
+      >업체 코드 : <c:out value="${CCODE}" />
     </c:if>
   </div>
   <table class="customer list">

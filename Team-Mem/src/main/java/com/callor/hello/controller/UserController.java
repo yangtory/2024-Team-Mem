@@ -170,15 +170,46 @@ public class UserController {
 	}
 	
 	// insert 만들 자리 
+	@RequestMapping(value="/tickinsert/{id}", method=RequestMethod.GET)
+	public String tickInsert(@PathVariable("id") String id ,Model model) {
+		String ccode = teacherService.getLoginCCode();
+		String cname = companyDao.findCname(ccode);
+		// 회원권리스트
+		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
+		UserCompVO list = userCompDao.findById(id);
+		
+		model.addAttribute("CNAME", cname);
+		model.addAttribute("CCODE", ccode);
+		model.addAttribute("COMP", list);
+		model.addAttribute("MINFO", mInfoList);
+		model.addAttribute("BODY", "USER_TICK_INSERT");
+		return "layout";
+	}
+	
+	@RequestMapping(value="/tickinsert/{id}", method=RequestMethod.POST)
+	public String tickInsert(@PathVariable("id")String id, UserMinfoVO userMinfoVO) {
+		
+		int result = userMinfoDao.insert(userMinfoVO);
+		log.debug("insert {}", result);		
+		
+		return "redirect:/customer/tickinfo/{id}";
+	}
+	
 	
 	@RequestMapping(value="/tickinfo/{id}", method=RequestMethod.GET)
 	public String tickList(@PathVariable("id") String id,Model model) {
+		// 헤더 데이터
+		UserVO user = userDao.findById(id);
+		model.addAttribute("HEAD", user);
+		
+		//테이블 데이터
 		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
-		List<String> dDayList = new ArrayList<>();
+		List<Integer> dDayList = new ArrayList<>();
 
 		for (UserMinfoVO vo : mInfoVO) {
 		    String dDay = getdDay(vo.getR_edate()); // 디데이 계산
-		    dDayList.add(dDay); // 디데이 리스트에 추가
+		    int intdDay = Integer.valueOf(dDay);
+		    dDayList.add(intdDay); // 디데이 리스트에 추가
 		}
 
 		model.addAttribute("DDAY",dDayList);
@@ -194,7 +225,8 @@ public class UserController {
 		for(UserMinfoVO vo : mInfoVO) {
 			if(vo.getI_seq() == Integer.valueOf(seq)) {
 				String dDay = getdDay(vo.getR_edate());
-				model.addAttribute("DDAY", dDay);
+				int intdDay =Integer.valueOf(dDay); 
+				model.addAttribute("DDAY", intdDay);
 				model.addAttribute("MINFO", vo);
 			}
 		}
@@ -228,16 +260,26 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/tickdelete/{id}/{seq}", method=RequestMethod.GET)
-	public String tickdelete(@PathVariable("id") String id,	@PathVariable("seq") String seq) {
+	public String tickdelete(@PathVariable("id") String id,	@PathVariable("seq") String seq,
+			Model model) {
 		userMinfoDao.tickdelete(id,seq);
-		return "redirect:/customer/";
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		for(UserMinfoVO vo : mInfoVO) {
+			if(vo.getI_seq() == Integer.valueOf(seq)) {
+				String dDay = getdDay(vo.getR_edate());
+				int intdDay = Integer.valueOf(dDay);
+				model.addAttribute("DDAY", intdDay);
+				model.addAttribute("MINFO", vo);
+			}
+		}
+		return "redirect:/customer/tickinfo/{id}";
 	}
 	
-//	@RequestMapping(value="/insert/{seq}")
-//	public String json(@PathVariable("seq") String seq) {
-//		userSerivce.findById(seq);
-//		return null;
-//	}
+	@RequestMapping(value="/insert/{seq}")
+	public String json(@PathVariable("seq") String seq) {
+		userSerivce.findById(seq);
+		return null;
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)
