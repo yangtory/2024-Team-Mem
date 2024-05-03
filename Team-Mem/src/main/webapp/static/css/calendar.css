@@ -3,11 +3,11 @@
 section {
   /* overflow: hidden; */
   min-height: 80vh;
-  height: 50%;
+  /* height: 50%; */
 }
 div.section_box {
   display: flex;
-
+  height: 70vh;
   /* border: 1px solid red; */
 }
 
@@ -17,7 +17,9 @@ aside.left {
 }
 aside.right {
   display: flex;
+  height: 89%;
   flex-direction: column;
+  align-items: stretch;
   flex: 2;
   /* justify-content: center; */
   margin-top: 6.5rem;
@@ -31,7 +33,7 @@ aside.right {
     background-color: #014055;
     border-radius: 10px;
     font-weight: 600;
-    overflow: scroll;
+    /* overflow: scroll; */
     div.content {
       padding: 8px 0;
     }

@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 데이터 가져오기
     const res = await fetch(`${rootPath}/schedule/get`);
     const json = await res.json();
-    console.log(json);
+
     const day_all = document.querySelectorAll(".this");
     const right = document.querySelector(".right");
     right.innerHTML = "";
