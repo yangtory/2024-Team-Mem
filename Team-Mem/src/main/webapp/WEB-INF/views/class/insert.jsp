@@ -16,13 +16,14 @@
 <div class="class error"></div>
 		<label>수업명</label><input placeholder="수업명" name="c_name"/>
 			<label>강사</label>
+			<div class="selectBox">
 			<select name="c_tcode">
 			<option value="">강사선택</option>
 			<c:forEach items="${TLIST }" var="TEACHER">
 				<option value="${TEACHER.t_code }"${TEACHER.t_code == c_tcode ? 'selected' : ''} >${TEACHER.t_name}</option>
 			</c:forEach>
 			</select>	
-		
+		</div>
 		<label>시작일자</label><input placeholder="시작일자" type="date" value="${SDATE }" name="c_sdate"/>
 		<label>종료일자</label><input placeholder="종료일자" type="date" name="c_edate" />
 		<label>시작시간</label><input placeholder="시작시간" type="time" name="c_stime" />

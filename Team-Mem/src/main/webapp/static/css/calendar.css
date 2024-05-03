@@ -2,10 +2,10 @@
 
 section {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   overflow: hidden;
   min-height: 80vh;
+  height: 50%;
 }
 aside.left {
   display: flex;
@@ -13,7 +13,7 @@ aside.left {
   justify-content: center;
   /* border: 1px solid red; */
   position: relative;
-  top: -13.5%;
+  top: -4.5%;
 }
 .calendar {
   display: flex;
@@ -109,10 +109,6 @@ aside.left {
 
 div.date {
   border-right: 0.5px solid white;
-
-  &:nth-last-of-type(1) {
-    /* border-right: 0.5px solid white; */
-  }
 }
 span.title {
   /* background-color: #654df1; */

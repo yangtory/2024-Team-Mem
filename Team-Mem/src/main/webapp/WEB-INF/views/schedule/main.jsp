@@ -35,5 +35,13 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         </div>
       </div>
     </aside>
+    <aside class="right">
+    	<c:forEach items="${LIST}" var="L">
+    		
+    		<div>${L.s_title}</div>
+    		<div>${L.s_content}</div>
+    		
+    	</c:forEach>
+    </aside>
   </section>
 </body>

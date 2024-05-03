@@ -1,7 +1,8 @@
 package com.callor.hello.controller;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,10 +71,14 @@ public class UserController {
 		
 		String ccode = teacherService.getLoginCCode();
 		String cname = companyDao.findCname(ccode);
-		
+		String id = teacherService.getLoginUid();
 		// 회원권리스트
 		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
 		model.addAttribute("MINFO", mInfoList);
+		
+		
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		model.addAttribute("UMINFO", mInfoVO);
 		
 		model.addAttribute("CCODE", ccode);
 		model.addAttribute("CNAME", cname);
@@ -87,11 +92,13 @@ public class UserController {
 			userSerivce.codeInput(userVO, userCompVO);			
 		}
 		if(userMinfoVO.getR_iseq() > 0) {
-			userSerivce.codeInput(userVO, userCompVO);
 			userMinfoVO.setR_uid(userVO.getU_id());
 			int result = userMinfoDao.insert(userMinfoVO);
 			log.debug("insert {}", result);		
 		}
+		try {
+			userSerivce.codeInput(userVO, userCompVO);
+		} catch (Exception e) {}
 		
 		return "redirect:/customer/";
 	}
@@ -117,7 +124,8 @@ public class UserController {
 		
 		// 한 user 의 수강권 리스트
 		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(seq);
-		// 해당 업체의 수강권을 이용중인 user 리스트
+		log.debug("확인{}", mInfoVO);
+		// 해당 업체의 수강권 리스트
 		List<UserMinfoVO> mInfoList = userMinfoDao.selectAll(ccode);
 		
 		model.addAttribute("MINFO", mInfoList);
@@ -130,25 +138,21 @@ public class UserController {
 		return "layout";
 	}
 	
-	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
-	public String update(@PathVariable("seq") String seq, UserCompVO vo, UserMinfoVO userMinfoVO) {
-		userCompDao.update(vo);
-		log.debug("USER UPDATE {}", vo.toString());
-
-		try {
-			userMinfoVO.setR_uid(seq);
-			userMinfoDao.insert(userMinfoVO);
-			log.debug("MINFO INSERT {}", userMinfoVO.toString());
-			
-		} catch (Exception e) {
-			userMinfoDao.update(List<userMinfoVO> userMinfoVO);
-			log.debug("MINFO UPDATE {}", userMinfoVO.toString());
-		}
-		
-		String retString = String.format("redirect:/customer/detail/{seq}", vo.getUs_uid());		
-		return retString;
-	}
 	
+	@RequestMapping(value="/update/{seq}", method=RequestMethod.POST)
+	public String update(@PathVariable("seq") String seq, UserCompVO userCompVO,
+			 UserMinfoVO userMinfoVO) {
+	    userCompDao.update(userCompVO);
+	    log.debug("USER UPDATE {}", userCompVO.toString());	    
+	    
+	    userMinfoVO.setR_uid(seq);
+	    userMinfoDao.update(userMinfoVO);
+        log.debug("MINFO INSERT {}", userMinfoVO);
+
+	    String retString = String.format("redirect:/customer/detail/{seq}", userCompVO.getUs_uid());        
+	    return retString;
+	}
+
 	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
 	public String delete(@PathVariable("seq") String seq) {
 		int result = 0;
@@ -165,11 +169,41 @@ public class UserController {
 		return null;
 	}
 	
-	@RequestMapping(value="/insert/{seq}")
-	public String json(@PathVariable("seq") String seq) {
-		userSerivce.findById(seq);
-		return null;
+	@RequestMapping(value="/tickinfo/{id}", method=RequestMethod.GET)
+	public String tickList(@PathVariable("id") String id,Model model) {
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		List<String> dDayList = new ArrayList<>();
+
+		for (UserMinfoVO vo : mInfoVO) {
+		    String dDay = getdDay(vo.getR_edate()); // 디데이 계산
+		    dDayList.add(dDay); // 디데이 리스트에 추가
+		}
+
+		model.addAttribute("DDAY",dDayList);
+		model.addAttribute("MINFO",mInfoVO);
+		model.addAttribute("BODY", "USER_TICK_INFO");
+		return "layout"; 
 	}
+	
+	@RequestMapping(value="/tickdetail/{id}/{seq}",method=RequestMethod.GET)
+	public String tickDetail(@PathVariable("id") String id,
+			@PathVariable("seq") String seq,Model model) {
+		List<UserMinfoVO> mInfoVO = userMinfoDao.findById(id);
+		for(UserMinfoVO vo : mInfoVO) {
+			if(vo.getI_seq() == Integer.valueOf(seq)) {
+				model.addAttribute("MINFO", vo);
+			}
+		}
+		model.addAttribute("BODY", "USER_TICK_DETAIL");
+		return "layout";
+	}
+	
+	
+//	@RequestMapping(value="/insert/{seq}")
+//	public String json(@PathVariable("seq") String seq) {
+//		userSerivce.findById(seq);
+//		return null;
+//	}
 	
 	@ResponseBody
 	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)
@@ -185,6 +219,11 @@ public class UserController {
 		return vo;
 	}
 	
-	
-	
+	private String getdDay(String edate) {
+		LocalDate currentDate = LocalDate.now();		
+	    LocalDate endDate = LocalDate.parse(edate); //edate 날짜 변환 
+		long dDay = (int) (currentDate.toEpochDay() - endDate.toEpochDay());
+		
+		return Long.toString(dDay);	
+	}
 }

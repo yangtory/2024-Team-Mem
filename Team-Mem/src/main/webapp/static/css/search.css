@@ -11,7 +11,7 @@ div.search {
         height: 25px;
         padding: 3px 10px;
         margin-right: 5px;
-        border-radius: 10px;
+        border-radius: 5px;
         outline: none;
         border: none;
         text-align: center;
@@ -26,6 +26,6 @@ div.search {
         height: 25px;
         padding: 3px;
         font-weight: 500;
-        border-radius: 10px;
+        border-radius: 5px;
     }
 }

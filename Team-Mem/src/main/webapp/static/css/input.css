@@ -55,9 +55,11 @@
   font-size: 14px;
   margin-bottom: 10px;
 }
-
-select {
+div.selectBox {
   width: 90%;
+}
+select {
+  width: 100%;
   padding: 0.3rem;
   text-align: center;
   font-family: inherit;
@@ -67,7 +69,8 @@ select {
   background-color: #012b39;
   border-bottom: 1px solid #eee;
   color: white;
-  margin-bottom: 15px;
+  margin: 15px 0;
+
   &:focus {
     border-bottom: 1px solid #eee;
   }
