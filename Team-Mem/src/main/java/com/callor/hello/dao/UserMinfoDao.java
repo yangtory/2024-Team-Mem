@@ -20,4 +20,6 @@ public interface UserMinfoDao {
 
 	public int update(UserMinfoVO updateVO);
 
+	public int tickdelete(@Param("id") String id,@Param("seq") String seq);
+
 }

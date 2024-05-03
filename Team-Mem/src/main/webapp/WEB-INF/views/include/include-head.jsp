@@ -40,5 +40,4 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   </script>
   <script src="${rootPath}/static/js/main.js?2024-04-26-001"></script>
   <script src="${rootPath}/static/js/teacher.js?2024-04-18-002"></script>
-  <script src="${rootPath}/static/js/ticket.js"></script>
 </head>

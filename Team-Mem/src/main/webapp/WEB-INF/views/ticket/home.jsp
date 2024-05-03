@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+ <script src="${rootPath}/static/js/ticket.js"></script>
 
 <h1 class="list_title">회원권 리스트</h1>
 <div class="list_home">

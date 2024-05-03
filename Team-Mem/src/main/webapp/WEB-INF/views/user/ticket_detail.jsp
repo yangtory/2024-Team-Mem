@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <div class="card">
     <h3>${MINFO.i_title}</h3>
     <div class="container">
-      <p>현재 D-29 남았습니다</p>
+      <p>현재 D${DDAY } 남았습니다</p>
       <hr />
       <div class="info">
         <div>

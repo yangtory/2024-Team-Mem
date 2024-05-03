@@ -38,5 +38,9 @@
 	<delete id="delete">
 		DELETE FROM tbl_user_minfo WHERE r_uid = #{seq}
 	</delete>
+	
+	<delete id="tickdelete">
+		DELETE FROM tbl_user_minfo WHERE r_uid = #{id} AND r_iseq=#{seq}
+	</delete>
 
 </mapper> 

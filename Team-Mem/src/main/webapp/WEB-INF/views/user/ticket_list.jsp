@@ -21,7 +21,7 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         <th>잔여횟수</th>
         <th>시작일</th>
         <th>종료일</th>
-        <th></th>
+        <th>D-DAY</th>
       </tr>
     </thead>
     <tbody>
