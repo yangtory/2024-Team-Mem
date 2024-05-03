@@ -2,13 +2,12 @@
 pageEncoding="UTF-8"%> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="${rootPath}/static/css/detail.css" />
 <h1 class="list_title">수강권 정보</h1>
 <div class="detail_box">
   <div class="card">
     <h3>${LIST.i_title}</h3>
     <div class="container">
-      <p>현재 2명 이용중입니다</p>
+      <p>현재 ${COUNT }명 이용중입니다</p>
       <hr />
       <div class="info">
         <div>

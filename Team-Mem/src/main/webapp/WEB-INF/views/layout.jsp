@@ -15,6 +15,10 @@
 		<%@ include file="/WEB-INF/views/include/include-sidebar.jsp"%>
 		<section>
 			<%-- <tiles:insertAttribute name="content"/> --%>
+			
+			<c:if test="${BODY == 'HOME'}">
+				<%@ include file="/WEB-INF/views/main/dash.jsp"%>
+			</c:if>
 			<c:if test="${BODY == 'TEACHER_HOME'}">
 				<%@ include file="/WEB-INF/views/teacher/home.jsp"%>
 			</c:if>
@@ -53,6 +57,9 @@
 			</c:if>
 			<c:if test="${BODY == 'USER_TICK_UPDATE' }">
 				<%@ include file="/WEB-INF/views/user/ticket_update.jsp"%>
+			</c:if>
+			<c:if test="${BODY == 'USER_TICK_INSERT' }">
+				<%@ include file="/WEB-INF/views/user/ticket_input.jsp"%>
 			</c:if>
 			<!-- 승희 -->
 			<c:if test="${BODY == 'USER_LIST'}">

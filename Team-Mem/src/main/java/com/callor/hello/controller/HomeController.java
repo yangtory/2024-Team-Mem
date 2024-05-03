@@ -13,6 +13,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home( Model model) {	
+		model.addAttribute("BODY", "HOME");
 		return "layout";
 	}
 	

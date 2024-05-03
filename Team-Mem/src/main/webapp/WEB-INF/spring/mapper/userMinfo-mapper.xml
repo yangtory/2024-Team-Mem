@@ -25,6 +25,13 @@
 		SELECT * FROM tbl_minfo
 		WHERE i_seq = #{seq}
 	</select>
+	
+	<select id="countUser">
+		SELECT count(*) FROM tbl_user_minfo
+		LEFT JOIN tbl_user ON u_id = r_uid
+		LEFT JOIN tbl_user_comp ON u_id = us_uid
+		WHERE us_ccode = #{ccode} AND r_iseq = #{seq};
+	</select>
 
 	<update id="update" >
         	UPDATE tbl_user_minfo
@@ -42,5 +49,6 @@
 	<delete id="tickdelete">
 		DELETE FROM tbl_user_minfo WHERE r_uid = #{id} AND r_iseq=#{seq}
 	</delete>
+	
 
 </mapper> 

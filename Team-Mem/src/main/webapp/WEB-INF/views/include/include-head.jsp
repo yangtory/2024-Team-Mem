@@ -34,6 +34,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   <link rel="stylesheet" href="${rootPath}/static/css/table.css" />
   <link rel="stylesheet" href="${rootPath}/static/css/search.css" />
   <link rel="stylesheet" href="${rootPath}/static/css/input.css" />
+  <link rel="stylesheet" href="${rootPath}/static/css/detail.css" />
 
   <script>
     const rootPath = "${rootPath}";

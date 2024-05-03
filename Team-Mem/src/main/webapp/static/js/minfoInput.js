@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form_minfo = document.querySelector("fieldset.form.minfo");
+  const form_minfo = document.querySelector("div.selectBox");
 
-  const select = form_minfo.querySelector("select");
-  const icount = form_minfo.querySelector("input.r_icount");
+  const select = form_minfo.querySelector("select.select");
+  const icount = document.querySelector("input.r_icount");
 
   // 회원권 정보 가져오기
   const getMinfo = async (seq) => {
