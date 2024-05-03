@@ -19,8 +19,8 @@
 	<label>강사명</label><input placeholder="강사명" value="${LIST.t_name}" name="t_name" readonly/>
 	<label>개강일자</label><input placeholder="개강일자" type="date" value="${LIST.c_sdate }" name="c_sdate"/>
 	<label>종강일자</label><input placeholder="종강일자" type="date" name="c_edate" value="${LIST.c_edate }" />
-	<label>시작시간</label><input placeholder="시작시간" name="c_stime" value="${LIST.c_stime }"/>
-	<label>종료시간</label><input placeholder="종료시간" name="c_etime" value="${LIST.c_etime }"/>
+	<label>시작시간</label><input placeholder="시작시간" type="time" name="c_stime" value="${LIST.c_stime }"/>
+	<label>종료시간</label><input placeholder="종료시간" type="time" name="c_etime" value="${LIST.c_etime }"/>
 	<label>색상</label><input type="color" id="colorPicker" value="${LIST.c_color }" name="c_color">
 	<div class="btnBox">
 	<label></label><button type="submit" class="insert button-32">수정</button>

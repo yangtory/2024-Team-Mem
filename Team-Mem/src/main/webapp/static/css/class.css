@@ -1,29 +1,60 @@
 @charset "UTF-8";
 
 section {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-height: 80vh;
-  height: 50%;
+  /* height: 50%; */
 }
+div.section_box {
+  display: flex;
+  height: 70vh;
+  /* border: 1px solid red; */
+}
+
 aside.left {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* border: 1px solid red; */
-  position: relative;
-  top: -4.5%;
+  flex-direction: row;
+  flex: 1;
+  height: 95%;
+}
+aside.right {
+  overflow: auto;
+  display: flex;
+  height: 89%;
+  flex-direction: column;
+  /* align-items: stretch; */
+  flex: 1;
+  /* justify-content: center; */
+  margin-top: 6.5rem;
+  background-color: #012b39;
+  border-radius: 10px;
+  margin-right: 2rem;
+  div.title {
+    /* border: 1px solid black; */
+    margin: 12px 8px 0 8px;
+    padding: 8px;
+    background-color: #014055;
+    border-radius: 10px;
+    font-weight: 600;
+    /* overflow: scroll; */
+    &:hover {
+      cursor: pointer;
+    }
+    article.content {
+      padding: 8px 0;
+    }
+  }
+}
+aside.right::-webkit-scrollbar {
+  display: none;
 }
 .calendar {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 600px;
-  margin: 40px;
   height: 76%;
-
-  /* border: 1px solid red; */
+  justify-content: center;
+  margin: 40px;
 }
 
 .calHeader {
@@ -111,12 +142,9 @@ aside.left {
 
 div.date {
   border-right: 0.5px solid white;
-
-  &:nth-last-of-type(1) {
-    /* border-right: 0.5px solid white; */
-  }
 }
 span.title {
+  /* background-color: #654df1; */
   color: white;
   width: 100%;
   border-radius: 2px;

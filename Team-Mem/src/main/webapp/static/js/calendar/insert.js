@@ -1,12 +1,36 @@
-const addButton = document.querySelector("button[type='submit']");
-addButton.addEventListener("click", async () => {
-  const title = document.querySelector("input[name='s_title']").value;
-  const content = document.querySelector("input[name='s_content']").value;
-  const startDate = document.querySelector("input[name='s_sdate']").value;
-  const endDate = document.querySelector("input[name='s_edate']").value;
-  const selectedColor = document.querySelector("#colorPicker").value;
+document?.addEventListener("DOMContentLoaded", () => {
+  const input_box = document.querySelector("form.input_box");
+  const title = input_box.querySelector("input[name='s_title']");
+  const content = input_box.querySelector("input[name='s_content']");
+  const startDate = input_box.querySelector("input[name='s_sdate']");
+  const endDate = input_box.querySelector("input[name='s_edate']");
+  const selectedColor = input_box.querySelector("#colorPicker");
+  const button = input_box.querySelector("button[type='button']");
+  const error = document?.querySelector("div.class.error");
 
-  const res = await fetch(`${rootPath}/schedule/color`);
-  const json = await res.json();
-  console.log(json);
+  button.addEventListener("click", () => {
+    error.innerHTML = "";
+
+    if (!title.value) {
+      error.innerHTML = "제목을 입력해주세요";
+      title.select();
+      return false;
+    }
+    if (!content.value) {
+      error.innerHTML = "내용을 입력해주세요";
+      content.select();
+      return false;
+    }
+    if (!endDate.value) {
+      if (confirm("종료일자를 입력하지않으면 시작일자로 맞춰집니다. 그대로 진행할까요?")) {
+        endDate.value = startDate.value;
+        input_box.submit();
+      } else {
+        error.innerHTML = "종료일자를 입력하세요";
+        endDate.select();
+        return false;
+      }
+    }
+    input_box.submit();
+  });
 });

@@ -3,22 +3,27 @@
 section {
   /* overflow: hidden; */
   min-height: 80vh;
-  height: 50%;
+  /* height: 50%; */
 }
 div.section_box {
   display: flex;
-
+  height: 70vh;
   /* border: 1px solid red; */
 }
 
 aside.left {
   display: flex;
   flex-direction: row;
+  flex: 1;
+  height: 95%;
 }
 aside.right {
+  overflow: auto;
   display: flex;
+  height: 89%;
   flex-direction: column;
-  flex: 2;
+  /* align-items: stretch; */
+  flex: 1;
   /* justify-content: center; */
   margin-top: 6.5rem;
   background-color: #012b39;
@@ -31,11 +36,17 @@ aside.right {
     background-color: #014055;
     border-radius: 10px;
     font-weight: 600;
-    overflow: scroll;
-    div.content {
+    /* overflow: scroll; */
+    &:hover {
+      cursor: pointer;
+    }
+    article.content {
       padding: 8px 0;
     }
   }
+}
+aside.right::-webkit-scrollbar {
+  display: none;
 }
 .calendar {
   display: flex;
