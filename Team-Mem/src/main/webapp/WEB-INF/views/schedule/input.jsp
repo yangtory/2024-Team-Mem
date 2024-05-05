@@ -15,7 +15,15 @@
 		<label>내용</label><input placeholder="내용" name="s_content"/>
 		<label>시작일자</label><input placeholder="시작일자" name="s_sdate" value="${SDATE }" type="date" readonly/>
 		<label>종료일자</label><input placeholder="종료일자" name="s_edate" type="date"/>
-		<label>색상</label><input type="color" id="colorPicker" value="#ffffff" name="s_color">
+		<label>색상</label>
+		<div class="palette">
+			<div class="color1"></div>
+			<div class="color2"></div>
+			<div class="color3"></div>
+			<div class="color4"></div>
+			<div class="color5"></div>
+		</div>
+		<input type="color" id="colorPicker" value="#ffffff" name="s_color">
 		<label></label><button type="button">작성</button>
 	</f:form>
 </div>

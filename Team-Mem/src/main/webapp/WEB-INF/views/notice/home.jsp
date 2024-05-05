@@ -17,7 +17,7 @@ prefix="f"%>
             <button class="button-32" type="submit" value="검색" ><img src="${rootPath }/static/images/search.png" width="10px" height="10px" ></button>
         </f:form>
     </div>
-
+    <div class="table_div">
     <table class="notice list">
         <thead>
             <tr>
@@ -38,4 +38,5 @@ prefix="f"%>
             </c:forEach>
         </tbody>
     </table>
+    </div>
 </div>

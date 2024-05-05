@@ -40,6 +40,7 @@
 </f:form>
 
 </div>
+<c:if test="${COMP == null}">
 <div class="member_list">
 	<h3>USER 리스트</h3>
 <c:if test="${COMP == null}">
@@ -61,4 +62,5 @@
 	</table>
 </c:if>
 </div>
+</c:if>
 </div>
