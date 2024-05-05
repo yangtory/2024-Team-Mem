@@ -1,0 +1,31 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    # driver-class-name: org.h2.Driver
+    # url: jdbc:h2:~/board;AUTO_SERVER=TRUE
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:h2:~/board;AUTO_SERVER=TRUE
+    username: sa
+    password:
+
+mybatis:
+  mapper-locations: mapper/**/*.xml
+
+logging:
+  charset:
+    console: UTF-8
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n"
+  level:
+    root: INFO
+    com.zaxxer.hikari: INFO
+    jdbc:
+      audit: WARN
+      connection: WARN
+      resultset: WARN
+      resultsettable: INFO
+      sqlonly: OFF
+      sqltiming: INFO

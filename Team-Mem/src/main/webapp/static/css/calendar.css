@@ -68,7 +68,7 @@ aside.right::-webkit-scrollbar {
 }
 .calNav {
   display: flex;
-  border: 1px solid white;
+  border: 1px solid #faaca8;
   border-radius: 5px;
 }
 .nav-btn {
@@ -77,13 +77,13 @@ aside.right::-webkit-scrollbar {
   border: none;
   font-size: 16px;
   line-height: 34px;
-  background-color: white;
+  background-color: #faaca8;
   cursor: pointer;
 }
 .go-today {
   width: 75px;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
+  border-left: 1px solid #faaca8;
+  /* border-right: 1px solid #faaca8; */
 }
 
 .days {
@@ -98,8 +98,8 @@ aside.right::-webkit-scrollbar {
   display: flex;
   flex-flow: row wrap;
   height: 450px;
-  border-top: 1px solid white;
-  border-right: 1px solid white;
+  border-top: 1px solid #faaca8;
+  /* border-right: 1px solid #faaca8; */
 }
 
 .date {
@@ -109,8 +109,8 @@ aside.right::-webkit-scrollbar {
   /* padding: 15px; */
 
   text-align: center;
-  border-bottom: 1px solid white;
-  border-left: 1px solid white;
+  border-bottom: 1px solid #faaca8;
+  border-left: 1px solid #faaca8;
 
   font-weight: 900;
   &:hover {
@@ -133,15 +133,15 @@ aside.right::-webkit-scrollbar {
 }
 
 .today {
-  border-bottom: 1px solid #ddd;
-  color: #ffffff;
+  border-bottom: 5px solid #faaca8;
+
   width: 50%;
 
   margin: 0 auto;
 }
 
 div.date {
-  border-right: 0.5px solid white;
+  border-right: 1px solid #faaca8;
 }
 span.title {
   /* background-color: #654df1; */
