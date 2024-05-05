@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
-<h1 class="list_title">수업관리</h1>
+<h1 class="list_title">수업 관리</h1>
 <body>
   <section>
     <div class="section_box">

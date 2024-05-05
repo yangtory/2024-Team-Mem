@@ -7,7 +7,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 </script>
 <!-- rootPath 라는 변수를 선언해서 value의 값을 담겠다 -->
 
-<h1 class="list_title">일정 관리</h1>
+<h1 class="list_title">일정 리스트</h1>
 <div class="list_home">
   <div class="insert_btn_box">
     <a class="insert button-32" href="${rootPath }/schedule/insert/${SDATE}">일정 추가</a>
