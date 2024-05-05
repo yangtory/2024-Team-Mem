@@ -20,7 +20,36 @@ div.card {
     /* background: radial-gradient(circle, #e9dcc9, #e9dcd9); */
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
+}
+
+div.teacher_info {
+    display: flex;
+    flex-direction: column;
+    strong {
+        flex: 1;
+    }
+    span {
+        flex: 2;
+    }
+}
+
+div.img_box {
+    width: 100%;
+    padding: 8px;
+    background-color: #e6cadd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        background-color: #391145;
+        border-radius: 50%;
+        padding: 12px;
+    }
 }
 div.container {
     padding: 1rem 16px 0.5rem 16px;

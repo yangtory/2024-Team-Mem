@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const tbody = document.querySelector('tbody');
 
     const inputBox = document.querySelector('form.formBox');
-    const us_id = inputBox.querySelector('input.us_uid');
-    const us_uname = inputBox.querySelector('input.us_uname');
-    const us_utel = inputBox.querySelector('input.us_utel');
+    const us_id = inputBox?.querySelector('input.us_uid');
+    const us_uname = inputBox?.querySelector('input.us_uname');
+    const us_utel = inputBox?.querySelector('input.us_utel');
 
     // 테이블 클릭 input 채우기
     tbody?.addEventListener('click', async (e) => {

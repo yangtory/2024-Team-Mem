@@ -22,7 +22,7 @@ prefix="f"%>
         <thead>
             <tr>
                 <th class="index">No.</th>
-                <th class="date">작성일자</th>
+                <th class="date" width="150px">작성일자</th>
                 <th class="title" width="450px">제목</th>
                 <th class="id">작성자</th>
             </tr>

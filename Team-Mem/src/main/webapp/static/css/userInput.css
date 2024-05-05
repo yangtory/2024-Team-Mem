@@ -1,101 +1,100 @@
 .wrap {
-  width: 80%;
-  display: flex;
-  margin: 20px auto;
+    width: 80%;
+    display: flex;
+    margin: 20px auto;
 }
 .input_div {
-  flex: 2;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
-  margin-right: 5px;
+    flex: 2;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    margin-right: 5px;
 }
 
 .input_box {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #e9dcd6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e9dcd6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .member_list {
-  flex: 1;
-  border-radius: 10px;
-  padding: 8px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
-  margin: 20px auto;
-  background-color: #e9dcd6;
+    flex: 1;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    margin: 20px auto;
+    background-color: #e9dcd6;
 }
 
 .input_box label {
-  display: block;
-  width: 90%;
-  text-align: left;
-  margin-bottom: 10px;
-  font-weight: bold;
+    display: block;
+    width: 90%;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 .input_box input {
-  width: 90%;
-  padding: 8px;
-  margin-bottom: 15px;
-  color: #391145;
-  background-color: #e9dcd6;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.3s ease;
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 15px;
+    color: #391145;
+    background-color: #e9dcd6;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #aaa;
+    transition: background-color 0.3s ease;
 
-  &:focus {
-    background-color: #888888da;
-  }
+    &:focus {
+        background-color: #d1c5c0;
+        border-radius: 10px;
+    }
 }
 
 .input_box input.insert {
-  width: 20%;
-  border: none;
-  padding: 10px 12px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  border-radius: 0;
-  background-color: #e9dcd6;
-  color: #391145;
-  transition: background-color 0.3s;
+    width: 20%;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .input_box .ticket.error {
-  color: #d082c5;
-  font-size: 14px;
-  margin-bottom: 10px;
+    color: #ff4f33;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 div.selectBox {
-  width: 90%;
+    width: 90%;
 }
 select {
-  width: 100%;
-  padding: 0.3rem;
-  text-align: center;
-  font-family: inherit;
-  border-radius: 0px;
-  border: none;
-  outline: none;
-  background-color: #e9dcd6;
-  border-bottom: 1px solid #eee;
-  color: #391145;
-  margin: 15px 0;
-
-  &:focus {
+    width: 100%;
+    padding: 0.3rem;
+    text-align: center;
+    font-family: inherit;
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    background-color: #e9dcd6;
     border-bottom: 1px solid #eee;
-  }
+    color: #391145;
+    margin: 15px 0;
+
+    &:focus {
+        border-bottom: 1px solid #eee;
+    }
 }
 
 textarea {
-  width: 90%;
-  border: none;
-  outline: none;
-  margin: 8px 0;
-  background-color: #e9dcd6;
-  border: 1px solid white;
-  color: #391145;
-  padding: 12px;
-  resize: none;
+    width: 90%;
+    border: none;
+    outline: none;
+    margin: 8px 0;
+    background-color: #e9dcd6;
+    border: 1px solid white;
+    color: #391145;
+    padding: 12px;
+    resize: none;
 }
