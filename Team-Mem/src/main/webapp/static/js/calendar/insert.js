@@ -1,14 +1,14 @@
 document?.addEventListener("DOMContentLoaded", () => {
-  const input_box = document.querySelector("form.input_box");
-  const title = input_box.querySelector("input[name='s_title']");
-  const content = input_box.querySelector("input[name='s_content']");
-  const startDate = input_box.querySelector("input[name='s_sdate']");
-  const endDate = input_box.querySelector("input[name='s_edate']");
-  const selectedColor = input_box.querySelector("#colorPicker");
-  const button = input_box.querySelector("input[type='button']");
+  const input_box = document?.querySelector("form.input_box");
+  const title = input_box?.querySelector("input[name='s_title']");
+  const content = input_box?.querySelector("input[name='s_content']");
+  const startDate = input_box?.querySelector("input[name='s_sdate']");
+  const endDate = input_box?.querySelector("input[name='s_edate']");
+  const selectedColor = input_box?.querySelector("#colorPicker");
+  const button = input_box?.querySelector("input[type='button']");
   const error = document?.querySelector("div.class.error");
-  const color_box = document.querySelector("div.palette");
-  button.addEventListener("click", () => {
+  const color_box = document?.querySelector("div.palette");
+  button?.addEventListener("click", () => {
     error.innerHTML = "";
 
     if (!title.value) {
@@ -19,6 +19,11 @@ document?.addEventListener("DOMContentLoaded", () => {
     if (!content.value) {
       error.innerHTML = "내용을 입력해주세요";
       content.select();
+      return false;
+    }
+    if (selectedColor.value == "#ffffff") {
+      error.innerHTML = "색상을 선택해주세요";
+      selectedColor.select();
       return false;
     }
     if (!endDate.value) {
@@ -33,7 +38,7 @@ document?.addEventListener("DOMContentLoaded", () => {
     }
     input_box.submit();
   });
-  color_box.addEventListener("click", (e) => {
+  color_box?.addEventListener("click", (e) => {
     const target = e.target;
     const colors = document.querySelectorAll(".palette .color");
     colors.forEach((color) => {
@@ -48,7 +53,7 @@ document?.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     if (target.classList.contains("color2")) {
-      selectedColor.value = "#e3ebd9";
+      selectedColor.value = "#ef9297";
       return false;
     }
     if (target.classList.contains("color3")) {

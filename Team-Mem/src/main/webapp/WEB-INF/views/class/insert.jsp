@@ -39,7 +39,7 @@
 			<div class="color color7"></div>
 			<div class="color color8"></div>
 		</div>
-		<input type="hidden" id="colorPicker" value="#ffffff" name="c_color">
+		<input type="hidden" id="colorPicker" class="colorPicker" value="#ffffff" name="c_color">
 	<input type="button" class="insert" value="작성" />
 	
 </f:form>

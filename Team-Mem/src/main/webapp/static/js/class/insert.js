@@ -6,33 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const endbtn = input_box?.querySelector("input[name='c_edate']");
   const button = input_box?.querySelector("input[type='button']");
   const class_error = document?.querySelector("div.class.error");
-  const color_box = document.querySelector("div.palette");
-  button?.addEventListener("click", () => {
-    class_error.innerHTML = "";
-
-    if (!title.value) {
-      class_error.innerHTML = "수업명을 입력해주세요";
-      title.select();
-      return false;
-    }
-    if (!teacher.value) {
-      class_error.innerHTML = "강사를 선택해주세요";
-      teacher.select();
-      return false;
-    }
-    if (!endbtn.value) {
-      if (confirm("종료일자를 입력하지않으면 개강일자로 맞춰집니다. 그대로 진행할까요?")) {
-        endbtn.value = startbtn.value;
-        input_box.submit();
-      } else {
-        class_error.innerHTML = "종료일자를 입력하세요";
-        endbtn.select();
-        return false;
-      }
-    }
-    input_box.submit();
-  });
-  color_box.addEventListener("click", (e) => {
+  const color_box = document?.querySelector("div.palette");
+  const selectedColor = input_box?.querySelector(".colorPicker");
+  color_box?.addEventListener("click", (e) => {
     const target = e.target;
     const colors = document.querySelectorAll(".palette .color");
     colors.forEach((color) => {
@@ -47,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     if (target.classList.contains("color2")) {
-      selectedColor.value = "#e3ebd9";
+      selectedColor.value = "#ef9297";
       return false;
     }
     if (target.classList.contains("color3")) {
@@ -74,5 +50,35 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedColor.value = "#c8d8b4";
       return false;
     }
+  });
+  button?.addEventListener("click", () => {
+    class_error.innerHTML = "";
+
+    if (!title.value) {
+      class_error.innerHTML = "수업명을 입력해주세요";
+      title.select();
+      return false;
+    }
+    if (!teacher.value) {
+      class_error.innerHTML = "강사를 선택해주세요";
+      teacher.select();
+      return false;
+    }
+
+    if (selectedColor.value == "#ffffff") {
+      class_error.innerHTML = "색상을 선택해주세요";
+      selectedColor.select();
+      return false;
+    }
+    if (!endbtn.value) {
+      if (confirm("종료일자를 입력하지않으면 개강일자로 맞춰집니다. 그대로 진행할까요?")) {
+        endbtn.value = startbtn.value;
+      } else {
+        class_error.innerHTML = "종료일자를 입력하세요";
+        endbtn.select();
+        return false;
+      }
+    }
+    input_box.submit();
   });
 });

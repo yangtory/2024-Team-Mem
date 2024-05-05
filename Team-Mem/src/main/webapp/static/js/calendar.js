@@ -84,43 +84,34 @@ document.addEventListener("DOMContentLoaded", async () => {
           titleContainer.classList.add("title-container");
           day_all[j].insertAdjacentElement("afterend", titleContainer);
 
-          // 배열 초기화
-          const existingSchedules = [];
-
           schedules.forEach((schedule) => {
-            // 중복된 s_sdate와 s_title이 있는지 확인
-            const isDuplicate = existingSchedules.some(
-              (existingSchedule) => existingSchedule.s_sdate === schedule.s_sdate && existingSchedule.s_title === schedule.s_title
-            );
+            // 해당 일정 추가
+            const titleSpan = document.createElement("span");
+            const rightSpan = document.createElement("div");
+            const rightSpanTitle = document.createElement("article");
+            titleSpan.textContent = schedule.s_title;
+            const scheduleText = `${schedule.s_sdate + " ~ " + schedule.s_edate}`;
+            const scheduleContent = `${schedule.s_title}`;
+            titleSpan.classList.add("title");
+            titleSpan.style.backgroundColor = schedule.s_color;
+            if (schedule.s_color === "#ffffff") {
+              titleSpan.style.color = "black";
+            }
 
-            if (!isDuplicate) {
-              // 중복된 경우 배열에 추가
-              existingSchedules.push(schedule);
-
-              // 해당 일정 추가
-              const titleSpan = document.createElement("span");
-              const rightSpan = document.createElement("div");
-              const rightSpanTitle = document.createElement("article");
-              titleSpan.textContent = schedule.s_title;
-              const scheduleText = `${schedule.s_sdate + " ~ " + schedule.s_edate}`;
-              const scheduleContent = `${schedule.s_title}`;
-              titleSpan.classList.add("title");
-              titleSpan.style.backgroundColor = schedule.s_color;
-              if (schedule.s_color === "#ffffff") {
-                titleSpan.style.color = "black";
-              }
-
+            if (!right.innerHTML.includes(scheduleText)) {
               rightSpan.textContent = scheduleText;
               rightSpanTitle.textContent = scheduleContent;
+
               rightSpan.classList.add("title");
               rightSpanTitle.classList.add("content");
 
               right.appendChild(rightSpan);
-              rightSpan.appendChild(rightSpanTitle);
 
-              titleContainer.appendChild(titleSpan);
-              rightSpan.setAttribute("data-sdate", schedule.s_sdate);
+              rightSpan.appendChild(rightSpanTitle);
             }
+
+            titleContainer.appendChild(titleSpan);
+            rightSpan.setAttribute("data-sdate", schedule.s_sdate);
           });
         }
       }
