@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     if (target.classList.contains("color2")) {
-      selectedColor.value = "#e3ebd9";
+      selectedColor.value = "#ef9297";
       return false;
     }
     if (target.classList.contains("color3")) {

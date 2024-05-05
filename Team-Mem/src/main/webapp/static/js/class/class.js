@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             titleSpan.textContent = schedule.c_name;
             const scheduleText = `${schedule.c_sdate + " ~ " + schedule.c_edate}`;
             const scheduleContent = `${schedule.c_name}`;
-            titleSpan.textContent = schedule.c_name;
+
             titleSpan.classList.add("title");
             titleSpan.style.backgroundColor = schedule.c_color;
             if (schedule.c_color === "#ffffff") {
