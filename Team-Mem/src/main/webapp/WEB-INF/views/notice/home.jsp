@@ -14,7 +14,7 @@ prefix="f"%>
         <f:form method="GET" modelAttribute="SEARCH">
             <f:input class="search_input" placeholder="제목" path="n_title" />
             <f:input class="search_input" placeholder="등록일" path="n_date" />
-            <input class="button-32" type="submit" value="검색" />
+            <button class="button-32" type="submit" value="검색" ><img src="${rootPath }/static/images/search.png" width="10px" height="10px" ></button>
         </f:form>
     </div>
 

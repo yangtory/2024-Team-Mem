@@ -28,18 +28,17 @@ nav.nav {
         font-weight: 700;
         color: #391145;
         border-bottom: 1px solid transparent;
-        &:nth-of-type(1) {
-            &:hover {
-                color: #6dd0fe;
-            }
+        &:hover {
+            color: #6dd0fe;
         }
-        &:nth-of-type(2) {
-            background-color: #6dd0fe;
-            padding: 5px 12px;
-            border-radius: 10px;
-            &:hover {
-                background-color: #e9dcd6;
-            }
+    }
+    .logout_btn,
+    .signup_btn {
+        background-color: #6dd0fe;
+        padding: 5px 12px;
+        border-radius: 10px;
+        &:hover {
+            background-color: #e9dcd6;
         }
     }
 }
@@ -69,6 +68,7 @@ div.side {
             color: #391145;
             font-size: 0.9rem;
             font-weight: 700;
+            white-space: nowrap;
             img {
                 margin: 0 2px;
             }

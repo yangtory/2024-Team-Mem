@@ -10,13 +10,14 @@ prefix="sec"%> <%@ taglib uri="http://www.springframework.org/tags/form" prefix=
     </div>
     <nav class="nav">
         <sec:authorize access="isAnonymous()">
-            <a href="${rootPath }/main/login">Log in</a>
-            <a href="${rootPath}/main/join">Sign up</a>
+            <a href="${rootPath }/main/login" class="login_btn">Log in</a>
+            <a href="${rootPath}/main/join" class="signup_btn">Sign up</a>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <div class="authenticated">
-                <a href="${rootPath }/main/mypage"> <sec:authentication property="principal.u_name" /> 님 </a>
-                <a href="javascript:void(0)"
+                <a href="javascript:void(0)"><sec:authentication property="principal.u_comp" /></a>
+                <a href="javascript:void(0)"> <sec:authentication property="principal.u_name" /> 님 </a>
+                <a href="javascript:void(0)" class="logout_btn"
                     ><f:form class="logout" action="${rootPath }/main/logout" onclick="this.submit()"
                         >Log out</f:form
                     ></a
