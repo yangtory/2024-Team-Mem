@@ -10,7 +10,7 @@
 <script src="${rootPath }/static/js/minfoInput.js"></script>
 <link rel="stylesheet" href="${rootPath}/static/css/userInput.css">
 
-<h1 class="list_title">회원 등록</h1>
+<h1 class="list_title">${COMP != null ? '회원 수정' : '회원 등록'}</h1>
 <div class="wrap">
 <div class="input_div">
 <f:form class="formBox input_box">
