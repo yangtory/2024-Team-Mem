@@ -4,6 +4,8 @@ prefix="f"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <script src="${rootPath }/static/js/notice.js"></script>
 <link rel="stylesheet" href="${rootPath}/static/css/notice.css">
+<link rel="stylesheet" href="${rootPath}/static/css/notice_detail.css" />
+
 
 <h1 class="list_title">공지사항</h1>
 <div class="list_home">
@@ -18,25 +20,40 @@ prefix="f"%>
         </f:form>
     </div>
     <div class="table_div">
-    <table class="notice list">
-        <thead>
-            <tr>
-                <th class="index">No.</th>
-                <th class="date" width="150px">작성일자</th>
-                <th class="title" width="450px">제목</th>
-                <th class="id">작성자</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${SEARCH_LIST}" var="N" varStatus="INDEX">
+        <table class="notice list">
+            <thead>
+                <tr>
+                    <th class="index" width="20px">No.</th>
+                    <th class="date" width="80px">작성일자</th>
+                    <th class="title" width="200px">제목</th>
+                    <th class="id" width="20px">작성자</th>
+                    <th class="content">내용</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${SEARCH_LIST}" var="N" varStatus="INDEX">
                 <tr data-seq="${N.n_seq }">
                     <td class="index">${INDEX.count }</td>
                     <td class="date">${N.n_date }<br>${N.n_time }</td>
                     <td class="title">${N.n_title }</td>
                     <td class="id">${N.n_uid }</td>
+                    <td class="content">${N.n_content}</td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
+</div>
+<div class="modal-backdrop">
+    <div class="detail">
+        <div class="notice input_box">
+            <label>제목</label><input name="title" pointer-events="none" readonly>
+            <label>내용</label><textarea name="content" rows="20" pointer-events="none" readonly ></textarea>
+            <div class="btn_box">
+            <button class="notice_update button-32">수정</button>
+            <button class="notice_delete button-32">삭제</button>
+        </div>
+        </div>
+            </div>
     </div>
 </div>
