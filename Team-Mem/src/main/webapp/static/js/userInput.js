@@ -20,7 +20,4 @@ document.addEventListener('DOMContentLoaded', () => {
             us_utel.value = json.u_tel;
         }
     });
-
-    const insert_btn = document.querySelector('input.insert');
-    // 수강권 추가 시 중복 확인
 });

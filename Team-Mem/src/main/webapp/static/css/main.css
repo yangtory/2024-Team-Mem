@@ -3,13 +3,20 @@ div.header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 8px;
     text-align: left;
-    background-color: #303633;
+    background-color: #fff;
     border-bottom: 1px solid #d082c5;
-    a {
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-left: 1rem;
-        color: #bec7d5;
+        a {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #391145;
+        }
     }
 }
 
@@ -18,37 +25,57 @@ nav.nav {
     a {
         margin: 8px;
         font-size: 0.9rem;
-        font-weight: 500;
-        color: #bec7d5;
+        font-weight: 700;
+        color: #391145;
         border-bottom: 1px solid transparent;
+        &:nth-of-type(1) {
+            &:hover {
+                color: #6dd0fe;
+            }
+        }
+        &:nth-of-type(2) {
+            background-color: #6dd0fe;
+            padding: 5px 12px;
+            border-radius: 10px;
+            &:hover {
+                background-color: #e9dcd6;
+            }
+        }
     }
 }
 
 div.main {
     display: flex;
     height: 100%;
-    background-color: #303633;
+    background-color: #fff;
     section {
         width: 100%;
     }
 }
 
 div.side {
-    padding: 10px;
-    width: 8rem;
-    background-color: #303633;
+    padding: 8px;
+    width: 9rem;
+    background-color: #fff;
     border-right: 1px solid #d082c5;
     ul {
         list-style: none;
         li {
-            padding: 5px;
-            margin: 12px 8px;
-            color: #86d0eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 12px;
+            margin: 8px;
+            color: #391145;
             font-size: 0.9rem;
+            font-weight: 700;
+            img {
+                margin: 0 2px;
+            }
 
             &:hover {
                 cursor: pointer;
-                color: #87dbf4;
+                color: #6dd0fe;
             }
         }
     }
@@ -100,9 +127,6 @@ form.login {
     button {
         width: 30%;
         margin: 5px auto;
-        border-radius: 0;
-        background-color: #313749;
-        color: #bec7d5;
         font-weight: 200;
     }
 }
@@ -148,32 +172,11 @@ form.join {
     button {
         width: 30%;
         margin: 5px auto;
-        border-radius: 0;
         background-color: #313749;
         color: #bec7d5;
         font-weight: 200;
     }
 }
-
-/* form.join {
-    width: 40%;
-    margin: 10rem auto;
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        label {
-            flex: 1;
-        }
-        input {
-            flex: 3;
-            padding: 8px;
-            margin: 3px;
-            border: none;
-            border-radius: 10px;
-        }
-    }
-} */
 
 div.authenticated {
     display: flex;
@@ -183,21 +186,21 @@ div.authenticated {
     a {
         cursor: pointer;
         font-size: 0.9rem;
-        font-weight: 500;
+        font-weight: 700;
         margin: 0 10px;
+        color: #391145;
     }
 }
 
 /* CSS */
 .button-32 {
-    background-color: #fcf5e9;
-    border-radius: 12px;
-    color: #000;
+    background-color: #e9dcd6;
+    border-radius: 10px;
+    color: #391145;
     cursor: pointer;
     font-weight: bold;
     padding: 8px 12px;
     text-align: center;
-    transition: 200ms;
     width: 100%;
     box-sizing: border-box;
     border: 0;
@@ -211,9 +214,7 @@ div.authenticated {
 .button-32:not(:disabled):hover,
 .button-32:not(:disabled):focus {
     outline: 0;
-    background: #313749;
-    color: #bec7d5;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+    background: #6dd0fe;
 }
 
 .button-32:disabled {
