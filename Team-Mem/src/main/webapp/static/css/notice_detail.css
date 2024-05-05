@@ -1,0 +1,46 @@
+.post-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-container strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.post-container span {
+    display: block;
+    margin-top: 15px;
+}
+
+.post-container span a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 15px;
+    padding: 8px 15px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.post-container span a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.post-container span a:last-child {
+    margin-right: 0;
+}
+
+.post-container span a.delete-button {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.post-container span a.delete-button:hover {
+    background-color: #dc3545;
+    color: #fff;
+}

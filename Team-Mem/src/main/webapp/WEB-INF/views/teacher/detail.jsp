@@ -6,12 +6,17 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="detail_box">
     <div class="card">
         <div class="img_box">
+            <div><span class="pro">PRO</span></div>
             <img src="${rootPath }/static/images/bug.png" width="200px" />
         </div>
         <div class="teacher_info">
-            <div><strong>업체코드</strong><span>${LIST.t_ccode}</span></div>
+            <h3>${LIST.t_name}</h3>
+            <h4>광주</h4>
+            <p>
+                체력단련, 근력강화, 다이어트, 신체균형 <br />
+                여러 헬스 클럽에서 헬스 트레이너로 근무한 경험이 있음
+            </p>
             <div><strong>강사코드</strong><span>${LIST.t_code}</span></div>
-            <div><strong>이름</strong><span>${LIST.t_name}</span></div>
             <div><strong>전화번호</strong><span>${LIST.t_tel}</span></div>
         </div>
         <div class="detail btn_box">
