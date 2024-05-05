@@ -6,7 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <ul>
         <li class="ticket">
             <img src="${rootPath }/static/images/ticket.png" width="15px" height="15px" />
-            회원권
+            회원권　
         </li>
         <li class="customer">
             <img src="${rootPath }/static/images/users.png" width="15px" height="15px" />
