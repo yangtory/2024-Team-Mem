@@ -28,9 +28,19 @@
 		<label>종료일자</label><input placeholder="종료일자" type="date" name="c_edate" />
 		<label>시작시간</label><input placeholder="시작시간" type="time" min = "00:00" max="24:00" name="c_stime" />
 		<label>종료시간</label><input placeholder="종료시간" type="time" name="c_etime" />
-		<label>색상</label><input type="color" id="colorPicker" value="#ffffff" name="c_color">
-
-	<label></label><button type="button" class="button-32 insert">작성</button>
+		<label>색상</label>
+		<div class="palette">
+			<div class="color color1"></div>
+			<div class="color color2"></div>
+			<div class="color color3"></div>
+			<div class="color color4"></div>
+			<div class="color color5"></div>
+			<div class="color color6"></div>
+			<div class="color color7"></div>
+			<div class="color color8"></div>
+		</div>
+		<input type="hidden" id="colorPicker" value="#ffffff" name="c_color">
+	<input type="button" class="insert" value="작성" />
 	
 </f:form>
 </div>
