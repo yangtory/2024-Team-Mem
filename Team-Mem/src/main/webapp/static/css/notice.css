@@ -1,12 +1,16 @@
+.table_div {
+  height: 70vh; /* 원하는 높이로 설정 */
+  overflow: auto; /* 내용이 넘칠 때 스크롤바 표시 */
+}
 table.notice.list {
-    table-layout: fixed;
-    td.date {
-        font-size: 0.8rem;
-    }
-    td.title {
-        text-align: left;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-    }
+  table-layout: fixed;
+  td.date {
+    font-size: 0.8rem;
+  }
+  td.title {
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }

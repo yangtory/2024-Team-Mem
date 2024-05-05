@@ -7,7 +7,7 @@ document?.addEventListener("DOMContentLoaded", () => {
   const selectedColor = input_box.querySelector("#colorPicker");
   const button = input_box.querySelector("button[type='button']");
   const error = document?.querySelector("div.class.error");
-
+  const color_box = document.querySelector("div.palette");
   button.addEventListener("click", () => {
     error.innerHTML = "";
 
@@ -32,5 +32,11 @@ document?.addEventListener("DOMContentLoaded", () => {
       }
     }
     input_box.submit();
+  });
+  color_box.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.classList.contains("color1")) {
+      alert("나는 color1");
+    }
   });
 });
