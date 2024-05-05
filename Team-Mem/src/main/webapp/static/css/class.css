@@ -26,14 +26,16 @@ aside.right {
   flex: 1;
   /* justify-content: center; */
   margin-top: 6.5rem;
-  background-color: #012b39;
+  background-color: #faaca8;
+  background-image: linear-gradient(19deg, #fccecb 20%, #e2daff 100%);
   border-radius: 10px;
   margin-right: 2rem;
   div.title {
     /* border: 1px solid black; */
     margin: 12px 8px 0 8px;
     padding: 8px;
-    background-color: #014055;
+    background-color: #ecc9c7;
+    /* background-image: linear-gradient(19deg, #fccecb 20%, #e2daff 100%); */
     border-radius: 10px;
     font-weight: 600;
     /* overflow: scroll; */
@@ -113,6 +115,7 @@ aside.right::-webkit-scrollbar {
   border-left: 1px solid #faaca8;
 
   font-weight: 900;
+
   &:hover {
     cursor: pointer;
   }
@@ -133,10 +136,8 @@ aside.right::-webkit-scrollbar {
 }
 
 .today {
-  border-bottom: 5px solid #faaca8;
-
+  border-bottom: 1px solid #faaca8;
   width: 50%;
-
   margin: 0 auto;
 }
 

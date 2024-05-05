@@ -17,13 +17,16 @@
 		<label>종료일자</label><input placeholder="종료일자" name="s_edate" type="date"/>
 		<label>색상</label>
 		<div class="palette">
-			<div class="color1"></div>
-			<div class="color2"></div>
-			<div class="color3"></div>
-			<div class="color4"></div>
-			<div class="color5"></div>
+			<div class="color color1"></div>
+			<div class="color color2"></div>
+			<div class="color color3"></div>
+			<div class="color color4"></div>
+			<div class="color color5"></div>
+			<div class="color color6"></div>
+			<div class="color color7"></div>
+			<div class="color color8"></div>
 		</div>
-		<input type="color" id="colorPicker" value="#ffffff" name="s_color">
-		<label></label><button type="button">작성</button>
+		<input type="hidden" id="colorPicker" value="#ffffff" name="s_color">
+		<input class="insert" type="button" value="작성"></input>
 	</f:form>
 </div>
