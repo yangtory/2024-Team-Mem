@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         notice: { url: '/notice' },
     };
 
-    side_nav.addEventListener('click', (e) => {
+    side_nav?.addEventListener('click', (e) => {
         const target = e.target;
         if (target.tagName === 'LI') {
             const className = target.classList[0];

@@ -12,6 +12,16 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo; 
 SELECT * FROM tbl_user_comp;
 
+-- 승희 추가
+alter table tbl_company
+MODIFY COLUMN c_addr VARCHAR(125);
+-- 여까지
+
+		SELECT n_seq, n_title, n_uid, n_date
+		FROM tbl_notice
+		ORDER BY n_date DESC
+		LIMIT 10 OFFSET 10;
+
 -- truncate
 SET FOREIGN_KEY_CHECKS = 0;
 SET FOREIGN_KEY_CHECKS = 1;
