@@ -23,7 +23,7 @@ from tbl_user_minfo
 join tbl_minfo on r_iseq = i_seq;
 
 -- 월매출
-SELECT SUM(m.i_price) AS total_price
+SELECT SUM(i_price) AS total_price
 FROM tbl_user_minfo
 JOIN tbl_minfo ON r_iseq = i_seq
 where  r_sdate between '2024-05-01' and '2024-05-31';
