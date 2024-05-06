@@ -47,8 +47,8 @@ prefix="f"%>
 <div class="modal-backdrop">
     <div class="detail">
         <div class="notice input_box">
-            <label>제목</label><input name="title" pointer-events="none" readonly>
-            <label>내용</label><textarea name="content" rows="20" pointer-events="none" readonly ></textarea>
+            <label>제목</label><input name="title" readonly>
+            <label>내용</label><textarea name="content" rows="20" readonly ></textarea>
             <div class="btn_box">
             <button class="notice_update button-32">수정</button>
             <button class="notice_delete button-32">삭제</button>
