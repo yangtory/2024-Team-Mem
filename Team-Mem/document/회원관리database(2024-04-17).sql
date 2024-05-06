@@ -99,6 +99,7 @@ c_color VARCHAR(20),
     ON DELETE CASCADE
 );
 
+
 CREATE TABLE tbl_notice(
 n_seq	VARCHAR(255),
 n_title	VARCHAR(125)	NOT NULL	,
@@ -152,7 +153,7 @@ CONSTRAINT mi_pk PRIMARY KEY(r_iseq,r_uid,r_sdate),
     ON DELETE CASCADE
 );
 
-drop TABLE tbl_user_minfo;
+
 
 -- user, comp 릴레이션 테이블
 CREATE TABLE tbl_user_comp(
