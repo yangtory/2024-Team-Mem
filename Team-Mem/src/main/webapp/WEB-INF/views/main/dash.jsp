@@ -14,6 +14,7 @@ prefix="f"%>
         <img src="${rootPath }/static/images/bug.png" width="200px" />
         <h1 class="title">환영합니다</h1>
         <p>맴맴은 처음이신가요?</p>
+        <img class="angle_down" src="${rootPath }/static/images/down.png" width="20px" />
     </div>
 
     <div data-aos="fade-up">
