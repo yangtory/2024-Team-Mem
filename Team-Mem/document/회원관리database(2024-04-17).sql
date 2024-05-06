@@ -12,6 +12,24 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo; 
 SELECT * FROM tbl_user_comp;
 
+select r_uid,r_iseq,i_price
+       from tbl_user_minfo
+       
+join tbl_minfo on i_seq = r_iseq;
+
+-- 총매출
+select sum(i_price) as total_price
+from tbl_user_minfo
+join tbl_minfo on r_iseq = i_seq;
+
+-- 월매출
+SELECT SUM(m.i_price) AS total_price
+FROM tbl_user_minfo
+JOIN tbl_minfo ON r_iseq = i_seq
+where  r_sdate between '2024-05-01' and '2024-05-31';
+
+
+
 -- 승희 추가
 alter table tbl_company
 MODIFY COLUMN c_addr VARCHAR(125);

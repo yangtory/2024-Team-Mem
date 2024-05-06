@@ -1,0 +1,38 @@
+div.welcome_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #faaca8;
+    background-image: linear-gradient(19deg, #fccecb 20%, #e2daff 100%);
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem;
+    }
+}
+
+h1.title {
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.welcome2 {
+    height: 40%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    div {
+        flex: 1;
+        width: 30%;
+        height: 50%;
+        border: 1px solid black;
+    }
+}
+
+section.div_box {
+    display: flex;
+    div {
+        flex: 1;
+    }
+}
