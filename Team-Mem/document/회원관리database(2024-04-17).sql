@@ -12,6 +12,9 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo; 
 SELECT * FROM tbl_user_comp;
 
+alter table tbl_user_comp
+add COLUMN us_date varchar(15);
+
 select r_uid,r_iseq,i_price
        from tbl_user_minfo
        
