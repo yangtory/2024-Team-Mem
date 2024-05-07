@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const teacher = input_box?.querySelector("select[name='c_tcode']");
   const startbtn = input_box?.querySelector("input[name='c_sdate']");
   const endbtn = input_box?.querySelector("input[name='c_edate']");
+  const startTime = input_box?.querySelector("input[name='c_stime']");
+  const endTime = input_box?.querySelector("input[name='c_etime']");
   const button = input_box?.querySelector("input[type='button']");
   const class_error = document?.querySelector("div.class.error");
   const color_box = document?.querySelector("div.palette");
@@ -73,12 +75,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!endbtn.value) {
       if (confirm("종료일자를 입력하지않으면 개강일자로 맞춰집니다. 그대로 진행할까요?")) {
         endbtn.value = startbtn.value;
+
+        return false;
       } else {
         class_error.innerHTML = "종료일자를 입력하세요";
         endbtn.select();
         return false;
       }
     }
+    if (!startTime.value) {
+      class_error.innerHTML = "시작시간을 입력해주세요";
+      startTime.select();
+      return false;
+    }
+    if (!endTime.value) {
+      class_error.innerHTML = "종료시간을 입력해주세요";
+      endTime.select();
+      return false;
+    }
+
     input_box.submit();
   });
 });
