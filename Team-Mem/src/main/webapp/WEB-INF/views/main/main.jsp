@@ -70,7 +70,7 @@
 							<th class="date" width="80px">작성일자</th>
 							<th class="title" width="200px">제목</th>
 							<th class="id" width="100px">작성자</th>
-							<th class="content">내용</th>
+							
 
 						</tr>
 					</thead>
@@ -81,7 +81,7 @@
 								<td class="date">${N.n_date }<br>${N.n_time }</td>
 								<td class="title">${N.n_title }</td>
 								<td class="id">${N.n_uid }</td>
-								<td class="content">${N.n_content}</td>
+								
 							</tr>
 						</c:forEach>
 					</tbody>
