@@ -37,7 +37,7 @@
 		select sum(i_price) as total_price
 		from tbl_user_minfo
 		join tbl_minfo on r_iseq = i_seq
-		WHERE i_ccode = #{code}
+		WHERE i_ccode = #{ccode}
 	</select>
 	<select id="Monthtotal">
 		SELECT SUM(i_price) AS total_price

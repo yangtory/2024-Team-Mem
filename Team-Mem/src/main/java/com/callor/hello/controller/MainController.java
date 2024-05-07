@@ -62,11 +62,14 @@ public class MainController {
 		model.addAttribute("NOTICE_LIST", list);
 		
 		// 총매출
-		int total = userMinfoDao.total(code);
-		model.addAttribute("TOTAL", total);
+	    Integer total = userMinfoDao.total(code);
+	    if (total == null) {
+	        total = 0;
+	    }
+	    model.addAttribute("TOTAL", total);
 		
 		// 회원수
-		String count = userCompDao.count();
+		String count = userCompDao.count(code);
 		model.addAttribute("COUNT", count);
 		
 		return "layout";
@@ -102,18 +105,19 @@ public class MainController {
 	public UserVO id_check(@PathVariable("id") String id) {
 	return userService.findById(id);
 	}
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/total", method=RequestMethod.GET)
 	public String total(UserMinfoVO vo, Model model) {
-		
-		String ccode = teacherService.getLoginCCode();
-		
-		int total = userMinfoDao.total(ccode);
-		
-		log.debug("총매출 {}",total);
-		
-		return String.valueOf(total);
-		
+	    String ccode = teacherService.getLoginCCode();
+	    try {
+	        int total = userMinfoDao.total(ccode);
+	        return String.valueOf(total);
+	    } catch (NullPointerException e) {
+	        log.error("매출액이 없습니다.");
+	        return "매출액이 없습니다.";
+	    }
 	}
 	
 	@ResponseBody
@@ -131,6 +135,22 @@ public class MainController {
 		return objectMapper.writeValueAsString(monthTotal);
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/user", method=RequestMethod.GET)
+	public String user(UserMinfoVO vo) throws JsonProcessingException {
+		
+		String ccode = teacherService.getLoginCCode();
+		
+		List<Integer> monthUser = dashService.getMonthlyUser(ccode);
+		
+		log.debug("유저수 {}",String.valueOf(monthUser));
+		
+		return objectMapper.writeValueAsString(monthUser);
+		
+	}
+	
+	
 	
 
 	
