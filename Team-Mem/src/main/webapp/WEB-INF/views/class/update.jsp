@@ -15,6 +15,7 @@
 <h1 class="list_title">수업 수정</h1>
 <div class="update input_div">
 <f:form class="input_box">
+	<div class="class error"></div>
 	<input type="hidden" name="c_tcode" value="${LIST.c_tcode }"/>
 	<input type="hidden" name="c_ccode" value="${LIST.c_ccode }"/>
 	<input type="hidden" name="c_seq" value="${LIST.c_seq}"/>
@@ -37,8 +38,8 @@
 	</div>
 	<input type="hidden" id="colorPicker" value="${LIST.c_color }" name="c_color">
 	<div class="schedule">
-	<input type="submit" class="insert" value="수정">
-	<input type="button" class="insert" data-seq = "${SEQ }" value="삭제">
+	<input type="button" class="insert" value="수정">
+	<input type="button" class="delete" data-seq = "${SEQ }" value="삭제">
 	</div>
 		
 </f:form>

@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const target = e.target;
     if (target.classList.contains("content") || target.tagName === "DIV") {
       const sdate = target.closest("div").dataset.sdate;
-      document.location.href = `${rootPath}/class/detail/${sdate}`;
+      document.location.href = `${rootPath}/schedule/detail/${sdate}`;
     }
   });
 
