@@ -14,7 +14,7 @@ div.welcome_wrap {
 
 h1.title {
     font-size: 3rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .welcome1 {
@@ -34,6 +34,12 @@ section.div_box {
     div {
         flex: 1;
         margin-top: 5rem;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
     }
 }
 
@@ -62,4 +68,26 @@ a.button_price {
     color: #391145;
     font-size: 1.5rem;
     font-weight: 700;
+}
+
+section.footer_box {
+    margin-top: 2rem;
+    padding: 3rem;
+    background-color: #fa6a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        color: white;
+        font-size: 2rem;
+    }
+    p {
+        color: white;
+        font-size: 1.5rem;
+    }
+    h1.free {
+        font-size: 4rem;
+    }
 }

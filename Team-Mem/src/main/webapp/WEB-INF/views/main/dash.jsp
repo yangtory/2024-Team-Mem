@@ -107,7 +107,11 @@ prefix="f"%>
             </p>
         </div>
     </section>
-    <footer>
-        <address></address>
-    </footer>
+
+    <section data-aos="fade-up" class="footer_box">
+        <h1>Free-trial</h1>
+        <h1 data-aos="slide-right" class="free">무료로 시작해보세요!</h1>
+        <p>무료체험 버전으로도 충분히 기능을 사용해볼 수 있어요!</p>
+        <a class="button_price" href="${rootPath}/main/join">무료로 시작하기</a>
+    </section>
 </div>

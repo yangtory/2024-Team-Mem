@@ -7,7 +7,7 @@ prefix="sec"%> <%@ taglib uri="http://www.springframework.org/tags/form" prefix=
     <div>
     <img src="${rootPath}/static/images/bug.png" width="30px" height="30px" />
     <sec:authorize access="isAnonymous()">
-     <a href="${rootPath }/main/login">Mem</a></div>
+     <a href="${rootPath }">Mem</a></div>
      </sec:authorize>
      <sec:authorize access="isAuthenticated()">
      <a href="${rootPath }/main">Mem</a></div>
