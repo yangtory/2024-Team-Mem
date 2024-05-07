@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.hello.dao.ClassDao;
-import com.callor.hello.dao.ScheduleDao;
 import com.callor.hello.dao.TeacherDao;
 import com.callor.hello.models.ClassVO;
 import com.callor.hello.models.TeacherVO;

@@ -12,8 +12,6 @@ import com.callor.hello.models.TeacherVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.TeacherService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Service("teacherServiceImpl")
 public class TeacherServiceImpl implements TeacherService {
 	

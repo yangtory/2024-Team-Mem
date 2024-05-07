@@ -12,7 +12,7 @@ prefix="f"%>
             </c:if>
             <div class="login error"></div>
             <input placeholder="Username" name="u_id" />
-            <input placeholder="Password" name="u_password" />
+            <input type="password" placeholder="Password" name="u_password" />
             <button type="button" class="login_btn button-32">SUBMIT</button>
         </div>
     </f:form>

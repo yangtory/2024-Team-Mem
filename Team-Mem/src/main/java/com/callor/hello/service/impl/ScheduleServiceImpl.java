@@ -10,9 +10,7 @@ import com.callor.hello.dao.ScheduleDao;
 import com.callor.hello.models.ClassVO;
 import com.callor.hello.models.ScheduleVO;
 import com.callor.hello.service.ScheduleService;
-import com.callor.hello.service.TeacherService;
 
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {

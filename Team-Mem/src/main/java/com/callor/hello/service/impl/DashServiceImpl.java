@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.callor.hello.dao.DashDao;
 import com.callor.hello.service.DashService;
-import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,12 +17,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class DashServiceImpl implements DashService{
 	
-	private final TeacherService teacherService;
 	private final DashDao dashDao;
 	@Autowired
-    public DashServiceImpl(TeacherService teacherService, DashDao dashDao) {
+    public DashServiceImpl( DashDao dashDao) {
         super();
-        this.teacherService = teacherService;
         this.dashDao = dashDao;
     }
 
