@@ -31,7 +31,7 @@ public interface UserCompDao {
 
 	public List<UserCompVO> selectSearchAll(UserCompSearchDto userCompSearchDto);
 
-	public String count();
+	public String count(String ccode);
 
 
 

@@ -25,7 +25,7 @@ public interface UserMinfoDao {
 	
 	public int countUser(@Param("ccode") String ccode,@Param("seq") String seq);
 
-	public int total(String ccode);
+	public Integer total(String ccode);
 
 	public int checkMinfo(@Param("id") String id,@Param("seq") String seq);
 

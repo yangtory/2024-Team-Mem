@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="count">
-		SELECT COUNT(*) FROM tbl_user_comp
+		SELECT COUNT(*) FROM tbl_user_comp WHERE us_ccode = #{ccode}
 	</select>
 
 	<insert id="insert">
