@@ -4,7 +4,14 @@ prefix="sec"%> <%@ taglib uri="http://www.springframework.org/tags/form" prefix=
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
 <div class="header">
-    <div><img src="${rootPath}/static/images/bug.png" width="30px" height="30px" /> <a href="${rootPath }">Mem</a></div>
+    <div>
+    <img src="${rootPath}/static/images/bug.png" width="30px" height="30px" />
+    <sec:authorize access="isAnonymous()">
+     <a href="${rootPath }/main/login">Mem</a></div>
+     </sec:authorize>
+     <sec:authorize access="isAuthenticated()">
+     <a href="${rootPath }/main">Mem</a></div>
+     </sec:authorize>
     <nav class="nav">
         <sec:authorize access="isAnonymous()">
             <a href="${rootPath }/main/login" class="login_btn">Log in</a>

@@ -12,4 +12,10 @@
 	    WHERE r_sdate BETWEEN #{startDate} AND #{endDate} AND i_ccode = #{ccode}
 	</select>
 
+	<select id="getMonthlyUser">
+	SELECT COUNT(*) FROM tbl_user_comp
+	JOIN tbl_user ON us_cname = u_comp
+	WHERE DATE_FORMAT(us_date, '%Y-%m') = #{startDate} AND us_ccode = #{ccode}
+	</select>
+
 </mapper> 

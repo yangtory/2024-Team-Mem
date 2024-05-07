@@ -1,5 +1,95 @@
 @charset "UTF-8";
 
-canvas {
-  border: 1px solid red;
+.page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.total {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  width: 30%;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.total_box {
+  display: flex;
+  justify-content: center;
+}
+.top {
+  background-color: #e9dcd6;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px;
+  height: 45vh;
+  .month {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.chart {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bottom {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+  width: 90%;
+  .notice {
+    flex: 1;
+    width: 100%;
+
+    overflow: auto;
+  }
+  .notice_list {
+    background-color: #e9dcd6;
+    margin: 0 auto;
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.error {
+  width: 80%;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  height: 88%;
+  margin-bottom: 30px;
+  .left {
+    flex: 1;
+  }
+  .right {
+    flex: 1;
+  }
 }

@@ -7,4 +7,6 @@ public interface DashService {
 	
 	 public List<Map<String, Object>> getMonthlyTotal(String ccode);
 	 
+	 public List<Integer> getMonthlyUser(String ccode);
+	 
 }

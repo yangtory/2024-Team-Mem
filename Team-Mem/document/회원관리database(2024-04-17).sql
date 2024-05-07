@@ -15,6 +15,17 @@ SELECT * FROM tbl_user_comp;
 alter table tbl_user_comp
 add COLUMN us_date varchar(15);
 
+SELECT * FROM tbl_user_comp
+join tbl_user on us_cname = u_comp
+WHERE us_date between '2024-05-01' and '2024-05-31';
+	
+SELECT COUNT(*) FROM tbl_user_comp
+	    JOIN tbl_user ON us_cname = u_comp
+	    WHERE DATE_FORMAT(us_date, '%Y-%m') = DATE_FORMAT('2024-05-01', '%Y-%m');
+SELECT COUNT(*) FROM tbl_user_comp
+JOIN tbl_user ON us_cname = u_comp
+WHERE DATE_FORMAT(us_date, '%Y-%m') = '2024-05';
+
 select r_uid,r_iseq,i_price
        from tbl_user_minfo
        
