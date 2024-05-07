@@ -53,3 +53,13 @@ img.angle_down {
         transform: translateY(10px);
     }
 }
+
+a.button_price {
+    padding: 8px 50px;
+    margin: 1rem;
+    background-color: #faaca8;
+    border-radius: 10px;
+    color: #391145;
+    font-size: 1.5rem;
+    font-weight: 700;
+}

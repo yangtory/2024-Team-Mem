@@ -296,6 +296,14 @@ public class UserController {
 		return vo;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/checkminfo/{id}/{seq}", method=RequestMethod.GET)
+	public int checkminfo(@PathVariable("id") String id ,
+			@PathVariable("seq") String seq) {
+		int result = userMinfoDao.checkMinfo(id,seq);
+		return result;
+	}
+	
 	private String getdDay(String edate) {
 		LocalDate currentDate = LocalDate.now();		
 	    LocalDate endDate = LocalDate.parse(edate); //edate 날짜 변환 

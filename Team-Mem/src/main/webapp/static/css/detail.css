@@ -97,3 +97,21 @@ div.detail.btn_box {
         border-radius: 10px;
     }
 }
+
+span.dday {
+    background-color: #faaca8;
+    border-radius: 10px;
+    padding: 3px 12px;
+}
+
+div.info {
+    div {
+        display: flex;
+    }
+    strong {
+        flex: 1;
+    }
+    p {
+        flex: 1;
+    }
+}

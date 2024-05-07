@@ -1,11 +1,32 @@
 div.list_home {
-    width: 95%;
+    width: 90%;
 }
 .table_div {
     height: 65vh;
-    width: 100vh; /* 원하는 높이로 설정 */
-    overflow: auto; /* 내용이 넘칠 때 스크롤바 표시 */
+    width: 95%;
+    overflow-y: auto;
+    border-radius: 10px;
 }
+
+.table_div::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+}
+
+.table_div:hover::-webkit-scrollbar {
+    display: block;
+}
+
+.table_div::-webkit-scrollbar-thumb {
+    background-color: #e9dcd6;
+    border-radius: 5px;
+}
+
+.table_div::-webkit-scrollbar-thumb:hover {
+    background-color: #faaca8;
+}
+
 table.notice.list {
     table-layout: fixed;
     td.date {

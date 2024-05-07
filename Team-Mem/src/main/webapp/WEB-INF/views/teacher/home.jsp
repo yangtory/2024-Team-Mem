@@ -24,7 +24,7 @@ prefix="f"%>
                 <th>No.</th>
                 <th>강사코드</th>
                 <th>강사이름</th>
-                <th>업체코드</th>
+                <th>전화번호</th>
             </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@ prefix="f"%>
                     <td>${INDEX.count }</td>
                     <td>${T.t_code }</td>
                     <td>${T.t_name }</td>
-                    <td>${T.t_ccode }</td>
+                    <td>${T.t_tel }</td>
                 </tr>
             </c:forEach>
         </tbody>

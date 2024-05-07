@@ -14,6 +14,7 @@
 <div class="input_div">
 	<f:form class="formBox input_box">
 		<h3>회원 정보</h3>
+		<div class="user_error"></div>
 		<label>ID</label>
 		<input class="us_uid" name="us_uid" value="${COMP.us_uid }" readonly />
 		<label>이름</label>
@@ -27,6 +28,7 @@
 			name="us_ccode" value="${CCODE}" readonly />
 
 		<h3>수강권 정보</h3>
+		<div class="m_error"></div>
 		<div class="selectBox">
 			<select class="select" name="r_iseq">
 				<option value="0">--수강권선택--</option>
@@ -42,6 +44,6 @@
 		<label>종료일</label>
 		<input class="r_edate" type="date" name="r_edate">
 
-		<input type="submit" value="저장" class="insert">
+		<input type="button" value="저장" class="insert">
 	</f:form>
 </div>

@@ -21,6 +21,11 @@
 		WHERE r_uid = #{seq}
 	</select>
 	
+	<select id="checkMinfo">
+		select count(*) from tbl_user_minfo
+		where r_iseq = #{seq} and r_uid = #{id}
+	</select>
+	
 	<select id="findBySeq">
 		SELECT * FROM tbl_minfo
 		WHERE i_seq = #{seq}

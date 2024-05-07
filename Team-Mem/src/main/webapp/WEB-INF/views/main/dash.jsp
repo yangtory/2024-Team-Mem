@@ -15,20 +15,15 @@ prefix="f"%>
         <img src="${rootPath }/static/images/bug.png" width="200px" />
         <h1 class="title">환영합니다</h1>
         <p>맴맴은 처음이신가요?</p>
+        <a class="button_price" href="${rootPath}/main/join">무료로 시작하기</a>
         <img class="angle_down" src="${rootPath }/static/images/down.png" width="20px" />
     </div>
-
     <section data-aos="fade-up" class="div_box">
         <div data-aos="fade-up">
-            <img src="${rootPath }/static/images/2.png" width="400px" />
-        </div>
-        <div data-aos="fade-up">
-            <h1>간편한 서비스</h1>
-            <p>
-                맴맴은 다양한 서비스를 제공합니다. <br />회원권 관리를 통해 회원들의 등급을 관리하고 혜택을 부여할 수
-                있으며, <br />회원 정보를 효율적으로 관리하여 회원들의 만족도를 높입니다. <br />또한 강사와 수업 일정을
-                효율적으로 관리하여 회원들에게 원활한 서비스를 제공합니다.
-            </p>
+            <h1>
+                MemMem 을 소개합니다 <br />
+                쉽게 회원관리를 시작해보세요
+            </h1>
         </div>
     </section>
 
@@ -37,11 +32,23 @@ prefix="f"%>
             <img src="${rootPath }/static/images/2.png" width="400px" />
         </div>
         <div data-aos="fade-up">
+            <h1>간편한 회원권 관리</h1>
+            <p>
+                보다 쉬운 회원권 관리를 통해 <br />
+                센터를 효율적으로 관리하여 회원들에게 원활한 서비스를 제공해 보세요!
+            </p>
+        </div>
+    </section>
+
+    <section data-aos="fade-up" class="div_box">
+        <div data-aos="fade-up">
+            <img src="${rootPath }/static/images/6.png" width="400px" />
+        </div>
+        <div data-aos="fade-up">
             <h1>편리한 회원관리</h1>
             <p>
-                회원관리 기능을 통해 회원들의 정보 수정, 수업일정 등을 관리할 수 있습니다. <br />개별 회원의 정보를
-                확인하고 관리하여 회원들과의 소통을 원활하게 유지할 수 있습니다. <br />또한 회원들의 활동을 모니터링하고
-                필요한 조치를 취할 수 있습니다.
+                회원관리 기능을 통해 회원들의 정보 수정 등을 관리할 수 있습니다. <br />회원들과의 소통을 원활하게
+                유지하고 <br />회원들의 활동을 모니터링하여 필요한 조치를 취할 수 있습니다.
             </p>
         </div>
     </section>
@@ -73,23 +80,33 @@ prefix="f"%>
         </div>
     </section>
 
-    <div data-aos="fade-up">
-        <h1>꼼꼼하게 수업관리하기!</h1>
-        <p>
-            수업관리 기능을 통해 다양한 수업을 제공하고 관리할 수 있습니다. <br />수업의 종류, 시간, 장소 등을 등록하고
-            회원들이 수업을 예약할 수 있도록 합니다. <br />
-            또한 수업에 대한 평가를 수집하여 서비스의 품질을 지속적으로 개선합니다.
-        </p>
-    </div>
+    <section data-aos="fade-up" class="div_box">
+        <div data-aos="fade-up">
+            <img src="${rootPath }/static/images/7.png" width="400px" />
+        </div>
+        <div data-aos="fade-up">
+            <h1>꼼꼼하게 수업관리하기!</h1>
+            <p>
+                수업관리 기능을 통해 다양한 수업을 제공하고 관리할 수 있습니다. <br />수업의 종류, 시간, 장소 등을
+                등록하고 회원들이 수업을 예약할 수 있도록 합니다. <br />
+                또한 수업에 대한 평가를 수집하여 서비스의 품질을 지속적으로 개선합니다.
+            </p>
+        </div>
+    </section>
 
-    <div data-aos="fade-up">
-        <h1>공지사항 관리</h1>
-        <p>
-            공지사항 관리 기능을 통해 회원들에게 필요한 정보를 공지할 수 있습니다. <br />
-            다양한 공지사항을 등록하고 회원들에게 효율적으로 알림을 전달할 수 있습니다. <br />
-            또한 회원들의 의견을 수렴하여 서비스에 대한 정보를 제공합니다.
-        </p>
-    </div>
+    <section data-aos="fade-up" class="div_box">
+        <div data-aos="fade-up">
+            <img src="${rootPath }/static/images/8.png" width="400px" />
+        </div>
+        <div data-aos="fade-up">
+            <h1>공지사항 관리</h1>
+            <p>
+                공지사항 관리 기능을 통해 회원들에게 필요한 정보를 공지할 수 있습니다. <br />
+                다양한 공지사항을 등록하고 회원들에게 효율적으로 알림을 전달할 수 있습니다. <br />
+                또한 회원들의 의견을 수렴하여 서비스에 대한 정보를 제공합니다.
+            </p>
+        </div>
+    </section>
     <footer>
         <address></address>
     </footer>
