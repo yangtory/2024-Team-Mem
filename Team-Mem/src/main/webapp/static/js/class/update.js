@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const delBtn = document.querySelector("input[type='button']");
+  const input_box = document?.querySelector("form.input_box");
+  const title = input_box?.querySelector("input[name='c_name']");
+
+  const startbtn = input_box?.querySelector("input[name='c_sdate']");
+  const endbtn = input_box?.querySelector("input[name='c_edate']");
+  const startTime = input_box?.querySelector("input[name='c_stime']");
+  const endTime = input_box?.querySelector("input[name='c_etime']");
+  const button = input_box?.querySelector("input.insert");
+  const class_error = document?.querySelector("div.class.error");
+  const delBtn = document.querySelector("input.delete");
   const color_box = document.querySelector("div.palette");
   const selectedColor = document.querySelector("#colorPicker");
   delBtn.addEventListener("click", (e) => {
@@ -48,5 +57,43 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedColor.value = "#c8d8b4";
       return false;
     }
+  });
+  button?.addEventListener("click", () => {
+    class_error.innerHTML = "";
+
+    if (!title.value) {
+      class_error.innerHTML = "수업명을 입력해주세요";
+      title.select();
+      return false;
+    }
+
+    if (selectedColor.value == "#ffffff") {
+      class_error.innerHTML = "색상을 선택해주세요";
+      selectedColor.select();
+      return false;
+    }
+    if (!endbtn.value) {
+      if (confirm("종료일자를 입력하지않으면 개강일자로 맞춰집니다. 그대로 진행할까요?")) {
+        endbtn.value = startbtn.value;
+
+        return false;
+      } else {
+        class_error.innerHTML = "종료일자를 입력하세요";
+        endbtn.select();
+        return false;
+      }
+    }
+    if (!startTime.value) {
+      class_error.innerHTML = "시작시간을 입력해주세요";
+      startTime.select();
+      return false;
+    }
+    if (!endTime.value) {
+      class_error.innerHTML = "종료시간을 입력해주세요";
+      endTime.select();
+      return false;
+    }
+
+    input_box.submit();
   });
 });
