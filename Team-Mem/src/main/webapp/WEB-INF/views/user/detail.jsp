@@ -11,12 +11,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <div class="info head">
                     <strong>ID</strong>
                     <p>${LIST.us_uid}</p>
-
                     <strong>전화번호</strong>
                     <p>${LIST.us_utel}</p>
-                    <a class="message_btn button-32"
-                        ><img src="${rootPath }/static/images/mail.png" width="10px" height="10px" />message</a
-                    >
+                    <a class="message_btn button-32">
+                    <img src="${rootPath }/static/images/mail.png" width="10px" height="10px" />message</a>
                 </div>
                 <div>
                     <strong>업체코드</strong>
@@ -29,6 +27,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <div>
                     <strong>이름</strong>
                     <p>${LIST.us_uname}</p>
+                </div>
+                <div>
+                    <strong>메모</strong>
+                    <p>다이어트, 식단관리 원함</p>
                 </div>
             </div>
         </div>

@@ -24,7 +24,8 @@
 			login-processing-url="/main/login"
 			username-parameter="u_id"
 			password-parameter="u_password"
-			default-target-url="/"
+			default-target-url="/main"
+			
 		/>
 		
 		<sec:logout

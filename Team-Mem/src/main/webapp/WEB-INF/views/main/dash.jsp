@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ taglib uri="http://www.springframework.org/tags/form"
-prefix="f"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <link rel="stylesheet" href="${rootPath}/static/css/welcome.css" />
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -87,4 +89,5 @@ prefix="f"%>
     <footer>
         <address></address>
     </footer>
+
 </div>

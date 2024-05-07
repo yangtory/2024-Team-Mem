@@ -46,7 +46,11 @@
   padding: 10px 12px;
   cursor: pointer;
   font-size: 0.8rem;
+  border-radius: 10px;
   background-color: #fff;
+  &:hover {
+    background-color: #e4e4e4;
+  }
 }
 
 .input_box .ticket.error {
