@@ -27,7 +27,7 @@ public interface UserMinfoDao {
 
 	public Integer total(String ccode);
 
-	public int checkMinfo(@Param("id") String id,@Param("seq") String seq);
+	public List<UserMinfoVO> checkMinfo(@Param("id") String id,@Param("seq") String seq);
 
 	
 

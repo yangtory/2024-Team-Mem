@@ -22,7 +22,7 @@
 	</select>
 	
 	<select id="checkMinfo">
-		select count(*) from tbl_user_minfo
+		select * from tbl_user_minfo
 		where r_iseq = #{seq} and r_uid = #{id}
 	</select>
 	

@@ -298,9 +298,9 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/checkminfo/{id}/{seq}", method=RequestMethod.GET)
-	public int checkminfo(@PathVariable("id") String id ,
+	public List<UserMinfoVO> checkminfo(@PathVariable("id") String id ,
 			@PathVariable("seq") String seq) {
-		int result = userMinfoDao.checkMinfo(id,seq);
+		List<UserMinfoVO> result = userMinfoDao.checkMinfo(id,seq);
 		return result;
 	}
 	

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedValue = select.value;
         const idValue = id.value;
         const result = await checkMinfo(selectedValue, idValue);
+        console.log(result);
 
         // 빈 칸 검사
         if (!id.value) {
@@ -40,6 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
             m_error.innerHTML = '수강권을 선택해주세요';
             return false;
         }
+        for (let i = 0; i < result.length; i++) {
+            const item = result[i];
+            // item.sdate 와 비교하여 유효성 검사 수행
+            if (item.r_sdate === sdate.value) {
+                // 유효한 경우
+                m_error.innerHTML = '이미 등록된 날짜의 회원권이 있습니다 <br> 회원권 수정을 이용해주세요';
+                console.log('유효한 값이 있습니다.');
+                return false;
+            }
+        }
         if (!sdate.value) {
             m_error.innerHTML = '시작일을 선택해주세요';
             return false;
@@ -49,11 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
 
-        // 회원권 중복검사
-        if (result !== '0') {
-            m_error.innerHTML = '이미 등록된 회원권입니다 <br> 회원권 수정을 이용해주세요';
-            return false;
-        }
         // 종료일 유효성검사
         if (new Date(sdate.value) > new Date(edate.value)) {
             m_error.innerHTML = '종료일은 시작일의 이후로 지정해주세요';
@@ -66,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 회원이 가지고있는 회원권 중복 검사
     const checkMinfo = async (seq, id) => {
         const res = await fetch(`${rootPath}/customer/checkminfo/${id}/${seq}`);
-        const json = await res.text();
+        const json = await res.json();
+        // console.log(json);
         return json;
     };
 

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.callor.hello.dao.MinfoDao;
 import com.callor.hello.dao.UserMinfoDao;
 import com.callor.hello.models.MinfoVO;
-import com.callor.hello.models.UserMinfoVO;
 import com.callor.hello.service.TeacherService;
 
 import lombok.extern.slf4j.Slf4j;

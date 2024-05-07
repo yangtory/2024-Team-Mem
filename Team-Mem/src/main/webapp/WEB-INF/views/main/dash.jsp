@@ -3,8 +3,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ taglib uri="http://www.
 prefix="f"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <link rel="stylesheet" href="${rootPath}/static/css/welcome.css" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 1200 }); // 자바스크립트로 init()을 해야 동작한다.

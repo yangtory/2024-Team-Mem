@@ -82,9 +82,9 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String join(UserVO userVO) {
+	public String join(UserVO userVO, Model model) {
 		userService.createUser(userVO);
-		return "layout";
+		return "redirect:/";
 	}
 	
 	
