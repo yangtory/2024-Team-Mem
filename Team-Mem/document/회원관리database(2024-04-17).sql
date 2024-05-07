@@ -12,23 +12,8 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo; 
 SELECT * FROM tbl_user_comp;
 
-alter table tbl_user_comp
-add COLUMN us_date varchar(15);
-
-SELECT * FROM tbl_user_comp
-join tbl_user on us_cname = u_comp
-WHERE us_date between '2024-05-01' and '2024-05-31';
-	
-SELECT COUNT(*) FROM tbl_user_comp
-	    JOIN tbl_user ON us_cname = u_comp
-	    WHERE DATE_FORMAT(us_date, '%Y-%m') = DATE_FORMAT('2024-05-01', '%Y-%m');
-SELECT COUNT(*) FROM tbl_user_comp
-JOIN tbl_user ON us_cname = u_comp
-WHERE DATE_FORMAT(us_date, '%Y-%m') = '2024-05';
-
 select r_uid,r_iseq,i_price
-       from tbl_user_minfo
-       
+       from tbl_user_minfo        
 join tbl_minfo on i_seq = r_iseq;
 
 -- 총매출
@@ -42,17 +27,10 @@ FROM tbl_user_minfo
 JOIN tbl_minfo ON r_iseq = i_seq
 where  r_sdate between '2024-05-01' and '2024-05-31';
 
-
-
--- 승희 추가
-alter table tbl_company
-MODIFY COLUMN c_addr VARCHAR(125);
--- 여까지
-
-		SELECT n_seq, n_title, n_uid, n_date
-		FROM tbl_notice
-		ORDER BY n_date DESC
-		LIMIT 10 OFFSET 10;
+SELECT n_seq, n_title, n_uid, n_date
+FROM tbl_notice
+ORDER BY n_date DESC
+LIMIT 10 OFFSET 10;
 
 -- truncate
 SET FOREIGN_KEY_CHECKS = 0;
@@ -68,14 +46,6 @@ TRUNCATE tbl_teacher;
 TRUNCATE tbl_schedule;
 TRUNCATE tbl_user_minfo;
 TRUNCATE tbl_user_comp;
-
--- 정연이 추가해야할것들
-ALTER TABLE tbl_schedule 
-ADD COLUMN s_color VARCHAR(20);
-
-ALTER TABLE tbl_class
-ADD COLUMN c_color VARCHAR(20);
--- 여기까지
 
 SELECT * FROM tbl_schedule
 ORDER BY s_sdate DESC, s_edate DESC;
@@ -105,7 +75,7 @@ CREATE TABLE tbl_role(
 CREATE TABLE tbl_company(
 c_code	VARCHAR(10)		PRIMARY KEY,
 c_name	VARCHAR(10)	NOT NULL	,
-c_addr	VARCHAR(10)		,
+c_addr	VARCHAR(125)		,
 c_tel	VARCHAR(15)		,
 c_uid VARCHAR(20),
     FOREIGN KEY (c_uid)
@@ -204,6 +174,7 @@ CREATE TABLE tbl_user_comp(
 	us_uname	VARCHAR(10)	,
 	us_utel	VARCHAR(15)	,
 	us_cname	VARCHAR(10)	,
+    us_date varchar(15),
 	CONSTRAINT uc_pk PRIMARY KEY(us_uid,us_ccode)	
 
 );
