@@ -29,6 +29,9 @@
 		<sec:authorize access="isAuthenticated()">
 			<%@ include file="/WEB-INF/views/include/include-sidebar.jsp"%>
 			<section>
+				<c:if test="${BODY == 'LOGINOK'}">
+					<%@ include file="/WEB-INF/views/main/main.jsp"%>
+				</c:if>
 				<c:if test="${BODY == 'TEACHER_HOME'}">
 					<%@ include file="/WEB-INF/views/teacher/home.jsp"%>
 				</c:if>

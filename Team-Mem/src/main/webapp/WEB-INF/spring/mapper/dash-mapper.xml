@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.hello.dao.DashDao">
+
+	<select id="getMonthlyTotal">
+	    SELECT SUM(i_price) AS total_price
+	    FROM tbl_user_minfo
+	    JOIN tbl_minfo ON r_iseq = i_seq
+	    WHERE r_sdate BETWEEN #{startDate} AND #{endDate} AND i_ccode = #{ccode}
+	</select>
+
+</mapper> 

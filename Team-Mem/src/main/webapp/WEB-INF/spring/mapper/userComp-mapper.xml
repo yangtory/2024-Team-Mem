@@ -22,6 +22,10 @@
 
 		</where>
 	</select>
+	
+	<select id="count">
+		SELECT COUNT(*) FROM tbl_user_comp
+	</select>
 
 	<insert id="insert">
 		INSERT INTO tbl_user_comp(
