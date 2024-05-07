@@ -27,3 +27,15 @@ div.inputbox {
   width: 80%;
   margin: 0 auto;
 }
+input.delete {
+  width: 20%;
+  border: none;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  background-color: #fff;
+  &:hover {
+    background-color: #e4e4e4;
+  }
+}
