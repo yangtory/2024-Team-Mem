@@ -94,12 +94,15 @@ div.side {
 
 div.login_wrap,
 div.join_wrap {
-    height: 90%;
+    height: 100vh;
+
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    background-color: #faaca8;
+    background-image: linear-gradient(19deg, #fccecb 20%, #e2daff 100%);
 }
 form.login {
+    margin-top: 3rem;
     width: 70%;
     height: 50%;
     background-color: #25293482;
@@ -107,6 +110,7 @@ form.login {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
     h1 {
         color: #bec7d5;
         font-weight: 200;
@@ -142,6 +146,7 @@ form.login {
     }
 }
 form.join {
+    margin-top: 3rem;
     width: 70%;
     height: 80%;
     background-color: #25293482;
@@ -149,6 +154,7 @@ form.join {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
     h1 {
         color: #bec7d5;
         font-weight: 200;
@@ -183,8 +189,6 @@ form.join {
     button {
         width: 30%;
         margin: 5px auto;
-        background-color: #313749;
-        color: #bec7d5;
         font-weight: 200;
     }
 }

@@ -13,7 +13,7 @@ prefix="f"%>
             <div class="login error"></div>
             <input placeholder="Username" name="u_id" />
             <input placeholder="Password" name="u_password" />
-            <button type="button" class="login_btn button-32">로그인</button>
+            <button type="button" class="login_btn button-32">SUBMIT</button>
         </div>
     </f:form>
 </div>

@@ -17,22 +17,38 @@ h1.title {
     font-weight: 500;
 }
 
-.welcome2 {
-    height: 40%;
+.welcome1 {
+    height: 42rem;
     display: flex;
     align-items: center;
-    border: 1px solid #eee;
-    div {
-        flex: 1;
-        width: 30%;
-        height: 50%;
-        border: 1px solid black;
+    justify-content: center;
+    img {
+        margin-top: auto;
     }
 }
 
 section.div_box {
     display: flex;
+    align-items: center;
+    justify-content: center;
     div {
         flex: 1;
+    }
+}
+
+img {
+    border-radius: 10px;
+}
+
+img.angle_down {
+    margin-top: auto;
+    animation: bounceUpDown 0.5s infinite alternate;
+}
+@keyframes bounceUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
     }
 }

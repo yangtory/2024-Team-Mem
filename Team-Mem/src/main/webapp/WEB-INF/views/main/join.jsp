@@ -12,7 +12,7 @@ prefix="f"%>
             <input placeholder="NAME" name="u_name" />
             <input placeholder="ADDRESS" name="u_addr" />
             <input placeholder="TEL" name="u_tel" /><input placeholder="업체명" name="u_comp" />
-            <button type="button" class="join_btn button-32">회원가입</button>
+            <button type="button" class="join_btn button-32">SIGN UP</button>
         </div>
     </f:form>
 </div>
