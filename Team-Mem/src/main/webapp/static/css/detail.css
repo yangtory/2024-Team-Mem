@@ -25,22 +25,16 @@ div.card {
 div.container {
     padding: 1rem 16px 0.5rem 16px;
 }
-
-div.info {
+div.info_container {
+    padding: 1rem 16px 0.5rem 16px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
-    div {
-        display: flex;
-        strong {
-            flex: 1;
-        }
-        p {
-            flex: 2;
-        }
-    }
+    justify-content: center;
+    align-items: center;
 }
-div.info.head {
+
+div.info_head {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,6 +68,21 @@ a.message_btn {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+div.info_detail {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    div {
+        display: flex;
+        strong {
+            flex: 1;
+        }
+        p {
+            flex: 1;
+        }
+    }
 }
 
 div.detail.btn_box {

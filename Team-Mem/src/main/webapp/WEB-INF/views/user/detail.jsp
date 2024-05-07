@@ -6,16 +6,17 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <h1 class="list_title">${LIST.us_uid} 님의 정보</h1>
 <div class="detail_box">
     <div class="card">
-        <div class="container">
-            <div class="info">
-                <div class="info head">
-                    <strong>ID</strong>
-                    <p>${LIST.us_uid}</p>
-                    <strong>전화번호</strong>
-                    <p>${LIST.us_utel}</p>
-                    <a class="message_btn button-32">
-                    <img src="${rootPath }/static/images/mail.png" width="10px" height="10px" />message</a>
-                </div>
+        <div class="info_container">
+            <div class="info_head">
+                <strong>ID</strong>
+                <p>${LIST.us_uid}</p>
+                <strong>전화번호</strong>
+                <p>${LIST.us_utel}</p>
+                <a class="message_btn button-32">
+                    <img src="${rootPath }/static/images/mail.png" width="10px" height="10px" />message</a
+                >
+            </div>
+            <div class="info_detail">
                 <div>
                     <strong>업체코드</strong>
                     <p>${LIST.us_ccode}</p>

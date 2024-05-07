@@ -33,6 +33,7 @@ section.div_box {
     justify-content: center;
     div {
         flex: 1;
+        margin-top: 5rem;
     }
 }
 

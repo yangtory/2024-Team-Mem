@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ taglib uri="http://www.springframework.org/tags/form"
+prefix="f"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -19,14 +18,19 @@
         <img class="angle_down" src="${rootPath }/static/images/down.png" width="20px" />
     </div>
 
-    <div data-aos="fade-up">
-        <h1>간편한 서비스</h1>
-        <p>
-            맴맴은 다양한 서비스를 제공합니다. <br />회원권 관리를 통해 회원들의 등급을 관리하고 혜택을 부여할 수
-            있으며, <br />회원 정보를 효율적으로 관리하여 회원들의 만족도를 높입니다. <br />또한 강사와 수업 일정을
-            효율적으로 관리하여 회원들에게 원활한 서비스를 제공합니다.
-        </p>
-    </div>
+    <section data-aos="fade-up" class="div_box">
+        <div data-aos="fade-up">
+            <img src="${rootPath }/static/images/2.png" width="400px" />
+        </div>
+        <div data-aos="fade-up">
+            <h1>간편한 서비스</h1>
+            <p>
+                맴맴은 다양한 서비스를 제공합니다. <br />회원권 관리를 통해 회원들의 등급을 관리하고 혜택을 부여할 수
+                있으며, <br />회원 정보를 효율적으로 관리하여 회원들의 만족도를 높입니다. <br />또한 강사와 수업 일정을
+                효율적으로 관리하여 회원들에게 원활한 서비스를 제공합니다.
+            </p>
+        </div>
+    </section>
 
     <section data-aos="fade-up" class="div_box">
         <div data-aos="fade-up">
@@ -89,5 +93,4 @@
     <footer>
         <address></address>
     </footer>
-
 </div>

@@ -1,5 +1,7 @@
 package com.callor.hello.service.impl;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +122,10 @@ public class UserServiceImpl implements UserService{
 			 log.debug("사용자의 업체명 service {}",ucomp);
 			 String comp = teacherService.getLoginCCode();
 			 log.debug("사용자의 업체코드 service {}",comp);
+			 
+				LocalDateTime lt = LocalDateTime.now();
+				DateTimeFormatter date = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+				
 			 List<UserCompVO> ucList = new ArrayList<>();
 			 
 			    if (!user.isBlank()) {
@@ -128,7 +134,8 @@ public class UserServiceImpl implements UserService{
 			    			.us_uname(username)
 			    			.us_ccode(comp)
 			    			.us_cname(cname)
-			    			.us_utel(ustel).build()
+			    			.us_utel(ustel)
+			    			.us_date(lt.format(date)).build()
 			    			);
 			    	userCompDao.createUser(ucList);
 			    }

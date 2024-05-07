@@ -37,10 +37,10 @@
 	</insert>
 	<insert id="createUser">
 		INSERT INTO tbl_user_comp(us_uid,us_ccode, us_uname, us_utel,
-		us_cname)
+		us_cname, us_date)
 		VALUES
 		<foreach collection="list" item="vo" separator=", ">
-			(#{vo.us_uid},#{vo.us_ccode},#{vo.us_uname},#{vo.us_utel},#{vo.us_cname}
+			(#{vo.us_uid},#{vo.us_ccode},#{vo.us_uname},#{vo.us_utel},#{vo.us_cname},#{vo.us_date}
 			)
 		</foreach>
 	</insert>

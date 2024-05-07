@@ -20,6 +20,6 @@ public class UserCompVO {
 	private String us_uname;	// VARCHAR(10)	,
 	private String us_utel;	// VARCHAR(15)	,
 	private String us_cname;	// VARCHAR(10)	,
-	
+	private String us_date;
 	
 }
