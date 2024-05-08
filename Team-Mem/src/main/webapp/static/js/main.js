@@ -132,9 +132,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("회원가입이 완료되었습니다.");
     join_form.submit();
   });
-
+  const hidden_box = document.querySelector("div.hidden");
   cname.addEventListener("focus", () => {
-    caddr.style.display = "block";
-    ctel.style.display = "block";
+    // hidden_box.style.height = "100%";
+    // hidden_box.style.opacity = "1";
+    // hidden_box.style.transition = "0.8s";
+    // join_btn.style.top = "0%";
+    // join_btn.style.transition = "0.3s";
+    // caddr.style.display = "block";
+    // ctel.style.display = "block";
+    // join_form.style.height = "64%";
+    // error_box_join.innerHTML = "사장님은 업체명과 전화번호, 주소를 입력해주세요!";
   });
 });
