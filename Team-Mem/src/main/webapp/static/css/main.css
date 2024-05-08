@@ -94,12 +94,13 @@ div.side {
 
 div.login_wrap,
 div.join_wrap {
-    height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    background-color: #faaca8;
-    background-image: linear-gradient(19deg, #fccecb 20%, #e2daff 100%);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #faaca8;
+  background-image: linear-gradient(19deg, #fccecb 20%, #e2daff 100%);
+
 }
 form.login {
     margin-top: 3rem;
@@ -146,51 +147,52 @@ form.login {
     }
 }
 form.join {
-    margin-top: 3rem;
-    width: 70%;
-    height: 80%;
-    background-color: #25293482;
+
+  margin-top: 3rem;
+  width: 70%;
+  height: 80%;
+  background-color: #25293482;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+
+  h1.head {
+    color: #bec7d5;
+    font-weight: 200;
+    font-size: 2rem;
+    padding: 5px 12px;
+    margin: 1rem 0;
+    border-bottom: 1px solid;
+  }
+
+  div {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    h1 {
-        color: #bec7d5;
-        font-weight: 200;
-        font-size: 2rem;
-        padding: 5px 12px;
-        margin: 4px 0 2rem 0;
-        border-bottom: 1px solid;
+    div.join.error {
+      text-align: center;
+      color: #e46c7a;
+      size: 1.3rem;
     }
-    label {
-        flex: 1;
-    }
-    div {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        div.join.error {
-            text-align: center;
-            color: #e46c7a;
-            size: 1.3rem;
-        }
-    }
-    input {
-        flex: 3;
-        padding: 12px;
-        border: none;
-        outline: none;
-        background-color: #30373f;
-        margin: 5px auto;
-        width: 80%;
-        color: white;
-    }
-    button {
-        width: 30%;
-        margin: 5px auto;
-        font-weight: 200;
-    }
+  }
+  input {
+    padding: 12px;
+    border: none;
+    outline: none;
+    background-color: #30373f;
+    margin: 5px auto;
+    width: 80%;
+    color: white;
+    font-size: 0.8rem;
+  }
+  button {
+    width: 30%;
+    margin: 1.5rem auto 0 auto;
+    font-weight: 200;
+  }
+
 }
 
 div.authenticated {
@@ -237,7 +239,4 @@ div.authenticated {
     -webkit-filter: saturate(0.2) opacity(0.5);
     cursor: not-allowed;
 }
-input[name='c_tel'],
-input[name='c_addr'] {
-    display: none;
-}
+
