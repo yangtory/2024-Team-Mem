@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.hello.dao.UserMinfoDao;
+import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.SalesSearchDto;
-import com.callor.hello.models.TeacherVO;
 import com.callor.hello.models.UserMinfoVO;
 import com.callor.hello.service.TeacherService;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
 @RequestMapping(value="/sales")
 public class SalesController {
@@ -34,8 +36,8 @@ public class SalesController {
 		String ccode = teacherService.getLoginCCode();
 		salesSearch.setS_ccode(ccode);
 		List<UserMinfoVO> result = userMinfoDao.salesSearchAll(salesSearch);
-		String findCname = userMinfoDao.findCname(ccode);
-		
+		CompanyVO findCname = userMinfoDao.findCname(ccode);
+		log.debug("{}",findCname);
 		model.addAttribute("CNAME", findCname);
 		model.addAttribute("SALES_LIST", result);
 		model.addAttribute("BODY", "SALES_HOME");

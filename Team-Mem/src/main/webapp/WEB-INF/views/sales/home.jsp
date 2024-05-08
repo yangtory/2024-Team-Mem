@@ -66,9 +66,9 @@
 			<div class="sales recipe">
 				<h1>매출 영수증</h1>
 				<div><label>업체코드</label><input value="${SALES_LIST[0].i_ccode}" readonly></div>
-				<div><label>업체명</label><input value="${CNAME}" readonly></div>
-				<div><label>전화번호</label><input value="010-0000-0000" readonly></div>
-				<div><label>주　소</label><input value="광주 광산구" readonly></div>
+				<div><label>업체명</label><input value="${CNAME.c_name}" readonly></div>
+				<div><label>전화번호</label><input value="${CNAME.c_tel }" readonly></div>
+				<div><label>주　소</label><input value="${CNAME.c_addr }" readonly></div>
 
 				<div><label>영수증번호</label><input value="202241-256871" readonly></div>
 				<div><label>매출날짜</label><input name="r_sdate" readonly></div>

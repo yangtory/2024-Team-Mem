@@ -13,6 +13,8 @@ prefix="f"%>
             <input placeholder="ADDRESS" name="u_addr" />
             <input placeholder="TEL" name="u_tel" />
             <input placeholder="업체명" name="u_comp" />
+            <input placeholder="업체 전화번호" name="c_tel" />
+            <input placeholder="업체 주소" name="c_addr"/>
             <button type="button" class="join_btn button-32">SIGN UP</button>
         </div>
     </f:form>

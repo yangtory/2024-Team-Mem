@@ -3,8 +3,8 @@ package com.callor.hello.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
+import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.SalesSearchDto;
 import com.callor.hello.models.UserMinfoVO;
 
@@ -32,7 +32,7 @@ public interface UserMinfoDao {
 
 	public List<UserMinfoVO> salesSearchAll(SalesSearchDto salesSearch);
 
-	public String findCname(String ccode);
+	public CompanyVO findCname(String ccode);
 
 	
 
