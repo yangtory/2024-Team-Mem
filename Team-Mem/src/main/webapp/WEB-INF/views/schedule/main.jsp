@@ -22,6 +22,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
             <button class="nav-btn go-next">&gt;</button>
           </div>
         </div>
+        <div class="cal_wrapper">
         <div class="calMain">
           <div class="days">
             <div class="day">일</div>
@@ -34,12 +35,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
           </div>
           <div class="dates"></div>
         </div>
+        </div>
       </div>
     </aside>
-<aside class="right">
-  
-  
-</aside>
+	<aside class="right"></aside>
 	</div>
   </section>
 </body>
