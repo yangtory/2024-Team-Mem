@@ -15,26 +15,30 @@ SELECT * FROM tbl_user_comp;
 alter table tbl_user_comp
 add COLUMN us_date varchar(15);
 
-    	SELECT t.* FROM tbl_teacher t
-    	JOIN tbl_class ON c_tcode = t_code
-    	WHERE t_code = 'T0001'
-        LIMIT 1;
-        
+-- 매출리스트
+SELECT r_sdate,r_uid,i_seq, i_title,  i_price  FROM tbl_user_minfo
+JOIN tbl_minfo ON r_iseq = i_seq
+WHERE i_ccode = 'C0001'
+ORDER BY r_sdate ASC;
 
-select r_uid,r_iseq,i_price
-       from tbl_user_minfo        
-join tbl_minfo on i_seq = r_iseq;
+-- user 의 매출
+SELECT r_uid, i_title, r_sdate, i_price  FROM tbl_user_minfo
+JOIN tbl_minfo ON r_iseq = i_seq
+WHERE r_uid = 'user1'
+ORDER BY r_sdate ASC;
+
 
 -- 총매출
 select sum(i_price) as total_price
 from tbl_user_minfo
-join tbl_minfo on r_iseq = i_seq;
+join tbl_minfo on r_iseq = i_seq
+where i_ccode= 'C0001';
 
 -- 월매출
 SELECT SUM(i_price) AS total_price
 FROM tbl_user_minfo
 JOIN tbl_minfo ON r_iseq = i_seq
-where  r_sdate between '2024-05-01' and '2024-05-31';
+where  r_sdate between '2024-05-01' and '2024-05-31' and i_ccode = 'C0001';
 
 SELECT n_seq, n_title, n_uid, n_date
 FROM tbl_notice
