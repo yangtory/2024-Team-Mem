@@ -12,6 +12,15 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo; 
 SELECT * FROM tbl_user_comp;
 
+alter table tbl_user_comp
+add COLUMN us_date varchar(15);
+
+    	SELECT t.* FROM tbl_teacher t
+    	JOIN tbl_class ON c_tcode = t_code
+    	WHERE t_code = 'T0001'
+        LIMIT 1;
+        
+
 select r_uid,r_iseq,i_price
        from tbl_user_minfo        
 join tbl_minfo on i_seq = r_iseq;

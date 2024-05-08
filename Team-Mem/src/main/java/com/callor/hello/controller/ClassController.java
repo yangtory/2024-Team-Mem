@@ -80,6 +80,7 @@ public class ClassController {
 	            jsonBuilder.append("\"c_name\":\"").append(classVO.getC_name()).append("\",");
 	            jsonBuilder.append("\"c_sdate\":\"").append(classVO.getC_sdate()).append("\",");
 	            jsonBuilder.append("\"c_color\":\"").append(classVO.getC_color()).append("\",");
+	            jsonBuilder.append("\"c_tcode\":\"").append(classVO.getC_tcode()).append("\",");
 	            jsonBuilder.append("\"c_edate\":\"").append(classVO.getC_edate()).append("\"");
 	            jsonBuilder.append("},");
 	        }
@@ -153,6 +154,12 @@ public class ClassController {
 		return redString;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/findteacher/{tcode}")
+	public TeacherVO findTeacher(@PathVariable("tcode") String tcode) {
+		TeacherVO result = classDao.findTeacher(tcode);
+		return result;
+	}
 	
 	
 }

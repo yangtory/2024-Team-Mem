@@ -20,6 +20,7 @@ prefix="c"%>
             <button class="button-32" type="submit"><img src="${rootPath }/static/images/search.png" width="10px" height="10px" ></button>
         </f:form>
     </div>
+    <div class="table_div">
     <table class="customer list">
         <thead>
             <tr>
@@ -39,4 +40,5 @@ prefix="c"%>
             </c:forEach>
         </tbody>
     </table>
+</div>
 </div>
