@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const error_box = document.querySelector("div.login.error");
   const error_box_join = document.querySelector("div.join.error");
 
+  const cname = join_form.querySelector("input[name='u_comp']");
+  const caddr = join_form.querySelector("input[name='c_addr']");
+  const ctel = join_form.querySelector("input[name='c_tel']");
   const NAV = {
     home: { url: "/" },
     ticket: { url: "/ticket" },
@@ -36,17 +39,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const navs = Object.keys(NAV);
   navs.forEach((key) => {
     if (pathArr.join(" ").includes(key)) {
-      document
-        .querySelector(`div.side ul li.${key}`)
-        ?.classList.add("active");
+      document.querySelector(`div.side ul li.${key}`)?.classList.add("active");
     }
   });
 
   login_btn?.addEventListener("click", () => {
     const id = login_form.querySelector("input[name='u_id']");
-    const password = login_form.querySelector(
-      "input[name='u_password']"
-    );
+    const password = login_form.querySelector("input[name='u_password']");
 
     error_box.innerHTML = "";
     if (!id.value) {
@@ -69,7 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const name = join_form.querySelector("input[name='u_name']");
     const addr = join_form.querySelector("input[name='u_addr']");
     const tel = join_form.querySelector("input[name='u_tel']");
-    const cname = join_form.querySelector("input[name='u_comp']");
 
     error_box_join.innerHTML = "";
     if (!id.value) {
@@ -78,9 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return false;
     } else {
       try {
-        const res = await fetch(
-          `${rootPath}/main/idcheck/${id.value}`
-        );
+        const res = await fetch(`${rootPath}/main/idcheck/${id.value}`);
         const json = await res.json().catch(null);
         if (json) {
           error_box_join.innerHTML = "중복된 아이디입니다.";
@@ -112,11 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return false;
     }
     if (!cname.value) {
-      if (
-        confirm(
-          "업체명을 비워두면 일반회원으로 가입됩니다. 그대로 진행할까요?"
-        )
-      ) {
+      if (confirm("업체명을 비워두면 일반회원으로 가입됩니다. 그대로 진행할까요?")) {
         join_form.submit();
       } else {
         error_box_join.innerHTML = "업체명을 입력하세요";
@@ -125,14 +117,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } else {
       try {
-        const res = await fetch(
-          `${rootPath}/main/cnamecheck/${cname.value}`
-        );
+        const res = await fetch(`${rootPath}/main/cnamecheck/${cname.value}`);
         const json = await res.json();
         // console.log(text);
         if (json) {
-          error_box_join.innerHTML =
-            "중복된 업체명입니다. 다시 입력해주세요.";
+          error_box_join.innerHTML = "중복된 업체명입니다. 다시 입력해주세요.";
           cname.select();
           return false;
         }
@@ -142,5 +131,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     alert("회원가입이 완료되었습니다.");
     join_form.submit();
+  });
+  cname.addEventListener("focus", () => {
+    ctel.style.display = "block";
+    ctel.style.transition = "display 0.8s ease";
+    caddr.style.display = "block";
+    caddr.style.transition = "display 0.8s ease";
   });
 });

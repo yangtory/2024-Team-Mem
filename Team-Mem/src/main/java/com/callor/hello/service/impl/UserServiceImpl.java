@@ -50,11 +50,12 @@ public class UserServiceImpl implements UserService{
 
 	@Transactional
 	@Override
-	public UserVO createUser(UserVO createUserVO) {
+	public UserVO createUser(UserVO createUserVO, CompanyVO companyVO) {
 		String username = createUserVO.getU_id();
 		String password = createUserVO.getU_password();
 		String company = createUserVO.getU_comp();
-		
+		String c_addr = companyVO.getC_addr();
+		String c_tel = companyVO.getC_tel();
 		// 회원가입 시 입력한 password 를 암호화 하기
 		String encPassword = passEncoder.encode(password);
 		// 암호화된 password 를 set 해주기 
@@ -76,7 +77,9 @@ public class UserServiceImpl implements UserService{
 			comp.add(CompanyVO.builder()
 					.c_code(createCCode())
 					.c_name(company)
-					.c_uid(username).build());
+					.c_uid(username)
+					.c_addr(c_addr)
+					.c_tel(c_tel).build());
 			userDao.insert(createUserVO);
 			companyDao.createCompany(comp);
 			roleDao.insertAll(roles);
@@ -148,5 +151,7 @@ public class UserServiceImpl implements UserService{
 		CompanyVO result = companyDao.checkCname(cname);
 		return result;
 	}
+
+	
 
 }

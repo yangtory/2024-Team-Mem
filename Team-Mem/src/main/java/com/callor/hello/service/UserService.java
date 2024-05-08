@@ -6,7 +6,8 @@ import com.callor.hello.models.UserVO;
 
 public interface UserService {
 	
-	public UserVO createUser(UserVO createUserVO);
+	public UserVO createUser(UserVO createUserVO, CompanyVO createCompVO);
+	
 	
 	public UserVO findById(String username);
 	

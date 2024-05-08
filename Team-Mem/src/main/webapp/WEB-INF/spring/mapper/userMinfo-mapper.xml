@@ -52,7 +52,7 @@
 	</select>
 	
 	<select id="findCname">
-		SELECT c_name FROM tbl_company
+		SELECT * FROM tbl_company
 		WHERE c_code = #{ccode} 
 	</select>
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.hello.dao.CompanyDao;
 import com.callor.hello.dao.NoticeDao;
 import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserMinfoDao;
@@ -37,10 +38,12 @@ public class MainController {
 	private final DashService dashService;
 	private final ObjectMapper objectMapper;
 	private final UserCompDao userCompDao;
+	private final CompanyDao companyDao;
 
 
 	public MainController(UserService userService, TeacherService teacherService, NoticeDao noticeDao,
-			UserMinfoDao userMinfoDao, DashService dashService, ObjectMapper objectMapper, UserCompDao userCompDao) {
+			UserMinfoDao userMinfoDao, DashService dashService, ObjectMapper objectMapper, UserCompDao userCompDao,
+			CompanyDao companyDao) {
 		super();
 		this.userService = userService;
 		this.teacherService = teacherService;
@@ -49,6 +52,7 @@ public class MainController {
 		this.dashService = dashService;
 		this.objectMapper = objectMapper;
 		this.userCompDao = userCompDao;
+		this.companyDao = companyDao;
 	}
 
 	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
@@ -82,8 +86,10 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String join(UserVO userVO, Model model) {
-		userService.createUser(userVO);
+	public String join(UserVO userVO, Model model, CompanyVO compVO) {
+		userService.createUser(userVO, compVO);
+		
+		
 		return "redirect:/";
 	}
 	
