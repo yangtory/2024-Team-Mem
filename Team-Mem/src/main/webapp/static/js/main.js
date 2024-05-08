@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     class: { url: "/class" },
     schedule: { url: "/schedule" },
     notice: { url: "/notice" },
+    sales: { url: "/sales" },
   };
 
   side_nav?.addEventListener("click", (e) => {
@@ -35,13 +36,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const navs = Object.keys(NAV);
   navs.forEach((key) => {
     if (pathArr.join(" ").includes(key)) {
-      document.querySelector(`div.side ul li.${key}`)?.classList.add("active");
+      document
+        .querySelector(`div.side ul li.${key}`)
+        ?.classList.add("active");
     }
   });
 
   login_btn?.addEventListener("click", () => {
     const id = login_form.querySelector("input[name='u_id']");
-    const password = login_form.querySelector("input[name='u_password']");
+    const password = login_form.querySelector(
+      "input[name='u_password']"
+    );
 
     error_box.innerHTML = "";
     if (!id.value) {
@@ -73,7 +78,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       return false;
     } else {
       try {
-        const res = await fetch(`${rootPath}/main/idcheck/${id.value}`);
+        const res = await fetch(
+          `${rootPath}/main/idcheck/${id.value}`
+        );
         const json = await res.json().catch(null);
         if (json) {
           error_box_join.innerHTML = "중복된 아이디입니다.";
@@ -105,7 +112,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       return false;
     }
     if (!cname.value) {
-      if (confirm("업체명을 비워두면 일반회원으로 가입됩니다. 그대로 진행할까요?")) {
+      if (
+        confirm(
+          "업체명을 비워두면 일반회원으로 가입됩니다. 그대로 진행할까요?"
+        )
+      ) {
         join_form.submit();
       } else {
         error_box_join.innerHTML = "업체명을 입력하세요";
@@ -114,11 +125,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } else {
       try {
-        const res = await fetch(`${rootPath}/main/cnamecheck/${cname.value}`);
+        const res = await fetch(
+          `${rootPath}/main/cnamecheck/${cname.value}`
+        );
         const json = await res.json();
         // console.log(text);
         if (json) {
-          error_box_join.innerHTML = "중복된 업체명입니다. 다시 입력해주세요.";
+          error_box_join.innerHTML =
+            "중복된 업체명입니다. 다시 입력해주세요.";
           cname.select();
           return false;
         }

@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script src="${rootPath}/static/js/sales.js"></script>
+
+<h1 class="list_title">매출 내역</h1>
+<div class="list_home">
+    <div class="sales btn_box search">
+        <f:form class="search_form" method="GET" modelAttribute="SEARCH">
+        	<div>
+        	<div><label class="sdate">시작일</label>
+            <f:input class="search_input sdate" placeholder="시작일" path="s_sdate" type="date" /></div>
+            <div><label class="sdate">종료일</label>
+            <f:input class="search_input edate" placeholder="종료일" path="s_edate" type="date" /></div>
+            </div>
+            <div>
+            <f:input class="search_input" placeholder="회원ID" path="s_uid" />
+            <f:input class="search_input" placeholder="회원권이름" path="s_ititle" />
+            </div>
+            <button class="button-32" type="button" value="검색" >
+              <img src="${rootPath }/static/images/search.png" width="10px" height="10px" ></button>
+        </f:form>
+    </div>
+	<div class="table_div">
+		<table class="sales list">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>매출 날짜</th>
+					<th>회원 아이디</th>
+					<th>회원권 번호</th>
+					<th>회원권 이름</th>
+					<th>회원권 가격</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${SALES_LIST}" var="S" varStatus="INDEX">
+					<tr>
+						<td>${INDEX.count }</td>
+						<td>${S.r_sdate }</td>
+						<td>${S.r_uid }</td>
+						<td>${S.i_seq }</td>
+						<td>${S.i_title }</td>
+						<td class="price"><fmt:formatNumber value="${S.i_price }" pattern="#,###" />
+						</td>
+					</tr>
+				</c:forEach>
+				<tr class="total">
+					<td>총 매출
+					<td>
+					<td>
+					<td>
+					<td>					
+					<td class="total">
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+</div>
