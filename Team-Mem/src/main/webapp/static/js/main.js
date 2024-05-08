@@ -132,10 +132,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("회원가입이 완료되었습니다.");
     join_form.submit();
   });
+
   cname.addEventListener("focus", () => {
-    ctel.style.display = "block";
-    ctel.style.transition = "display 0.8s ease";
     caddr.style.display = "block";
-    caddr.style.transition = "display 0.8s ease";
+    ctel.style.display = "block";
   });
 });
