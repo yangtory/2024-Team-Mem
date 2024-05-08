@@ -13,7 +13,7 @@ div.search {
   }
 
   input.search_input {
-    width: 70px;
+    width: 80px;
     height: 25px;
     padding: 3px 10px;
     margin-right: 5px;
@@ -29,7 +29,7 @@ div.search {
   }
   input.sdate,
   input.edate {
-    width: 150px;
+    width: 130px;
     height: 25px;
     padding: 3px 10px;
     margin-right: 5px;
@@ -38,7 +38,7 @@ div.search {
     border: none;
     text-align: center;
     &:focus {
-      width: 150px;
+      width: 130px;
     }
   }
   button.button-32 {
