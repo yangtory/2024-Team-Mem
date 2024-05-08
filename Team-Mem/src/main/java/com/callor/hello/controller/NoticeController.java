@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.hello.dao.NoticeDao;
-import com.callor.hello.models.Criteria;
 import com.callor.hello.models.NoticeSearchDto;
 import com.callor.hello.models.NoticeVO;
 import com.callor.hello.service.TeacherService;
@@ -33,7 +32,7 @@ public class NoticeController {
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String home(@ModelAttribute("SEARCH") NoticeSearchDto noticeSearchDto,
-			Model model, Criteria criteria) {
+			Model model) {
 		String n_ccode = teacherService.getLoginCCode();
 		noticeSearchDto.setN_ccode(n_ccode);
 		List<NoticeSearchDto> list = noticeDao.selectSearchAll(noticeSearchDto);

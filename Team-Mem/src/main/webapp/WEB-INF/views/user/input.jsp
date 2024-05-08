@@ -45,7 +45,8 @@
 <div class="member_list">
 	<h3>USER 리스트</h3>
 <c:if test="${COMP == null}">
-	<table class="list">
+<div class="table_wrapper">
+	<table class="list tbl">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -61,6 +62,7 @@
 			</c:forEach>
 		</tbody>		
 	</table>
+</div>
 </c:if>
 </div>
 </c:if>

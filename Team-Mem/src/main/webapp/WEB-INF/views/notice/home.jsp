@@ -12,6 +12,7 @@ prefix="f"%>
     <div class="insert_btn_box">
         <a class="insert button-32" href="${rootPath }/notice/insert"> 글쓰기 </a>
     </div>
+
     <div class="notice search">
         <f:form method="GET" modelAttribute="SEARCH">
             <f:input class="search_input" placeholder="제목" path="n_title" />
@@ -19,6 +20,27 @@ prefix="f"%>
             <button class="button-32" type="submit" value="검색" ><img src="${rootPath }/static/images/search.png" width="10px" height="10px" ></button>
         </f:form>
     </div>
+    <c:if test="${SEARCH_LIST.size() == 0}">
+        <table class="notice list">
+            <thead>
+                <tr>
+                    <th class="index" width="20px">No.</th>
+                    <th class="date" width="80px">작성일자</th>
+                    <th class="title" width="200px">제목</th>
+                    <th class="id" width="20px">작성자</th>
+                    <th class="content">내용</th>
+
+                </tr>
+            </thead>
+        <tbody>
+        </tbody>
+        </table>
+        <div class="noList_wrapper">
+            <div class="noList">등록된 공지사항이 없습니다.</div>
+        </div>
+    </c:if>
+     
+    <c:if test="${SEARCH_LIST.size() > 0}">
     <div class="table_div">
         <table class="notice list">
             <thead>
@@ -44,6 +66,7 @@ prefix="f"%>
         </tbody>
     </table>
 </div>
+</c:if>
 <div class="modal-backdrop">
     <div class="detail">
         <div class="notice input_box">

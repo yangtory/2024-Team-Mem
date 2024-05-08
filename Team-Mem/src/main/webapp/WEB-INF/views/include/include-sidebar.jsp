@@ -24,6 +24,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
             <img src="${rootPath }/static/images/cal.png" width="15px" height="15px" />
             일정관리
         </li>
+		<li class="sales">
+            <img src="${rootPath }/static/images/money.png" width="15px" height="15px" />
+            매출관리
+        </li>
         <li class="notice">
             <img src="${rootPath }/static/images/board.png" width="15px" height="15px" />
             공지사항

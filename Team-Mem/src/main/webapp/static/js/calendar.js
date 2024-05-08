@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const renderCalender = async () => {
     viewYear = date.getFullYear();
     viewMonth = date.getMonth();
-    document.querySelector(".year-month").textContent = `${viewYear}년 ${viewMonth + 1}월`;
+    document.querySelector(
+      ".year-month"
+    ).textContent = `${viewYear}년 ${viewMonth + 1}월`;
     const prevLast = new Date(viewYear, viewMonth, 0);
     const thisLast = new Date(viewYear, viewMonth + 1, 0);
 
@@ -35,14 +37,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lastDateIndex = dates.lastIndexOf(TLDate);
 
     dates.forEach((date, i) => {
-      const condition = i >= firstDateIndex && i < lastDateIndex + 1 ? "this" : "other";
+      const condition =
+        i >= firstDateIndex && i < lastDateIndex + 1
+          ? "this"
+          : "other";
 
-      dates[i] = `<div class="date"><div class=${condition}>${date}</div></div>`;
+      dates[
+        i
+      ] = `<div class="date"><div class=${condition}>${date}</div></div>`;
     });
     document.querySelector(".dates").innerHTML = dates.join("");
 
     const today = new Date();
-    if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
+    if (
+      viewMonth === today.getMonth() &&
+      viewYear === today.getFullYear()
+    ) {
       for (let date of document.querySelectorAll(".this")) {
         if (+date.innerText === today.getDate()) {
           date.classList.add("today");
@@ -69,20 +79,34 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (day_all[j].innerHTML.length === 1) {
         day_all[j].innerHTML = "0" + day_all[j].innerHTML;
       }
-      const currentDate = new Date(`${year_Text}-${month_text}-${day_all[j].innerHTML}`);
+      const currentDate = new Date(
+        `${year_Text}-${month_text}-${day_all[j].innerHTML}`
+      );
       const formattedDate = formatDate(currentDate);
 
       // 해당 날짜에 속하는 일정들을 가져옴
-      const schedules = json.filter((schedule) => schedule.s_sdate <= formattedDate && schedule.s_edate >= formattedDate);
+      const schedules = json.filter(
+        (schedule) =>
+          schedule.s_sdate <= formattedDate &&
+          schedule.s_edate >= formattedDate
+      );
 
       if (schedules.length > 0) {
         // 이미 제목이 표시된 날짜인지 확인
         const existingTitleContainer = day_all[j].nextElementSibling;
-        if (!existingTitleContainer || !existingTitleContainer.classList.contains("title-container")) {
+        if (
+          !existingTitleContainer ||
+          !existingTitleContainer.classList.contains(
+            "title-container"
+          )
+        ) {
           // 새로운 제목 컨테이너를 생성하여 해당 날짜 바로 다음에 삽입
           const titleContainer = document.createElement("span");
           titleContainer.classList.add("title-container");
-          day_all[j].insertAdjacentElement("afterend", titleContainer);
+          day_all[j].insertAdjacentElement(
+            "afterend",
+            titleContainer
+          );
 
           schedules.forEach((schedule) => {
             // 해당 일정 추가
@@ -90,7 +114,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const rightSpan = document.createElement("div");
             const rightSpanTitle = document.createElement("article");
             titleSpan.textContent = schedule.s_title;
-            const scheduleText = `${schedule.s_sdate + " ~ " + schedule.s_edate}`;
+            const scheduleText = `${
+              schedule.s_sdate + " ~ " + schedule.s_edate
+            }`;
             const scheduleContent = `${schedule.s_title}`;
             titleSpan.classList.add("title");
             titleSpan.style.backgroundColor = schedule.s_color;
@@ -185,7 +211,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       viewMonthStr = "0" + viewMonthStr;
     }
 
-    if (target.tagName === "SPAN" || target.classList.contains("date")) {
+    if (
+      target.tagName === "SPAN" ||
+      target.classList.contains("date")
+    ) {
       const click = target.closest("DIV").innerText[0];
       const click2 = target.closest("DIV").innerText[1];
       const dates = `${viewYear}-${viewMonthStr}-${click}${click2}`;
@@ -195,7 +224,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const right_box = document.querySelector("aside.right");
   right_box.addEventListener("click", (e) => {
     const target = e.target;
-    if (target.classList.contains("content") || target.tagName === "DIV") {
+    if (
+      target.classList.contains("content") ||
+      target.tagName === "DIV"
+    ) {
       const sdate = target.closest("div").dataset.sdate;
       document.location.href = `${rootPath}/schedule/detail/${sdate}`;
     }

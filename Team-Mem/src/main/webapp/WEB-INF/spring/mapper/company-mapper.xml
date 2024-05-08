@@ -6,10 +6,10 @@
 <mapper namespace="com.callor.hello.dao.CompanyDao">
 
 	<insert id="createCompany">
-		INSERT INTO tbl_company(c_code,c_name,c_uid)
+		INSERT INTO tbl_company(c_code,c_name,c_uid, c_addr, c_tel)
 		VALUES
 		<foreach collection="list" item="vo" separator=", ">
-			(#{vo.c_code},#{vo.c_name},#{vo.c_uid})
+			(#{vo.c_code},#{vo.c_name},#{vo.c_uid}, #{vo.c_addr}, #{vo.c_tel})
 		</foreach>
 	</insert>
 

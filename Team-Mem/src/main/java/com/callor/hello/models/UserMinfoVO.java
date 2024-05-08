@@ -29,4 +29,5 @@ public class UserMinfoVO {
 	
 	private String us_uid;
 	
+	
 }

@@ -15,8 +15,10 @@
 		<sec:intercept-url pattern="/schedule" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/notice" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/class" access="isAuthenticated()"/>
-		<sec:intercept-url pattern="/login" access="isAnonymous()"/>
-		<sec:intercept-url pattern="/join" access="isAnonymous()"/>
+		<sec:intercept-url pattern="/sales" access="isAuthenticated()"/>
+		<sec:intercept-url pattern="/main" access="isAuthenticated()"/>
+		<sec:intercept-url pattern="/main/login" access="isAnonymous()"/>
+		<sec:intercept-url pattern="/main/join" access="isAnonymous()"/>
 		<sec:intercept-url pattern="/**" access="permitAll()"/>	
 		
 		<sec:form-login

@@ -12,17 +12,17 @@
 	<div class="main">
 		<!-- 로그인 전 -->
 		<sec:authorize access="isAnonymous()">
-		<section>
-			<c:if test="${BODY == 'HOME'}">
-				<%@ include file="/WEB-INF/views/main/dash.jsp"%>
-			</c:if>
-			<c:if test="${BODY == 'MAIN_LOGIN'}">
-				<%@ include file="/WEB-INF/views/main/login.jsp"%>
-			</c:if>
-			<c:if test="${BODY == 'MAIN_JOIN'}">
-				<%@ include file="/WEB-INF/views/main/join.jsp"%>
-			</c:if>
-		</section>
+			<section>
+				<c:if test="${BODY == 'HOME'}">
+					<%@ include file="/WEB-INF/views/main/dash.jsp"%>
+				</c:if>
+				<c:if test="${BODY == 'MAIN_LOGIN'}">
+					<%@ include file="/WEB-INF/views/main/login.jsp"%>
+				</c:if>
+				<c:if test="${BODY == 'MAIN_JOIN'}">
+					<%@ include file="/WEB-INF/views/main/join.jsp"%>
+				</c:if>
+			</section>
 		</sec:authorize>
 
 		<!-- 로그인 후 -->
@@ -73,6 +73,9 @@
 				</c:if>
 				<c:if test="${BODY == 'USER_TICK_INSERT' }">
 					<%@ include file="/WEB-INF/views/user/ticket_input.jsp"%>
+				</c:if>
+				<c:if test="${BODY == 'SALES_HOME' }">
+					<%@ include file="/WEB-INF/views/sales/home.jsp"%>
 				</c:if>
 				<!-- 승희 -->
 				<c:if test="${BODY == 'USER_LIST'}">

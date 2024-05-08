@@ -12,6 +12,13 @@
     	 WHERE c_seq = #{seq}
     </select>
     
+    <select id="findTeacher">
+    	SELECT t.* FROM tbl_teacher AS t
+    	JOIN tbl_class ON c_tcode = t_code
+    	WHERE t_code = #{tcode}
+    	LIMIT 1
+    </select>
+    
     <insert id="insert">
         INSERT INTO tbl_class(c_name, c_sdate, c_edate, c_stime, c_etime, c_tcode, c_ccode, c_color) 
         VALUES(#{c_name}, #{c_sdate}, #{c_edate}, #{c_stime}, #{c_etime}, #{c_tcode}, #{c_ccode}, #{c_color})

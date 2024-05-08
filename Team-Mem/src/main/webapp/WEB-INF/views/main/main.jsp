@@ -61,8 +61,29 @@
 	<div class="bottom">
 		<!-- 공지사항 리스트 -->
 		<div class="total notice_list">공지사항</div>
+		<c:if test="${NOTICE_LIST.size() == 0}">
 		<div class="notice">
-			<div class="table_div">
+			<div class="table_wrapper">
+				<table class="notice list">
+					<thead>
+						<tr>
+							<th class="index" width="20px">No.</th>
+							<th class="date" width="80px">작성일자</th>
+							<th class="title" width="200px">제목</th>
+							<th class="id" width="100px">작성자</th>
+							
+
+						</tr>
+					</thead>
+					<tbody></tbody>
+					</table>
+		<div class="noList_wrapper">
+            <div class="noList">등록된 공지사항이 없습니다.</div>
+        </div>
+		</c:if>
+		<c:if test="${NOTICE_LIST.size() > 0}">
+		<div class="notice">
+			<div class="table_wrapper">
 				<table class="notice list">
 					<thead>
 						<tr>
@@ -87,6 +108,7 @@
 					</tbody>
 				</table>
 			</div>
+			</c:if>
 		</div>
 	</div>
 

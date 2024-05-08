@@ -3,8 +3,9 @@ package com.callor.hello.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
+import com.callor.hello.models.CompanyVO;
+import com.callor.hello.models.SalesSearchDto;
 import com.callor.hello.models.UserMinfoVO;
 
 public interface UserMinfoDao {
@@ -28,6 +29,10 @@ public interface UserMinfoDao {
 	public Integer total(String ccode);
 
 	public List<UserMinfoVO> checkMinfo(@Param("id") String id,@Param("seq") String seq);
+
+	public List<UserMinfoVO> salesSearchAll(SalesSearchDto salesSearch);
+
+	public CompanyVO findCname(String ccode);
 
 	
 

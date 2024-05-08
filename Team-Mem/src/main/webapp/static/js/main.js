@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const error_box = document.querySelector("div.login.error");
   const error_box_join = document.querySelector("div.join.error");
 
+  const cname = join_form.querySelector("input[name='u_comp']");
+  const caddr = join_form.querySelector("input[name='c_addr']");
+  const ctel = join_form.querySelector("input[name='c_tel']");
   const NAV = {
     home: { url: "/" },
     ticket: { url: "/ticket" },
@@ -16,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     class: { url: "/class" },
     schedule: { url: "/schedule" },
     notice: { url: "/notice" },
+    sales: { url: "/sales" },
   };
 
   side_nav?.addEventListener("click", (e) => {
@@ -64,7 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const name = join_form.querySelector("input[name='u_name']");
     const addr = join_form.querySelector("input[name='u_addr']");
     const tel = join_form.querySelector("input[name='u_tel']");
-    const cname = join_form.querySelector("input[name='u_comp']");
 
     error_box_join.innerHTML = "";
     if (!id.value) {
@@ -128,5 +131,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     alert("회원가입이 완료되었습니다.");
     join_form.submit();
+  });
+  cname.addEventListener("focus", () => {
+    ctel.style.display = "block";
+    ctel.style.transition = "display 0.8s ease";
+    caddr.style.display = "block";
+    caddr.style.transition = "display 0.8s ease";
   });
 });

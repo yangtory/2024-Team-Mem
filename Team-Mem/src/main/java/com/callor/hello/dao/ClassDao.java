@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.callor.hello.models.ClassVO;
+import com.callor.hello.models.TeacherVO;
 
 public interface ClassDao {
 	
@@ -25,5 +26,8 @@ public interface ClassDao {
 	
 	@Delete(" DELETE FROM tbl_class WHERE c_seq = #{c_seq} ")
 	public int delete(ClassVO vo);
+
+	public TeacherVO findTeacher(@Param("tcode") String tcode);
+	
 
 }
