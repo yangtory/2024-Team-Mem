@@ -32,6 +32,8 @@ public interface UserMinfoDao {
 
 	public List<UserMinfoVO> salesSearchAll(SalesSearchDto salesSearch);
 
+	public String findCname(String ccode);
+
 	
 
 }

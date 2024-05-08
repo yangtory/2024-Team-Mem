@@ -33,11 +33,10 @@ public class SalesController {
 		
 		String ccode = teacherService.getLoginCCode();
 		salesSearch.setS_ccode(ccode);
-//		List<TeacherVO> teacherList = teacherDao.selectSearchAll(teacherSearch);
 		List<UserMinfoVO> result = userMinfoDao.salesSearchAll(salesSearch);
-		int total = userMinfoDao.total(ccode);
+		String findCname = userMinfoDao.findCname(ccode);
 		
-		model.addAttribute("TOTAL", total);
+		model.addAttribute("CNAME", findCname);
 		model.addAttribute("SALES_LIST", result);
 		model.addAttribute("BODY", "SALES_HOME");
 		return "layout";

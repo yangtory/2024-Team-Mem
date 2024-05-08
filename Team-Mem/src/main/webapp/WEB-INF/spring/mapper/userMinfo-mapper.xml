@@ -24,16 +24,8 @@
 		WHERE r_uid = #{seq}
 	</select>
 
-	<select id="salesAll">
-		SELECT r_sdate,r_uid,i_seq, i_title, i_price FROM
-		tbl_user_minfo
-		JOIN tbl_minfo ON r_iseq = i_seq
-		WHERE i_ccode = #{ccode}
-		ORDER BY r_sdate ASC;
-	</select>
-
 	<select id="salesSearchAll">
-		SELECT r_sdate, r_uid, i_seq, i_title, i_price FROM tbl_user_minfo
+		SELECT r_sdate, r_uid, i_seq, i_title, i_price, i_ccode FROM tbl_user_minfo
 		JOIN tbl_minfo ON r_iseq = i_seq
 		<where>
 			<if test="s_sdate != null and s_sdate != '' and s_edate != null and s_edate !=''">
@@ -57,6 +49,11 @@
 	<select id="findBySeq">
 		SELECT * FROM tbl_minfo
 		WHERE i_seq = #{seq}
+	</select>
+	
+	<select id="findCname">
+		SELECT c_name FROM tbl_company
+		WHERE c_code = #{ccode} 
 	</select>
 
 	<select id="countUser">
