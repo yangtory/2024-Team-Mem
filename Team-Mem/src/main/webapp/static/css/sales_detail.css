@@ -26,7 +26,7 @@ th.content {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -80%);
+    transform: translate(-40%, -60%);
     background-color: white;
     z-index: 999; /* 다른 요소보다 앞에 표시되도록 */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
@@ -57,11 +57,6 @@ div.sales.recipe {
         padding-bottom: 1rem;
         border-bottom: 2px dotted #b1b1b1;
     }
-    div:nth-of-type(9) {
-        input {
-            font-weight: 900;
-        }
-    }
     div {
         display: flex;
         label {
@@ -73,4 +68,42 @@ div.sales.recipe {
             outline: none;
         }
     }
+    div:nth-last-of-type(1) {
+        display: flex;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+        border-top: 2px dashed #364043;
+        input {
+            flex: 1;
+            font-weight: 900;
+        }
+        label {
+            flex: 1;
+            font-weight: 900;
+            font-size: 1rem;
+        }
+    }
+}
+div.table_div {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+div.table_div::-webkit-scrollbar {
+    display: none;
+}
+div.table_div:hover::-webkit-scrollbar {
+    display: none;
+}
+table.list {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+table.total_list {
+    width: 95%;
+    margin-top: auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }

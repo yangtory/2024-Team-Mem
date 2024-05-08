@@ -49,18 +49,21 @@
 						</td>
 					</tr>
 				</c:forEach>
-				<tr class="total">
-					<td>총 매출
-					<td>
-					<td>
-					<td>
-					<td>					
-					<td class="total">
-				</tr>
 				
 			</tbody>
 		</table>
+
 	</div>
+	<table class="total_list list">
+	<tr class="total">
+		<td>총 매출
+		<td>
+		<td>
+		<td>
+		<td>					
+		<td class="total">
+	</tr>
+</table>
 	<div class="modal-backdrop">
 		<div class="detail">
 			<div class="sales recipe">
@@ -70,7 +73,7 @@
 				<div><label>전화번호</label><input value="${CNAME.c_tel }" readonly></div>
 				<div><label>주　　소</label><input value="${CNAME.c_addr }" readonly></div>
 
-				<div><label>영수증번호</label><input value="202241-256871" readonly></div>
+				<div><label>영수증번호</label><input value="202441-256871" readonly></div>
 				<div><label>매출　날짜</label><input name="r_sdate" readonly></div>
 				<div><label>회원아이디</label><input name="r_uid" readonly ></div>
 				<div><label>회원권이름</label><input name="i_title" readonly ></div>
