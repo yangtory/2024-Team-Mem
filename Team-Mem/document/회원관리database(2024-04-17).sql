@@ -12,6 +12,13 @@ SELECT * FROM tbl_schedule;
 SELECT * FROM tbl_user_minfo; 
 SELECT * FROM tbl_user_comp;
 
+alter table tbl_company
+modify c_addr varchar(125);
+
+update tbl_company SET c_addr= '광주광역시 광산구 중흥동',c_tel='010-1234-1234'
+WHERE c_code = 'C0001';
+
+
 alter table tbl_user_comp
 add COLUMN us_date varchar(15);
 

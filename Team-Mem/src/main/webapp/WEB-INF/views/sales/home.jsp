@@ -78,8 +78,27 @@
 				<div><label>회원아이디</label><input name="r_uid" readonly ></div>
 				<div><label>회원권이름</label><input name="i_title" readonly ></div>
 				<div><label>회원권가격</label><input name="i_price" readonly ></div>
+				<div>
+					<button class="button-32"  onclick="saveReceipt()">
+						저장하기
+					<img src="${rootPath }/static/images/save.png" width="11px" height="11px" >
+				</button>
+				</div>
 			</div>
 			</div>
 				</div>
 		</div>
 </div>
+
+<script>
+	function saveReceipt() {
+		// 현재 화면을 캡처하여 이미지로 저장
+		html2canvas(document.querySelector(".detail")).then(canvas => {
+			var link = document.createElement('a');
+			link.download = 'receipt.png';
+			link.href = canvas.toDataURL();
+			link.click();
+		});
+	}
+</script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
