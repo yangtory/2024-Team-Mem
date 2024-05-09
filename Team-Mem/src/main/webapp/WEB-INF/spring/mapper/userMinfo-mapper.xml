@@ -84,7 +84,6 @@
 		UPDATE tbl_user_minfo
 		SET
 		r_icount = #{r_icount},
-		r_sdate = #{r_sdate},
 		r_edate = #{r_edate}
 		WHERE r_iseq = #{r_iseq}
 	</update>

@@ -10,7 +10,7 @@
 	<div class="ticket error"></div>
 	
 	<label>제목</label><input placeholder="제목" value="${MINFO.i_title }" readonly style="pointer-events: none" >
-	<label>수강횟수</label><input type="number" min="10" max="100" placeholder="수강횟수" name="r_icount" value="${MINFO.r_icount }" >
+	<label>수강횟수</label><input type="number" min="1" max="100" placeholder="수강횟수" name="r_icount" value="${MINFO.r_icount }" >
 	<label>시작일</label><input type="date" name="r_sdate" value="${MINFO.r_sdate }" >
 	<label>종료일</label><input type="date" name="r_edate" value="${MINFO.r_edate }" >
 	<input type="submit" class="insert button-32" value="수정">
