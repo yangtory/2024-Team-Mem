@@ -36,9 +36,9 @@
 
 		</dependencies>
 
-		
-		
-		
+
+
+
 	</dependencyManagement>
 
 	<dependencies>
@@ -63,20 +63,38 @@
 
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.2.25.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+
+
 
 
 		<!-- jackson -->
 		<dependency>
-    		<groupId>com.fasterxml.jackson.core</groupId>
-    		<artifactId>jackson-core</artifactId>
-    		<version>2.9.4</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.4</version>
 		</dependency>
 
 		<!-- java8 date/time -->
 		<dependency>
-    		<groupId>com.fasterxml.jackson.datatype</groupId>
-    		<artifactId>jackson-datatype-jsr310</artifactId>
-    		<version>2.9.4</version>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.9.4</version>
 		</dependency>
 
 

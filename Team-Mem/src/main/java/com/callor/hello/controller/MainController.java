@@ -25,6 +25,7 @@ import com.callor.hello.dao.UserMinfoDao;
 import com.callor.hello.models.CompanyVO;
 import com.callor.hello.models.LoginFormVO;
 import com.callor.hello.models.NoticeSearchDto;
+import com.callor.hello.models.UserCompVO;
 import com.callor.hello.models.UserMinfoVO;
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.DashService;
