@@ -43,7 +43,7 @@ public class AuthProviderImpl implements AuthenticationProvider{
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
-		log.debug("로그인한 사용자 정보 {}, {}", username, password);
+//		log.debug("로그인한 사용자 정보 {}, {}", username, password);
 		
 //		Authentication authentication2 = new UsernamePasswordAuthenticationToken(username, authentication.getCredentials());
 //		
