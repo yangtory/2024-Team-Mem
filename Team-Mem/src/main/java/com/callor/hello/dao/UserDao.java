@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.callor.hello.models.UserSearchDto;
 import com.callor.hello.models.UserVO;
 
 public interface UserDao {

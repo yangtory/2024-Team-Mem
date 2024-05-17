@@ -8,20 +8,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.hello.dao.UserCompDao;
 import com.callor.hello.dao.UserMinfoDao;
-import com.callor.hello.service.TeacherService;
 
 @Controller
 @RequestMapping(value="/test")
 public class TestController {
 
 	private final UserMinfoDao userMinfoDao;
-	private final TeacherService teacherService;
 	private final UserCompDao userCompDao;
 	
-	public TestController(UserMinfoDao userMinfoDao, TeacherService teacherService, UserCompDao userCompDao) {
+	public TestController(UserMinfoDao userMinfoDao, UserCompDao userCompDao) {
 		super();
 		this.userMinfoDao = userMinfoDao;
-		this.teacherService = teacherService;
 		this.userCompDao = userCompDao;
 	}
 
