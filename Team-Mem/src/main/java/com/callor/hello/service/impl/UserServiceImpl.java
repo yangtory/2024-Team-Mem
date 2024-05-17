@@ -26,7 +26,7 @@ import com.callor.hello.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
 	private final PasswordEncoder passEncoder;
 	private final UserDao userDao;

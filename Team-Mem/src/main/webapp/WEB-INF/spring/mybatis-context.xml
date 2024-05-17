@@ -27,7 +27,7 @@
 	<constructor-arg ref="sessionFactory" />
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.callor.hello.dao"/>			
+	<mybatis-spring:scan base-package="com.callor.hello.service.impl"/>			
 	
 	<tx:annotation-driven/>
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
