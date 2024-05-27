@@ -3,6 +3,8 @@ package com.callor.hello.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import com.callor.hello.models.UserVO;
 import com.callor.hello.service.DashService;
 import com.callor.hello.service.TeacherService;
 import com.callor.hello.service.UserService;
+import com.callor.hello.service.auth.AuthProviderImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -29,6 +32,13 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping(value = "/main")
 public class MainController {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private AuthProviderImpl authentication;
+
 
 	private final UserService userService;
 	private final TeacherService teacherService;
