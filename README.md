@@ -7,12 +7,14 @@
 - 시중의 서비스를 보고 프로그램의 흐름 파악하여 초보자도 쉽게 사용할 수 있도록 설계하였습니다.
 - 개발기간 : 2024.04~2024.05
 - 플랫폼 : Web
+<br/>
   
 ## 팀원 구성
 |양정연|김승희|
 |------|---|
 |<img width="200px" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/4dd13ed9-5ed4-4c9e-b40c-ff42a4ac6900">|<img width="200px" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/22a1d0f1-9b66-45ed-b9c3-174d8606d992">|
 |[@yangtory](https://github.com/yangtory)|[@Kwinhui](https://github.com/Kwinhui)|
+<br/>
 
 ## 1. 개발환경
 - 언어 : Java (1.8), HTML/CSS, JavaScript, JSP
@@ -22,6 +24,7 @@
 - IDE : STS3
 - API, 라이브러리 : RESTful API, Jackson, Chart.js, AOS lib
 - 협업 : Github, Notion
+<br/>
 
 ## 2. 역할분담
 ### 🐱 양정연
@@ -33,9 +36,12 @@
 - 노션 회의 기록
 - 페이지 : 대시보드, 회원관리, 수업관리, 스케줄관리
 - 기능 : Chart.js를 사용한 대시보드 구현 / 수업, 스케줄 관리 달력 / 회원관리 CRUD 
+<br/>
 
 ## 3. ERD
 <img width="972" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/51b30e15-1ee9-41c7-9d1c-66148f0f4050">
+<br/>
+<br/>
 
 ## 4. 페이지
 ### [메인 소개 페이지]
