@@ -25,7 +25,7 @@
 
 ## 2. 역할분담
 ### 🐱 양정연
-- 레이아웃 구성, 디자인 컨셉
+- 레이아웃 구성, 디자인 컨셉, 리드미 작성
 - 페이지 : 메인 소개 페이지, 로그인 및 회원가입, 회원권관리, 강사관리, 매출관리, 공지사항
 - 기능 : Spring Security를 사용한 세션, 토큰 설정 / 회원권, 강사, 매출, 공지사항 관리 CRUD
 
@@ -59,4 +59,53 @@
 |--------------|-------------|
 |<img width="500px" alt="스크린샷 2024-06-04 15 21 56" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/9d24cddb-0548-4c89-a1c7-ed2a09cd9723">|<img width="500px" alt="스크린샷 2024-06-04 15 23 51" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/06ac8cc0-3c84-4864-af2c-7d4ea3fcac2a">|
 
-### 
+### [회원권 관리]
+- 업체에서 사용하는 회원권 관리 페이지
+- 회원권 CRUD 구현
+
+|회원권 리스트|회원권 등록|회원권 디테일|
+|--------------|-------------|-------------|
+|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/c8a56630-d29f-460e-861b-81f4fef5152c">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/f97060f6-6e16-4232-85b4-3ab74b3d2c6a">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/9511f5a7-9813-47a3-8d3b-68a59a0f0801">
+
+### [회원관리]
+- 회원 CRUD 구현
+- 회원 등록하면서 회원권 등록 기능 추가
+
+|회원 리스트|회원 등록|회원 디테일|
+|--------------|-------------|-------------|
+|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/04397a79-e85a-4e6b-be7a-bfdf0a39d270">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/1f6a821e-846b-44e9-a274-587f905da410">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/300aa6b3-b808-42fe-91d3-61ed9b72ad2c">
+
+### [강사관리]
+- 강사 CRUD 구현
+- 강사 등록 시 각 강사마다 고유코드 부여
+
+|강사 리스트|강사 등록|강사 디테일|
+|--------------|-------------|-------------|
+|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/85a24e72-1ea3-41dc-8104-481630f994c2">|<img width="454" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/0e4adcf9-6837-4488-b9eb-9d278066afd3">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/861fa1b2-90eb-4ee8-8198-32f063c7de4c">
+
+### [수업 / 일정관리]
+- 수업, 일정 CRUD 구현
+- 날짜를 클릭하면 오른쪽에 간단한 디테일 화면 구현
+- 오른쪽의 디테일을 클릭하면 자세한 리스트 확인 가능
+
+|수업/일정 초기화면|수업/일정 추가|날짜 클릭 시 디테일|
+|--------------|-------------|-------------|
+|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/41e364cc-9f62-4111-b2c1-909b3d0e16af">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/717f0351-d73f-4424-b9c2-4c810b406b1b">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/e7a74c99-9397-49f3-a998-c30ce1703c20">
+
+### [매출관리]
+- 기간, 회원, 회원권 기준으로 매출을 확인 할 수 있음
+- 리스트 클릭 시 모달로 디테일 구현
+
+|매출 리스트|매출 디테일|
+|--------------|-------------|
+|<img width="649" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/79f77648-d91f-4023-8867-7ad6cf967c75">|<img width="649" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/26a56577-c096-4555-9ad8-87613690decf">
+
+### [공지사항]
+- 공지사항 CRUD 구현
+- 회원들에게 전달 할 공지사항 공간
+- 리스트 클릭 시 모달로 디테일 구현
+
+|매출 리스트|매출 디테일|
+|--------------|-------------|
+|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/7fa5e9da-b5be-4c03-bf10-2d5bedba5013">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/fb6cc45c-cb46-4610-b6e6-2e015cfd5bb7">
+
