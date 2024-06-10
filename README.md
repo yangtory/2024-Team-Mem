@@ -111,7 +111,7 @@
 - 회원들에게 전달 할 공지사항 공간
 - 리스트 클릭 시 모달로 디테일 구현
 
-|매출 리스트|매출 디테일|
+|공지사항 리스트|공지사항 디테일|
 |--------------|-------------|
 |<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/7fa5e9da-b5be-4c03-bf10-2d5bedba5013">|<img width="453" alt="image" src="https://github.com/yangtory/2024-Team-Mem/assets/151486114/fb6cc45c-cb46-4610-b6e6-2e015cfd5bb7">
 
